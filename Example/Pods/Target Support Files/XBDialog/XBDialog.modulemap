@@ -1,0 +1,6 @@
+framework module XBDialog {
+  umbrella header "XBDialog-umbrella.h"
+
+  export *
+  module * { export * }
+}

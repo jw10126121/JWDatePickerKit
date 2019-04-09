@@ -1,0 +1,6 @@
+framework module JWDatePickerKit {
+  umbrella header "JWDatePickerKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

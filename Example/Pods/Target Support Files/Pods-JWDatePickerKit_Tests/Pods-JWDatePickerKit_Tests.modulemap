@@ -1,0 +1,6 @@
+framework module Pods_JWDatePickerKit_Tests {
+  umbrella header "Pods-JWDatePickerKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
