@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JWDatePickerKit'
-    s.version          = '0.0.4'
+    s.version          = '0.0.5'
     s.summary          = 'JWDatePickerKit.时间选择控件'
     s.homepage         = 'https://github.com/jw10126121/JWDatePickerKit'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
     s.source_files = 'JWDatePickerKit/Classes/**/*'
     s.swift_versions = ['4.2', '5.0'] # 同时支持4.2和5.0
     s.dependency 'XBDialog', '~> 1.5.0'
-    s.dependency 'SnapKit', '~> 4.2.0'
     s.dependency 'PGDatePicker', '~> 2.6.9'
 
     # s.resource_bundles = {
