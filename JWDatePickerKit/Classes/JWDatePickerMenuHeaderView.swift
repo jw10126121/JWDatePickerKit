@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SnapKit
-
 
 
 /// 时间选择头部菜单视图
@@ -146,28 +144,57 @@ fileprivate extension JWDatePickerMenuHeaderView {
         addSubview(cancelButton)
         addSubview(confirmButton)
         addSubview(bottomLine)
+        
+        /// 布局cancelButton
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16.0).isActive = true
+        cancelButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        confirmButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16.0).isActive = true
+        confirmButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        confirmButton.heightAnchor.constraint(equalTo: cancelButton.heightAnchor).isActive = true
+        
+        topLine.translatesAutoresizingMaskIntoConstraints = false
+        topLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        topLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        topLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        topLine.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        topLine.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale).isActive = true
+        
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        bottomLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        bottomLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        bottomLine.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        bottomLine.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        bottomLine.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale).isActive = true
 
-        self.cancelButton.snp.makeConstraints { (make) in
-            make.left.equalTo(16)
-            make.centerY.equalTo(self)
-            make.height.equalTo(30)
-        }
+//        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+//        confirmButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        confirmButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        self.confirmButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-16)
-            make.centerY.equalTo(self)
-            make.height.equalTo(self.cancelButton.snp.height)
-        }
+//        self.cancelButton.snp.makeConstraints { (make) in
+//            make.left.equalTo(16)
+//            make.centerY.equalTo(self)
+//            make.height.equalTo(30)
+//        }
         
-        self.topLine.snp.makeConstraints { (make) in
-            make.left.right.top.equalTo(self)
-            make.height.equalTo(1.0 / UIScreen.main.scale)
-        }
-        
-        self.bottomLine.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self)
-            make.height.equalTo(self.topLine.snp.height)
-        }
+//        self.confirmButton.snp.makeConstraints { (make) in
+//            make.right.equalTo(-16)
+//            make.centerY.equalTo(self)
+//            make.height.equalTo(self.cancelButton.snp.height)
+//        }
+//
+//        self.topLine.snp.makeConstraints { (make) in
+//            make.left.right.top.equalTo(self)
+//            make.height.equalTo(1.0 / UIScreen.main.scale)
+//        }
+//
+//        self.bottomLine.snp.makeConstraints { (make) in
+//            make.left.right.bottom.equalTo(self)
+//            make.height.equalTo(self.topLine.snp.height)
+//        }
         
     }
 }

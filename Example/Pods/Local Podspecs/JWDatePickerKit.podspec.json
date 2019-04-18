@@ -26,9 +26,6 @@
     "XBDialog": [
       "~> 1.5.0"
     ],
-    "SnapKit": [
-      "~> 4.2.0"
-    ],
     "PGDatePicker": [
       "~> 2.6.9"
     ]
