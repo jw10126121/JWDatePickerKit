@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites name='JWDatePickerKit_Tests.xctest' tests='2' failures='0'>
   <testsuite name='JWDatePickerKit_Tests.Tests' tests='2' failures='0'>
-    <testcase classname='JWDatePickerKit_Tests.Tests' name='testExample' time='0.002'/>
-    <testcase classname='JWDatePickerKit_Tests.Tests' name='testPerformanceExample' time='0.278'/>
+    <testcase classname='JWDatePickerKit_Tests.Tests' name='testExample' time='0.003'/>
+    <testcase classname='JWDatePickerKit_Tests.Tests' name='testPerformanceExample' time='0.344'/>
   </testsuite>
 </testsuites>
