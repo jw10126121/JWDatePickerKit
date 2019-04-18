@@ -7,7 +7,6 @@
 
 import UIKit
 import XBDialog
-import SnapKit
 import PGDatePicker
 
 /// 时间选择控制器(只支持present弹出)
@@ -151,21 +150,39 @@ fileprivate extension JWDatePickerViewController {
         view.addSubview(headerView)
         view.addSubview(datePicker)
         
-        headerView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.datePicker.snp.top)
-            make.height.equalTo(self.rowHeight)
+        /// 布局datePicker
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        datePicker.heightAnchor.constraint(equalToConstant: datePickerHeight).isActive = true
+        if #available(iOS 11.0, *) {
+            datePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
         
-        self.datePicker.snp.makeConstraints { (make) in
-            make.left.right.equalTo(self.view)
-            if #available(iOS 11.0, *) {
-                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-            } else {
-                make.bottom.equalTo(self.view)
-            }
-            make.height.equalTo(self.datePickerHeight)
-        }
+        /// 布局headerView
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.leftAnchor.constraint(equalTo: datePicker.leftAnchor).isActive = true
+        headerView.rightAnchor.constraint(equalTo: datePicker.rightAnchor).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: rowHeight).isActive = true
+        headerView.bottomAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
+
+//        headerView.snp.makeConstraints { (make) in
+//            make.left.right.equalTo(self.view)
+//            make.bottom.equalTo(self.datePicker.snp.top)
+//            make.height.equalTo(self.rowHeight)
+//        }
+        
+//        self.datePicker.snp.makeConstraints { (make) in
+//            make.left.right.equalTo(self.view)
+//            if #available(iOS 11.0, *) {
+//                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+//            } else {
+//                make.bottom.equalTo(self.view)
+//            }
+//            make.height.equalTo(self.datePickerHeight)
+//        }
         
         headerView.cancelHandler = { [weak self] () -> Void in
             guard let self = self else { return }
