@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JWDatePickerKit'
-    s.version          = '0.0.7'
+    s.version          = '0.0.8'
     s.summary          = 'JWDatePickerKit.时间选择控件'
     s.homepage         = 'https://github.com/jw10126121/JWDatePickerKit'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
