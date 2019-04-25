@@ -1,6 +1,6 @@
 {
   "name": "JWDatePickerKit",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "summary": "JWDatePickerKit.时间选择控件",
   "homepage": "https://github.com/jw10126121/JWDatePickerKit",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/jw10126121/JWDatePickerKit.git",
-    "tag": "0.0.6"
+    "tag": "0.0.7"
   },
   "platforms": {
     "ios": "9.0"
