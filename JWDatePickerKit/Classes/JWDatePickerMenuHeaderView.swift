@@ -160,14 +160,12 @@ fileprivate extension JWDatePickerMenuHeaderView {
         topLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         topLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         topLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        topLine.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         topLine.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale).isActive = true
         
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         bottomLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         bottomLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         bottomLine.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        bottomLine.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         bottomLine.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale).isActive = true
 
 //        confirmButton.translatesAutoresizingMaskIntoConstraints = false

@@ -1,5 +1,5 @@
 PODS:
-  - JWDatePickerKit (0.0.5):
+  - JWDatePickerKit (0.0.6):
     - PGDatePicker (~> 2.6.9)
     - XBDialog (~> 1.5.0)
   - PGDatePicker (2.6.9):
@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JWDatePickerKit: f03d7a24293469ae5222e9c04d1b949aa810cb7c
+  JWDatePickerKit: 11e0f8dbc37d2d40e9b38b5cfd5cb98d3dd26d7e
   PGDatePicker: 88960f3760edac96219c10320f25536ad31d0f44
   PGPickerView: 037acfb132a4c8054fb43aaa59a5ff50c7f747f5
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
