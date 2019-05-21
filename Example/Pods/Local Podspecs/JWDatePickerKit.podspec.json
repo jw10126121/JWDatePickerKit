@@ -1,6 +1,6 @@
 {
   "name": "JWDatePickerKit",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "summary": "JWDatePickerKit.时间选择控件",
   "homepage": "https://github.com/jw10126121/JWDatePickerKit",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/jw10126121/JWDatePickerKit.git",
-    "tag": "0.0.7"
+    "tag": "0.0.9"
   },
   "platforms": {
     "ios": "9.0"
@@ -24,10 +24,11 @@
   ],
   "dependencies": {
     "XBDialog": [
-      "~> 1.5.0"
+      "~> 1.6.0"
     ],
     "PGDatePicker": [
       "~> 2.6.9"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
