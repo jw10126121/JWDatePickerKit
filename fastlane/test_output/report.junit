@@ -2,6 +2,6 @@
 <testsuites name='JWDatePickerKit_Tests.xctest' tests='2' failures='0'>
   <testsuite name='JWDatePickerKit_Tests.Tests' tests='2' failures='0'>
     <testcase classname='JWDatePickerKit_Tests.Tests' name='testExample' time='0.002'/>
-    <testcase classname='JWDatePickerKit_Tests.Tests' name='testPerformanceExample' time='0.280'/>
+    <testcase classname='JWDatePickerKit_Tests.Tests' name='testPerformanceExample' time='0.390'/>
   </testsuite>
 </testsuites>
