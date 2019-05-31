@@ -21,6 +21,9 @@ import PGDatePicker
     /// 确定事件
     @objc public var confirmHandler: ((_ date: Date) -> Void)?
     
+    /// 确定事件
+    @objc public var confirmDateComponentsHandler: ((_ date: DateComponents) -> Void)?
+    
     /// 时间选择器模式
     @objc public var datePickerMode: PGDatePickerMode = .date {
         didSet {
@@ -92,8 +95,18 @@ import PGDatePicker
         return temHeaderView
     }()
     
+    /// 底部安全区域
+    private lazy var safeAreaView: UIView = {
+        let it = UIView()
+        it.backgroundColor = UIColor.white
+        return it
+    }()
+    
     /// 选择的日期
     private var selectDate: Date = Date()
+    
+    /// 选择的日期DateComponents
+    private var selectDateComponents: DateComponents? = nil
     
     /// 默认高度
     private lazy var rowHeight: CGFloat = 50
@@ -149,6 +162,7 @@ fileprivate extension JWDatePickerViewController {
         
         datePicker.delegate = self
         
+        view.addSubview(safeAreaView)
         view.addSubview(headerView)
         view.addSubview(datePicker)
         
@@ -162,6 +176,12 @@ fileprivate extension JWDatePickerViewController {
         } else {
             datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
+        
+        safeAreaView.translatesAutoresizingMaskIntoConstraints = false
+        safeAreaView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        safeAreaView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        safeAreaView.topAnchor.constraint(equalTo: datePicker.bottomAnchor).isActive = true
+        safeAreaView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         /// 布局headerView
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -178,6 +198,9 @@ fileprivate extension JWDatePickerViewController {
         headerView.confirmHandler = { [weak self] () -> Void in
             guard let self = self else { return }
             self.confirmHandler?(self.selectDate)
+            if let dc = self.selectDateComponents {
+                self.confirmDateComponentsHandler?(dc)
+            }
         }
         
     }
@@ -196,8 +219,11 @@ fileprivate extension JWDatePickerViewController {
 extension JWDatePickerViewController: PGDatePickerDelegate {
     
     public func datePicker(_ datePicker: PGDatePicker!, didSelectDate dateComponents: DateComponents!) {
+        
+        self.selectDateComponents = dateComponents
         let theDate = Calendar.current.date(from: dateComponents)!
         self.selectDate = theDate
+        
     }
     
 }
