@@ -2,6 +2,7 @@ import XCTest
 import JWDatePickerKit
 import UIKit
 import PGDatePicker
+import PGPickerView
 
 class Tests: XCTestCase {
     
@@ -40,10 +41,63 @@ class Tests: XCTestCase {
         controller.dismiss(animated: false)
     }
 
+    func testAllDatePickerModesCanBeSelected() {
+        guard let rootController = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
+            XCTFail("The example app has no root view controller")
+            return
+        }
+
+        let modes: [PGDatePickerMode] = [
+            .year, .yearAndMonth, .date, .dateHour, .dateHourMinute,
+            .dateHourMinuteSecond, .monthDay, .monthDayHour, .monthDayHourMinute,
+            .monthDayHourMinuteSecond, .time, .timeAndSecond, .minuteAndSecond, .dateAndTime
+        ]
+
+        for mode in modes {
+            let controller = JWDatePickerViewController()
+            controller.datePickerMode = mode
+            rootController.present(controller, animated: false)
+            RunLoop.main.run(until: Date().addingTimeInterval(0.1))
+
+            XCTAssertTrue(controller.presentingViewController === rootController, "Failed to present mode \\(mode)")
+            controller.view.layoutIfNeeded()
+
+            guard let pickerView = findPickerView(in: controller.view) else {
+                XCTFail("No picker view was created for mode \\(mode)")
+                controller.dismiss(animated: false)
+                continue
+            }
+
+            for component in 0..<pickerView.numberOfComponents {
+                let numberOfRows = pickerView.numberOfRows(inComponent: component)
+                if numberOfRows > 1 {
+                    pickerView.selectRow(1, inComponent: component, animated: false)
+                }
+            }
+
+            controller.dismiss(animated: false)
+            RunLoop.main.run(until: Date().addingTimeInterval(0.1))
+        }
+    }
+
     func testDatePickerIgnoresMissingDateComponents() {
         let controller = JWDatePickerViewController()
         let datePicker = PGDatePicker()
         controller.datePicker(datePicker, didSelectDate: nil)
+    }
+
+    private func findPickerView(in view: UIView) -> PGPickerView? {
+        if let pickerView = view as? PGPickerView {
+            return pickerView
+        }
+
+        for subview in view.subviews {
+            if let pickerView = findPickerView(in: subview) {
+                return pickerView
+            }
+        }
+
+        return nil
     }
 
     func testPerformanceExample() {
