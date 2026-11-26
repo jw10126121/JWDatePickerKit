@@ -11,7 +11,7 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 
 ## 环境要求
 
-- iOS 9.0 及以上，Swift 5.0。
+- iOS 15.0 及以上，Swift 6 语言模式，使用支持 Swift 6 的 Xcode 工具链。
 - 使用 UIKit。
 - 示例工程通过 CocoaPods 管理依赖。
 

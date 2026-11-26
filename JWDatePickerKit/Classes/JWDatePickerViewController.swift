@@ -137,12 +137,8 @@ fileprivate extension JWDatePickerViewController {
         self.presentAnimator = XBPresentAnimator(self)
         self.presentAnimator.menu { (config) in
             config.presentingScale = 1.0
-            if #available(iOS 11.0, *) {
-                let areaInsetsBottom = UIApplication.shared.keyWindow?.rootViewController?.view.safeAreaInsets.bottom ?? 0.0
-                config.menuType = .bottomHeight(h: CGFloat(temHeight + areaInsetsBottom))
-            } else {
-                config.menuType = .bottomHeight(h: temHeight)
-            }
+            let areaInsetsBottom = UIApplication.shared.keyWindow?.rootViewController?.view.safeAreaInsets.bottom ?? 0.0
+            config.menuType = .bottomHeight(h: CGFloat(temHeight + areaInsetsBottom))
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecognizer))
             tap.numberOfTapsRequired = 1
             config.gestureRecognizer = tap
@@ -166,11 +162,7 @@ fileprivate extension JWDatePickerViewController {
         datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         datePicker.heightAnchor.constraint(equalToConstant: datePickerHeight).isActive = true
-        if #available(iOS 11.0, *) {
-            datePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        } else {
-            datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        }
+        datePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         safeAreaView.translatesAutoresizingMaskIntoConstraints = false
         safeAreaView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

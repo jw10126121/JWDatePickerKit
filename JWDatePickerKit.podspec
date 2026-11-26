@@ -16,9 +16,9 @@ Pod::Spec.new do |s|
     s.source           = { :git => 'https://github.com/jw10126121/JWDatePickerKit.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
     
-    s.ios.deployment_target = '9.0'
+    s.ios.deployment_target = '15.0'
     
-    s.swift_versions = ['5.0']
+    s.swift_versions = ['6.0']
     s.default_subspecs = 'Controller'
 
     s.subspec 'Picker' do |picker|

@@ -2,6 +2,7 @@ import XCTest
 import UIKit
 import JWDatePickerKit
 
+@MainActor
 final class Tests: XCTestCase {
     private var calendar: Calendar {
         var calendar = Calendar(identifier: .gregorian)
