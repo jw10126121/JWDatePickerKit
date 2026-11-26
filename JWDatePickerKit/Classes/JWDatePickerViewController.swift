@@ -219,11 +219,17 @@ fileprivate extension JWDatePickerViewController {
 extension JWDatePickerViewController: PGDatePickerDelegate {
     
     public func datePicker(_ datePicker: PGDatePicker!, didSelectDate dateComponents: DateComponents!) {
-        
+        guard let dateComponents = dateComponents else {
+            return
+        }
+
+        let calendar = datePicker?.calendar ?? Calendar.current
+        guard let selectedDate = calendar.date(from: dateComponents) else {
+            return
+        }
+
         self.selectDateComponents = dateComponents
-        let theDate = Calendar.current.date(from: dateComponents)!
-        self.selectDate = theDate
-        
+        self.selectDate = selectedDate
     }
     
 }

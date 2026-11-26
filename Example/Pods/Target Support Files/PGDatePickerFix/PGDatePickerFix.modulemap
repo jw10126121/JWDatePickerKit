@@ -1,5 +1,5 @@
 framework module PGDatePicker {
-  umbrella header "PGDatePicker-umbrella.h"
+  umbrella header "PGDatePickerFix-umbrella.h"
 
   export *
   module * { export * }

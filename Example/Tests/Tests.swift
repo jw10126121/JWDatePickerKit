@@ -1,5 +1,7 @@
 import XCTest
 import JWDatePickerKit
+import UIKit
+import PGDatePicker
 
 class Tests: XCTestCase {
     
@@ -17,7 +19,33 @@ class Tests: XCTestCase {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
     }
-    
+
+    func testDatePickerViewControllerLoads() {
+        let controller = JWDatePickerViewController()
+        controller.loadViewIfNeeded()
+        XCTAssertNotNil(controller.view)
+    }
+
+    func testDatePickerViewControllerCanBePresented() {
+        guard let rootController = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
+            XCTFail("The example app has no root view controller")
+            return
+        }
+
+        let controller = JWDatePickerViewController()
+        rootController.present(controller, animated: false)
+        RunLoop.main.run(until: Date().addingTimeInterval(0.5))
+
+        XCTAssertTrue(controller.presentingViewController === rootController)
+        controller.dismiss(animated: false)
+    }
+
+    func testDatePickerIgnoresMissingDateComponents() {
+        let controller = JWDatePickerViewController()
+        let datePicker = PGDatePicker()
+        controller.datePicker(datePicker, didSelectDate: nil)
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure() {
