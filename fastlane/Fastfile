@@ -20,7 +20,7 @@ platform :ios do
   desc "unit test"
   lane :test do
   	scan(
-    	workspace: "Example/JWDatePickerKit.xcworkspace", 
+        workspace: "JWDatePickerKit.xcworkspace",
     	scheme: "JWDatePickerKit_Tests", 
     	devices: ["iPhone 8"])
   	UI.message("Test Succeeded")
@@ -32,7 +32,7 @@ platform :ios do
     raise "The version is missed." if target_version.nil?
 
     scan(
-    	workspace: "Example/JWDatePickerKit.xcworkspace", 
+        workspace: "JWDatePickerKit.xcworkspace",
     	scheme: "JWDatePickerKit_Tests", 
     	devices: ["iPhone 8"])
 

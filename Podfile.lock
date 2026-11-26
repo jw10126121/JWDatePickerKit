@@ -9,23 +9,24 @@ PODS:
   - XBDialog (1.6.0)
 
 DEPENDENCIES:
-  - JWDatePickerKit (from `../`)
+  - JWDatePickerKit (from `./`)
   - SnapKit (~> 4.2.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - SnapKit
+  trunk:
     - XBDialog
 
 EXTERNAL SOURCES:
   JWDatePickerKit:
-    :path: "../"
+    :path: "./"
 
 SPEC CHECKSUMS:
   JWDatePickerKit: 5fcd019c536c00837f19fc41bf8fc82084486a8b
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   XBDialog: 97a647cb17d960000f45cd6640befa90bc29580a
 
-PODFILE CHECKSUM: b52b6f742f6a6df98c47c6dc804d0222856e246d
+PODFILE CHECKSUM: ab094200884df7d8deef0a5447e3f6a171785d25
 
 COCOAPODS: 1.17.0

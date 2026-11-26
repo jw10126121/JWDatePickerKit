@@ -1,8 +1,9 @@
 use_frameworks!
 platform :ios, '15.0'
+project 'JWDatePickerKit.xcodeproj'
 
 target 'JWDatePickerKit_Example' do
-  pod 'JWDatePickerKit', :path => '../'
+  pod 'JWDatePickerKit', :path => './'
   pod 'SnapKit', '~> 4.2.0'
   target 'JWDatePickerKit_Tests' do
     inherit! :search_paths
