@@ -17,18 +17,25 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "JWDatePickerKit/Classes/**/*",
   "swift_versions": [
-    "4.2",
     "5.0"
   ],
-  "dependencies": {
-    "XBDialog": [
-      "~> 1.6.0"
-    ],
-    "PGDatePickerFix": [
-      "~> 2.7.0"
-    ]
-  },
+  "default_subspecs": "Controller",
+  "subspecs": [
+    {
+      "name": "Picker",
+      "source_files": "JWDatePickerKit/Classes/Picker/**/*.swift"
+    },
+    {
+      "name": "Controller",
+      "source_files": "JWDatePickerKit/Classes/*.swift",
+      "dependencies": {
+        "JWDatePickerKit/Picker": [],
+        "XBDialog": [
+          "~> 1.6.0"
+        ]
+      }
+    }
+  ],
   "swift_version": "5.0"
 }

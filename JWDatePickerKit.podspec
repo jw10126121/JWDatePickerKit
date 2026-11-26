@@ -18,17 +18,17 @@ Pod::Spec.new do |s|
     
     s.ios.deployment_target = '9.0'
     
-    s.source_files = 'JWDatePickerKit/Classes/**/*'
-    s.swift_versions = ['4.2', '5.0'] # 同时支持4.2和5.0
-    s.dependency 'XBDialog', '~> 1.6.0'
-    s.dependency 'PGDatePickerFix', '~> 2.7.0'
+    s.swift_versions = ['5.0']
+    s.default_subspecs = 'Controller'
 
-    # s.resource_bundles = {
-    #   'JWDatePickerKit' => ['JWDatePickerKit/Assets/*.png']
-    # }
-    
-    # s.public_header_files = 'Pod/Classes/**/*.h'
-    # s.frameworks = 'UIKit', 'MapKit'
-    # s.dependency 'AFNetworking', '~> 2.3'
-    
+    s.subspec 'Picker' do |picker|
+        picker.source_files = 'JWDatePickerKit/Classes/Picker/**/*.swift'
+    end
+
+    s.subspec 'Controller' do |controller|
+        controller.source_files = 'JWDatePickerKit/Classes/*.swift'
+        controller.dependency 'JWDatePickerKit/Picker'
+        controller.dependency 'XBDialog', '~> 1.6.0'
+    end
+
 end

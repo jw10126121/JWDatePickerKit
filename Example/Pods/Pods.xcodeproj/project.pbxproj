@@ -7,389 +7,218 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01D796A36CE0EA3D080FFC4C834C79A8 /* Pods-JWDatePickerKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF07DE0D65D431753213BFBE726B296F /* Pods-JWDatePickerKit_Example-dummy.m */; };
-		03797D3A99C5809A55B5DBABBD48916D /* PGDatePicker+MonthDayHourMinute.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BEF905A99D46CDAABC15DF6F4F46B6E /* PGDatePicker+MonthDayHourMinute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		03C094E2651ADAC6E79743FFF2BC0A83 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5A5F2E1DA924BF41F2B50FA6A07F55 /* ConstraintPriorityTarget.swift */; };
-		0BFF425B8DD9641BE7A67C1E0A915F2F /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008C0890268106AFEAFA7FC1FBFCF47B /* PGDatePickerView.m */; };
-		0E7A5E846E36CD0D415C51FC9151157C /* XBDialog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 04107DA917FEAA3A4F5444F872684135 /* XBDialog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		104EA4DBB59777617B4ECCB031059382 /* MenuConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A82DBC593F28B5FC548E7C053282699 /* MenuConfig.swift */; };
-		1100168FA19819BC9561C0E37AE2E90D /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A182BFF6A2406C9304459E02ED222 /* ConstraintItem.swift */; };
-		1331C3B293DDFDB77BB2BABB608DF1B5 /* PGDatePicker+MonthDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AACCF85C12CAEDE8C84822466FB800 /* PGDatePicker+MonthDay.m */; };
-		135B0D93665F1FE0C50F4B8BBDBA97D5 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9382D1E5A852328DD387DCF29C80E6 /* ConstraintDescription.swift */; };
-		148EE7680C90FD57A6558FA9A8E51887 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		1551181F95BD1FDE4850B450396AD32D /* PGDatePicker+Year.h in Headers */ = {isa = PBXBuildFile; fileRef = 889D66D075D4CDD6A14F105D943D5F7E /* PGDatePicker+Year.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1BD92052864E5508EE1ED1A8982111E8 /* DialogPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEF6AF12EDCEF8A62669AE465CA33E /* DialogPresentationController.swift */; };
-		1C2E017CEE0904AA9FCE7A8782586B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		1F9C0799588EC09EADA2C8CD39884D04 /* PGDatePicker+YearAndMonth.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6580DD7ADB508D4FFF8C1CCBA2265F /* PGDatePicker+YearAndMonth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		249CE4F11E6F9CB9C223FD63AC85A6E5 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88349E140E02A11B6B9984D8C3E4A6B2 /* ConstraintRelation.swift */; };
-		250ABC8F3311FD641E090A917C859212 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DF37A9D36D0EC0137F4DB1C5C0CE2 /* ConstraintView.swift */; };
-		266E465B26B3F1AD9F64943106C2BC37 /* PGDatePicker+DateAndTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 68ED07015167C35EB28E3AE9D0BF7478 /* PGDatePicker+DateAndTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		287E317E79DD3F766BBF521C456998DF /* PGDatePicker+MonthDayHour.m in Sources */ = {isa = PBXBuildFile; fileRef = 7907A2BBC3A08A088B8A80C0695B54F9 /* PGDatePicker+MonthDayHour.m */; };
-		2DC544EA027863FFBBE36B325D408CEF /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BE5CC098D398F14FC6B6A78B156BCC /* ConstraintInsets.swift */; };
-		2E43AA6702AEAB77F94BFC08AFA54686 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEAD59E1A8A20D695D1ED854F3E794D /* ConstraintConstantTarget.swift */; };
-		2E85B3DBCA4C99451BC24E94F9300180 /* PGDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = FA32719D2D946977B10E6835CB1D3FEF /* PGDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F836390AF20B82F5D7060C57C804518 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E07DEF7C4E4817B5A9A94DFC024A9 /* UILayoutSupport+Extensions.swift */; };
-		3590380A8676493D4AA4051CBA11EE16 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E4C27519FA0F46B7D4849DD3A60A20 /* ConstraintDSL.swift */; };
-		36822AD9A32E718D837154DB78C75C6F /* PGDatePicker+Time.h in Headers */ = {isa = PBXBuildFile; fileRef = F9C2C19E72D441D8A6229BE48F9A1CC4 /* PGDatePicker+Time.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		37C6ADBED3AD29ED1B6EB3BCB1D52F74 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBD1B3D8D17928CC5E389B0704A760 /* ConstraintView+Extensions.swift */; };
-		38AA9F69735AA5B2B4FE0642D3F79230 /* PGDatePicker+Logic.m in Sources */ = {isa = PBXBuildFile; fileRef = 011BC7443766958F9B4CC10D608D34A3 /* PGDatePicker+Logic.m */; };
-		38AD4F4D1DDCC0775EF53296C4AAE432 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0FDB66450AF5C9EEAC2A30F63402E /* LayoutConstraintItem.swift */; };
+		0349910D9033B8270D4F532D36E7DFE0 /* Pods-JWDatePickerKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FA4FF4BBB5BE133FED3F7C1E31B6F3 /* Pods-JWDatePickerKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03C094E2651ADAC6E79743FFF2BC0A83 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C48B464F0546DF11E6581EF09ED46F2 /* ConstraintPriorityTarget.swift */; };
+		0F107BBF4C2784877F9778BD3E548E56 /* MenuConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0BB90A28604BBF7834B57B9ACF7A9C /* MenuConfig.swift */; };
+		1100168FA19819BC9561C0E37AE2E90D /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42097B0D063A693978A747EC44E78D9F /* ConstraintItem.swift */; };
+		135B0D93665F1FE0C50F4B8BBDBA97D5 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA181245894DFD7CA3BAB12D172A13D /* ConstraintDescription.swift */; };
+		1DD32EEB7F4E0764ED22648C2614D5B3 /* BasePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B3EC95E17CA42E1CCDCCA3D7C50E8 /* BasePresentationController.swift */; };
+		2115804D3EEAAA75640D9EDA53D742CB /* JWDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DF892BA2D2852EC94F88B7BFFA6D2 /* JWDatePickerView.swift */; };
+		249CE4F11E6F9CB9C223FD63AC85A6E5 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA52A2E0E3C01FF3E7459B5347EEF98 /* ConstraintRelation.swift */; };
+		250ABC8F3311FD641E090A917C859212 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26356C503D1019BCF63BCDF90CE4F72A /* ConstraintView.swift */; };
+		2DC544EA027863FFBBE36B325D408CEF /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F88946DE1A8AA289161855CAE7A15C4 /* ConstraintInsets.swift */; };
+		2E43AA6702AEAB77F94BFC08AFA54686 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B424027C46B7D8A45029C7A472B740 /* ConstraintConstantTarget.swift */; };
+		2F836390AF20B82F5D7060C57C804518 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297652178E9BF07F480E40C666AA5ED /* UILayoutSupport+Extensions.swift */; };
+		31FB6F2E70875C341A5A13137232B0DD /* UIViewController+Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F7464114C793675E67BEE10F0FA45 /* UIViewController+Dialog.swift */; };
+		3590380A8676493D4AA4051CBA11EE16 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA228D601A257E5CBC3522C721DF674 /* ConstraintDSL.swift */; };
+		35B31C15688F9C66EC4D9E32B5218BC8 /* PresentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17470FEC3F6E401DC0829EC8E03E59A /* PresentConfig.swift */; };
+		37C6ADBED3AD29ED1B6EB3BCB1D52F74 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C499E0C72DB3A1ED55BA8596D3DDB /* ConstraintView+Extensions.swift */; };
+		38AD4F4D1DDCC0775EF53296C4AAE432 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0187B681F3FA82F3E00AD65103A34F57 /* LayoutConstraintItem.swift */; };
 		39E86E9FC2F657B57D7A88463053A54F /* Pods-JWDatePickerKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C36D1C6D7031EBE23114A4666FBE4BA /* Pods-JWDatePickerKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D898F22A1777BF395775727247D5094 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE364DF31548B309B53E6AC1AEAA475 /* ConstraintInsetTarget.swift */; };
-		415EADD18836CCD425DF65223B3203C0 /* PGDatePicker+MinuteAndSecond.h in Headers */ = {isa = PBXBuildFile; fileRef = 0299E428AB385F5FA42B09D9E5E67F46 /* PGDatePicker+MinuteAndSecond.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		441C3F8FFE21DA72F23FB5E2272F6957 /* PGDatePicker+Date.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B98E5861E999FFDDA1779E57B4A01A /* PGDatePicker+Date.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		457CC713DCC34BD4CBD5EB1D0A325675 /* BasePresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6343AFFE624B12295164EC10E1EB9B8 /* BasePresentTransition.swift */; };
-		45CFE9A79A788780B76AAE38E556B0DC /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C609E70C42B3E6298D38B4D190C92 /* ConstraintRelatableTarget.swift */; };
-		47675CC0FE458B2587C6B6236AE0B326 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		507FCF2B4EE203BCE30023D6776E17B0 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AAD2240C78ADA2BEAAC17AC391E0EB /* ConstraintConfig.swift */; };
-		51848662E451FBF9E33DAC32B8479AAA /* PGDatePicker+MonthDayHourMinuteSecond.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BA3E04B50D257D0DD32A20E461EECED /* PGDatePicker+MonthDayHourMinuteSecond.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5284539097D49F3C5C626E7BE31E0600 /* JWDatePickerKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CC11A36CCEE494C4B7503BF649B835 /* JWDatePickerKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		546509AE45A02531D6B032BBA5A13B45 /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140A4731FCCAD9AFE369AEA658788BF /* ConstraintLayoutGuide.swift */; };
-		5661214AF2D4C8973551B3C3EC802A26 /* PGPickerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD9611815E22B7F932CB54C1AB2444E /* PGPickerView-dummy.m */; };
-		56BA2CBC13F407E262A4744699963A64 /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D6912C6F0328428F99627DC1B944D /* ConstraintLayoutGuide+Extensions.swift */; };
-		59AB5B42DDF76AE9F3F52E50812762D5 /* PGDatePickerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDC52210B5CF60B94E20A212A2F3630 /* PGDatePickerHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5AAE07D8A125E5E4EAF79349FC5E38C5 /* PGDatePicker+TimeAndSecond.h in Headers */ = {isa = PBXBuildFile; fileRef = 69FAFD178D4481490293405BE0B37832 /* PGDatePicker+TimeAndSecond.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BA2D55463FB4CD21A059C4C99BAA69F /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C256E7E2780C3A9989D2C24B64458D /* Constraint.swift */; };
-		5F90DD5A36D5F200777A3860D64FF59F /* DialogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E90EA710A17297009DC6AE255644E16 /* DialogConfig.swift */; };
-		6225E57B1ECB94FE8D6730864B4C8ED1 /* PGDatePicker+TimeAndSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A247AA1BEA8A29083A26C082586AB7 /* PGDatePicker+TimeAndSecond.m */; };
-		63E412659EB07039D338185D71929DD0 /* PGDatePicker+DateHourMinuteSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = A4361AE942A4BA16FB40633220244EDA /* PGDatePicker+DateHourMinuteSecond.m */; };
-		67D0DD73EF555F88EC78CC5225A4BD7D /* JWDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9541AF93D9B583C72AD927D132D95C8 /* JWDatePickerViewController.swift */; };
-		69130909B63475A079802CEE3F76F6D2 /* PGEnumeration.h in Headers */ = {isa = PBXBuildFile; fileRef = 95DADB9B175C8EBEDD5A211702D8D47D /* PGEnumeration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		69B3B70D881CBCD86ED916D9D27A34AB /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFA2D1F0687743D4B0E5E84D2030D93 /* ConstraintMakerEditable.swift */; };
-		6BCCBF7C56651C966BD95DAAEDD80331 /* MenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564FA2EA87B8D48B7B9315E965B546B3 /* MenuTransition.swift */; };
-		6D9E7D859244F75A899D0EA23A47E27C /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740E956EE193CF78868A48ABCFD88FD2 /* ConstraintMakerRelatable.swift */; };
-		71749B3D35BA8C68D2F7B22F6752FAF3 /* PGPickerTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AAE3BF6E06549188AF77C402E97CF8E /* PGPickerTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		71B718CD820E2AFF3B8C384044BFB66C /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8519B4DEFCE54A76672CF8840600E7 /* ConstraintLayoutGuideDSL.swift */; };
-		75C04B6FD97D2BF3563A51FF7B2980A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		7C46B580A8F8B37FE5ED5E7E1EF3BB19 /* BasePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A9480BE8A06C2CF627ED9F3A6B1F68 /* BasePresentationController.swift */; };
-		7CC518C30B51F91B8DA11357C91BBE68 /* PGDatePickManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 73BBB8110634E47E43B75E7AE1F436DF /* PGDatePickManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D701C54CDD30387B3C584D2B3B7FD58 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACDA3B84AC8E0226221F637D3B7092C /* ConstraintMakerFinalizable.swift */; };
-		85ACBB53B6F74B0CE2EB3774F2E022C9 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F912373CFF3951265BDBD41661C1A3B /* ConstraintMaker.swift */; };
-		87F6EF15ACE04E6D2AB5369A323B1D5C /* PGPickerColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF1D8802197FCB471D03552049BDC17 /* PGPickerColumnCell.m */; };
-		89F4209C07A740C78E219D263C1AD1CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81617CAA1204D998E4C0C7E1B3DA8BF /* UIKit.framework */; };
-		8B576878FFBFE9FB224231E637CF9969 /* PGDatePicker+DateAndTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E18776661387EE2EC0DD3DD3E7096874 /* PGDatePicker+DateAndTime.m */; };
-		8CC727930CBFFDEFE845A3DC3284ECE8 /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D43BE7E37C04F2B35F60E41A5AA3FBC /* UIColor+PGHex.m */; };
-		8D5838D16F7F4C27516638FBCB859225 /* PGDatePicker+DateHour.m in Sources */ = {isa = PBXBuildFile; fileRef = F638F534895A3DA67989458F0339F922 /* PGDatePicker+DateHour.m */; };
-		8DCE447878E7E9971FE023D4C0E5C951 /* PGDatePicker+DateHourMinute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8079D9C9477EADE851904F74D63A5513 /* PGDatePicker+DateHourMinute.m */; };
-		902D24AEBAEA28287623789E7D8D34B9 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DCFBC0711F1A77D4B1AF9E02E3938BB9 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9216CC676AE0148E9859878983A36BB1 /* PGDatePickerFix-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9429E39E3639E4B9D9FA38BA2BBC67 /* PGDatePickerFix-dummy.m */; };
-		9264C00085EB0D5CCF4BC0A4D1EAA8FB /* PGPickerColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = A85B36714C6431C5C61A962BE7906BF5 /* PGPickerColumnView.m */; };
+		3D898F22A1777BF395775727247D5094 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD4B285F1B519DAA891B188F217B435 /* ConstraintInsetTarget.swift */; };
+		45CFE9A79A788780B76AAE38E556B0DC /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF755805AD4C5E0CEF075171C4D1903 /* ConstraintRelatableTarget.swift */; };
+		507FCF2B4EE203BCE30023D6776E17B0 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F919627B61E6B7C25C8617B598881F0A /* ConstraintConfig.swift */; };
+		546509AE45A02531D6B032BBA5A13B45 /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8881165973A182F4F9145494927ED07 /* ConstraintLayoutGuide.swift */; };
+		56BA2CBC13F407E262A4744699963A64 /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686ACD598DF3366AE87168C0A1AAA72 /* ConstraintLayoutGuide+Extensions.swift */; };
+		5BA2D55463FB4CD21A059C4C99BAA69F /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD190372B48D97DC41415572F800BC5 /* Constraint.swift */; };
+		5F843B4F2871405E654A36FF98F4D3F6 /* XBPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DD64C16DF31CA26D7489C91A358F56 /* XBPresentAnimator.swift */; };
+		6398088B7F45FAA9FB48D08352376709 /* DialogPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7828808815B540D7E933C04B9B4D4F /* DialogPresentationController.swift */; };
+		69B3B70D881CBCD86ED916D9D27A34AB /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DF21EB9BECEF6BAF3757A0464FFFB4 /* ConstraintMakerEditable.swift */; };
+		69E99D63776FC30A1C9DC94612CFE888 /* XBDialog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FB27A8565F73713BB9FC3D8431CF47 /* XBDialog-dummy.m */; };
+		6C2FD9CAFB0EF0ECC0B72E2C922AF4EC /* Pods-JWDatePickerKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF07DE0D65D431753213BFBE726B296F /* Pods-JWDatePickerKit_Example-dummy.m */; };
+		6D9E7D859244F75A899D0EA23A47E27C /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62CFE04C2BCC99EDC15B4D1D12F3539 /* ConstraintMakerRelatable.swift */; };
+		704D6AF5A4361CFA72F3F9162C4A38BE /* MenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206A69DCEBD9F6FC129C4FECC76CF22 /* MenuPresentationController.swift */; };
+		71B718CD820E2AFF3B8C384044BFB66C /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F22813E289FE00E9D16331619AC011 /* ConstraintLayoutGuideDSL.swift */; };
+		7D701C54CDD30387B3C584D2B3B7FD58 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C59F5CB3F54BB319647834F92A4C4 /* ConstraintMakerFinalizable.swift */; };
+		8386997E955448D787D90CEF81A6F5C4 /* MenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DBD847D802E1386816576E22957FF5 /* MenuTransition.swift */; };
+		85ACBB53B6F74B0CE2EB3774F2E022C9 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FBD44BFB14591571886CA26D15B43D /* ConstraintMaker.swift */; };
+		8D89B408197B6A3759ADEE0AE4AED532 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81617CAA1204D998E4C0C7E1B3DA8BF /* UIKit.framework */; };
+		902D24AEBAEA28287623789E7D8D34B9 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 826DA2B47F89F278E5988960D3E11093 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94C414DFDC0B45D5569317EF177A7F50 /* Pods-JWDatePickerKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6BBF94BFB96F94440BD4CC7A09B30F /* Pods-JWDatePickerKit_Tests-dummy.m */; };
 		968F60C7B81438EE6BF92FDF1B7CDFD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		985592F05BE690BF641D8D773ED8A895 /* PGDatePicker+DateHour.h in Headers */ = {isa = PBXBuildFile; fileRef = C319749C3213531EF2FDAE1A109F3BE7 /* PGDatePicker+DateHour.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9BAE2C52A6E645B46F63173C859B14DA /* PGDatePicker+MinuteAndSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 3167D867E6788891106E0EE201FF21A2 /* PGDatePicker+MinuteAndSecond.m */; };
-		9C4F77FA73906B7CCD60549562318F9C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81617CAA1204D998E4C0C7E1B3DA8BF /* UIKit.framework */; };
-		9DA348295ED29E2B606E5DBB59936E0C /* PGDatePicker+DateHourMinuteSecond.h in Headers */ = {isa = PBXBuildFile; fileRef = A27D2F486EEC91F0D659779D6EF1B861 /* PGDatePicker+DateHourMinuteSecond.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9EE656FEE44F3B241EFE207C50C69D42 /* PGDatePicker+MonthDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F6061DE4B9210E112C3DDB10EC1B4B0 /* PGDatePicker+MonthDay.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9FC3C5782063EC424FA90DCC3F488AF2 /* DialogTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9F49F52749D09EC690899F297C02F1 /* DialogTransition.swift */; };
-		A08944359E6FE6DC568BD5959C6B0BEF /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5230C84BB92DD4BB1CE1346230517C1E /* ConstraintMakerPriortizable.swift */; };
-		A23F13261CE08733B805349CD6A2E513 /* PGDatePicker+MonthDayHourMinute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F2C073E103EF4837B9A3D18508600 /* PGDatePicker+MonthDayHourMinute.m */; };
-		A428485D8EDE953908A5B63029E9F223 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1DA52BCF43611A39471BE3DC2B07C8 /* ConstraintMultiplierTarget.swift */; };
-		A4EAFA818D3127AC85C250D2CF2CB110 /* PGPickerColumnCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC095F036BBD9083CFF81CD177D77E /* PGPickerColumnCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A58C14B79DE08E77C300BE150D3656EC /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED28AA81B362DEB2C08AE5E095FB950E /* ConstraintOffsetTarget.swift */; };
-		A6E920016D7EC686E56E74EB1BD441E7 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 43455A41343D5289B136DEFC15102A1A /* SnapKit-dummy.m */; };
-		A70A25DAA5B4BE7CB870FC0A7E7081A7 /* PGDatePicker+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBED1AAF7E977E74AE2430B062B65E5 /* PGDatePicker+Time.m */; };
+		96AE9A8923EF83AD867877986BA7D1F6 /* DialogTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EB71A85A5526DB9378007239BDF43 /* DialogTransition.swift */; };
+		9F62E04CF1986DE26D9000E5B02C3A9B /* DialogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A659DC1A786ACF6C3A71737E7DA692 /* DialogConfig.swift */; };
+		A08944359E6FE6DC568BD5959C6B0BEF /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFFE43D26F210A060853098C22E5749 /* ConstraintMakerPriortizable.swift */; };
+		A0BCB89C7754CC491710909361FE40F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
+		A428485D8EDE953908A5B63029E9F223 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EB5B30D0FE571E877887D642A96D0 /* ConstraintMultiplierTarget.swift */; };
+		A4D8F6EB2B98D0996FA1D7565E04E28A /* JWDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA45FAB193EC21F6F0BCC085BAA5B20 /* JWDatePickerViewController.swift */; };
+		A58C14B79DE08E77C300BE150D3656EC /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DB359878CD9E67BC26F47A08897D42 /* ConstraintOffsetTarget.swift */; };
+		A6E920016D7EC686E56E74EB1BD441E7 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1092FCB5A6169B40D1133A7C19D9480A /* SnapKit-dummy.m */; };
 		A7CE3C1BE416A983693A1605A1728C80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		A8FF8F6E0377F8F2C9FCAF730172DBB0 /* PGPickerView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF14DC4B71528C8ADAA2CA6DED25A1E /* PGPickerView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A97068595EAC72A6E5F4A2914683EC01 /* PGDatePicker+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3F163221CE910DF18CD78CC189C1F /* PGDatePicker+Common.m */; };
-		AB3D43B7FD717C972F1AC393251369FF /* MenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B70249C9685E6B235957B579BF3911E /* MenuPresentationController.swift */; };
-		AC6401A3816378B42C73415A60A5DB7A /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB810A4E18F1CE0EDA9B2E4AF7905D1 /* LayoutConstraint.swift */; };
-		AD12A3D5238D709DE2B781A40650FB7D /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947BE744EFB53B5B54A3BCC4B79604F /* ConstraintMakerExtendable.swift */; };
-		AFD42985BC36C47F287A7B74D0A39113 /* PGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91997168E87D901901DC2F1E9D9556B7 /* PGPickerView.m */; };
-		B08E875EC76A701C1AB73351695B271C /* PGDatePicker+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 44512B1C8CA6C11CD73575B7A9BA3F76 /* PGDatePicker+Date.m */; };
-		B12E4B1485DD35381B30015AAF8E032E /* PGDatePickManagerHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C050D896D129F4DDD90CAA11FAA78C2 /* PGDatePickManagerHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B5079E53E93D5AF52A9D06B557C87A69 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EA380239386266F9D0D98CF0A3670 /* Debugging.swift */; };
-		B72861E85203869621AF0F3D86B29B4E /* NSDate+PGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B615064AB25E0C1623AC1BDA41D753A /* NSDate+PGCategory.m */; };
-		BA020A04874440543A7FF91D5330B1F3 /* PGPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 065568B092D95F7BFC95394DD06FCB2D /* PGPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB7A80897B64A3E0743C162C3049B6C3 /* PGDatePicker+Logic.h in Headers */ = {isa = PBXBuildFile; fileRef = 075F73EC796555CDDE94FE3B9C6947D1 /* PGDatePicker+Logic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BD35A03568BC40197E16028509C8DECB /* XBDialog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BF177CE495B1060289123118698A2D /* XBDialog-dummy.m */; };
-		BD92BD68750E8B3CF4BB6C120E9F9DE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81617CAA1204D998E4C0C7E1B3DA8BF /* UIKit.framework */; };
-		BE93A5B9B8C416BA2405CC6497FB4F45 /* PGPickerColumnView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3557007016D53272ED281165B83A63FE /* PGPickerColumnView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C78234749F6DA76D5D46946B785E1197 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AF025C9BADA560579CEBD262CCCF84 /* ConstraintPriority.swift */; };
-		C7B0DD07A3C2D47FEDF852561B6D00F2 /* PGPickerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E6E6566F2B37B1E1BDD9A69A902E1B /* PGPickerTableView.m */; };
-		C82F6BC211C50CB992EF92F762C9238D /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351431E65C2B5B7718CB13D4DDB25D6 /* ConstraintLayoutSupport.swift */; };
-		C9DBDF85C34175A589ED9CDE5BBA5D3F /* PGDatePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5476FB70F2C23277EA6141826AFA7242 /* PGDatePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CAE0AD5D5FD8E1EDECF3B5AEDD30FB99 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7FC73B7CB16DC330981F7D434C6113 /* Typealiases.swift */; };
-		CBB49B15851CE20C937558D39DA36CE8 /* UIViewController+Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A829EA1F611A50AC379FE24E0446F2D0 /* UIViewController+Dialog.swift */; };
-		CBC504B58C1D2E99A1C21AC8568AAFF9 /* PGDatePicker+MonthDayHour.h in Headers */ = {isa = PBXBuildFile; fileRef = E15456161EF26D268522D0A99F4E3E93 /* PGDatePicker+MonthDayHour.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CEF373F4EB2C815E6BA08604374D0C67 /* PGDatePicker+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FE9915497CD21DB2416CC99EEDE3A5C /* PGDatePicker+Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CFD311F43FE8FDD98046EE153ECE7325 /* PGDatePicker+DateHourMinute.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C99C0F77DE26DC9A526272A067CDFF /* PGDatePicker+DateHourMinute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1523B4BB1C15179CA0063E12FC94E6B /* NSDate+PGCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 83E5751473DDB24C14EBE95D48D067BC /* NSDate+PGCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D43E38B416960646ECC7AB872AB04139 /* PGDatePickerFix-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D9A3E7E5FE62D28DC76BE6388254D372 /* PGDatePickerFix-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D61A4C1925222FC62DF2A42E2D26FCCE /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 399308F847C10602D2296B5AE2525913 /* PGDatePicker.m */; };
-		D86B9F58FB58EC50C9C75E88D54B5C6D /* PGDatePicker+YearAndMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB90FB0F7CF47EA9DBAF19F8FDE4AFA /* PGDatePicker+YearAndMonth.m */; };
-		D87CB95C2D990B694524B1EE7E47918E /* XBPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A495CB26685207F3B50B6939BA7EA2 /* XBPresentAnimator.swift */; };
-		D98D0CF3F9A6F8B10C39D985D9A36632 /* NSBundle+PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B43867A73D769A8BE5DA8B59BE72CBBB /* NSBundle+PGDatePicker.m */; };
-		D9E26CAC05A20B5A115CFE32D443D816 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04FD2DA5F84D918695A2DF347D9784B /* ConstraintAttributes.swift */; };
-		DA0EC725DF120F72FC0CF4FDA6D37A2B /* PGDatePickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C3DF56122838815D3594855C21 /* PGDatePickManager.m */; };
-		DB6A8DF5056269AC45573F35D589E091 /* JWDatePickerKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 665139B9216831B31315A3A53B97EFF0 /* JWDatePickerKit-dummy.m */; };
-		DB96DF652DB4A66BFB1093D8DCF2D959 /* NSBundle+PGDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 68939527ED3D963D44AC2C2F8D7D81C4 /* NSBundle+PGDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE74DEC72FA3D3D2EFA94B5E4C0F747E /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07457BAE1BF5EB53B8153BDFEC589E95 /* ConstraintViewDSL.swift */; };
-		E169BD0DC01FE177882FEA53898B32D7 /* PGDatePicker+MonthDayHourMinuteSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = E8032EAE2D995249501CD75EC22267A8 /* PGDatePicker+MonthDayHourMinuteSecond.m */; };
-		E4E81790D3DD5F82C3BAC89A1795FD6C /* UIColor+PGHex.h in Headers */ = {isa = PBXBuildFile; fileRef = D9B2792D6C0ECC8816DBC2D7A98A3C41 /* UIColor+PGHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E50D05631BEEB72663B613D05DB87BAC /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE99D66BC1389E0E2F76AA5BCFAF8485 /* ConstraintLayoutSupportDSL.swift */; };
-		E5E8C26711F3746959EA54357BFC1B0F /* PGDatePickManagerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9744BBC672A8D12CF20FBC665937328B /* PGDatePickManagerHeaderView.m */; };
-		E88B9A9D95F01915919BE6B4F948E5C2 /* PGDatePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5D93A67CE4432A490C4DEC4DCA3D89C1 /* PGDatePicker.bundle */; };
-		EE447EB57E8AA5333D7F9B22E7F0A307 /* PGDatePicker+Year.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3B56956E5BDFAF7C15BA14E27B729 /* PGDatePicker+Year.m */; };
-		EF125582E2EEDF25BB9E225D4DC8F510 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
-		F0F09F8869FA3E47FCA7EBBF4C8686DF /* PresentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEF19C4D144E8EF442BF2A5C9BA360 /* PresentConfig.swift */; };
-		F71104C29C1D0F039C3313525CA29292 /* JWDatePickerMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECB23EC0F728B3989F18EEA175C7FC4 /* JWDatePickerMenuHeaderView.swift */; };
-		FBDEE07E7B2EC9497D1E881867552581 /* Pods-JWDatePickerKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FA4FF4BBB5BE133FED3F7C1E31B6F3 /* Pods-JWDatePickerKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC6401A3816378B42C73415A60A5DB7A /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6AF96B9A3DDC7AEEA0A7F13B52CEFF /* LayoutConstraint.swift */; };
+		AD12A3D5238D709DE2B781A40650FB7D /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5194FF701049586D01ACA7A82BB2901 /* ConstraintMakerExtendable.swift */; };
+		B5079E53E93D5AF52A9D06B557C87A69 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA91190903E78DFEE854C9E16F7EDF6 /* Debugging.swift */; };
+		BAF1EBBAE70CC9624D390DB30E86D2EA /* JWDatePickerKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 411882BC4BAAA7977BBBF2AFF4973E22 /* JWDatePickerKit-dummy.m */; };
+		BB6AFD84C905B9E58A8CCF04853EC794 /* JWDatePickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0AA6FAF38AC33A6C21C184CB169B9 /* JWDatePickerType.swift */; };
+		BBD7B4547954DB893D73F85E54E79387 /* XBDialog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E20D41CE4C9D0114A85D86CBFB5757 /* XBDialog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C78234749F6DA76D5D46946B785E1197 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A82A19551781070F2FAECB34CA31C /* ConstraintPriority.swift */; };
+		C82F6BC211C50CB992EF92F762C9238D /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4401B3AB9C09394B2C0E8961D81A467 /* ConstraintLayoutSupport.swift */; };
+		CAE0AD5D5FD8E1EDECF3B5AEDD30FB99 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD7AF45D2381CEDB093C4702A76F907 /* Typealiases.swift */; };
+		CF215D5593C618CBACC77028E00FE63C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
+		D6A9718E81E581C7B9A2E71DDFF43DA7 /* BasePresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F1F416F669DCE191FBD04C36D419D /* BasePresentTransition.swift */; };
+		D9E26CAC05A20B5A115CFE32D443D816 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB0FD81B98F83965B99299E826EA120 /* ConstraintAttributes.swift */; };
+		DE74DEC72FA3D3D2EFA94B5E4C0F747E /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF5E38E702D8868BE5620E9152E7B4B /* ConstraintViewDSL.swift */; };
+		E50D05631BEEB72663B613D05DB87BAC /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A75E552A7EBE4533193227BEB06B2C9 /* ConstraintLayoutSupportDSL.swift */; };
+		E8632A1C27A9B5C944A347452CADF6CE /* JWDatePickerKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD540EE78727B89C1568741A5E4B4399 /* JWDatePickerKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBCCDE08A5EFDA3AA7C38DFAB0DFF8FF /* JWDatePickerMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBCEE625EE2396C51EE29F67B408A30 /* JWDatePickerMenuHeaderView.swift */; };
+		FDEA13A34D90E03356346E7732B7D09D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0A7E37F955803F7646B5AFD2AD916A86 /* PBXContainerItemProxy */ = {
+		2B02CC1BE16FC7FEEB1E35D84B040F79 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
 			remoteInfo = SnapKit;
 		};
-		1F7AFFF64ED67F1C436FD82105C670E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EE9326EF1CDC9B38D69A92B2D6169E8C;
-			remoteInfo = PGPickerView;
-		};
-		20B02E9CE263EADD54C34B3F14248578 /* PBXContainerItemProxy */ = {
+		53C26AE98CAE13C9EAC1F0F2083CDF0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 92736E36D73B7F74F8ECA60D17A8FFBC;
 			remoteInfo = JWDatePickerKit;
 		};
-		6DAA8D004F8208308619C10D07433B4B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ABE4C893B1985957F0203B0A2E99D3FD;
-			remoteInfo = XBDialog;
-		};
-		7551048A2F11CDF908519C484DA85F57 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ABE4C893B1985957F0203B0A2E99D3FD;
-			remoteInfo = XBDialog;
-		};
-		8BFD5B88F60F5EAE206EB856DA4C6261 /* PBXContainerItemProxy */ = {
+		9BD68C9BFAA60EF03ECC2BE01FBE75C4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0E62B3C7A170613221B80704F6CB95CD;
 			remoteInfo = "Pods-JWDatePickerKit_Example";
 		};
-		BFD1B6420235EF2219F0F5EF8FD2BAC6 /* PBXContainerItemProxy */ = {
+		DC9FFBD30716BBBF6950A6081643465A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BD065F2D99C6DE10BAD233EFDD282673;
-			remoteInfo = PGDatePickerFix;
+			remoteGlobalIDString = ABE4C893B1985957F0203B0A2E99D3FD;
+			remoteInfo = XBDialog;
 		};
-		DE2C290EF8BA34E2F4D3FAFC361AC5B9 /* PBXContainerItemProxy */ = {
+		ED7B1277C6480E5ABB3118B432FB4F03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BD065F2D99C6DE10BAD233EFDD282673;
-			remoteInfo = PGDatePickerFix;
-		};
-		F87408DBC9961FC61F486142B87D2397 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EE9326EF1CDC9B38D69A92B2D6169E8C;
-			remoteInfo = PGPickerView;
+			remoteGlobalIDString = ABE4C893B1985957F0203B0A2E99D3FD;
+			remoteInfo = XBDialog;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008C0890268106AFEAFA7FC1FBFCF47B /* PGDatePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGDatePickerView.m; path = PGDatePicker/PGDatePickerView.m; sourceTree = "<group>"; };
-		011BC7443766958F9B4CC10D608D34A3 /* PGDatePicker+Logic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+Logic.m"; path = "PGDatePicker/PGDatePicker+Logic.m"; sourceTree = "<group>"; };
-		0299E428AB385F5FA42B09D9E5E67F46 /* PGDatePicker+MinuteAndSecond.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+MinuteAndSecond.h"; path = "PGDatePicker/PGDatePicker+MinuteAndSecond.h"; sourceTree = "<group>"; };
-		02B98E5861E999FFDDA1779E57B4A01A /* PGDatePicker+Date.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+Date.h"; path = "PGDatePicker/PGDatePicker+Date.h"; sourceTree = "<group>"; };
-		04107DA917FEAA3A4F5444F872684135 /* XBDialog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XBDialog-umbrella.h"; sourceTree = "<group>"; };
-		04D3F163221CE910DF18CD78CC189C1F /* PGDatePicker+Common.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+Common.m"; path = "PGDatePicker/PGDatePicker+Common.m"; sourceTree = "<group>"; };
-		065568B092D95F7BFC95394DD06FCB2D /* PGPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGPickerView.h; path = PGPickerView/PGPickerView.h; sourceTree = "<group>"; };
-		070DCC76FF8642E07E1005BC6165FA22 /* PGPickerView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PGPickerView-Info.plist"; sourceTree = "<group>"; };
-		07457BAE1BF5EB53B8153BDFEC589E95 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
-		075F73EC796555CDDE94FE3B9C6947D1 /* PGDatePicker+Logic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+Logic.h"; path = "PGDatePicker/PGDatePicker+Logic.h"; sourceTree = "<group>"; };
+		0187B681F3FA82F3E00AD65103A34F57 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
+		072F7464114C793675E67BEE10F0FA45 /* UIViewController+Dialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Dialog.swift"; path = "XBDialog/Classes/UIViewController+Dialog.swift"; sourceTree = "<group>"; };
 		08DBE12C82E8DFEE3CA9DC78135830AF /* XBDialog */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XBDialog; path = XBDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		09C99C0F77DE26DC9A526272A067CDFF /* PGDatePicker+DateHourMinute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+DateHourMinute.h"; path = "PGDatePicker/PGDatePicker+DateHourMinute.h"; sourceTree = "<group>"; };
-		09FEF19C4D144E8EF442BF2A5C9BA360 /* PresentConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresentConfig.swift; path = XBDialog/Classes/PresentConfig.swift; sourceTree = "<group>"; };
-		0AB810A4E18F1CE0EDA9B2E4AF7905D1 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
-		112777F3BB77AF671D8E0CCDB2963FC6 /* PGPickerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PGPickerView-prefix.pch"; sourceTree = "<group>"; };
-		11A495CB26685207F3B50B6939BA7EA2 /* XBPresentAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XBPresentAnimator.swift; path = XBDialog/Classes/XBPresentAnimator.swift; sourceTree = "<group>"; };
-		12DBD1B3D8D17928CC5E389B0704A760 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
-		13FC095F036BBD9083CFF81CD177D77E /* PGPickerColumnCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGPickerColumnCell.h; path = PGPickerView/PGPickerColumnCell.h; sourceTree = "<group>"; };
-		184C609E70C42B3E6298D38B4D190C92 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
-		1AF14DC4B71528C8ADAA2CA6DED25A1E /* PGPickerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PGPickerView-umbrella.h"; sourceTree = "<group>"; };
-		1C630169D770DCCB75C3BA24E24FB7D7 /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
-		1D43BE7E37C04F2B35F60E41A5AA3FBC /* UIColor+PGHex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+PGHex.m"; path = "PGDatePicker/UIColor+PGHex.m"; sourceTree = "<group>"; };
-		1F6061DE4B9210E112C3DDB10EC1B4B0 /* PGDatePicker+MonthDay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+MonthDay.h"; path = "PGDatePicker/PGDatePicker+MonthDay.h"; sourceTree = "<group>"; };
+		095F1F416F669DCE191FBD04C36D419D /* BasePresentTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePresentTransition.swift; path = XBDialog/Classes/BasePresentTransition.swift; sourceTree = "<group>"; };
+		0C8577F5CF37CE3F56395E853A349F5D /* JWDatePickerKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JWDatePickerKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		0FD7AF45D2381CEDB093C4702A76F907 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
+		1092FCB5A6169B40D1133A7C19D9480A /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
+		1CD4B285F1B519DAA891B188F217B435 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
+		1FA181245894DFD7CA3BAB12D172A13D /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
+		209DF892BA2D2852EC94F88B7BFFA6D2 /* JWDatePickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerView.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerView.swift; sourceTree = "<group>"; };
+		20EC9A431D6C16EA4A90E8596A76D94D /* JWDatePickerKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.release.xcconfig; sourceTree = "<group>"; };
+		25A462F2AF5DE710746A9260CCFD4049 /* XBDialog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = XBDialog.modulemap; sourceTree = "<group>"; };
+		26356C503D1019BCF63BCDF90CE4F72A /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
 		27875C8E66DD2F2F6A519E2E356E9E02 /* Pods-JWDatePickerKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Tests-Info.plist"; sourceTree = "<group>"; };
 		27FA4FF4BBB5BE133FED3F7C1E31B6F3 /* Pods-JWDatePickerKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JWDatePickerKit_Example-umbrella.h"; sourceTree = "<group>"; };
-		28C256E7E2780C3A9989D2C24B64458D /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
-		29280F35D4B01DDCFBA88355B1BF59C6 /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
 		29B575E9D2AA62C26833D57C0EEA388C /* JWDatePickerKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JWDatePickerKit; path = JWDatePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A236E6BA003374CFD30BD9CADB43C60 /* XBDialog-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "XBDialog-Info.plist"; sourceTree = "<group>"; };
-		2A671A809E67DF4E1EB20EEF195F8144 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		2A82DBC593F28B5FC548E7C053282699 /* MenuConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuConfig.swift; path = XBDialog/Classes/Menu/MenuConfig.swift; sourceTree = "<group>"; };
-		2AAE3BF6E06549188AF77C402E97CF8E /* PGPickerTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGPickerTableView.h; path = PGPickerView/PGPickerTableView.h; sourceTree = "<group>"; };
 		2C36D1C6D7031EBE23114A4666FBE4BA /* Pods-JWDatePickerKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JWDatePickerKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2D07D2BB85B4EFE400CD7408E3973993 /* Pods-JWDatePickerKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JWDatePickerKit_Tests.modulemap"; sourceTree = "<group>"; };
-		2DD9611815E22B7F932CB54C1AB2444E /* PGPickerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PGPickerView-dummy.m"; sourceTree = "<group>"; };
-		2EBED1AAF7E977E74AE2430B062B65E5 /* PGDatePicker+Time.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+Time.m"; path = "PGDatePicker/PGDatePicker+Time.m"; sourceTree = "<group>"; };
-		2F912373CFF3951265BDBD41661C1A3B /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
+		2E8683D24C56AAEB0001F2DEFAD61E6E /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
+		2EA0AA6FAF38AC33A6C21C184CB169B9 /* JWDatePickerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerType.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerType.swift; sourceTree = "<group>"; };
+		2F6AF96B9A3DDC7AEEA0A7F13B52CEFF /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		306C0E16F2119591D89A8FA7B30531B2 /* Pods-JWDatePickerKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JWDatePickerKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3167D867E6788891106E0EE201FF21A2 /* PGDatePicker+MinuteAndSecond.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+MinuteAndSecond.m"; path = "PGDatePicker/PGDatePicker+MinuteAndSecond.m"; sourceTree = "<group>"; };
-		31A9894D6CF91933BDB56F8E114F1380 /* PGPickerView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PGPickerView.release.xcconfig; sourceTree = "<group>"; };
-		33DEF6AF12EDCEF8A62669AE465CA33E /* DialogPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DialogPresentationController.swift; path = XBDialog/Classes/Dialog/DialogPresentationController.swift; sourceTree = "<group>"; };
-		3557007016D53272ED281165B83A63FE /* PGPickerColumnView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGPickerColumnView.h; path = PGPickerView/PGPickerColumnView.h; sourceTree = "<group>"; };
-		399308F847C10602D2296B5AE2525913 /* PGDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGDatePicker.m; path = PGDatePicker/PGDatePicker.m; sourceTree = "<group>"; };
-		3A770636B8FDA4C1803B54116D7C5887 /* PGPickerView */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PGPickerView; path = PGPickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E39D26DED8C96A699BC47FA7E9F1309 /* PGDatePickerFix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PGDatePickerFix.debug.xcconfig; sourceTree = "<group>"; };
-		3E9F49F52749D09EC690899F297C02F1 /* DialogTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DialogTransition.swift; path = XBDialog/Classes/Dialog/DialogTransition.swift; sourceTree = "<group>"; };
-		40AACCF85C12CAEDE8C84822466FB800 /* PGDatePicker+MonthDay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+MonthDay.m"; path = "PGDatePicker/PGDatePicker+MonthDay.m"; sourceTree = "<group>"; };
-		41E3FF1EC07DB5E6DAC474FF8099E3DF /* PGPickerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PGPickerView.modulemap; sourceTree = "<group>"; };
-		42E4C27519FA0F46B7D4849DD3A60A20 /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
-		43455A41343D5289B136DEFC15102A1A /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
-		44512B1C8CA6C11CD73575B7A9BA3F76 /* PGDatePicker+Date.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+Date.m"; path = "PGDatePicker/PGDatePicker+Date.m"; sourceTree = "<group>"; };
-		44BE5CC098D398F14FC6B6A78B156BCC /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
+		411882BC4BAAA7977BBBF2AFF4973E22 /* JWDatePickerKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWDatePickerKit-dummy.m"; sourceTree = "<group>"; };
+		42097B0D063A693978A747EC44E78D9F /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		45B8C9C20E96C8EBDE5CE924B155947F /* Pods-JWDatePickerKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JWDatePickerKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		48AF025C9BADA560579CEBD262CCCF84 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
-		4BB90FB0F7CF47EA9DBAF19F8FDE4AFA /* PGDatePicker+YearAndMonth.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+YearAndMonth.m"; path = "PGDatePicker/PGDatePicker+YearAndMonth.m"; sourceTree = "<group>"; };
-		4FE9915497CD21DB2416CC99EEDE3A5C /* PGDatePicker+Common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+Common.h"; path = "PGDatePicker/PGDatePicker+Common.h"; sourceTree = "<group>"; };
-		5140A4731FCCAD9AFE369AEA658788BF /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
-		5230C84BB92DD4BB1CE1346230517C1E /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		540DF37A9D36D0EC0137F4DB1C5C0CE2 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
-		5476FB70F2C23277EA6141826AFA7242 /* PGDatePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGDatePickerView.h; path = PGDatePicker/PGDatePickerView.h; sourceTree = "<group>"; };
-		564FA2EA87B8D48B7B9315E965B546B3 /* MenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuTransition.swift; path = XBDialog/Classes/Menu/MenuTransition.swift; sourceTree = "<group>"; };
-		56FBCD0855D43BD560C97BFC5A374D3C /* PGDatePickerFix-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PGDatePickerFix-prefix.pch"; sourceTree = "<group>"; };
-		58D0FDB66450AF5C9EEAC2A30F63402E /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
-		59BF177CE495B1060289123118698A2D /* XBDialog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XBDialog-dummy.m"; sourceTree = "<group>"; };
+		4AA91190903E78DFEE854C9E16F7EDF6 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
+		5206A69DCEBD9F6FC129C4FECC76CF22 /* MenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuPresentationController.swift; path = XBDialog/Classes/Menu/MenuPresentationController.swift; sourceTree = "<group>"; };
+		59DBD847D802E1386816576E22957FF5 /* MenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuTransition.swift; path = XBDialog/Classes/Menu/MenuTransition.swift; sourceTree = "<group>"; };
 		5A6BBF94BFB96F94440BD4CC7A09B30F /* Pods-JWDatePickerKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JWDatePickerKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		5A9F2C073E103EF4837B9A3D18508600 /* PGDatePicker+MonthDayHourMinute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+MonthDayHourMinute.m"; path = "PGDatePicker/PGDatePicker+MonthDayHourMinute.m"; sourceTree = "<group>"; };
-		5B615064AB25E0C1623AC1BDA41D753A /* NSDate+PGCategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+PGCategory.m"; path = "PGDatePicker/NSDate+PGCategory.m"; sourceTree = "<group>"; };
-		5B70249C9685E6B235957B579BF3911E /* MenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuPresentationController.swift; path = XBDialog/Classes/Menu/MenuPresentationController.swift; sourceTree = "<group>"; };
+		5C48B464F0546DF11E6581EF09ED46F2 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
+		5CD190372B48D97DC41415572F800BC5 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		5D0629B8BF330FF9DE71ABB83307CFC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5D080AB69E57EA75DD22180180CB719B /* XBDialog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = XBDialog.modulemap; sourceTree = "<group>"; };
-		5D93A67CE4432A490C4DEC4DCA3D89C1 /* PGDatePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = PGDatePicker.bundle; path = PGDatePicker/PGDatePicker.bundle; sourceTree = "<group>"; };
-		5E18513820DEA880717A398D754B8A4E /* PGDatePickerFix */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PGDatePickerFix; path = PGDatePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		637F190D58E6779D0AE6A993F4F4187D /* PGDatePickerFix-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PGDatePickerFix-Info.plist"; sourceTree = "<group>"; };
-		665139B9216831B31315A3A53B97EFF0 /* JWDatePickerKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWDatePickerKit-dummy.m"; sourceTree = "<group>"; };
-		67D182A00637BA82D08EB3FE3099A098 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
-		68939527ED3D963D44AC2C2F8D7D81C4 /* NSBundle+PGDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+PGDatePicker.h"; path = "PGDatePicker/NSBundle+PGDatePicker.h"; sourceTree = "<group>"; };
-		68ED07015167C35EB28E3AE9D0BF7478 /* PGDatePicker+DateAndTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+DateAndTime.h"; path = "PGDatePicker/PGDatePicker+DateAndTime.h"; sourceTree = "<group>"; };
-		69FAFD178D4481490293405BE0B37832 /* PGDatePicker+TimeAndSecond.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+TimeAndSecond.h"; path = "PGDatePicker/PGDatePicker+TimeAndSecond.h"; sourceTree = "<group>"; };
-		6B5D6912C6F0328428F99627DC1B944D /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
-		6C050D896D129F4DDD90CAA11FAA78C2 /* PGDatePickManagerHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGDatePickManagerHeaderView.h; path = PGDatePicker/PGDatePickManagerHeaderView.h; sourceTree = "<group>"; };
-		72ADCBE73AF9EB431601E7352F4996EF /* XBDialog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XBDialog.release.xcconfig; sourceTree = "<group>"; };
-		73BBB8110634E47E43B75E7AE1F436DF /* PGDatePickManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGDatePickManager.h; path = PGDatePicker/PGDatePickManager.h; sourceTree = "<group>"; };
-		740E956EE193CF78868A48ABCFD88FD2 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
-		78AAD2240C78ADA2BEAAC17AC391E0EB /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
-		7907A2BBC3A08A088B8A80C0695B54F9 /* PGDatePicker+MonthDayHour.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+MonthDayHour.m"; path = "PGDatePicker/PGDatePicker+MonthDayHour.m"; sourceTree = "<group>"; };
-		7947BE744EFB53B5B54A3BCC4B79604F /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
-		79885E0123256605EB6C345DFC98A776 /* JWDatePickerKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.release.xcconfig; sourceTree = "<group>"; };
-		7AEB39D53824767832271F474F2D2016 /* PGDatePickerFix.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PGDatePickerFix.modulemap; sourceTree = "<group>"; };
-		7CEAD59E1A8A20D695D1ED854F3E794D /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
-		7ECB23EC0F728B3989F18EEA175C7FC4 /* JWDatePickerMenuHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerMenuHeaderView.swift; path = JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift; sourceTree = "<group>"; };
-		8079D9C9477EADE851904F74D63A5513 /* PGDatePicker+DateHourMinute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+DateHourMinute.m"; path = "PGDatePicker/PGDatePicker+DateHourMinute.m"; sourceTree = "<group>"; };
-		83E5751473DDB24C14EBE95D48D067BC /* NSDate+PGCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+PGCategory.h"; path = "PGDatePicker/NSDate+PGCategory.h"; sourceTree = "<group>"; };
-		88349E140E02A11B6B9984D8C3E4A6B2 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
-		889D66D075D4CDD6A14F105D943D5F7E /* PGDatePicker+Year.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+Year.h"; path = "PGDatePicker/PGDatePicker+Year.h"; sourceTree = "<group>"; };
-		8BE364DF31548B309B53E6AC1AEAA475 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
-		8BEF905A99D46CDAABC15DF6F4F46B6E /* PGDatePicker+MonthDayHourMinute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+MonthDayHourMinute.h"; path = "PGDatePicker/PGDatePicker+MonthDayHourMinute.h"; sourceTree = "<group>"; };
-		8FB3B56956E5BDFAF7C15BA14E27B729 /* PGDatePicker+Year.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+Year.m"; path = "PGDatePicker/PGDatePicker+Year.m"; sourceTree = "<group>"; };
-		8FDC52210B5CF60B94E20A212A2F3630 /* PGDatePickerHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGDatePickerHeader.h; path = PGDatePicker/PGDatePickerHeader.h; sourceTree = "<group>"; };
-		8FFA2D1F0687743D4B0E5E84D2030D93 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
-		91997168E87D901901DC2F1E9D9556B7 /* PGPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGPickerView.m; path = PGPickerView/PGPickerView.m; sourceTree = "<group>"; };
-		926365AFC9F91D3F0F98217347E5882D /* PGDatePickerFix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PGDatePickerFix.release.xcconfig; sourceTree = "<group>"; };
-		95DADB9B175C8EBEDD5A211702D8D47D /* PGEnumeration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGEnumeration.h; path = PGDatePicker/PGEnumeration.h; sourceTree = "<group>"; };
-		9744BBC672A8D12CF20FBC665937328B /* PGDatePickManagerHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGDatePickManagerHeaderView.m; path = PGDatePicker/PGDatePickManagerHeaderView.m; sourceTree = "<group>"; };
+		5FB0FD81B98F83965B99299E826EA120 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
+		6297652178E9BF07F480E40C666AA5ED /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		63FFB3CC2DC81E79C4A104ED4B570749 /* JWDatePickerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JWDatePickerKit-Info.plist"; sourceTree = "<group>"; };
+		6BF5E38E702D8868BE5620E9152E7B4B /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
+		70E20D41CE4C9D0114A85D86CBFB5757 /* XBDialog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XBDialog-umbrella.h"; sourceTree = "<group>"; };
+		7C647A23E6EF2CECEF83195A671A9941 /* XBDialog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XBDialog.release.xcconfig; sourceTree = "<group>"; };
+		7CBCEE625EE2396C51EE29F67B408A30 /* JWDatePickerMenuHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerMenuHeaderView.swift; path = JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift; sourceTree = "<group>"; };
+		7F88946DE1A8AA289161855CAE7A15C4 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
+		7FF755805AD4C5E0CEF075171C4D1903 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
+		826DA2B47F89F278E5988960D3E11093 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
+		83886A7E8BCC10C89CA3D2EF5F93CB72 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		87B424027C46B7D8A45029C7A472B740 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
+		885A82A19551781070F2FAECB34CA31C /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
+		8D4FB9D01C16F560ECA3CE81E6EA470D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		8D5C499E0C72DB3A1ED55BA8596D3DDB /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
+		92813872650BFE075BC0FD9D09AB3946 /* XBDialog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XBDialog-prefix.pch"; sourceTree = "<group>"; };
+		94D9E92C0C1E5CE40324F6DE905D8B7B /* JWDatePickerKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JWDatePickerKit.modulemap; sourceTree = "<group>"; };
+		9686ACD598DF3366AE87168C0A1AAA72 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D79049A97FEA5C9C4FCD7253AE6B5F /* Pods-JWDatePickerKit_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JWDatePickerKit_Tests"; path = Pods_JWDatePickerKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A6580DD7ADB508D4FFF8C1CCBA2265F /* PGDatePicker+YearAndMonth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+YearAndMonth.h"; path = "PGDatePicker/PGDatePicker+YearAndMonth.h"; sourceTree = "<group>"; };
-		9ACDA3B84AC8E0226221F637D3B7092C /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
-		9BA3E04B50D257D0DD32A20E461EECED /* PGDatePicker+MonthDayHourMinuteSecond.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+MonthDayHourMinuteSecond.h"; path = "PGDatePicker/PGDatePicker+MonthDayHourMinuteSecond.h"; sourceTree = "<group>"; };
+		9A75E552A7EBE4533193227BEB06B2C9 /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
 		9C11E0A30337427C6F01997CEE653A75 /* Pods-JWDatePickerKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E90EA710A17297009DC6AE255644E16 /* DialogConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DialogConfig.swift; path = XBDialog/Classes/Dialog/DialogConfig.swift; sourceTree = "<group>"; };
-		9E9429E39E3639E4B9D9FA38BA2BBC67 /* PGDatePickerFix-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PGDatePickerFix-dummy.m"; sourceTree = "<group>"; };
-		9ED286C3DF56122838815D3594855C21 /* PGDatePickManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGDatePickManager.m; path = PGDatePicker/PGDatePickManager.m; sourceTree = "<group>"; };
+		9DA52A2E0E3C01FF3E7459B5347EEF98 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
+		9E0BB90A28604BBF7834B57B9ACF7A9C /* MenuConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuConfig.swift; path = XBDialog/Classes/Menu/MenuConfig.swift; sourceTree = "<group>"; };
 		9F52A7708ADA7BE702EA3D6B8E90E383 /* Pods-JWDatePickerKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A27D2F486EEC91F0D659779D6EF1B861 /* PGDatePicker+DateHourMinuteSecond.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+DateHourMinuteSecond.h"; path = "PGDatePicker/PGDatePicker+DateHourMinuteSecond.h"; sourceTree = "<group>"; };
-		A4361AE942A4BA16FB40633220244EDA /* PGDatePicker+DateHourMinuteSecond.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+DateHourMinuteSecond.m"; path = "PGDatePicker/PGDatePicker+DateHourMinuteSecond.m"; sourceTree = "<group>"; };
-		A59DEBEFD7ACB921C54956A7501778CC /* JWDatePickerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JWDatePickerKit-Info.plist"; sourceTree = "<group>"; };
-		A829EA1F611A50AC379FE24E0446F2D0 /* UIViewController+Dialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Dialog.swift"; path = "XBDialog/Classes/UIViewController+Dialog.swift"; sourceTree = "<group>"; };
-		A85B36714C6431C5C61A962BE7906BF5 /* PGPickerColumnView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGPickerColumnView.m; path = PGPickerView/PGPickerColumnView.m; sourceTree = "<group>"; };
+		A112946EB31B85465DB930D7593E16DC /* JWDatePickerKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.debug.xcconfig; sourceTree = "<group>"; };
+		A2200756E84990C7C14B03CBAB1DAD2D /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
+		A4401B3AB9C09394B2C0E8961D81A467 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
+		A4DD64C16DF31CA26D7489C91A358F56 /* XBPresentAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XBPresentAnimator.swift; path = XBDialog/Classes/XBPresentAnimator.swift; sourceTree = "<group>"; };
 		ABE85422A69030151B582706FA6C1CEC /* Pods-JWDatePickerKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Example-Info.plist"; sourceTree = "<group>"; };
-		AE2C6243DEA176A09140A45F9CAF8282 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		AEF1D8802197FCB471D03552049BDC17 /* PGPickerColumnCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGPickerColumnCell.m; path = PGPickerView/PGPickerColumnCell.m; sourceTree = "<group>"; };
-		B43867A73D769A8BE5DA8B59BE72CBBB /* NSBundle+PGDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+PGDatePicker.m"; path = "PGDatePicker/NSBundle+PGDatePicker.m"; sourceTree = "<group>"; };
-		B6A247AA1BEA8A29083A26C082586AB7 /* PGDatePicker+TimeAndSecond.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+TimeAndSecond.m"; path = "PGDatePicker/PGDatePicker+TimeAndSecond.m"; sourceTree = "<group>"; };
+		AC7828808815B540D7E933C04B9B4D4F /* DialogPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DialogPresentationController.swift; path = XBDialog/Classes/Dialog/DialogPresentationController.swift; sourceTree = "<group>"; };
+		AD540EE78727B89C1568741A5E4B4399 /* JWDatePickerKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-umbrella.h"; sourceTree = "<group>"; };
 		B6EE9B694DD47C84891BFDE6F18A7F07 /* Pods-JWDatePickerKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B91159E399D68F7CA13708F2A80B4D4B /* JWDatePickerKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JWDatePickerKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B96387310E6ED2B1075E8349C41C3C2C /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
-		BD7FC73B7CB16DC330981F7D434C6113 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
-		BE99D66BC1389E0E2F76AA5BCFAF8485 /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
-		C319749C3213531EF2FDAE1A109F3BE7 /* PGDatePicker+DateHour.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+DateHour.h"; path = "PGDatePicker/PGDatePicker+DateHour.h"; sourceTree = "<group>"; };
+		B8FBD44BFB14591571886CA26D15B43D /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
+		B9B66616C8567F70B8E0F02CDED339EB /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
+		C09EB5B30D0FE571E877887D642A96D0 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
+		C0FB27A8565F73713BB9FC3D8431CF47 /* XBDialog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XBDialog-dummy.m"; sourceTree = "<group>"; };
 		C332F785230953E08B678131F66356CE /* Pods-JWDatePickerKit_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JWDatePickerKit_Example"; path = Pods_JWDatePickerKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C41EA380239386266F9D0D98CF0A3670 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
-		C4E6E6566F2B37B1E1BDD9A69A902E1B /* PGPickerTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PGPickerTableView.m; path = PGPickerView/PGPickerTableView.m; sourceTree = "<group>"; };
-		C9AD5E5059498FF653AD7F4CCBDB548B /* XBDialog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XBDialog-prefix.pch"; sourceTree = "<group>"; };
-		C9CC11A36CCEE494C4B7503BF649B835 /* JWDatePickerKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-umbrella.h"; sourceTree = "<group>"; };
+		C62CFE04C2BCC99EDC15B4D1D12F3539 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
+		C8881165973A182F4F9145494927ED07 /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
 		CF07DE0D65D431753213BFBE726B296F /* Pods-JWDatePickerKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JWDatePickerKit_Example-dummy.m"; sourceTree = "<group>"; };
-		D351431E65C2B5B7718CB13D4DDB25D6 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
-		D63E07DEF7C4E4817B5A9A94DFC024A9 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
+		D17470FEC3F6E401DC0829EC8E03E59A /* PresentConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresentConfig.swift; path = XBDialog/Classes/PresentConfig.swift; sourceTree = "<group>"; };
 		D6C67D8060F92C3590BE7046DB2EB546 /* Pods-JWDatePickerKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D7434A46228DAE8AB04A0F98D95E28C2 /* Pods-JWDatePickerKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D76EB71A85A5526DB9378007239BDF43 /* DialogTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DialogTransition.swift; path = XBDialog/Classes/Dialog/DialogTransition.swift; sourceTree = "<group>"; };
 		D81617CAA1204D998E4C0C7E1B3DA8BF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D9A3E7E5FE62D28DC76BE6388254D372 /* PGDatePickerFix-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PGDatePickerFix-umbrella.h"; sourceTree = "<group>"; };
-		D9B2792D6C0ECC8816DBC2D7A98A3C41 /* UIColor+PGHex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+PGHex.h"; path = "PGDatePicker/UIColor+PGHex.h"; sourceTree = "<group>"; };
-		DB9382D1E5A852328DD387DCF29C80E6 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
-		DCFBC0711F1A77D4B1AF9E02E3938BB9 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
-		DF8519B4DEFCE54A76672CF8840600E7 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
-		E15456161EF26D268522D0A99F4E3E93 /* PGDatePicker+MonthDayHour.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+MonthDayHour.h"; path = "PGDatePicker/PGDatePicker+MonthDayHour.h"; sourceTree = "<group>"; };
-		E18776661387EE2EC0DD3DD3E7096874 /* PGDatePicker+DateAndTime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+DateAndTime.m"; path = "PGDatePicker/PGDatePicker+DateAndTime.m"; sourceTree = "<group>"; };
-		E3A9480BE8A06C2CF627ED9F3A6B1F68 /* BasePresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePresentationController.swift; path = XBDialog/Classes/BasePresentationController.swift; sourceTree = "<group>"; };
-		E6343AFFE624B12295164EC10E1EB9B8 /* BasePresentTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePresentTransition.swift; path = XBDialog/Classes/BasePresentTransition.swift; sourceTree = "<group>"; };
-		E8032EAE2D995249501CD75EC22267A8 /* PGDatePicker+MonthDayHourMinuteSecond.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+MonthDayHourMinuteSecond.m"; path = "PGDatePicker/PGDatePicker+MonthDayHourMinuteSecond.m"; sourceTree = "<group>"; };
-		E92A182BFF6A2406C9304459E02ED222 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
-		E9BAEE49C5F35478C8D28A1DC549EC91 /* JWDatePickerKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JWDatePickerKit.modulemap; sourceTree = "<group>"; };
-		EA75584E5021A88C2C85C291FEB53D56 /* JWDatePickerKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.debug.xcconfig; sourceTree = "<group>"; };
-		ED1DA52BCF43611A39471BE3DC2B07C8 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
-		ED28AA81B362DEB2C08AE5E095FB950E /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
-		F04FD2DA5F84D918695A2DF347D9784B /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
-		F1004FC6681F842EE7CEE3728AF772F4 /* JWDatePickerKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-prefix.pch"; sourceTree = "<group>"; };
-		F1C0BC838097C47E260FB58F9C78B638 /* XBDialog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XBDialog.debug.xcconfig; sourceTree = "<group>"; };
-		F1D3AA0137AFD42346BBAE1E46177C50 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
-		F638F534895A3DA67989458F0339F922 /* PGDatePicker+DateHour.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PGDatePicker+DateHour.m"; path = "PGDatePicker/PGDatePicker+DateHour.m"; sourceTree = "<group>"; };
-		F9541AF93D9B583C72AD927D132D95C8 /* JWDatePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerViewController.swift; path = JWDatePickerKit/Classes/JWDatePickerViewController.swift; sourceTree = "<group>"; };
-		F9C2C19E72D441D8A6229BE48F9A1CC4 /* PGDatePicker+Time.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PGDatePicker+Time.h"; path = "PGDatePicker/PGDatePicker+Time.h"; sourceTree = "<group>"; };
-		FA32719D2D946977B10E6835CB1D3FEF /* PGDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PGDatePicker.h; path = PGDatePicker/PGDatePicker.h; sourceTree = "<group>"; };
-		FCB798B59DAC7AA9C6585AF2CCF3FB9D /* PGPickerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PGPickerView.debug.xcconfig; sourceTree = "<group>"; };
+		DF2B3EC95E17CA42E1CCDCCA3D7C50E8 /* BasePresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasePresentationController.swift; path = XBDialog/Classes/BasePresentationController.swift; sourceTree = "<group>"; };
+		E0DB359878CD9E67BC26F47A08897D42 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
+		E2AC27EBFD3A4C621479A14776DD7601 /* XBDialog-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "XBDialog-Info.plist"; sourceTree = "<group>"; };
+		E4A659DC1A786ACF6C3A71737E7DA692 /* DialogConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DialogConfig.swift; path = XBDialog/Classes/Dialog/DialogConfig.swift; sourceTree = "<group>"; };
+		E4F22813E289FE00E9D16331619AC011 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
+		E6DF21EB9BECEF6BAF3757A0464FFFB4 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
+		EEA228D601A257E5CBC3522C721DF674 /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
+		EEA45FAB193EC21F6F0BCC085BAA5B20 /* JWDatePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerViewController.swift; path = JWDatePickerKit/Classes/JWDatePickerViewController.swift; sourceTree = "<group>"; };
+		F09C59F5CB3F54BB319647834F92A4C4 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
+		F28E22BDA76A6DB0F67F6B79A98BC8FA /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
+		F35EAEA4C15067620CF375ECF26A70A7 /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
+		F5194FF701049586D01ACA7A82BB2901 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
+		F6834A457A967AA6286184FED3824E33 /* XBDialog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XBDialog.debug.xcconfig; sourceTree = "<group>"; };
+		F919627B61E6B7C25C8617B598881F0A /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		FE06C45537D27C99EF8E5B08A932757E /* Pods-JWDatePickerKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JWDatePickerKit_Example-frameworks.sh"; sourceTree = "<group>"; };
-		FE5A5F2E1DA924BF41F2B50FA6A07F55 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
+		FE7BE5CE35580162691FA8C63019E25F /* JWDatePickerKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-prefix.pch"; sourceTree = "<group>"; };
+		FEFFE43D26F210A060853098C22E5749 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		FFB1317FDBDA2E960642E12A23657C00 /* Pods-JWDatePickerKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF0B94A6821281FA92F7A93F30894EE /* Pods-JWDatePickerKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JWDatePickerKit_Example.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2BA51540E6AD7D5516495B93645BC1E1 /* Frameworks */ = {
+		4570D01A8B9E3AFC3F5BFA1B9EA79D00 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF125582E2EEDF25BB9E225D4DC8F510 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		86ED6A121D0F82188D9809D305B9F1EB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1C2E017CEE0904AA9FCE7A8782586B32 /* Foundation.framework in Frameworks */,
-				9C4F77FA73906B7CCD60549562318F9C /* UIKit.framework in Frameworks */,
+				CF215D5593C618CBACC77028E00FE63C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,59 +238,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8E435316D8A3F84EF06C4BC2CD04F3B /* Frameworks */ = {
+		CB6749F7F6453D4B23072FDF0659E2F6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47675CC0FE458B2587C6B6236AE0B326 /* Foundation.framework in Frameworks */,
+				A0BCB89C7754CC491710909361FE40F7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EFAE56098F501381D1530018482FAAB1 /* Frameworks */ = {
+		FBFB66350E09EB170354BD22E88478D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				148EE7680C90FD57A6558FA9A8E51887 /* Foundation.framework in Frameworks */,
-				BD92BD68750E8B3CF4BB6C120E9F9DE7 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F8527FD30BEFF497901C08D8AB8A2AE6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75C04B6FD97D2BF3563A51FF7B2980A1 /* Foundation.framework in Frameworks */,
-				89F4209C07A740C78E219D263C1AD1CC /* UIKit.framework in Frameworks */,
+				FDEA13A34D90E03356346E7732B7D09D /* Foundation.framework in Frameworks */,
+				8D89B408197B6A3759ADEE0AE4AED532 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04F68C10C0143022D876A45027435466 /* Pods */ = {
+		0EC700027F9854656597446688CFD9DD /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8C07D9571067EDB71C992D5BC7EE8236 /* PGDatePickerFix */,
-				CBF08E6CEB6A8EF16926A3D8D9273AE1 /* PGPickerView */,
-				39BD5AE77E1B11E1FBC3F4FCCF2405C4 /* SnapKit */,
-				18AD7D2A1B528C2EBAB196793F5AF9C4 /* XBDialog */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		07D16C02AD34895A0B71E8440480A69D /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7AEB39D53824767832271F474F2D2016 /* PGDatePickerFix.modulemap */,
-				9E9429E39E3639E4B9D9FA38BA2BBC67 /* PGDatePickerFix-dummy.m */,
-				637F190D58E6779D0AE6A993F4F4187D /* PGDatePickerFix-Info.plist */,
-				56FBCD0855D43BD560C97BFC5A374D3C /* PGDatePickerFix-prefix.pch */,
-				D9A3E7E5FE62D28DC76BE6388254D372 /* PGDatePickerFix-umbrella.h */,
-				3E39D26DED8C96A699BC47FA7E9F1309 /* PGDatePickerFix.debug.xcconfig */,
-				926365AFC9F91D3F0F98217347E5882D /* PGDatePickerFix.release.xcconfig */,
+				A2200756E84990C7C14B03CBAB1DAD2D /* SnapKit.modulemap */,
+				1092FCB5A6169B40D1133A7C19D9480A /* SnapKit-dummy.m */,
+				B9B66616C8567F70B8E0F02CDED339EB /* SnapKit-Info.plist */,
+				F28E22BDA76A6DB0F67F6B79A98BC8FA /* SnapKit-prefix.pch */,
+				826DA2B47F89F278E5988960D3E11093 /* SnapKit-umbrella.h */,
+				2E8683D24C56AAEB0001F2DEFAD61E6E /* SnapKit.debug.xcconfig */,
+				F35EAEA4C15067620CF375ECF26A70A7 /* SnapKit.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/PGDatePickerFix";
+			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -472,94 +281,71 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		18AD7D2A1B528C2EBAB196793F5AF9C4 /* XBDialog */ = {
+		20EAEB9F0230C7BCAEAA04E29BA13EAB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E3A9480BE8A06C2CF627ED9F3A6B1F68 /* BasePresentationController.swift */,
-				E6343AFFE624B12295164EC10E1EB9B8 /* BasePresentTransition.swift */,
-				9E90EA710A17297009DC6AE255644E16 /* DialogConfig.swift */,
-				33DEF6AF12EDCEF8A62669AE465CA33E /* DialogPresentationController.swift */,
-				3E9F49F52749D09EC690899F297C02F1 /* DialogTransition.swift */,
-				2A82DBC593F28B5FC548E7C053282699 /* MenuConfig.swift */,
-				5B70249C9685E6B235957B579BF3911E /* MenuPresentationController.swift */,
-				564FA2EA87B8D48B7B9315E965B546B3 /* MenuTransition.swift */,
-				09FEF19C4D144E8EF442BF2A5C9BA360 /* PresentConfig.swift */,
-				A829EA1F611A50AC379FE24E0446F2D0 /* UIViewController+Dialog.swift */,
-				11A495CB26685207F3B50B6939BA7EA2 /* XBPresentAnimator.swift */,
-				6249DAF40B9DD6106D86822641019D8B /* Support Files */,
-			);
-			name = XBDialog;
-			path = XBDialog;
-			sourceTree = "<group>";
-		};
-		22D94DA0F2AE048600971BEB3BCA0EA3 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				41E3FF1EC07DB5E6DAC474FF8099E3DF /* PGPickerView.modulemap */,
-				2DD9611815E22B7F932CB54C1AB2444E /* PGPickerView-dummy.m */,
-				070DCC76FF8642E07E1005BC6165FA22 /* PGPickerView-Info.plist */,
-				112777F3BB77AF671D8E0CCDB2963FC6 /* PGPickerView-prefix.pch */,
-				1AF14DC4B71528C8ADAA2CA6DED25A1E /* PGPickerView-umbrella.h */,
-				FCB798B59DAC7AA9C6585AF2CCF3FB9D /* PGPickerView.debug.xcconfig */,
-				31A9894D6CF91933BDB56F8E114F1380 /* PGPickerView.release.xcconfig */,
+				94D9E92C0C1E5CE40324F6DE905D8B7B /* JWDatePickerKit.modulemap */,
+				411882BC4BAAA7977BBBF2AFF4973E22 /* JWDatePickerKit-dummy.m */,
+				63FFB3CC2DC81E79C4A104ED4B570749 /* JWDatePickerKit-Info.plist */,
+				FE7BE5CE35580162691FA8C63019E25F /* JWDatePickerKit-prefix.pch */,
+				AD540EE78727B89C1568741A5E4B4399 /* JWDatePickerKit-umbrella.h */,
+				A112946EB31B85465DB930D7593E16DC /* JWDatePickerKit.debug.xcconfig */,
+				20EC9A431D6C16EA4A90E8596A76D94D /* JWDatePickerKit.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/PGPickerView";
+			path = "Example/Pods/Target Support Files/JWDatePickerKit";
 			sourceTree = "<group>";
 		};
-		39BD5AE77E1B11E1FBC3F4FCCF2405C4 /* SnapKit */ = {
+		274D479556F2C548A6221EFB42A52248 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				28C256E7E2780C3A9989D2C24B64458D /* Constraint.swift */,
-				F04FD2DA5F84D918695A2DF347D9784B /* ConstraintAttributes.swift */,
-				78AAD2240C78ADA2BEAAC17AC391E0EB /* ConstraintConfig.swift */,
-				7CEAD59E1A8A20D695D1ED854F3E794D /* ConstraintConstantTarget.swift */,
-				DB9382D1E5A852328DD387DCF29C80E6 /* ConstraintDescription.swift */,
-				42E4C27519FA0F46B7D4849DD3A60A20 /* ConstraintDSL.swift */,
-				44BE5CC098D398F14FC6B6A78B156BCC /* ConstraintInsets.swift */,
-				8BE364DF31548B309B53E6AC1AEAA475 /* ConstraintInsetTarget.swift */,
-				E92A182BFF6A2406C9304459E02ED222 /* ConstraintItem.swift */,
-				5140A4731FCCAD9AFE369AEA658788BF /* ConstraintLayoutGuide.swift */,
-				6B5D6912C6F0328428F99627DC1B944D /* ConstraintLayoutGuide+Extensions.swift */,
-				DF8519B4DEFCE54A76672CF8840600E7 /* ConstraintLayoutGuideDSL.swift */,
-				D351431E65C2B5B7718CB13D4DDB25D6 /* ConstraintLayoutSupport.swift */,
-				BE99D66BC1389E0E2F76AA5BCFAF8485 /* ConstraintLayoutSupportDSL.swift */,
-				2F912373CFF3951265BDBD41661C1A3B /* ConstraintMaker.swift */,
-				8FFA2D1F0687743D4B0E5E84D2030D93 /* ConstraintMakerEditable.swift */,
-				7947BE744EFB53B5B54A3BCC4B79604F /* ConstraintMakerExtendable.swift */,
-				9ACDA3B84AC8E0226221F637D3B7092C /* ConstraintMakerFinalizable.swift */,
-				5230C84BB92DD4BB1CE1346230517C1E /* ConstraintMakerPriortizable.swift */,
-				740E956EE193CF78868A48ABCFD88FD2 /* ConstraintMakerRelatable.swift */,
-				ED1DA52BCF43611A39471BE3DC2B07C8 /* ConstraintMultiplierTarget.swift */,
-				ED28AA81B362DEB2C08AE5E095FB950E /* ConstraintOffsetTarget.swift */,
-				48AF025C9BADA560579CEBD262CCCF84 /* ConstraintPriority.swift */,
-				FE5A5F2E1DA924BF41F2B50FA6A07F55 /* ConstraintPriorityTarget.swift */,
-				184C609E70C42B3E6298D38B4D190C92 /* ConstraintRelatableTarget.swift */,
-				88349E140E02A11B6B9984D8C3E4A6B2 /* ConstraintRelation.swift */,
-				540DF37A9D36D0EC0137F4DB1C5C0CE2 /* ConstraintView.swift */,
-				12DBD1B3D8D17928CC5E389B0704A760 /* ConstraintView+Extensions.swift */,
-				07457BAE1BF5EB53B8153BDFEC589E95 /* ConstraintViewDSL.swift */,
-				C41EA380239386266F9D0D98CF0A3670 /* Debugging.swift */,
-				0AB810A4E18F1CE0EDA9B2E4AF7905D1 /* LayoutConstraint.swift */,
-				58D0FDB66450AF5C9EEAC2A30F63402E /* LayoutConstraintItem.swift */,
-				BD7FC73B7CB16DC330981F7D434C6113 /* Typealiases.swift */,
-				D63E07DEF7C4E4817B5A9A94DFC024A9 /* UILayoutSupport+Extensions.swift */,
-				5100332D85589A1863726A2D62C5D65F /* Support Files */,
+				7CBCEE625EE2396C51EE29F67B408A30 /* JWDatePickerMenuHeaderView.swift */,
+				EEA45FAB193EC21F6F0BCC085BAA5B20 /* JWDatePickerViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		3DA5B457A3E2D28F8434DDE14C9FDD92 /* SnapKit */ = {
+			isa = PBXGroup;
+			children = (
+				5CD190372B48D97DC41415572F800BC5 /* Constraint.swift */,
+				5FB0FD81B98F83965B99299E826EA120 /* ConstraintAttributes.swift */,
+				F919627B61E6B7C25C8617B598881F0A /* ConstraintConfig.swift */,
+				87B424027C46B7D8A45029C7A472B740 /* ConstraintConstantTarget.swift */,
+				1FA181245894DFD7CA3BAB12D172A13D /* ConstraintDescription.swift */,
+				EEA228D601A257E5CBC3522C721DF674 /* ConstraintDSL.swift */,
+				7F88946DE1A8AA289161855CAE7A15C4 /* ConstraintInsets.swift */,
+				1CD4B285F1B519DAA891B188F217B435 /* ConstraintInsetTarget.swift */,
+				42097B0D063A693978A747EC44E78D9F /* ConstraintItem.swift */,
+				C8881165973A182F4F9145494927ED07 /* ConstraintLayoutGuide.swift */,
+				9686ACD598DF3366AE87168C0A1AAA72 /* ConstraintLayoutGuide+Extensions.swift */,
+				E4F22813E289FE00E9D16331619AC011 /* ConstraintLayoutGuideDSL.swift */,
+				A4401B3AB9C09394B2C0E8961D81A467 /* ConstraintLayoutSupport.swift */,
+				9A75E552A7EBE4533193227BEB06B2C9 /* ConstraintLayoutSupportDSL.swift */,
+				B8FBD44BFB14591571886CA26D15B43D /* ConstraintMaker.swift */,
+				E6DF21EB9BECEF6BAF3757A0464FFFB4 /* ConstraintMakerEditable.swift */,
+				F5194FF701049586D01ACA7A82BB2901 /* ConstraintMakerExtendable.swift */,
+				F09C59F5CB3F54BB319647834F92A4C4 /* ConstraintMakerFinalizable.swift */,
+				FEFFE43D26F210A060853098C22E5749 /* ConstraintMakerPriortizable.swift */,
+				C62CFE04C2BCC99EDC15B4D1D12F3539 /* ConstraintMakerRelatable.swift */,
+				C09EB5B30D0FE571E877887D642A96D0 /* ConstraintMultiplierTarget.swift */,
+				E0DB359878CD9E67BC26F47A08897D42 /* ConstraintOffsetTarget.swift */,
+				885A82A19551781070F2FAECB34CA31C /* ConstraintPriority.swift */,
+				5C48B464F0546DF11E6581EF09ED46F2 /* ConstraintPriorityTarget.swift */,
+				7FF755805AD4C5E0CEF075171C4D1903 /* ConstraintRelatableTarget.swift */,
+				9DA52A2E0E3C01FF3E7459B5347EEF98 /* ConstraintRelation.swift */,
+				26356C503D1019BCF63BCDF90CE4F72A /* ConstraintView.swift */,
+				8D5C499E0C72DB3A1ED55BA8596D3DDB /* ConstraintView+Extensions.swift */,
+				6BF5E38E702D8868BE5620E9152E7B4B /* ConstraintViewDSL.swift */,
+				4AA91190903E78DFEE854C9E16F7EDF6 /* Debugging.swift */,
+				2F6AF96B9A3DDC7AEEA0A7F13B52CEFF /* LayoutConstraint.swift */,
+				0187B681F3FA82F3E00AD65103A34F57 /* LayoutConstraintItem.swift */,
+				0FD7AF45D2381CEDB093C4702A76F907 /* Typealiases.swift */,
+				6297652178E9BF07F480E40C666AA5ED /* UILayoutSupport+Extensions.swift */,
+				0EC700027F9854656597446688CFD9DD /* Support Files */,
 			);
 			name = SnapKit;
 			path = SnapKit;
-			sourceTree = "<group>";
-		};
-		3C264D6CAC900C694B7D899D71C25BE6 /* JWDatePickerKit */ = {
-			isa = PBXGroup;
-			children = (
-				7ECB23EC0F728B3989F18EEA175C7FC4 /* JWDatePickerMenuHeaderView.swift */,
-				F9541AF93D9B583C72AD927D132D95C8 /* JWDatePickerViewController.swift */,
-				FD72D38DDE138FB37BF2C9C069CBD023 /* Pod */,
-				9185A16F10F18965679C4F76D7B82215 /* Support Files */,
-			);
-			name = JWDatePickerKit;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		4707C7624D044C70CB23AB4DCD6B3C9B /* Pods-JWDatePickerKit_Example */ = {
@@ -577,21 +363,6 @@
 			);
 			name = "Pods-JWDatePickerKit_Example";
 			path = "Target Support Files/Pods-JWDatePickerKit_Example";
-			sourceTree = "<group>";
-		};
-		5100332D85589A1863726A2D62C5D65F /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				67D182A00637BA82D08EB3FE3099A098 /* SnapKit.modulemap */,
-				43455A41343D5289B136DEFC15102A1A /* SnapKit-dummy.m */,
-				1C630169D770DCCB75C3BA24E24FB7D7 /* SnapKit-Info.plist */,
-				F1D3AA0137AFD42346BBAE1E46177C50 /* SnapKit-prefix.pch */,
-				DCFBC0711F1A77D4B1AF9E02E3938BB9 /* SnapKit-umbrella.h */,
-				29280F35D4B01DDCFBA88355B1BF59C6 /* SnapKit.debug.xcconfig */,
-				B96387310E6ED2B1075E8349C41C3C2C /* SnapKit.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SnapKit";
 			sourceTree = "<group>";
 		};
 		581D157A7B3B06F693AB3AA19A9AB32E /* iOS */ = {
@@ -619,100 +390,25 @@
 			path = "Target Support Files/Pods-JWDatePickerKit_Tests";
 			sourceTree = "<group>";
 		};
-		6249DAF40B9DD6106D86822641019D8B /* Support Files */ = {
+		677315B7463E14122C8D5655EA41456B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D080AB69E57EA75DD22180180CB719B /* XBDialog.modulemap */,
-				59BF177CE495B1060289123118698A2D /* XBDialog-dummy.m */,
-				2A236E6BA003374CFD30BD9CADB43C60 /* XBDialog-Info.plist */,
-				C9AD5E5059498FF653AD7F4CCBDB548B /* XBDialog-prefix.pch */,
-				04107DA917FEAA3A4F5444F872684135 /* XBDialog-umbrella.h */,
-				F1C0BC838097C47E260FB58F9C78B638 /* XBDialog.debug.xcconfig */,
-				72ADCBE73AF9EB431601E7352F4996EF /* XBDialog.release.xcconfig */,
+				29B575E9D2AA62C26833D57C0EEA388C /* JWDatePickerKit */,
+				C332F785230953E08B678131F66356CE /* Pods-JWDatePickerKit_Example */,
+				97D79049A97FEA5C9C4FCD7253AE6B5F /* Pods-JWDatePickerKit_Tests */,
+				979486118B3E90C08386079D57962701 /* SnapKit */,
+				08DBE12C82E8DFEE3CA9DC78135830AF /* XBDialog */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/XBDialog";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		772FF7C1A9B6DDC92ECE4444E68415EC /* Resources */ = {
+		7404348EF38E61B09D362F26933B9D0E /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				5D93A67CE4432A490C4DEC4DCA3D89C1 /* PGDatePicker.bundle */,
+				2EA0AA6FAF38AC33A6C21C184CB169B9 /* JWDatePickerType.swift */,
+				209DF892BA2D2852EC94F88B7BFFA6D2 /* JWDatePickerView.swift */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		8C07D9571067EDB71C992D5BC7EE8236 /* PGDatePickerFix */ = {
-			isa = PBXGroup;
-			children = (
-				68939527ED3D963D44AC2C2F8D7D81C4 /* NSBundle+PGDatePicker.h */,
-				B43867A73D769A8BE5DA8B59BE72CBBB /* NSBundle+PGDatePicker.m */,
-				83E5751473DDB24C14EBE95D48D067BC /* NSDate+PGCategory.h */,
-				5B615064AB25E0C1623AC1BDA41D753A /* NSDate+PGCategory.m */,
-				FA32719D2D946977B10E6835CB1D3FEF /* PGDatePicker.h */,
-				399308F847C10602D2296B5AE2525913 /* PGDatePicker.m */,
-				4FE9915497CD21DB2416CC99EEDE3A5C /* PGDatePicker+Common.h */,
-				04D3F163221CE910DF18CD78CC189C1F /* PGDatePicker+Common.m */,
-				02B98E5861E999FFDDA1779E57B4A01A /* PGDatePicker+Date.h */,
-				44512B1C8CA6C11CD73575B7A9BA3F76 /* PGDatePicker+Date.m */,
-				68ED07015167C35EB28E3AE9D0BF7478 /* PGDatePicker+DateAndTime.h */,
-				E18776661387EE2EC0DD3DD3E7096874 /* PGDatePicker+DateAndTime.m */,
-				C319749C3213531EF2FDAE1A109F3BE7 /* PGDatePicker+DateHour.h */,
-				F638F534895A3DA67989458F0339F922 /* PGDatePicker+DateHour.m */,
-				09C99C0F77DE26DC9A526272A067CDFF /* PGDatePicker+DateHourMinute.h */,
-				8079D9C9477EADE851904F74D63A5513 /* PGDatePicker+DateHourMinute.m */,
-				A27D2F486EEC91F0D659779D6EF1B861 /* PGDatePicker+DateHourMinuteSecond.h */,
-				A4361AE942A4BA16FB40633220244EDA /* PGDatePicker+DateHourMinuteSecond.m */,
-				075F73EC796555CDDE94FE3B9C6947D1 /* PGDatePicker+Logic.h */,
-				011BC7443766958F9B4CC10D608D34A3 /* PGDatePicker+Logic.m */,
-				0299E428AB385F5FA42B09D9E5E67F46 /* PGDatePicker+MinuteAndSecond.h */,
-				3167D867E6788891106E0EE201FF21A2 /* PGDatePicker+MinuteAndSecond.m */,
-				1F6061DE4B9210E112C3DDB10EC1B4B0 /* PGDatePicker+MonthDay.h */,
-				40AACCF85C12CAEDE8C84822466FB800 /* PGDatePicker+MonthDay.m */,
-				E15456161EF26D268522D0A99F4E3E93 /* PGDatePicker+MonthDayHour.h */,
-				7907A2BBC3A08A088B8A80C0695B54F9 /* PGDatePicker+MonthDayHour.m */,
-				8BEF905A99D46CDAABC15DF6F4F46B6E /* PGDatePicker+MonthDayHourMinute.h */,
-				5A9F2C073E103EF4837B9A3D18508600 /* PGDatePicker+MonthDayHourMinute.m */,
-				9BA3E04B50D257D0DD32A20E461EECED /* PGDatePicker+MonthDayHourMinuteSecond.h */,
-				E8032EAE2D995249501CD75EC22267A8 /* PGDatePicker+MonthDayHourMinuteSecond.m */,
-				F9C2C19E72D441D8A6229BE48F9A1CC4 /* PGDatePicker+Time.h */,
-				2EBED1AAF7E977E74AE2430B062B65E5 /* PGDatePicker+Time.m */,
-				69FAFD178D4481490293405BE0B37832 /* PGDatePicker+TimeAndSecond.h */,
-				B6A247AA1BEA8A29083A26C082586AB7 /* PGDatePicker+TimeAndSecond.m */,
-				889D66D075D4CDD6A14F105D943D5F7E /* PGDatePicker+Year.h */,
-				8FB3B56956E5BDFAF7C15BA14E27B729 /* PGDatePicker+Year.m */,
-				9A6580DD7ADB508D4FFF8C1CCBA2265F /* PGDatePicker+YearAndMonth.h */,
-				4BB90FB0F7CF47EA9DBAF19F8FDE4AFA /* PGDatePicker+YearAndMonth.m */,
-				8FDC52210B5CF60B94E20A212A2F3630 /* PGDatePickerHeader.h */,
-				5476FB70F2C23277EA6141826AFA7242 /* PGDatePickerView.h */,
-				008C0890268106AFEAFA7FC1FBFCF47B /* PGDatePickerView.m */,
-				73BBB8110634E47E43B75E7AE1F436DF /* PGDatePickManager.h */,
-				9ED286C3DF56122838815D3594855C21 /* PGDatePickManager.m */,
-				6C050D896D129F4DDD90CAA11FAA78C2 /* PGDatePickManagerHeaderView.h */,
-				9744BBC672A8D12CF20FBC665937328B /* PGDatePickManagerHeaderView.m */,
-				95DADB9B175C8EBEDD5A211702D8D47D /* PGEnumeration.h */,
-				D9B2792D6C0ECC8816DBC2D7A98A3C41 /* UIColor+PGHex.h */,
-				1D43BE7E37C04F2B35F60E41A5AA3FBC /* UIColor+PGHex.m */,
-				772FF7C1A9B6DDC92ECE4444E68415EC /* Resources */,
-				07D16C02AD34895A0B71E8440480A69D /* Support Files */,
-			);
-			name = PGDatePickerFix;
-			path = PGDatePickerFix;
-			sourceTree = "<group>";
-		};
-		9185A16F10F18965679C4F76D7B82215 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E9BAEE49C5F35478C8D28A1DC549EC91 /* JWDatePickerKit.modulemap */,
-				665139B9216831B31315A3A53B97EFF0 /* JWDatePickerKit-dummy.m */,
-				A59DEBEFD7ACB921C54956A7501778CC /* JWDatePickerKit-Info.plist */,
-				F1004FC6681F842EE7CEE3728AF772F4 /* JWDatePickerKit-prefix.pch */,
-				C9CC11A36CCEE494C4B7503BF649B835 /* JWDatePickerKit-umbrella.h */,
-				EA75584E5021A88C2C85C291FEB53D56 /* JWDatePickerKit.debug.xcconfig */,
-				79885E0123256605EB6C345DFC98A776 /* JWDatePickerKit.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/JWDatePickerKit";
+			name = Picker;
 			sourceTree = "<group>";
 		};
 		926313DA25643DFE3170C351163482D8 /* Targets Support Files */ = {
@@ -724,29 +420,63 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		9F2E8B6580D2FBFFB47110171968F12B /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				0C8577F5CF37CE3F56395E853A349F5D /* JWDatePickerKit.podspec */,
+				83886A7E8BCC10C89CA3D2EF5F93CB72 /* LICENSE */,
+				8D4FB9D01C16F560ECA3CE81E6EA470D /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		AEDD2DD6E823092E5986289A0BA0E146 /* XBDialog */ = {
+			isa = PBXGroup;
+			children = (
+				DF2B3EC95E17CA42E1CCDCCA3D7C50E8 /* BasePresentationController.swift */,
+				095F1F416F669DCE191FBD04C36D419D /* BasePresentTransition.swift */,
+				E4A659DC1A786ACF6C3A71737E7DA692 /* DialogConfig.swift */,
+				AC7828808815B540D7E933C04B9B4D4F /* DialogPresentationController.swift */,
+				D76EB71A85A5526DB9378007239BDF43 /* DialogTransition.swift */,
+				9E0BB90A28604BBF7834B57B9ACF7A9C /* MenuConfig.swift */,
+				5206A69DCEBD9F6FC129C4FECC76CF22 /* MenuPresentationController.swift */,
+				59DBD847D802E1386816576E22957FF5 /* MenuTransition.swift */,
+				D17470FEC3F6E401DC0829EC8E03E59A /* PresentConfig.swift */,
+				072F7464114C793675E67BEE10F0FA45 /* UIViewController+Dialog.swift */,
+				A4DD64C16DF31CA26D7489C91A358F56 /* XBPresentAnimator.swift */,
+				FBB792F7F83D1ACD27BBFDB426B5A64E /* Support Files */,
+			);
+			name = XBDialog;
+			path = XBDialog;
+			sourceTree = "<group>";
+		};
+		C37CFD4BBC723516DCEAF7DFA4A36398 /* JWDatePickerKit */ = {
+			isa = PBXGroup;
+			children = (
+				274D479556F2C548A6221EFB42A52248 /* Controller */,
+				7404348EF38E61B09D362F26933B9D0E /* Picker */,
+				9F2E8B6580D2FBFFB47110171968F12B /* Pod */,
+				20EAEB9F0230C7BCAEAA04E29BA13EAB /* Support Files */,
+			);
+			name = JWDatePickerKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		C4FE734BB6F7FEAA3D7B45978A886900 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DA5B457A3E2D28F8434DDE14C9FDD92 /* SnapKit */,
+				AEDD2DD6E823092E5986289A0BA0E146 /* XBDialog */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C58F79B830A51CA7D0837B3DCA456B6F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3C264D6CAC900C694B7D899D71C25BE6 /* JWDatePickerKit */,
+				C37CFD4BBC723516DCEAF7DFA4A36398 /* JWDatePickerKit */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		CBF08E6CEB6A8EF16926A3D8D9273AE1 /* PGPickerView */ = {
-			isa = PBXGroup;
-			children = (
-				13FC095F036BBD9083CFF81CD177D77E /* PGPickerColumnCell.h */,
-				AEF1D8802197FCB471D03552049BDC17 /* PGPickerColumnCell.m */,
-				3557007016D53272ED281165B83A63FE /* PGPickerColumnView.h */,
-				A85B36714C6431C5C61A962BE7906BF5 /* PGPickerColumnView.m */,
-				2AAE3BF6E06549188AF77C402E97CF8E /* PGPickerTableView.h */,
-				C4E6E6566F2B37B1E1BDD9A69A902E1B /* PGPickerTableView.m */,
-				065568B092D95F7BFC95394DD06FCB2D /* PGPickerView.h */,
-				91997168E87D901901DC2F1E9D9556B7 /* PGPickerView.m */,
-				22D94DA0F2AE048600971BEB3BCA0EA3 /* Support Files */,
-			);
-			name = PGPickerView;
-			path = PGPickerView;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -755,105 +485,51 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				C58F79B830A51CA7D0837B3DCA456B6F /* Development Pods */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				04F68C10C0143022D876A45027435466 /* Pods */,
-				F722FCD3B67CCBA51CEEF5969E6DCD2B /* Products */,
+				C4FE734BB6F7FEAA3D7B45978A886900 /* Pods */,
+				677315B7463E14122C8D5655EA41456B /* Products */,
 				926313DA25643DFE3170C351163482D8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		F722FCD3B67CCBA51CEEF5969E6DCD2B /* Products */ = {
+		FBB792F7F83D1ACD27BBFDB426B5A64E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				29B575E9D2AA62C26833D57C0EEA388C /* JWDatePickerKit */,
-				5E18513820DEA880717A398D754B8A4E /* PGDatePickerFix */,
-				3A770636B8FDA4C1803B54116D7C5887 /* PGPickerView */,
-				C332F785230953E08B678131F66356CE /* Pods-JWDatePickerKit_Example */,
-				97D79049A97FEA5C9C4FCD7253AE6B5F /* Pods-JWDatePickerKit_Tests */,
-				979486118B3E90C08386079D57962701 /* SnapKit */,
-				08DBE12C82E8DFEE3CA9DC78135830AF /* XBDialog */,
+				25A462F2AF5DE710746A9260CCFD4049 /* XBDialog.modulemap */,
+				C0FB27A8565F73713BB9FC3D8431CF47 /* XBDialog-dummy.m */,
+				E2AC27EBFD3A4C621479A14776DD7601 /* XBDialog-Info.plist */,
+				92813872650BFE075BC0FD9D09AB3946 /* XBDialog-prefix.pch */,
+				70E20D41CE4C9D0114A85D86CBFB5757 /* XBDialog-umbrella.h */,
+				F6834A457A967AA6286184FED3824E33 /* XBDialog.debug.xcconfig */,
+				7C647A23E6EF2CECEF83195A671A9941 /* XBDialog.release.xcconfig */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FD72D38DDE138FB37BF2C9C069CBD023 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				B91159E399D68F7CA13708F2A80B4D4B /* JWDatePickerKit.podspec */,
-				AE2C6243DEA176A09140A45F9CAF8282 /* LICENSE */,
-				2A671A809E67DF4E1EB20EEF195F8144 /* README.md */,
-			);
-			name = Pod;
+			name = "Support Files";
+			path = "../Target Support Files/XBDialog";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		536D26C75339673C5D41DDADF6973292 /* Headers */ = {
+		B1081F689264916FFE0F05BC7CA45FA7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBDEE07E7B2EC9497D1E881867552581 /* Pods-JWDatePickerKit_Example-umbrella.h in Headers */,
+				0349910D9033B8270D4F532D36E7DFE0 /* Pods-JWDatePickerKit_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5DEAC5594718D8671771F27E99C1412B /* Headers */ = {
+		E3277301AEEDA4B83CBF91C14BDF0979 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4EAFA818D3127AC85C250D2CF2CB110 /* PGPickerColumnCell.h in Headers */,
-				BE93A5B9B8C416BA2405CC6497FB4F45 /* PGPickerColumnView.h in Headers */,
-				71749B3D35BA8C68D2F7B22F6752FAF3 /* PGPickerTableView.h in Headers */,
-				BA020A04874440543A7FF91D5330B1F3 /* PGPickerView.h in Headers */,
-				A8FF8F6E0377F8F2C9FCAF730172DBB0 /* PGPickerView-umbrella.h in Headers */,
+				E8632A1C27A9B5C944A347452CADF6CE /* JWDatePickerKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9CA75C3EB42A07FC87626A72982ED663 /* Headers */ = {
+		F5B58124F7187E52AAC9FCA17F9634B9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5284539097D49F3C5C626E7BE31E0600 /* JWDatePickerKit-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C40D6930535C01FF686F8C8F070B2E45 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB96DF652DB4A66BFB1093D8DCF2D959 /* NSBundle+PGDatePicker.h in Headers */,
-				D1523B4BB1C15179CA0063E12FC94E6B /* NSDate+PGCategory.h in Headers */,
-				2E85B3DBCA4C99451BC24E94F9300180 /* PGDatePicker.h in Headers */,
-				CEF373F4EB2C815E6BA08604374D0C67 /* PGDatePicker+Common.h in Headers */,
-				441C3F8FFE21DA72F23FB5E2272F6957 /* PGDatePicker+Date.h in Headers */,
-				266E465B26B3F1AD9F64943106C2BC37 /* PGDatePicker+DateAndTime.h in Headers */,
-				985592F05BE690BF641D8D773ED8A895 /* PGDatePicker+DateHour.h in Headers */,
-				CFD311F43FE8FDD98046EE153ECE7325 /* PGDatePicker+DateHourMinute.h in Headers */,
-				9DA348295ED29E2B606E5DBB59936E0C /* PGDatePicker+DateHourMinuteSecond.h in Headers */,
-				BB7A80897B64A3E0743C162C3049B6C3 /* PGDatePicker+Logic.h in Headers */,
-				415EADD18836CCD425DF65223B3203C0 /* PGDatePicker+MinuteAndSecond.h in Headers */,
-				9EE656FEE44F3B241EFE207C50C69D42 /* PGDatePicker+MonthDay.h in Headers */,
-				CBC504B58C1D2E99A1C21AC8568AAFF9 /* PGDatePicker+MonthDayHour.h in Headers */,
-				03797D3A99C5809A55B5DBABBD48916D /* PGDatePicker+MonthDayHourMinute.h in Headers */,
-				51848662E451FBF9E33DAC32B8479AAA /* PGDatePicker+MonthDayHourMinuteSecond.h in Headers */,
-				36822AD9A32E718D837154DB78C75C6F /* PGDatePicker+Time.h in Headers */,
-				5AAE07D8A125E5E4EAF79349FC5E38C5 /* PGDatePicker+TimeAndSecond.h in Headers */,
-				1551181F95BD1FDE4850B450396AD32D /* PGDatePicker+Year.h in Headers */,
-				1F9C0799588EC09EADA2C8CD39884D04 /* PGDatePicker+YearAndMonth.h in Headers */,
-				D43E38B416960646ECC7AB872AB04139 /* PGDatePickerFix-umbrella.h in Headers */,
-				59AB5B42DDF76AE9F3F52E50812762D5 /* PGDatePickerHeader.h in Headers */,
-				C9DBDF85C34175A589ED9CDE5BBA5D3F /* PGDatePickerView.h in Headers */,
-				7CC518C30B51F91B8DA11357C91BBE68 /* PGDatePickManager.h in Headers */,
-				B12E4B1485DD35381B30015AAF8E032E /* PGDatePickManagerHeaderView.h in Headers */,
-				69130909B63475A079802CEE3F76F6D2 /* PGEnumeration.h in Headers */,
-				E4E81790D3DD5F82C3BAC89A1795FD6C /* UIColor+PGHex.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F3EBCEA7F8F390CE793B0D94E8BB3742 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0E7A5E846E36CD0D415C51FC9151157C /* XBDialog-umbrella.h in Headers */,
+				BBD7B4547954DB893D73F85E54E79387 /* XBDialog-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,21 +554,19 @@
 /* Begin PBXNativeTarget section */
 		0E62B3C7A170613221B80704F6CB95CD /* Pods-JWDatePickerKit_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C9A839B4C03D192D4CF7470E2CE7F7A /* Build configuration list for PBXNativeTarget "Pods-JWDatePickerKit_Example" */;
+			buildConfigurationList = E6534363649667303F7BFEDF85A7E717 /* Build configuration list for PBXNativeTarget "Pods-JWDatePickerKit_Example" */;
 			buildPhases = (
-				536D26C75339673C5D41DDADF6973292 /* Headers */,
-				88AE022CF9893117AB15C71480BFDA6C /* Sources */,
-				2BA51540E6AD7D5516495B93645BC1E1 /* Frameworks */,
-				DD42D01D42848E5FAE7E94F0F78E0E57 /* Resources */,
+				B1081F689264916FFE0F05BC7CA45FA7 /* Headers */,
+				0AE5C34FDB87AA01E2BCE27A6F32A165 /* Sources */,
+				4570D01A8B9E3AFC3F5BFA1B9EA79D00 /* Frameworks */,
+				B74487D51C7E1E2D9FDAAE558C44420A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				97BDDED45658160A216DB43578573495 /* PBXTargetDependency */,
-				3EA4CF49264B46C61B30F5240E732417 /* PBXTargetDependency */,
-				FAB18E333CED6AFCAB709EB5061A15C2 /* PBXTargetDependency */,
-				C575D70E57DEB832225A679D020F14D1 /* PBXTargetDependency */,
-				F1D3DAEB9931C5D249809959AF580AB3 /* PBXTargetDependency */,
+				52946A746ACDFF7607BCC3A6BCF655C4 /* PBXTargetDependency */,
+				ABAC78049B16D882932660A045219C14 /* PBXTargetDependency */,
+				8B691271B9A433B7A8C8140C29E6F7FD /* PBXTargetDependency */,
 			);
 			name = "Pods-JWDatePickerKit_Example";
 			productName = Pods_JWDatePickerKit_Example;
@@ -929,7 +603,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				2F828F7CC3153F6B2FA8257E10CEB3CA /* PBXTargetDependency */,
+				06CBCE6D32A8B65F55D703E9F0981901 /* PBXTargetDependency */,
 			);
 			name = "Pods-JWDatePickerKit_Tests";
 			productName = Pods_JWDatePickerKit_Tests;
@@ -938,18 +612,17 @@
 		};
 		92736E36D73B7F74F8ECA60D17A8FFBC /* JWDatePickerKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 118B73B435EE69CF586EE2DDDC51C749 /* Build configuration list for PBXNativeTarget "JWDatePickerKit" */;
+			buildConfigurationList = 8AB0D894821656F3F4373C27ACE37DA1 /* Build configuration list for PBXNativeTarget "JWDatePickerKit" */;
 			buildPhases = (
-				9CA75C3EB42A07FC87626A72982ED663 /* Headers */,
-				07C7D107F106AFFFEC8E3423F2DAC72C /* Sources */,
-				B8E435316D8A3F84EF06C4BC2CD04F3B /* Frameworks */,
-				420A3256464AE412D94480BABEE1651F /* Resources */,
+				E3277301AEEDA4B83CBF91C14BDF0979 /* Headers */,
+				7F3BAA4EFA433ABCBB7C01497068EE90 /* Sources */,
+				CB6749F7F6453D4B23072FDF0659E2F6 /* Frameworks */,
+				DFB7D044099454635F57BBBE0457C807 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				115B211C52E46716FFAB836AFDC8D71F /* PBXTargetDependency */,
-				81581114B7ABDFB7AEA065B5514CFB88 /* PBXTargetDependency */,
+				081C5BDC3543B7A97ACE29A5640332B5 /* PBXTargetDependency */,
 			);
 			name = JWDatePickerKit;
 			productName = JWDatePickerKit;
@@ -958,12 +631,12 @@
 		};
 		ABE4C893B1985957F0203B0A2E99D3FD /* XBDialog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE186A6E7ECFB5245908ED00DBE5DB9E /* Build configuration list for PBXNativeTarget "XBDialog" */;
+			buildConfigurationList = 08CA7CA5512CCC36CC89E86AA1132864 /* Build configuration list for PBXNativeTarget "XBDialog" */;
 			buildPhases = (
-				F3EBCEA7F8F390CE793B0D94E8BB3742 /* Headers */,
-				559526291494CAD15E1DF7561229FED3 /* Sources */,
-				86ED6A121D0F82188D9809D305B9F1EB /* Frameworks */,
-				0867587C14A7F7F266965C948BED2792 /* Resources */,
+				F5B58124F7187E52AAC9FCA17F9634B9 /* Headers */,
+				30090C49E849E475FD1565C8D827E698 /* Sources */,
+				FBFB66350E09EB170354BD22E88478D6 /* Frameworks */,
+				AE5194195B9B215602DEFE017E0AADF1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -972,43 +645,6 @@
 			name = XBDialog;
 			productName = XBDialog;
 			productReference = 08DBE12C82E8DFEE3CA9DC78135830AF /* XBDialog */;
-			productType = "com.apple.product-type.framework";
-		};
-		BD065F2D99C6DE10BAD233EFDD282673 /* PGDatePickerFix */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21EABE3E03D7E9581DC93E527BD6AED9 /* Build configuration list for PBXNativeTarget "PGDatePickerFix" */;
-			buildPhases = (
-				C40D6930535C01FF686F8C8F070B2E45 /* Headers */,
-				512160F8BCFAF357F8D255898D2D505A /* Sources */,
-				EFAE56098F501381D1530018482FAAB1 /* Frameworks */,
-				9E4910D55A1CD985FFE0010CCC6756ED /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3F2097A6E74A33DC7867B97832435F81 /* PBXTargetDependency */,
-			);
-			name = PGDatePickerFix;
-			productName = PGDatePicker;
-			productReference = 5E18513820DEA880717A398D754B8A4E /* PGDatePickerFix */;
-			productType = "com.apple.product-type.framework";
-		};
-		EE9326EF1CDC9B38D69A92B2D6169E8C /* PGPickerView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DCA3EB56433BC6A1E1226754428E7ACC /* Build configuration list for PBXNativeTarget "PGPickerView" */;
-			buildPhases = (
-				5DEAC5594718D8671771F27E99C1412B /* Headers */,
-				F4DEF3D1EBEB64CD44D2E4857D507543 /* Sources */,
-				F8527FD30BEFF497901C08D8AB8A2AE6 /* Frameworks */,
-				10E39C6D026BCF375E823440AED956E4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PGPickerView;
-			productName = PGPickerView;
-			productReference = 3A770636B8FDA4C1803B54116D7C5887 /* PGPickerView */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1031,13 +667,11 @@
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			minimizedProjectReferenceProxies = 0;
 			preferredProjectObjectVersion = 100;
-			productRefGroup = F722FCD3B67CCBA51CEEF5969E6DCD2B /* Products */;
+			productRefGroup = 677315B7463E14122C8D5655EA41456B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				92736E36D73B7F74F8ECA60D17A8FFBC /* JWDatePickerKit */,
-				BD065F2D99C6DE10BAD233EFDD282673 /* PGDatePickerFix */,
-				EE9326EF1CDC9B38D69A92B2D6169E8C /* PGPickerView */,
 				0E62B3C7A170613221B80704F6CB95CD /* Pods-JWDatePickerKit_Example */,
 				557A19297FCBC9A3BB581F4E015E5F8D /* Pods-JWDatePickerKit_Tests */,
 				19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */,
@@ -1054,20 +688,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0867587C14A7F7F266965C948BED2792 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		10E39C6D026BCF375E823440AED956E4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1A385C744013A91D46A3A55FD006BDA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1075,22 +695,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		420A3256464AE412D94480BABEE1651F /* Resources */ = {
+		AE5194195B9B215602DEFE017E0AADF1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E4910D55A1CD985FFE0010CCC6756ED /* Resources */ = {
+		B74487D51C7E1E2D9FDAAE558C44420A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E88B9A9D95F01915919BE6B4F948E5C2 /* PGDatePicker.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD42D01D42848E5FAE7E94F0F78E0E57 /* Resources */ = {
+		DFB7D044099454635F57BBBE0457C807 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1100,13 +719,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		07C7D107F106AFFFEC8E3423F2DAC72C /* Sources */ = {
+		0AE5C34FDB87AA01E2BCE27A6F32A165 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB6A8DF5056269AC45573F35D589E091 /* JWDatePickerKit-dummy.m in Sources */,
-				F71104C29C1D0F039C3313525CA29292 /* JWDatePickerMenuHeaderView.swift in Sources */,
-				67D0DD73EF555F88EC78CC5225A4BD7D /* JWDatePickerViewController.swift in Sources */,
+				6C2FD9CAFB0EF0ECC0B72E2C922AF4EC /* Pods-JWDatePickerKit_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30090C49E849E475FD1565C8D827E698 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DD32EEB7F4E0764ED22648C2614D5B3 /* BasePresentationController.swift in Sources */,
+				D6A9718E81E581C7B9A2E71DDFF43DA7 /* BasePresentTransition.swift in Sources */,
+				9F62E04CF1986DE26D9000E5B02C3A9B /* DialogConfig.swift in Sources */,
+				6398088B7F45FAA9FB48D08352376709 /* DialogPresentationController.swift in Sources */,
+				96AE9A8923EF83AD867877986BA7D1F6 /* DialogTransition.swift in Sources */,
+				0F107BBF4C2784877F9778BD3E548E56 /* MenuConfig.swift in Sources */,
+				704D6AF5A4361CFA72F3F9162C4A38BE /* MenuPresentationController.swift in Sources */,
+				8386997E955448D787D90CEF81A6F5C4 /* MenuTransition.swift in Sources */,
+				35B31C15688F9C66EC4D9E32B5218BC8 /* PresentConfig.swift in Sources */,
+				31FB6F2E70875C341A5A13137232B0DD /* UIViewController+Dialog.swift in Sources */,
+				69E99D63776FC30A1C9DC94612CFE888 /* XBDialog-dummy.m in Sources */,
+				5F843B4F2871405E654A36FF98F4D3F6 /* XBPresentAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,56 +788,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		512160F8BCFAF357F8D255898D2D505A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D98D0CF3F9A6F8B10C39D985D9A36632 /* NSBundle+PGDatePicker.m in Sources */,
-				B72861E85203869621AF0F3D86B29B4E /* NSDate+PGCategory.m in Sources */,
-				D61A4C1925222FC62DF2A42E2D26FCCE /* PGDatePicker.m in Sources */,
-				A97068595EAC72A6E5F4A2914683EC01 /* PGDatePicker+Common.m in Sources */,
-				B08E875EC76A701C1AB73351695B271C /* PGDatePicker+Date.m in Sources */,
-				8B576878FFBFE9FB224231E637CF9969 /* PGDatePicker+DateAndTime.m in Sources */,
-				8D5838D16F7F4C27516638FBCB859225 /* PGDatePicker+DateHour.m in Sources */,
-				8DCE447878E7E9971FE023D4C0E5C951 /* PGDatePicker+DateHourMinute.m in Sources */,
-				63E412659EB07039D338185D71929DD0 /* PGDatePicker+DateHourMinuteSecond.m in Sources */,
-				38AA9F69735AA5B2B4FE0642D3F79230 /* PGDatePicker+Logic.m in Sources */,
-				9BAE2C52A6E645B46F63173C859B14DA /* PGDatePicker+MinuteAndSecond.m in Sources */,
-				1331C3B293DDFDB77BB2BABB608DF1B5 /* PGDatePicker+MonthDay.m in Sources */,
-				287E317E79DD3F766BBF521C456998DF /* PGDatePicker+MonthDayHour.m in Sources */,
-				A23F13261CE08733B805349CD6A2E513 /* PGDatePicker+MonthDayHourMinute.m in Sources */,
-				E169BD0DC01FE177882FEA53898B32D7 /* PGDatePicker+MonthDayHourMinuteSecond.m in Sources */,
-				A70A25DAA5B4BE7CB870FC0A7E7081A7 /* PGDatePicker+Time.m in Sources */,
-				6225E57B1ECB94FE8D6730864B4C8ED1 /* PGDatePicker+TimeAndSecond.m in Sources */,
-				EE447EB57E8AA5333D7F9B22E7F0A307 /* PGDatePicker+Year.m in Sources */,
-				D86B9F58FB58EC50C9C75E88D54B5C6D /* PGDatePicker+YearAndMonth.m in Sources */,
-				9216CC676AE0148E9859878983A36BB1 /* PGDatePickerFix-dummy.m in Sources */,
-				0BFF425B8DD9641BE7A67C1E0A915F2F /* PGDatePickerView.m in Sources */,
-				DA0EC725DF120F72FC0CF4FDA6D37A2B /* PGDatePickManager.m in Sources */,
-				E5E8C26711F3746959EA54357BFC1B0F /* PGDatePickManagerHeaderView.m in Sources */,
-				8CC727930CBFFDEFE845A3DC3284ECE8 /* UIColor+PGHex.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		559526291494CAD15E1DF7561229FED3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7C46B580A8F8B37FE5ED5E7E1EF3BB19 /* BasePresentationController.swift in Sources */,
-				457CC713DCC34BD4CBD5EB1D0A325675 /* BasePresentTransition.swift in Sources */,
-				5F90DD5A36D5F200777A3860D64FF59F /* DialogConfig.swift in Sources */,
-				1BD92052864E5508EE1ED1A8982111E8 /* DialogPresentationController.swift in Sources */,
-				9FC3C5782063EC424FA90DCC3F488AF2 /* DialogTransition.swift in Sources */,
-				104EA4DBB59777617B4ECCB031059382 /* MenuConfig.swift in Sources */,
-				AB3D43B7FD717C972F1AC393251369FF /* MenuPresentationController.swift in Sources */,
-				6BCCBF7C56651C966BD95DAAEDD80331 /* MenuTransition.swift in Sources */,
-				F0F09F8869FA3E47FCA7EBBF4C8686DF /* PresentConfig.swift in Sources */,
-				CBB49B15851CE20C937558D39DA36CE8 /* UIViewController+Dialog.swift in Sources */,
-				BD35A03568BC40197E16028509C8DECB /* XBDialog-dummy.m in Sources */,
-				D87CB95C2D990B694524B1EE7E47918E /* XBPresentAnimator.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7A30F36731BFDE5719EFDE7C701CC228 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1210,124 +796,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88AE022CF9893117AB15C71480BFDA6C /* Sources */ = {
+		7F3BAA4EFA433ABCBB7C01497068EE90 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01D796A36CE0EA3D080FFC4C834C79A8 /* Pods-JWDatePickerKit_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4DEF3D1EBEB64CD44D2E4857D507543 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				87F6EF15ACE04E6D2AB5369A323B1D5C /* PGPickerColumnCell.m in Sources */,
-				9264C00085EB0D5CCF4BC0A4D1EAA8FB /* PGPickerColumnView.m in Sources */,
-				C7B0DD07A3C2D47FEDF852561B6D00F2 /* PGPickerTableView.m in Sources */,
-				AFD42985BC36C47F287A7B74D0A39113 /* PGPickerView.m in Sources */,
-				5661214AF2D4C8973551B3C3EC802A26 /* PGPickerView-dummy.m in Sources */,
+				BAF1EBBAE70CC9624D390DB30E86D2EA /* JWDatePickerKit-dummy.m in Sources */,
+				FBCCDE08A5EFDA3AA7C38DFAB0DFF8FF /* JWDatePickerMenuHeaderView.swift in Sources */,
+				BB6AFD84C905B9E58A8CCF04853EC794 /* JWDatePickerType.swift in Sources */,
+				2115804D3EEAAA75640D9EDA53D742CB /* JWDatePickerView.swift in Sources */,
+				A4D8F6EB2B98D0996FA1D7565E04E28A /* JWDatePickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		115B211C52E46716FFAB836AFDC8D71F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PGDatePickerFix;
-			target = BD065F2D99C6DE10BAD233EFDD282673 /* PGDatePickerFix */;
-			targetProxy = DE2C290EF8BA34E2F4D3FAFC361AC5B9 /* PBXContainerItemProxy */;
-		};
-		2F828F7CC3153F6B2FA8257E10CEB3CA /* PBXTargetDependency */ = {
+		06CBCE6D32A8B65F55D703E9F0981901 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-JWDatePickerKit_Example";
 			target = 0E62B3C7A170613221B80704F6CB95CD /* Pods-JWDatePickerKit_Example */;
-			targetProxy = 8BFD5B88F60F5EAE206EB856DA4C6261 /* PBXContainerItemProxy */;
+			targetProxy = 9BD68C9BFAA60EF03ECC2BE01FBE75C4 /* PBXContainerItemProxy */;
 		};
-		3EA4CF49264B46C61B30F5240E732417 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PGDatePickerFix;
-			target = BD065F2D99C6DE10BAD233EFDD282673 /* PGDatePickerFix */;
-			targetProxy = BFD1B6420235EF2219F0F5EF8FD2BAC6 /* PBXContainerItemProxy */;
-		};
-		3F2097A6E74A33DC7867B97832435F81 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PGPickerView;
-			target = EE9326EF1CDC9B38D69A92B2D6169E8C /* PGPickerView */;
-			targetProxy = 1F7AFFF64ED67F1C436FD82105C670E1 /* PBXContainerItemProxy */;
-		};
-		81581114B7ABDFB7AEA065B5514CFB88 /* PBXTargetDependency */ = {
+		081C5BDC3543B7A97ACE29A5640332B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = XBDialog;
 			target = ABE4C893B1985957F0203B0A2E99D3FD /* XBDialog */;
-			targetProxy = 7551048A2F11CDF908519C484DA85F57 /* PBXContainerItemProxy */;
+			targetProxy = ED7B1277C6480E5ABB3118B432FB4F03 /* PBXContainerItemProxy */;
 		};
-		97BDDED45658160A216DB43578573495 /* PBXTargetDependency */ = {
+		52946A746ACDFF7607BCC3A6BCF655C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JWDatePickerKit;
 			target = 92736E36D73B7F74F8ECA60D17A8FFBC /* JWDatePickerKit */;
-			targetProxy = 20B02E9CE263EADD54C34B3F14248578 /* PBXContainerItemProxy */;
+			targetProxy = 53C26AE98CAE13C9EAC1F0F2083CDF0E /* PBXContainerItemProxy */;
 		};
-		C575D70E57DEB832225A679D020F14D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SnapKit;
-			target = 19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */;
-			targetProxy = 0A7E37F955803F7646B5AFD2AD916A86 /* PBXContainerItemProxy */;
-		};
-		F1D3DAEB9931C5D249809959AF580AB3 /* PBXTargetDependency */ = {
+		8B691271B9A433B7A8C8140C29E6F7FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = XBDialog;
 			target = ABE4C893B1985957F0203B0A2E99D3FD /* XBDialog */;
-			targetProxy = 6DAA8D004F8208308619C10D07433B4B /* PBXContainerItemProxy */;
+			targetProxy = DC9FFBD30716BBBF6950A6081643465A /* PBXContainerItemProxy */;
 		};
-		FAB18E333CED6AFCAB709EB5061A15C2 /* PBXTargetDependency */ = {
+		ABAC78049B16D882932660A045219C14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PGPickerView;
-			target = EE9326EF1CDC9B38D69A92B2D6169E8C /* PGPickerView */;
-			targetProxy = F87408DBC9961FC61F486142B87D2397 /* PBXContainerItemProxy */;
+			name = SnapKit;
+			target = 19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */;
+			targetProxy = 2B02CC1BE16FC7FEEB1E35D84B040F79 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1E683D52E5F6D55F26A728BC6D9B18E4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E39D26DED8C96A699BC47FA7E9F1309 /* PGDatePickerFix.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/PGDatePickerFix/PGDatePickerFix-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/PGDatePickerFix/PGDatePickerFix-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PGDatePickerFix/PGDatePickerFix.modulemap";
-				PRODUCT_MODULE_NAME = PGDatePicker;
-				PRODUCT_NAME = PGDatePicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		35F322FD13DA1FA813258391F18F49FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B96387310E6ED2B1075E8349C41C3C2C /* SnapKit.release.xcconfig */;
+			baseConfigurationReference = F35EAEA4C15067620CF375ECF26A70A7 /* SnapKit.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1361,44 +880,9 @@
 			};
 			name = Release;
 		};
-		37B9F56AF12A39C3FC221055BBBA4903 /* Debug */ = {
+		4123448EAFF59EFB578CD874984E5C18 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1C0BC838097C47E260FB58F9C78B638 /* XBDialog.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/XBDialog/XBDialog-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/XBDialog/XBDialog-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/XBDialog/XBDialog.modulemap";
-				PRODUCT_MODULE_NAME = XBDialog;
-				PRODUCT_NAME = XBDialog;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4452DC1CCDED922E36FCA96D2C6619F7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA75584E5021A88C2C85C291FEB53D56 /* JWDatePickerKit.debug.xcconfig */;
+			baseConfigurationReference = A112946EB31B85465DB930D7593E16DC /* JWDatePickerKit.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1431,9 +915,9 @@
 			};
 			name = Debug;
 		};
-		4CA8B47AE3A7A415A6EF6D8109E9FA1C /* Release */ = {
+		43E4CDE528A36818A3F56F1979C7A5CE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 926365AFC9F91D3F0F98217347E5882D /* PGDatePickerFix.release.xcconfig */;
+			baseConfigurationReference = F6834A457A967AA6286184FED3824E33 /* XBDialog.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1446,15 +930,123 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/PGDatePickerFix/PGDatePickerFix-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/XBDialog/XBDialog-prefix.pch";
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/PGDatePickerFix/PGDatePickerFix-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/XBDialog/XBDialog-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PGDatePickerFix/PGDatePickerFix.modulemap";
-				PRODUCT_MODULE_NAME = PGDatePicker;
-				PRODUCT_NAME = PGDatePicker;
+				MODULEMAP_FILE = "Target Support Files/XBDialog/XBDialog.modulemap";
+				PRODUCT_MODULE_NAME = XBDialog;
+				PRODUCT_NAME = XBDialog;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5371B5F8ABF83D8C1F946BF66B6B768C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6C67D8060F92C3590BE7046DB2EB546 /* Pods-JWDatePickerKit_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		68086ED971634D786554E9289949F1F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFB1317FDBDA2E960642E12A23657C00 /* Pods-JWDatePickerKit_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7195086281AC2E2F1D0C0572DE23A8A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20EC9A431D6C16EA4A90E8596A76D94D /* JWDatePickerKit.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/JWDatePickerKit/JWDatePickerKit-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/JWDatePickerKit/JWDatePickerKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JWDatePickerKit/JWDatePickerKit.modulemap";
+				PRODUCT_MODULE_NAME = JWDatePickerKit;
+				PRODUCT_NAME = JWDatePickerKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -1668,45 +1260,9 @@
 			};
 			name = Release;
 		};
-		9CD6742E97CE5C5117921EBA11C911AB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79885E0123256605EB6C345DFC98A776 /* JWDatePickerKit.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/JWDatePickerKit/JWDatePickerKit-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/JWDatePickerKit/JWDatePickerKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JWDatePickerKit/JWDatePickerKit.modulemap";
-				PRODUCT_MODULE_NAME = JWDatePickerKit;
-				PRODUCT_NAME = JWDatePickerKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		9D8153D846A1E7A8F903417E67514067 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29280F35D4B01DDCFBA88355B1BF59C6 /* SnapKit.debug.xcconfig */;
+			baseConfigurationReference = 2E8683D24C56AAEB0001F2DEFAD61E6E /* SnapKit.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1739,116 +1295,9 @@
 			};
 			name = Debug;
 		};
-		A3C727357E9188513DD44A3ADFA0746E /* Debug */ = {
+		C9AC08686F061600C234B054578EB742 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCB798B59DAC7AA9C6585AF2CCF3FB9D /* PGPickerView.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/PGPickerView/PGPickerView-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/PGPickerView/PGPickerView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PGPickerView/PGPickerView.modulemap";
-				PRODUCT_MODULE_NAME = PGPickerView;
-				PRODUCT_NAME = PGPickerView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		AD95E5EA05C5CD161A393D6AF039FDD5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFB1317FDBDA2E960642E12A23657C00 /* Pods-JWDatePickerKit_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		BEA509F4DE1423393FE97129863EB046 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31A9894D6CF91933BDB56F8E114F1380 /* PGPickerView.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/PGPickerView/PGPickerView-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/PGPickerView/PGPickerView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PGPickerView/PGPickerView.modulemap";
-				PRODUCT_MODULE_NAME = PGPickerView;
-				PRODUCT_NAME = PGPickerView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CBE534409611631F14735054D75805D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72ADCBE73AF9EB431601E7352F4996EF /* XBDialog.release.xcconfig */;
+			baseConfigurationReference = 7C647A23E6EF2CECEF83195A671A9941 /* XBDialog.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1882,43 +1331,6 @@
 			};
 			name = Release;
 		};
-		D5F4B12AEC55D68545BD6FB126A2BC01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6C67D8060F92C3590BE7046DB2EB546 /* Pods-JWDatePickerKit_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1931,29 +1343,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0C9A839B4C03D192D4CF7470E2CE7F7A /* Build configuration list for PBXNativeTarget "Pods-JWDatePickerKit_Example" */ = {
+		08CA7CA5512CCC36CC89E86AA1132864 /* Build configuration list for PBXNativeTarget "XBDialog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AD95E5EA05C5CD161A393D6AF039FDD5 /* Debug */,
-				D5F4B12AEC55D68545BD6FB126A2BC01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		118B73B435EE69CF586EE2DDDC51C749 /* Build configuration list for PBXNativeTarget "JWDatePickerKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4452DC1CCDED922E36FCA96D2C6619F7 /* Debug */,
-				9CD6742E97CE5C5117921EBA11C911AB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21EABE3E03D7E9581DC93E527BD6AED9 /* Build configuration list for PBXNativeTarget "PGDatePickerFix" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1E683D52E5F6D55F26A728BC6D9B18E4 /* Debug */,
-				4CA8B47AE3A7A415A6EF6D8109E9FA1C /* Release */,
+				43E4CDE528A36818A3F56F1979C7A5CE /* Debug */,
+				C9AC08686F061600C234B054578EB742 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1967,20 +1361,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCA3EB56433BC6A1E1226754428E7ACC /* Build configuration list for PBXNativeTarget "PGPickerView" */ = {
+		8AB0D894821656F3F4373C27ACE37DA1 /* Build configuration list for PBXNativeTarget "JWDatePickerKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A3C727357E9188513DD44A3ADFA0746E /* Debug */,
-				BEA509F4DE1423393FE97129863EB046 /* Release */,
+				4123448EAFF59EFB578CD874984E5C18 /* Debug */,
+				7195086281AC2E2F1D0C0572DE23A8A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE186A6E7ECFB5245908ED00DBE5DB9E /* Build configuration list for PBXNativeTarget "XBDialog" */ = {
+		E6534363649667303F7BFEDF85A7E717 /* Build configuration list for PBXNativeTarget "Pods-JWDatePickerKit_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				37B9F56AF12A39C3FC221055BBBA4903 /* Debug */,
-				CBE534409611631F14735054D75805D1 /* Release */,
+				68086ED971634D786554E9289949F1F2 /* Debug */,
+				5371B5F8ABF83D8C1F946BF66B6B768C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

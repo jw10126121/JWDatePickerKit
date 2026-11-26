@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PGDatePicker
 import SnapKit
 import JWDatePickerKit
 
@@ -26,20 +25,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return temTable
     }()
     
-    private lazy var data = [PGDatePickerMode.year,
-                        PGDatePickerMode.yearAndMonth,
-                        PGDatePickerMode.date,
-                        PGDatePickerMode.dateHour,
-                        PGDatePickerMode.dateHourMinute,
-                        PGDatePickerMode.dateHourMinuteSecond,
-                        PGDatePickerMode.monthDay,
-                        PGDatePickerMode.monthDayHour,
-                        PGDatePickerMode.monthDayHourMinute,
-                        PGDatePickerMode.monthDayHourMinuteSecond,
-                        PGDatePickerMode.time,
-                        PGDatePickerMode.timeAndSecond,
-                        PGDatePickerMode.minuteAndSecond,
-                        PGDatePickerMode.dateAndTime]
+    private lazy var data = [JWDatePickerType.year,
+                        JWDatePickerType.yearAndMonth,
+                        JWDatePickerType.date,
+                        JWDatePickerType.dateHour,
+                        JWDatePickerType.dateHourMinute,
+                        JWDatePickerType.dateHourMinuteSecond,
+                        JWDatePickerType.monthDay,
+                        JWDatePickerType.monthDayHour,
+                        JWDatePickerType.monthDayHourMinute,
+                        JWDatePickerType.monthDayHourMinuteSecond,
+                        JWDatePickerType.time,
+                        JWDatePickerType.timeAndSecond,
+                        JWDatePickerType.minuteAndSecond,
+                        JWDatePickerType.dateAndTime]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,41 +86,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-}
-
-extension PGDatePickerMode {
-    
-    public var name: String {
-        switch self {
-        case .year:
-            return "年"
-        case .yearAndMonth:
-            return "年月"
-        case .date:
-            return "年月日"
-        case .dateHour:
-            return "年月日时"
-        case .dateHourMinute:
-            return "年月日时分"
-        case .dateHourMinuteSecond:
-            return "年月日时分秒"
-        case .monthDay:
-            return "月日"
-        case .monthDayHour:
-            return "月日时"
-        case .monthDayHourMinute:
-            return "月日时分"
-        case .monthDayHourMinuteSecond:
-            return "月日时分秒"
-        case .time:
-            return "时分"
-        case .timeAndSecond:
-            return "时分秒"
-        case .minuteAndSecond:
-            return "分秒"
-        case .dateAndTime:
-            return "月日周 时分"
-        }
-    }
 }
 

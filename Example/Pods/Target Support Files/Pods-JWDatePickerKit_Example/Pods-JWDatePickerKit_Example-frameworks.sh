@@ -177,15 +177,11 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/JWDatePickerKit/JWDatePickerKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PGDatePickerFix/PGDatePicker.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XBDialog/XBDialog.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/JWDatePickerKit/JWDatePickerKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PGDatePickerFix/PGDatePicker.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XBDialog/XBDialog.framework"
 fi

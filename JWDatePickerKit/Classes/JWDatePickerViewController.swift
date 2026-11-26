@@ -7,7 +7,6 @@
 
 import UIKit
 import XBDialog
-import PGDatePicker
 
 /// 时间选择控制器(只支持present弹出)
 @objc public class JWDatePickerViewController: UIViewController {
@@ -25,65 +24,58 @@ import PGDatePicker
     @objc public var confirmDateComponentsHandler: ((_ date: DateComponents) -> Void)?
     
     /// 时间选择器模式
-    @objc public var datePickerMode: PGDatePickerMode = .date {
+    @objc public var datePickerMode: JWDatePickerType = .date {
         didSet {
-            self.datePicker.datePickerMode = datePickerMode
+            self.datePicker.type = datePickerMode
         }
     }
     
     /// 默认时间
     @objc public var defaultDate: Date = Date() {
         didSet {
-            self.datePicker.setDate(defaultDate, animated: false)
+            self.datePicker.selectDate = defaultDate
         }
     }
     
     /// 最小时间
     @objc public var minimumDate: Date? {
         didSet {
-            guard let temDate = minimumDate else {
-                return
-            }
-            self.datePicker.minimumDate = temDate
+            self.datePicker.minimumDate = minimumDate
         }
     }
     
     /// 最大时间
     @objc public var maximumDate: Date? {
         didSet {
-            guard let temDate = maximumDate else {
-                return
-            }
-            self.datePicker.maximumDate = temDate
+            self.datePicker.maximumDate = maximumDate
         }
     }
     
     /// 线背景颜色
     @objc public dynamic var lineBackgroundColor: UIColor = UIColor.black {
         didSet {
-            self.datePicker.lineBackgroundColor = lineBackgroundColor
+            self.datePicker.lineColor = lineBackgroundColor
         }
     }
     
     /// 设置选中行的字体颜色
     @objc public dynamic var textColorOfSelectedRow: UIColor = UIColor.black {
         didSet {
-            self.datePicker.textColorOfSelectedRow = textColorOfSelectedRow
+            self.datePicker.selectedAttributes = [.foregroundColor: textColorOfSelectedRow, .font: UIFont.systemFont(ofSize: 20)]
         }
     }
     
     /// 设置未选中行的字体颜色
     @objc public dynamic var textColorOfOtherRow: UIColor = UIColor.black {
         didSet {
-            self.datePicker.textColorOfOtherRow = textColorOfOtherRow
+            self.datePicker.textAttributes = [.foregroundColor: textColorOfOtherRow, .font: UIFont.systemFont(ofSize: 20)]
         }
     }
     
     /// 日期选择器
-    private lazy var datePicker: PGDatePicker = {
-        let temDatePicker = PGDatePicker()
+    private lazy var datePicker: JWDatePickerView = {
+        let temDatePicker = JWDatePickerView()
         temDatePicker.backgroundColor = UIColor.white
-        temDatePicker.autoSelected = true
         return temDatePicker
     }()
     
@@ -160,7 +152,10 @@ fileprivate extension JWDatePickerViewController {
     
     func setupUI() {
         
-        datePicker.delegate = self
+        datePicker.selectDate = defaultDate
+        datePicker.onDateChanged = { [weak self] date in
+            self?.selectDate = date
+        }
         
         view.addSubview(safeAreaView)
         view.addSubview(headerView)
@@ -197,6 +192,10 @@ fileprivate extension JWDatePickerViewController {
         }
         headerView.confirmHandler = { [weak self] () -> Void in
             guard let self = self else { return }
+            if let date = self.datePicker.currentSelectedDate() {
+                self.selectDate = date
+                self.selectDateComponents = self.datePicker.calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            }
             self.confirmHandler?(self.selectDate)
             if let dc = self.selectDateComponents {
                 self.confirmDateComponentsHandler?(dc)
@@ -212,24 +211,6 @@ fileprivate extension JWDatePickerViewController {
             self.cancelHandler?()
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-}
-
-extension JWDatePickerViewController: PGDatePickerDelegate {
-    
-    public func datePicker(_ datePicker: PGDatePicker!, didSelectDate dateComponents: DateComponents!) {
-        guard let dateComponents = dateComponents else {
-            return
-        }
-
-        let calendar = datePicker?.calendar ?? Calendar.current
-        guard let selectedDate = calendar.date(from: dateComponents) else {
-            return
-        }
-
-        self.selectDateComponents = dateComponents
-        self.selectDate = selectedDate
     }
     
 }
