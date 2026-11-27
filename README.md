@@ -21,11 +21,10 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 
 ### CocoaPods
 
-在 Podfile 顶部添加 JWPublicSpecs 和 CocoaPods 官方源。使用自定义 Specs 源时，也要显式保留官方源，才能解析其他公开 Pod 依赖。
+在 Podfile 顶部添加 JWPublicSpecs 源。本组件及其 JWDialogManager 依赖都由该 Specs 仓库提供，因此下面的安装示例只需这个源。如果应用还使用其他托管在 CocoaPods 官方源的 Pod，再额外添加 `source 'https://cdn.cocoapods.org/'`。
 
 ```ruby
 source 'https://gitee.com/jw10126121/JWPublicSpecs.git'
-source 'https://cdn.cocoapods.org/'
 
 platform :ios, '15.0'
 use_frameworks!
