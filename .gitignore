@@ -38,3 +38,8 @@ Carthage/Build
 
 # Fastlane writes this report after every lane run.
 /fastlane/report.xml
+
+# Local Workbuddy files and device test reports
+/.workbuddy/
+/真机测试报告/
+/真机测试报告_*.md
