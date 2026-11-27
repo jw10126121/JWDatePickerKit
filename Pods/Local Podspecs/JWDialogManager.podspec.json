@@ -1,6 +1,6 @@
 {
   "name": "JWDialogManager",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "Custom UIKit dialog and menu presentations",
   "description": "Configurable dialog and menu view-controller presentations with custom transitions.",
   "homepage": "https://gitee.com/jw10126121/JWDialogManager",
@@ -9,11 +9,11 @@
     "file": "LICENSE"
   },
   "authors": {
-    "jw10126121": "10126121@qq.com"
+    "lin": "10126121@qq.com"
   },
   "source": {
     "git": "https://gitee.com/jw10126121/JWDialogManager.git",
-    "commit": "7df2749e898a83ea5b2c23853d9614682c70cf79"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "15.0"

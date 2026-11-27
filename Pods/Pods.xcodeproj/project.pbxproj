@@ -7,91 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E1E6E6A63EAD732FF6945656225A3D0 /* JWMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7E85D8238FA46366AF5DBACB32296 /* JWMenuPresentationController.swift */; };
-		296280EAACB30C30CFDF4B250B152768 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FFB9A7DF33CF1CD7B9D20E37E38EF6 /* SwiftUI.framework */; };
+		0A01945C7B3960F84BC486E60BE5C6BA /* JWPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137D25E811FA0B57EF5101C9CFABE80 /* JWPresentAnimator.swift */; };
+		0DBD953127394948866098B7FD4ED8D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B375975B60A8D84C64539D6A1F1C2A0D /* Localizable.strings */; };
+		0F992924375646A3E2807A746734B250 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FFB9A7DF33CF1CD7B9D20E37E38EF6 /* SwiftUI.framework */; };
+		12789BA7FBF48A6462D9516D35925FD4 /* JWPresentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3810B9F2078DF5F68E0EBB19AD7E8591 /* JWPresentConfig.swift */; };
+		1B4444451D34E505ABC775D8BB6ED1E5 /* JWMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977614B0167FB7D07D9C88CE3C9C50C2 /* JWMenuPresentationController.swift */; };
+		2017EFB8A3897AE0DBE8DCA48815B982 /* JWBasePresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B72E0429E76022CCE62E9E95FD6A5D /* JWBasePresentTransition.swift */; };
+		23739ADEA07994AF72A3D18A68184B03 /* JWBasePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E4F77D857297A92A462121D7BDF85 /* JWBasePresentationController.swift */; };
 		39E86E9FC2F657B57D7A88463053A54F /* Pods-JWDatePickerKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C36D1C6D7031EBE23114A4666FBE4BA /* Pods-JWDatePickerKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E31C2A227AD23642074F18ACB5B6025 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360E197EF8D744C49C494CC879FA2E72 /* Foundation.framework */; };
-		42D87CD46E72EF35D587C0E7CB2FDB4B /* JWBasePresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8042F83E81D2950A4549AD683686D164 /* JWBasePresentTransition.swift */; };
-		4CA2B6B3CDAF8A430F4F3BEE39076F94 /* JWDatePickerMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D444B8A89DA36864AEDFBAD7D045614B /* JWDatePickerMenuHeaderView.swift */; };
-		514C1091E5E10C358292178CBF56A8E6 /* JWDatePickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F82ECAF094AEF9B400D9C5D28E61FB /* JWDatePickerConfiguration.swift */; };
-		523D415357379214649E947965EACF59 /* JWPresentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEFE67056D0DEC59982FD9C64D7E26F /* JWPresentConfig.swift */; };
-		58FACA044824ABCB3E47CEEE69E507F7 /* JWDialogSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FFC09E0E56F517E1819675B4AADAC /* JWDialogSwiftUI.swift */; };
+		3FA97B5C7C1D4C02F56AA05E71F89759 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2A97C1A0BCC42D6C407539A080E4E1 /* UIKit.framework */; };
+		4C108C5855BBA13AA338F9132FDD529B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360E197EF8D744C49C494CC879FA2E72 /* Foundation.framework */; };
+		4CA2B6B3CDAF8A430F4F3BEE39076F94 /* JWDatePickerMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3F333885DA8CA47A3974C85B28664 /* JWDatePickerMenuHeaderView.swift */; };
+		514C1091E5E10C358292178CBF56A8E6 /* JWDatePickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D9E88B43EE313FEEE3E6C2260F3B3 /* JWDatePickerConfiguration.swift */; };
+		56EA7CE50D37C8D75EA02476D7025C75 /* JWMenuConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E8173F21C0B47ABB8C40FD42CBB03 /* JWMenuConfig.swift */; };
 		5CB89C9E91F08E8E6093C0A10E9C9337 /* Pods-JWDatePickerKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF07DE0D65D431753213BFBE726B296F /* Pods-JWDatePickerKit_Example-dummy.m */; };
-		5DCE4184700B9AFC8EA9AA4DA0E9C65C /* JWDialogManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ACA5DADF0A788A84DFE939724FE8A5E6 /* JWDialogManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5ED45EE00DAA03C1CDF6294430C206A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2E1470C890C2208DF6E3B976C63F24D /* Localizable.strings */; };
 		6A2D62544CB9723B7B994A4D4E983AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360E197EF8D744C49C494CC879FA2E72 /* Foundation.framework */; };
-		7E6EA673329C447B037C4CC96F811218 /* JWMenuConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4477D9A9B363907D3FA0F0E59C4AEF /* JWMenuConfig.swift */; };
+		83673DB019AA6B498B1821FF59887AC4 /* JWDialogSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C05BB3B26A1AB1B2186E605BAB49A48 /* JWDialogSwiftUI.swift */; };
 		84A2A008E4388761D7460543781F2A07 /* JWDatePickerKit-JWDatePickerKit in Resources */ = {isa = PBXBuildFile; fileRef = 036253B5346B7A598D36CB88FDB4634E /* JWDatePickerKit-JWDatePickerKit */; };
-		88913CEEBD2F4B49DBD743D6E877580F /* JWPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89169E7B27CC9DBEAEA75EA679F1B268 /* JWPresentAnimator.swift */; };
-		8A88B40EE991FCCD0F391E1131CD0A98 /* JWDialogManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7DBE530919C5A88B7172E64F3E5782 /* JWDialogManager-dummy.m */; };
 		94C414DFDC0B45D5569317EF177A7F50 /* Pods-JWDatePickerKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6BBF94BFB96F94440BD4CC7A09B30F /* Pods-JWDatePickerKit_Tests-dummy.m */; };
 		968F60C7B81438EE6BF92FDF1B7CDFD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360E197EF8D744C49C494CC879FA2E72 /* Foundation.framework */; };
-		9C2B1F0689643724163A222007B706A9 /* JWDatePickerKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BB99409E8EBDB9B0C64B169AF7437 /* JWDatePickerKit-dummy.m */; };
-		A6004C375D290752E498738774584C9A /* JWDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204993B518ABFE485E8003DBD04C52E /* JWDatePickerView.swift */; };
-		A9FC374B08581CF9445853FEBFC752B7 /* JWDatePickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC112555849ECD8A7F30A7CDE21EF739 /* JWDatePickerType.swift */; };
-		B1F8995A8FB69BAB023CF21BB608EDDA /* JWDatePickerKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0838BEFEB515E562CE8BB053649F2FB2 /* JWDatePickerKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CB2E411217696345E2E97B546BE409B2 /* JWDialogPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA298FE94E02D91CF771EE8084B39F2 /* JWDialogPresentationController.swift */; };
-		CCE78E9A28265DA53A00442EB75C6E12 /* JWDialogTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CF6172B0819F5263E36371C5535AE /* JWDialogTransition.swift */; };
-		D57C0AB6ADB5A263453BE6AE53D18FDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2A97C1A0BCC42D6C407539A080E4E1 /* UIKit.framework */; };
-		DCD1D078E6748C2E11D0E7357DF2E844 /* JWBasePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026E6E259D4CA6965A166224A1A6A9E5 /* JWBasePresentationController.swift */; };
+		9C2B1F0689643724163A222007B706A9 /* JWDatePickerKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D7EC574D114A1B1FB4C4A1EB233AF /* JWDatePickerKit-dummy.m */; };
+		9D0C4A451BF47E22D9CB0BDCE1766619 /* JWDialogManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99FE2863C3A18EEDC91703FF613B9555 /* JWDialogManager-dummy.m */; };
+		A6004C375D290752E498738774584C9A /* JWDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86947D1843D21AC8D106807463DAD8 /* JWDatePickerView.swift */; };
+		A9FC374B08581CF9445853FEBFC752B7 /* JWDatePickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF0834C859E0D9A0FDBCFFAB379DB3A /* JWDatePickerType.swift */; };
+		B1F8995A8FB69BAB023CF21BB608EDDA /* JWDatePickerKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC8398228EDD1CAC0999A4BDFE5571ED /* JWDatePickerKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D176C1FA78C2521CD623E075D7D05D96 /* JWDialogPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DC649CCD605BB3C3504F277037E847 /* JWDialogPresentationController.swift */; };
+		DA73455B660F6DCA6910A8979179B1F6 /* JWDialogTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241BF93976FBF84FC7939430A92C003 /* JWDialogTransition.swift */; };
 		DE39F3FB2FA21D279DFD9047AA420019 /* Pods-JWDatePickerKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FA4FF4BBB5BE133FED3F7C1E31B6F3 /* Pods-JWDatePickerKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E026F15038055E25D521C5500EC2FDE7 /* JWDatePickerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B4C13834802FD5DD1DC2AF848F16D /* JWDatePickerContentView.swift */; };
-		E68A5683F4C60DFE46679C2D92B1EDAC /* JWDatePickerLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACA820AF1405470BD8D35049EB82DF2 /* JWDatePickerLocalization.swift */; };
-		EA00193556CE00AB9824DAB160F62B56 /* JWDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE71E8D4A2095CA92C8CA7513296727E /* JWDatePickerViewController.swift */; };
-		ECBC672A0D78955DA34E56BF899D5F03 /* JWDialogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42016DBAC2BCE23CB9133E1FB71187 /* JWDialogConfig.swift */; };
-		EDA9BDA455B26D1D5B0B7BE88B483ACB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360E197EF8D744C49C494CC879FA2E72 /* Foundation.framework */; };
-		EDE2A0143422FDCDEA191644BF20DB38 /* UIViewController+JWDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB26B76075697C6B3181C785505A9835 /* UIViewController+JWDialog.swift */; };
-		FF419B3E497DE930AC63BDFAC9A7E41E /* JWMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1E74CE844C1D59FE89F884188B3860 /* JWMenuTransition.swift */; };
+		E026F15038055E25D521C5500EC2FDE7 /* JWDatePickerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A2C9D6697D0712FB5A3183396A0F3 /* JWDatePickerContentView.swift */; };
+		E68A5683F4C60DFE46679C2D92B1EDAC /* JWDatePickerLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC97E51F73346B87532EF79EE12A484 /* JWDatePickerLocalization.swift */; };
+		EA00193556CE00AB9824DAB160F62B56 /* JWDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A366B7A9BCE690A8D7051EAC4240FA /* JWDatePickerViewController.swift */; };
+		F13B0C9AA2C0DD605FA02BD9B967CE3A /* JWMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D252D8D0223FAF16012F710893C9B17C /* JWMenuTransition.swift */; };
+		F40AF1ACE84C2FC81C6CBC1163032C9C /* JWDialogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0680122F48C97D5E212EBAAEB032BF59 /* JWDialogConfig.swift */; };
+		F7DB14EA2C91166440735D46254B2F65 /* JWDialogManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D677335457EE9A0C5D700AF9004AC63 /* JWDialogManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9EF71CEA2CE035006D02ABBAE29D774 /* UIViewController+JWDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA290776F6F456B4B4B587636FAC328 /* UIViewController+JWDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6547F863EB35F6FC1D9B9D78FE7BD64A /* PBXContainerItemProxy */ = {
+		1F6A1B1974BCA318B4D5BF1929205B62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03FB5E99C9387563DEFBEF8110E6C54A;
+			remoteInfo = JWDialogManager;
+		};
+		2ED466C64015B21A9BD4FF98BE86376A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03FB5E99C9387563DEFBEF8110E6C54A;
+			remoteInfo = JWDialogManager;
+		};
+		735C4AC6B83C221E0C004E160EAA8C3E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B0AA0EA1B759DA52FC02E7E6DCA47A48;
 			remoteInfo = "JWDatePickerKit-JWDatePickerKit";
 		};
-		B13C267891A56E230EAE8869BD5A3025 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E62B3C7A170613221B80704F6CB95CD;
-			remoteInfo = "Pods-JWDatePickerKit_Example";
-		};
-		CB99424A86D1AB9939BE2B80E88BFBE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03FB5E99C9387563DEFBEF8110E6C54A;
-			remoteInfo = JWDialogManager;
-		};
-		DCD242B5E6B04D08A18798FFE20C575E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03FB5E99C9387563DEFBEF8110E6C54A;
-			remoteInfo = JWDialogManager;
-		};
-		F1FD0DDD3E5D0626707B085181B069C5 /* PBXContainerItemProxy */ = {
+		79A3CE18B42E62EC7401DACEEF9D683C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 92736E36D73B7F74F8ECA60D17A8FFBC;
 			remoteInfo = JWDatePickerKit;
 		};
+		C5CACD98CA2679C624220340AEE6AAD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E62B3C7A170613221B80704F6CB95CD;
+			remoteInfo = "Pods-JWDatePickerKit_Example";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		017371118A6DB2BD3E090F9C765AF5AE /* JWDialogManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JWDialogManager-Info.plist"; sourceTree = "<group>"; };
-		026E6E259D4CA6965A166224A1A6A9E5 /* JWBasePresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWBasePresentationController.swift; path = Sources/JWDialogManager/JWBasePresentationController.swift; sourceTree = "<group>"; };
 		036253B5346B7A598D36CB88FDB4634E /* JWDatePickerKit-JWDatePickerKit */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "JWDatePickerKit-JWDatePickerKit"; path = JWDatePickerKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		0838BEFEB515E562CE8BB053649F2FB2 /* JWDatePickerKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-umbrella.h"; sourceTree = "<group>"; };
-		0D42016DBAC2BCE23CB9133E1FB71187 /* JWDialogConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogConfig.swift; sourceTree = "<group>"; };
-		155B4C13834802FD5DD1DC2AF848F16D /* JWDatePickerContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDatePickerContentView.swift; sourceTree = "<group>"; };
-		178AE0FA6D49CBBD645AF1949E31A3DF /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1D4477D9A9B363907D3FA0F0E59C4AEF /* JWMenuConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWMenuConfig.swift; sourceTree = "<group>"; };
-		1EA83F4A8BF483023BF52BA8E21ACE60 /* JWDatePickerKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.debug.xcconfig; sourceTree = "<group>"; };
+		0680122F48C97D5E212EBAAEB032BF59 /* JWDialogConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogConfig.swift; sourceTree = "<group>"; };
+		166A1C7B39FF2E70E2C5B0DC35895A44 /* JWDatePickerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JWDatePickerKit-Info.plist"; sourceTree = "<group>"; };
+		1BA290776F6F456B4B4B587636FAC328 /* UIViewController+JWDialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIViewController+JWDialog.swift"; sourceTree = "<group>"; };
+		1ED20ECA24893333DD4B11C9EF4F7BB3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		21547B2D5177F9DBB1F624F691692244 /* JWDialogManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDialogManager.debug.xcconfig; sourceTree = "<group>"; };
+		225D9E88B43EE313FEEE3E6C2260F3B3 /* JWDatePickerConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerConfiguration.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerConfiguration.swift; sourceTree = "<group>"; };
+		262CD27A641DB9FED239D99FF85A51FC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		27875C8E66DD2F2F6A519E2E356E9E02 /* Pods-JWDatePickerKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Tests-Info.plist"; sourceTree = "<group>"; };
 		27FA4FF4BBB5BE133FED3F7C1E31B6F3 /* Pods-JWDatePickerKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JWDatePickerKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		29B575E9D2AA62C26833D57C0EEA388C /* JWDatePickerKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JWDatePickerKit; path = JWDatePickerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,79 +98,80 @@
 		2D07D2BB85B4EFE400CD7408E3973993 /* Pods-JWDatePickerKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JWDatePickerKit_Tests.modulemap"; sourceTree = "<group>"; };
 		306C0E16F2119591D89A8FA7B30531B2 /* Pods-JWDatePickerKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JWDatePickerKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		31FFB9A7DF33CF1CD7B9D20E37E38EF6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
+		354E3ED0CB831B56046ED615966CC4D3 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		360E197EF8D744C49C494CC879FA2E72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		388BB99409E8EBDB9B0C64B169AF7437 /* JWDatePickerKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWDatePickerKit-dummy.m"; sourceTree = "<group>"; };
-		3AEFE67056D0DEC59982FD9C64D7E26F /* JWPresentConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWPresentConfig.swift; path = Sources/JWDialogManager/JWPresentConfig.swift; sourceTree = "<group>"; };
-		3B0C8274B10F0AC07944D8A4727B4364 /* JWDialogManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JWDialogManager.modulemap; sourceTree = "<group>"; };
-		3B0FFC09E0E56F517E1819675B4AADAC /* JWDialogSwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogSwiftUI.swift; sourceTree = "<group>"; };
-		3F1566A3B1676CB4FC72578EA7DEEAB8 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		40D906627C26BA504094C96719FD90BE /* JWDatePickerKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JWDatePickerKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		42A4B060388B8140D5F47FF7E836072E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		450BC9FB481C87AD16163C160150A06C /* JWDatePickerKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JWDatePickerKit.modulemap; sourceTree = "<group>"; };
+		3810B9F2078DF5F68E0EBB19AD7E8591 /* JWPresentConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWPresentConfig.swift; sourceTree = "<group>"; };
+		3B86947D1843D21AC8D106807463DAD8 /* JWDatePickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerView.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerView.swift; sourceTree = "<group>"; };
+		3D1E4F77D857297A92A462121D7BDF85 /* JWBasePresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWBasePresentationController.swift; sourceTree = "<group>"; };
+		4279C003C63B7FFA14AABCBAFE4C49E6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		43F318790CF6FFD2DF1A022374CF7C89 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		44A366B7A9BCE690A8D7051EAC4240FA /* JWDatePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerViewController.swift; path = JWDatePickerKit/Classes/JWDatePickerViewController.swift; sourceTree = "<group>"; };
 		45B8C9C20E96C8EBDE5CE924B155947F /* Pods-JWDatePickerKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JWDatePickerKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4BB6BC2987F604C30AC92FEBF1C57DD8 /* JWDatePickerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JWDatePickerKit-Info.plist"; sourceTree = "<group>"; };
-		553CF6172B0819F5263E36371C5535AE /* JWDialogTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogTransition.swift; sourceTree = "<group>"; };
+		487D7EC574D114A1B1FB4C4A1EB233AF /* JWDatePickerKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWDatePickerKit-dummy.m"; sourceTree = "<group>"; };
+		59C3F333885DA8CA47A3974C85B28664 /* JWDatePickerMenuHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerMenuHeaderView.swift; path = JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift; sourceTree = "<group>"; };
 		5A6BBF94BFB96F94440BD4CC7A09B30F /* Pods-JWDatePickerKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JWDatePickerKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		5D8A2E6FD31F4190856A7C1D278B7CBF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		62F82ECAF094AEF9B400D9C5D28E61FB /* JWDatePickerConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerConfiguration.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerConfiguration.swift; sourceTree = "<group>"; };
-		6768C7DA374208E6D21FEF62B951B045 /* JWDatePickerKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-prefix.pch"; sourceTree = "<group>"; };
-		77EB65458615F940F8B6CB27435A8326 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		7AA298FE94E02D91CF771EE8084B39F2 /* JWDialogPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogPresentationController.swift; sourceTree = "<group>"; };
-		7ACA820AF1405470BD8D35049EB82DF2 /* JWDatePickerLocalization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerLocalization.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerLocalization.swift; sourceTree = "<group>"; };
-		8042F83E81D2950A4549AD683686D164 /* JWBasePresentTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWBasePresentTransition.swift; path = Sources/JWDialogManager/JWBasePresentTransition.swift; sourceTree = "<group>"; };
-		8204993B518ABFE485E8003DBD04C52E /* JWDatePickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerView.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerView.swift; sourceTree = "<group>"; };
-		83E7E85D8238FA46366AF5DBACB32296 /* JWMenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWMenuPresentationController.swift; sourceTree = "<group>"; };
-		887CF233B1A9C29DAA08CF02FCBFE03F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		88B35F057A93E32D0035BA3A89669E83 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		89169E7B27CC9DBEAEA75EA679F1B268 /* JWPresentAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWPresentAnimator.swift; path = Sources/JWDialogManager/JWPresentAnimator.swift; sourceTree = "<group>"; };
+		5A6E8173F21C0B47ABB8C40FD42CBB03 /* JWMenuConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWMenuConfig.swift; sourceTree = "<group>"; };
+		5AC97E51F73346B87532EF79EE12A484 /* JWDatePickerLocalization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerLocalization.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerLocalization.swift; sourceTree = "<group>"; };
+		5B43041EC44D7A0DDDCACCF80A1243A0 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5D677335457EE9A0C5D700AF9004AC63 /* JWDialogManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDialogManager-umbrella.h"; sourceTree = "<group>"; };
+		6A4A2C9D6697D0712FB5A3183396A0F3 /* JWDatePickerContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDatePickerContentView.swift; sourceTree = "<group>"; };
+		6C6870C55108A29B5C455031F856A9DE /* JWDatePickerKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.debug.xcconfig; sourceTree = "<group>"; };
+		6D61F6703B36B3118DF8F3AC1C8D1764 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6D73FE7BD45C431A28D63424508C6A35 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74A96E16361EAF42C4D60D9891CCF481 /* JWDatePickerKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.release.xcconfig; sourceTree = "<group>"; };
+		76DC649CCD605BB3C3504F277037E847 /* JWDialogPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogPresentationController.swift; sourceTree = "<group>"; };
+		7AF497C1504563F47428AFD40D928718 /* JWDialogManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDialogManager-prefix.pch"; sourceTree = "<group>"; };
+		7C05BB3B26A1AB1B2186E605BAB49A48 /* JWDialogSwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogSwiftUI.swift; sourceTree = "<group>"; };
+		7C3B88D6F1487AD824E2A65D4E3E01FA /* JWDatePickerKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JWDatePickerKit.modulemap; sourceTree = "<group>"; };
+		7CA724D4316AEF30942E7330056546AC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		89288094AD66B60612E06951BE9FB442 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8F2A97C1A0BCC42D6C407539A080E4E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		94FBF817118F70B7924FB0A37BE20CB5 /* JWDialogManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JWDialogManager.modulemap; sourceTree = "<group>"; };
+		974A363DE0854DD1089EFF6F97FA983F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		977614B0167FB7D07D9C88CE3C9C50C2 /* JWMenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWMenuPresentationController.swift; sourceTree = "<group>"; };
 		97D79049A97FEA5C9C4FCD7253AE6B5F /* Pods-JWDatePickerKit_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JWDatePickerKit_Tests"; path = Pods_JWDatePickerKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99FE2863C3A18EEDC91703FF613B9555 /* JWDialogManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWDialogManager-dummy.m"; sourceTree = "<group>"; };
 		9C11E0A30337427C6F01997CEE653A75 /* Pods-JWDatePickerKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D8028EFC6E248A7FC5C204A4D5FC4D9 /* JWDatePickerKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JWDatePickerKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F1E74CE844C1D59FE89F884188B3860 /* JWMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWMenuTransition.swift; sourceTree = "<group>"; };
 		9F52A7708ADA7BE702EA3D6B8E90E383 /* Pods-JWDatePickerKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		AB30E58FB5E266A6C69741EF52ECE44A /* JWDialogManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDialogManager.release.xcconfig; sourceTree = "<group>"; };
+		A12A7D81D3681F64CE8A426CB127A438 /* JWDialogManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JWDialogManager-Info.plist"; sourceTree = "<group>"; };
+		AB196685C6D533313AE6C82FF2ECFF65 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		ABE85422A69030151B582706FA6C1CEC /* Pods-JWDatePickerKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Example-Info.plist"; sourceTree = "<group>"; };
-		ACA5DADF0A788A84DFE939724FE8A5E6 /* JWDialogManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDialogManager-umbrella.h"; sourceTree = "<group>"; };
-		AF99E87052307808FBADBF7B8030E7F0 /* JWDialogManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JWDialogManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B360201A567555DD4FE15C15ADD3ECAE /* ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist"; sourceTree = "<group>"; };
 		B6EE9B694DD47C84891BFDE6F18A7F07 /* Pods-JWDatePickerKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JWDatePickerKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		BC112555849ECD8A7F30A7CDE21EF739 /* JWDatePickerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerType.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerType.swift; sourceTree = "<group>"; };
-		BE71E8D4A2095CA92C8CA7513296727E /* JWDatePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerViewController.swift; path = JWDatePickerKit/Classes/JWDatePickerViewController.swift; sourceTree = "<group>"; };
-		BE7DBE530919C5A88B7172E64F3E5782 /* JWDialogManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWDialogManager-dummy.m"; sourceTree = "<group>"; };
-		C0555CB646D974372047E0C00ACF7435 /* JWDialogManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDialogManager-prefix.pch"; sourceTree = "<group>"; };
 		C332F785230953E08B678131F66356CE /* Pods-JWDatePickerKit_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JWDatePickerKit_Example"; path = Pods_JWDatePickerKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3469E44C4808173FB255CB829197F71 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C7CE2579C6B50CB7E461FF96C77DF5B2 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C816707D8570F7C481E141021257B3DE /* JWDatePickerKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDatePickerKit.release.xcconfig; sourceTree = "<group>"; };
-		CECE9D92E3CE27BD685DFAFFE131D658 /* ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist"; sourceTree = "<group>"; };
+		C47162954B97ADD1E02949B131D78ECB /* JWDatePickerKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-prefix.pch"; sourceTree = "<group>"; };
+		CE57A71D960EC862BA301E94182C9BC6 /* JWDialogManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JWDialogManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CF07DE0D65D431753213BFBE726B296F /* Pods-JWDatePickerKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JWDatePickerKit_Example-dummy.m"; sourceTree = "<group>"; };
-		D0B01642A8840447ECDED9EFF24292F7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		D444B8A89DA36864AEDFBAD7D045614B /* JWDatePickerMenuHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerMenuHeaderView.swift; path = JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift; sourceTree = "<group>"; };
-		D4E6116A30F852213F4A33627ED0E032 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF347A348AB2909BBAEF63E300907488 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D252D8D0223FAF16012F710893C9B17C /* JWMenuTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWMenuTransition.swift; sourceTree = "<group>"; };
 		D6C67D8060F92C3590BE7046DB2EB546 /* Pods-JWDatePickerKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D7434A46228DAE8AB04A0F98D95E28C2 /* Pods-JWDatePickerKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		DB26B76075697C6B3181C785505A9835 /* UIViewController+JWDialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+JWDialog.swift"; path = "Sources/JWDialogManager/UIViewController+JWDialog.swift"; sourceTree = "<group>"; };
-		DE2E47326462198D93E914B57730B5D8 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		EBDBC6BC2CC877802565CE9A841210B4 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E137D25E811FA0B57EF5101C9CFABE80 /* JWPresentAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWPresentAnimator.swift; sourceTree = "<group>"; };
+		E241BF93976FBF84FC7939430A92C003 /* JWDialogTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWDialogTransition.swift; sourceTree = "<group>"; };
+		EDD9A15F05BA926ECF8CEC808DBFA527 /* JWDialogManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDialogManager.release.xcconfig; sourceTree = "<group>"; };
+		EEF0834C859E0D9A0FDBCFFAB379DB3A /* JWDatePickerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWDatePickerType.swift; path = JWDatePickerKit/Classes/Picker/JWDatePickerType.swift; sourceTree = "<group>"; };
 		F00B21DAA4619685343D88583F087B65 /* JWDialogManager */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JWDialogManager; path = JWDialogManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9B72E0429E76022CCE62E9E95FD6A5D /* JWBasePresentTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWBasePresentTransition.swift; sourceTree = "<group>"; };
+		FC8398228EDD1CAC0999A4BDFE5571ED /* JWDatePickerKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWDatePickerKit-umbrella.h"; sourceTree = "<group>"; };
 		FE06C45537D27C99EF8E5B08A932757E /* Pods-JWDatePickerKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JWDatePickerKit_Example-frameworks.sh"; sourceTree = "<group>"; };
-		FEC2ACB2423E499964CC2CC977B3E5C9 /* JWDialogManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JWDialogManager.debug.xcconfig; sourceTree = "<group>"; };
 		FFB1317FDBDA2E960642E12A23657C00 /* Pods-JWDatePickerKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JWDatePickerKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF0B94A6821281FA92F7A93F30894EE /* Pods-JWDatePickerKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JWDatePickerKit_Example.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		47839736C871D27B07859DF4BE5FA0DE /* Frameworks */ = {
+		1DA243564A2298FC24D65692C5ACC837 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA9BDA455B26D1D5B0B7BE88B483ACB /* Foundation.framework in Frameworks */,
-				296280EAACB30C30CFDF4B250B152768 /* SwiftUI.framework in Frameworks */,
-				D57C0AB6ADB5A263453BE6AE53D18FDD /* UIKit.framework in Frameworks */,
+				4C108C5855BBA13AA338F9132FDD529B /* Foundation.framework in Frameworks */,
+				0F992924375646A3E2807A746734B250 /* SwiftUI.framework in Frameworks */,
+				3FA97B5C7C1D4C02F56AA05E71F89759 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F356C7742E0BA7492C0F7A6137A0885 /* Frameworks */ = {
+		9DB878E0191211618435A6C3775B0491 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -205,22 +205,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		001E8A956B1364BBD0B2946A4E120AD6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				450BC9FB481C87AD16163C160150A06C /* JWDatePickerKit.modulemap */,
-				388BB99409E8EBDB9B0C64B169AF7437 /* JWDatePickerKit-dummy.m */,
-				4BB6BC2987F604C30AC92FEBF1C57DD8 /* JWDatePickerKit-Info.plist */,
-				6768C7DA374208E6D21FEF62B951B045 /* JWDatePickerKit-prefix.pch */,
-				0838BEFEB515E562CE8BB053649F2FB2 /* JWDatePickerKit-umbrella.h */,
-				1EA83F4A8BF483023BF52BA8E21ACE60 /* JWDatePickerKit.debug.xcconfig */,
-				C816707D8570F7C481E141021257B3DE /* JWDatePickerKit.release.xcconfig */,
-				CECE9D92E3CE27BD685DFAFFE131D658 /* ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist */,
-			);
-			name = "Support Files";
-			path = "Pods/Target Support Files/JWDatePickerKit";
-			sourceTree = "<group>";
-		};
 		03C5C200A0787E300053CFA8F53CA094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,37 +213,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0FEE7F2739003D11DFABF5EBF3657462 /* Dialog */ = {
+		07BCF8F5693BC013737D6CF60C1D298E /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				0D42016DBAC2BCE23CB9133E1FB71187 /* JWDialogConfig.swift */,
-				7AA298FE94E02D91CF771EE8084B39F2 /* JWDialogPresentationController.swift */,
-				553CF6172B0819F5263E36371C5535AE /* JWDialogTransition.swift */,
+				59C3F333885DA8CA47A3974C85B28664 /* JWDatePickerMenuHeaderView.swift */,
+				F8C3EA3E5E36B9F2538DDEC5DA1CCD9B /* Content */,
 			);
-			name = Dialog;
-			path = Sources/JWDialogManager/Dialog;
+			name = Content;
 			sourceTree = "<group>";
 		};
-		1E8BC602DC5A13304D102CA791605CDB /* JWDatePickerKit */ = {
+		07C250C37B967223A701D1FF5FACC6B5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				702321F53B4D8E013597AEEDB96C524C /* Content */,
-				CBC57B5344AC4C2781B42F5EBA1BE773 /* Controller */,
-				9A7E7E9F06743CDC68C4CA41A0EC6F0D /* Picker */,
-				566AB12497F4E7A4AFC5ABEA6F4A2FCC /* Pod */,
-				001E8A956B1364BBD0B2946A4E120AD6 /* Support Files */,
+				3D1E4F77D857297A92A462121D7BDF85 /* JWBasePresentationController.swift */,
+				F9B72E0429E76022CCE62E9E95FD6A5D /* JWBasePresentTransition.swift */,
+				E137D25E811FA0B57EF5101C9CFABE80 /* JWPresentAnimator.swift */,
+				3810B9F2078DF5F68E0EBB19AD7E8591 /* JWPresentConfig.swift */,
+				1BA290776F6F456B4B4B587636FAC328 /* UIViewController+JWDialog.swift */,
 			);
-			name = JWDatePickerKit;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		1FAC7DB00224850B89FCE2131BDAA9ED /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1E8BC602DC5A13304D102CA791605CDB /* JWDatePickerKit */,
-				76D45B0F8BD7E943DD20DBB60148EB75 /* JWDialogManager */,
-			);
-			name = "Development Pods";
+			name = Core;
+			path = Sources/JWDialogManager/Core;
 			sourceTree = "<group>";
 		};
 		33252E8AB9819D44A34EC705C8F84263 /* Products */ = {
@@ -272,26 +245,6 @@
 				97D79049A97FEA5C9C4FCD7253AE6B5F /* Pods-JWDatePickerKit_Tests */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		3A814FB46838D76B775ADA66BBBB268F /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				1D4477D9A9B363907D3FA0F0E59C4AEF /* JWMenuConfig.swift */,
-				83E7E85D8238FA46366AF5DBACB32296 /* JWMenuPresentationController.swift */,
-				9F1E74CE844C1D59FE89F884188B3860 /* JWMenuTransition.swift */,
-			);
-			name = Menu;
-			path = Sources/JWDialogManager/Menu;
-			sourceTree = "<group>";
-		};
-		3BC21F5BBB302A6A684DB0636AF2925B /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				3B0FFC09E0E56F517E1819675B4AADAC /* JWDialogSwiftUI.swift */,
-			);
-			name = SwiftUI;
-			path = Sources/JWDialogManager/SwiftUI;
 			sourceTree = "<group>";
 		};
 		4707C7624D044C70CB23AB4DCD6B3C9B /* Pods-JWDatePickerKit_Example */ = {
@@ -311,16 +264,6 @@
 			path = "Target Support Files/Pods-JWDatePickerKit_Example";
 			sourceTree = "<group>";
 		};
-		566AB12497F4E7A4AFC5ABEA6F4A2FCC /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				40D906627C26BA504094C96719FD90BE /* JWDatePickerKit.podspec */,
-				77EB65458615F940F8B6CB27435A8326 /* LICENSE */,
-				5D8A2E6FD31F4190856A7C1D278B7CBF /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		5A077FA93C333A695285486B5556A232 /* Pods-JWDatePickerKit_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,31 +280,80 @@
 			path = "Target Support Files/Pods-JWDatePickerKit_Tests";
 			sourceTree = "<group>";
 		};
-		702321F53B4D8E013597AEEDB96C524C /* Content */ = {
+		657F49C44F540ED4C486DE9D218D7D4E /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				D444B8A89DA36864AEDFBAD7D045614B /* JWDatePickerMenuHeaderView.swift */,
-				948C07A155674AB72EFEBB4AE4A5A8CB /* Content */,
+				9D8028EFC6E248A7FC5C204A4D5FC4D9 /* JWDatePickerKit.podspec */,
+				4279C003C63B7FFA14AABCBAFE4C49E6 /* LICENSE */,
+				974A363DE0854DD1089EFF6F97FA983F /* README.md */,
 			);
-			name = Content;
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		76D45B0F8BD7E943DD20DBB60148EB75 /* JWDialogManager */ = {
+		6A84524292A9AFD056BA7EADD7CB77C6 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				026E6E259D4CA6965A166224A1A6A9E5 /* JWBasePresentationController.swift */,
-				8042F83E81D2950A4549AD683686D164 /* JWBasePresentTransition.swift */,
-				89169E7B27CC9DBEAEA75EA679F1B268 /* JWPresentAnimator.swift */,
-				3AEFE67056D0DEC59982FD9C64D7E26F /* JWPresentConfig.swift */,
-				DB26B76075697C6B3181C785505A9835 /* UIViewController+JWDialog.swift */,
-				0FEE7F2739003D11DFABF5EBF3657462 /* Dialog */,
-				3A814FB46838D76B775ADA66BBBB268F /* Menu */,
-				EEBB7D05FA06498CDF5CF5270AAB424D /* Pod */,
-				9B4E7F647AF1562ACB5B22DDE0DE807E /* Support Files */,
-				3BC21F5BBB302A6A684DB0636AF2925B /* SwiftUI */,
+				5A6E8173F21C0B47ABB8C40FD42CBB03 /* JWMenuConfig.swift */,
+				977614B0167FB7D07D9C88CE3C9C50C2 /* JWMenuPresentationController.swift */,
+				D252D8D0223FAF16012F710893C9B17C /* JWMenuTransition.swift */,
+			);
+			name = Menu;
+			path = Sources/JWDialogManager/Menu;
+			sourceTree = "<group>";
+		};
+		7F56FF6449AFA810B22A19596B0662F7 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9303690A6DC16297D8EA9CE213ACC2CA /* JWDatePickerKit */,
+				85EB2CE20EFC31FBE5A1724216469374 /* JWDialogManager */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		8257DF887EE77B07D75663E4EE44EC80 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				7C05BB3B26A1AB1B2186E605BAB49A48 /* JWDialogSwiftUI.swift */,
+			);
+			name = SwiftUI;
+			path = Sources/JWDialogManager/SwiftUI;
+			sourceTree = "<group>";
+		};
+		85EB2CE20EFC31FBE5A1724216469374 /* JWDialogManager */ = {
+			isa = PBXGroup;
+			children = (
+				07C250C37B967223A701D1FF5FACC6B5 /* Core */,
+				9111BCBB90848E011E84A2A974C60F12 /* Dialog */,
+				6A84524292A9AFD056BA7EADD7CB77C6 /* Menu */,
+				9DB9D5CFB381DF1BFD5FC249D293C8C5 /* Pod */,
+				C6F37B5DF45BDC468EB89E27A1C83F5E /* Support Files */,
+				8257DF887EE77B07D75663E4EE44EC80 /* SwiftUI */,
 			);
 			name = JWDialogManager;
 			path = ../../JWDialogManager;
+			sourceTree = "<group>";
+		};
+		9111BCBB90848E011E84A2A974C60F12 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				0680122F48C97D5E212EBAAEB032BF59 /* JWDialogConfig.swift */,
+				76DC649CCD605BB3C3504F277037E847 /* JWDialogPresentationController.swift */,
+				E241BF93976FBF84FC7939430A92C003 /* JWDialogTransition.swift */,
+			);
+			name = Dialog;
+			path = Sources/JWDialogManager/Dialog;
+			sourceTree = "<group>";
+		};
+		912B6EB783DC58ABE19D56DA93CE2B1C /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				225D9E88B43EE313FEEE3E6C2260F3B3 /* JWDatePickerConfiguration.swift */,
+				5AC97E51F73346B87532EF79EE12A484 /* JWDatePickerLocalization.swift */,
+				EEF0834C859E0D9A0FDBCFFAB379DB3A /* JWDatePickerType.swift */,
+				3B86947D1843D21AC8D106807463DAD8 /* JWDatePickerView.swift */,
+				B375975B60A8D84C64539D6A1F1C2A0D /* Localizable.strings */,
+			);
+			name = Picker;
 			sourceTree = "<group>";
 		};
 		926313DA25643DFE3170C351163482D8 /* Targets Support Files */ = {
@@ -373,40 +365,27 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		948C07A155674AB72EFEBB4AE4A5A8CB /* Content */ = {
+		9303690A6DC16297D8EA9CE213ACC2CA /* JWDatePickerKit */ = {
 			isa = PBXGroup;
 			children = (
-				155B4C13834802FD5DD1DC2AF848F16D /* JWDatePickerContentView.swift */,
+				07BCF8F5693BC013737D6CF60C1D298E /* Content */,
+				B4720AAF222DE10940F760C856C5A9D7 /* Controller */,
+				912B6EB783DC58ABE19D56DA93CE2B1C /* Picker */,
+				657F49C44F540ED4C486DE9D218D7D4E /* Pod */,
+				E6928423B70E8C0735559B2D28D9FF3B /* Support Files */,
 			);
-			name = Content;
-			path = JWDatePickerKit/Classes/Content;
+			name = JWDatePickerKit;
+			path = ..;
 			sourceTree = "<group>";
 		};
-		9A7E7E9F06743CDC68C4CA41A0EC6F0D /* Picker */ = {
+		9DB9D5CFB381DF1BFD5FC249D293C8C5 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				62F82ECAF094AEF9B400D9C5D28E61FB /* JWDatePickerConfiguration.swift */,
-				7ACA820AF1405470BD8D35049EB82DF2 /* JWDatePickerLocalization.swift */,
-				BC112555849ECD8A7F30A7CDE21EF739 /* JWDatePickerType.swift */,
-				8204993B518ABFE485E8003DBD04C52E /* JWDatePickerView.swift */,
-				D2E1470C890C2208DF6E3B976C63F24D /* Localizable.strings */,
+				CE57A71D960EC862BA301E94182C9BC6 /* JWDialogManager.podspec */,
+				AB196685C6D533313AE6C82FF2ECFF65 /* LICENSE */,
+				262CD27A641DB9FED239D99FF85A51FC /* README.md */,
 			);
-			name = Picker;
-			sourceTree = "<group>";
-		};
-		9B4E7F647AF1562ACB5B22DDE0DE807E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				3B0C8274B10F0AC07944D8A4727B4364 /* JWDialogManager.modulemap */,
-				BE7DBE530919C5A88B7172E64F3E5782 /* JWDialogManager-dummy.m */,
-				017371118A6DB2BD3E090F9C765AF5AE /* JWDialogManager-Info.plist */,
-				C0555CB646D974372047E0C00ACF7435 /* JWDialogManager-prefix.pch */,
-				ACA5DADF0A788A84DFE939724FE8A5E6 /* JWDialogManager-umbrella.h */,
-				FEC2ACB2423E499964CC2CC977B3E5C9 /* JWDialogManager.debug.xcconfig */,
-				AB30E58FB5E266A6C69741EF52ECE44A /* JWDialogManager.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../JWDatePickerKit/Pods/Target Support Files/JWDialogManager";
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		B372DB24E1499B3F8416E84D590C43B8 /* iOS */ = {
@@ -419,43 +398,73 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		CBC57B5344AC4C2781B42F5EBA1BE773 /* Controller */ = {
+		B4720AAF222DE10940F760C856C5A9D7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BE71E8D4A2095CA92C8CA7513296727E /* JWDatePickerViewController.swift */,
+				44A366B7A9BCE690A8D7051EAC4240FA /* JWDatePickerViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		C6F37B5DF45BDC468EB89E27A1C83F5E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				94FBF817118F70B7924FB0A37BE20CB5 /* JWDialogManager.modulemap */,
+				99FE2863C3A18EEDC91703FF613B9555 /* JWDialogManager-dummy.m */,
+				A12A7D81D3681F64CE8A426CB127A438 /* JWDialogManager-Info.plist */,
+				7AF497C1504563F47428AFD40D928718 /* JWDialogManager-prefix.pch */,
+				5D677335457EE9A0C5D700AF9004AC63 /* JWDialogManager-umbrella.h */,
+				21547B2D5177F9DBB1F624F691692244 /* JWDialogManager.debug.xcconfig */,
+				EDD9A15F05BA926ECF8CEC808DBFA527 /* JWDialogManager.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../JWDatePickerKit/Pods/Target Support Files/JWDialogManager";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				1FAC7DB00224850B89FCE2131BDAA9ED /* Development Pods */,
+				7F56FF6449AFA810B22A19596B0662F7 /* Development Pods */,
 				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
 				33252E8AB9819D44A34EC705C8F84263 /* Products */,
 				926313DA25643DFE3170C351163482D8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		EEBB7D05FA06498CDF5CF5270AAB424D /* Pod */ = {
+		E6928423B70E8C0735559B2D28D9FF3B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				AF99E87052307808FBADBF7B8030E7F0 /* JWDialogManager.podspec */,
-				887CF233B1A9C29DAA08CF02FCBFE03F /* LICENSE */,
-				D0B01642A8840447ECDED9EFF24292F7 /* README.md */,
+				7C3B88D6F1487AD824E2A65D4E3E01FA /* JWDatePickerKit.modulemap */,
+				487D7EC574D114A1B1FB4C4A1EB233AF /* JWDatePickerKit-dummy.m */,
+				166A1C7B39FF2E70E2C5B0DC35895A44 /* JWDatePickerKit-Info.plist */,
+				C47162954B97ADD1E02949B131D78ECB /* JWDatePickerKit-prefix.pch */,
+				FC8398228EDD1CAC0999A4BDFE5571ED /* JWDatePickerKit-umbrella.h */,
+				6C6870C55108A29B5C455031F856A9DE /* JWDatePickerKit.debug.xcconfig */,
+				74A96E16361EAF42C4D60D9891CCF481 /* JWDatePickerKit.release.xcconfig */,
+				B360201A567555DD4FE15C15ADD3ECAE /* ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist */,
 			);
-			name = Pod;
+			name = "Support Files";
+			path = "Pods/Target Support Files/JWDatePickerKit";
+			sourceTree = "<group>";
+		};
+		F8C3EA3E5E36B9F2538DDEC5DA1CCD9B /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				6A4A2C9D6697D0712FB5A3183396A0F3 /* JWDatePickerContentView.swift */,
+			);
+			name = Content;
+			path = JWDatePickerKit/Classes/Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4779A3402BCA09EC69442914625448A1 /* Headers */ = {
+		336FDF9CD5AF7B6B0952555EF9CC6666 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DCE4184700B9AFC8EA9AA4DA0E9C65C /* JWDialogManager-umbrella.h in Headers */,
+				F7DB14EA2C91166440735D46254B2F65 /* JWDialogManager-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,12 +497,12 @@
 /* Begin PBXNativeTarget section */
 		03FB5E99C9387563DEFBEF8110E6C54A /* JWDialogManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C7D8816C1DB44A6B204AF7477614790A /* Build configuration list for PBXNativeTarget "JWDialogManager" */;
+			buildConfigurationList = 70EBBBC2EA88B8086CFDED7EE0B36C83 /* Build configuration list for PBXNativeTarget "JWDialogManager" */;
 			buildPhases = (
-				4779A3402BCA09EC69442914625448A1 /* Headers */,
-				80B1167556CAB56DB31224F0B06FDB27 /* Sources */,
-				47839736C871D27B07859DF4BE5FA0DE /* Frameworks */,
-				017D85A0DBB9051DF8997B94A92ABC19 /* Resources */,
+				336FDF9CD5AF7B6B0952555EF9CC6666 /* Headers */,
+				E14088A1F9A76625CDF4FAFE7F316A86 /* Sources */,
+				1DA243564A2298FC24D65692C5ACC837 /* Frameworks */,
+				3E3FFE1730F0738C9D6E575D1BEE5808 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -516,8 +525,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				6CB0363059F545D0E4EECA3A3C27D4AE /* PBXTargetDependency */,
-				67B01A9BABE948916530C0513BCC519A /* PBXTargetDependency */,
+				E31A9487C16B9D8A1806393794190E5B /* PBXTargetDependency */,
+				62E9C313BE6056E1F5E93E5144BCC3DF /* PBXTargetDependency */,
 			);
 			name = "Pods-JWDatePickerKit_Example";
 			productName = Pods_JWDatePickerKit_Example;
@@ -536,7 +545,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				51EC5D9E4665CC9FB14837C806AFCACF /* PBXTargetDependency */,
+				3B033AFF1E871DFCFC7B93CBB5A33E37 /* PBXTargetDependency */,
 			);
 			name = "Pods-JWDatePickerKit_Tests";
 			productName = Pods_JWDatePickerKit_Tests;
@@ -555,8 +564,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				D5EE8BC00F43B2B2564742CE4A031668 /* PBXTargetDependency */,
-				D0EAB1531E0AB4D18F0EF942A2F6E69B /* PBXTargetDependency */,
+				FB269836F39798144001C7C6E4D7DCFC /* PBXTargetDependency */,
+				8D6ADCA442E93C06FA39C36A3B270DCE /* PBXTargetDependency */,
 			);
 			name = JWDatePickerKit;
 			productName = JWDatePickerKit;
@@ -565,11 +574,11 @@
 		};
 		B0AA0EA1B759DA52FC02E7E6DCA47A48 /* JWDatePickerKit-JWDatePickerKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BD5A78FC2A152965D3D5C651277166C9 /* Build configuration list for PBXNativeTarget "JWDatePickerKit-JWDatePickerKit" */;
+			buildConfigurationList = CDB9DF45560BC7A93F7FAFDCF9D1826C /* Build configuration list for PBXNativeTarget "JWDatePickerKit-JWDatePickerKit" */;
 			buildPhases = (
-				C1A3F37850303F1A7D3C5C4482FCD86B /* Sources */,
-				4F356C7742E0BA7492C0F7A6137A0885 /* Frameworks */,
-				C3E602EAE959643A62909332108A6469 /* Resources */,
+				14206BAC1A80CF326FA3F14FA4C971AC /* Sources */,
+				9DB878E0191211618435A6C3775B0491 /* Frameworks */,
+				B4A09BF867D0BE64A6D11BDFB1F81337 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -622,14 +631,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		017D85A0DBB9051DF8997B94A92ABC19 /* Resources */ = {
+		1A385C744013A91D46A3A55FD006BDA6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A385C744013A91D46A3A55FD006BDA6 /* Resources */ = {
+		3E3FFE1730F0738C9D6E575D1BEE5808 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -644,11 +653,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C3E602EAE959643A62909332108A6469 /* Resources */ = {
+		B4A09BF867D0BE64A6D11BDFB1F81337 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ED45EE00DAA03C1CDF6294430C206A9 /* Localizable.strings in Resources */,
+				0DBD953127394948866098B7FD4ED8D3 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,31 +671,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		14206BAC1A80CF326FA3F14FA4C971AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A30F36731BFDE5719EFDE7C701CC228 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				94C414DFDC0B45D5569317EF177A7F50 /* Pods-JWDatePickerKit_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		80B1167556CAB56DB31224F0B06FDB27 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DCD1D078E6748C2E11D0E7357DF2E844 /* JWBasePresentationController.swift in Sources */,
-				42D87CD46E72EF35D587C0E7CB2FDB4B /* JWBasePresentTransition.swift in Sources */,
-				ECBC672A0D78955DA34E56BF899D5F03 /* JWDialogConfig.swift in Sources */,
-				8A88B40EE991FCCD0F391E1131CD0A98 /* JWDialogManager-dummy.m in Sources */,
-				CB2E411217696345E2E97B546BE409B2 /* JWDialogPresentationController.swift in Sources */,
-				58FACA044824ABCB3E47CEEE69E507F7 /* JWDialogSwiftUI.swift in Sources */,
-				CCE78E9A28265DA53A00442EB75C6E12 /* JWDialogTransition.swift in Sources */,
-				7E6EA673329C447B037C4CC96F811218 /* JWMenuConfig.swift in Sources */,
-				1E1E6E6A63EAD732FF6945656225A3D0 /* JWMenuPresentationController.swift in Sources */,
-				FF419B3E497DE930AC63BDFAC9A7E41E /* JWMenuTransition.swift in Sources */,
-				88913CEEBD2F4B49DBD743D6E877580F /* JWPresentAnimator.swift in Sources */,
-				523D415357379214649E947965EACF59 /* JWPresentConfig.swift in Sources */,
-				EDE2A0143422FDCDEA191644BF20DB38 /* UIViewController+JWDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,10 +694,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1A3F37850303F1A7D3C5C4482FCD86B /* Sources */ = {
+		E14088A1F9A76625CDF4FAFE7F316A86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23739ADEA07994AF72A3D18A68184B03 /* JWBasePresentationController.swift in Sources */,
+				2017EFB8A3897AE0DBE8DCA48815B982 /* JWBasePresentTransition.swift in Sources */,
+				F40AF1ACE84C2FC81C6CBC1163032C9C /* JWDialogConfig.swift in Sources */,
+				9D0C4A451BF47E22D9CB0BDCE1766619 /* JWDialogManager-dummy.m in Sources */,
+				D176C1FA78C2521CD623E075D7D05D96 /* JWDialogPresentationController.swift in Sources */,
+				83673DB019AA6B498B1821FF59887AC4 /* JWDialogSwiftUI.swift in Sources */,
+				DA73455B660F6DCA6910A8979179B1F6 /* JWDialogTransition.swift in Sources */,
+				56EA7CE50D37C8D75EA02476D7025C75 /* JWMenuConfig.swift in Sources */,
+				1B4444451D34E505ABC775D8BB6ED1E5 /* JWMenuPresentationController.swift in Sources */,
+				F13B0C9AA2C0DD605FA02BD9B967CE3A /* JWMenuTransition.swift in Sources */,
+				0A01945C7B3960F84BC486E60BE5C6BA /* JWPresentAnimator.swift in Sources */,
+				12789BA7FBF48A6462D9516D35925FD4 /* JWPresentConfig.swift in Sources */,
+				F9EF71CEA2CE035006D02ABBAE29D774 /* UIViewController+JWDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,51 +732,51 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		51EC5D9E4665CC9FB14837C806AFCACF /* PBXTargetDependency */ = {
+		3B033AFF1E871DFCFC7B93CBB5A33E37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-JWDatePickerKit_Example";
 			target = 0E62B3C7A170613221B80704F6CB95CD /* Pods-JWDatePickerKit_Example */;
-			targetProxy = B13C267891A56E230EAE8869BD5A3025 /* PBXContainerItemProxy */;
+			targetProxy = C5CACD98CA2679C624220340AEE6AAD9 /* PBXContainerItemProxy */;
 		};
-		67B01A9BABE948916530C0513BCC519A /* PBXTargetDependency */ = {
+		62E9C313BE6056E1F5E93E5144BCC3DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JWDialogManager;
 			target = 03FB5E99C9387563DEFBEF8110E6C54A /* JWDialogManager */;
-			targetProxy = CB99424A86D1AB9939BE2B80E88BFBE0 /* PBXContainerItemProxy */;
+			targetProxy = 1F6A1B1974BCA318B4D5BF1929205B62 /* PBXContainerItemProxy */;
 		};
-		6CB0363059F545D0E4EECA3A3C27D4AE /* PBXTargetDependency */ = {
+		8D6ADCA442E93C06FA39C36A3B270DCE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JWDialogManager;
+			target = 03FB5E99C9387563DEFBEF8110E6C54A /* JWDialogManager */;
+			targetProxy = 2ED466C64015B21A9BD4FF98BE86376A /* PBXContainerItemProxy */;
+		};
+		E31A9487C16B9D8A1806393794190E5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JWDatePickerKit;
 			target = 92736E36D73B7F74F8ECA60D17A8FFBC /* JWDatePickerKit */;
-			targetProxy = F1FD0DDD3E5D0626707B085181B069C5 /* PBXContainerItemProxy */;
+			targetProxy = 79A3CE18B42E62EC7401DACEEF9D683C /* PBXContainerItemProxy */;
 		};
-		D0EAB1531E0AB4D18F0EF942A2F6E69B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = JWDialogManager;
-			target = 03FB5E99C9387563DEFBEF8110E6C54A /* JWDialogManager */;
-			targetProxy = DCD242B5E6B04D08A18798FFE20C575E /* PBXContainerItemProxy */;
-		};
-		D5EE8BC00F43B2B2564742CE4A031668 /* PBXTargetDependency */ = {
+		FB269836F39798144001C7C6E4D7DCFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "JWDatePickerKit-JWDatePickerKit";
 			target = B0AA0EA1B759DA52FC02E7E6DCA47A48 /* JWDatePickerKit-JWDatePickerKit */;
-			targetProxy = 6547F863EB35F6FC1D9B9D78FE7BD64A /* PBXContainerItemProxy */;
+			targetProxy = 735C4AC6B83C221E0C004E160EAA8C3E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D2E1470C890C2208DF6E3B976C63F24D /* Localizable.strings */ = {
+		B375975B60A8D84C64539D6A1F1C2A0D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				88B35F057A93E32D0035BA3A89669E83 /* Localizable.strings */,
-				EBDBC6BC2CC877802565CE9A841210B4 /* Localizable.strings */,
-				C7CE2579C6B50CB7E461FF96C77DF5B2 /* Localizable.strings */,
-				C3469E44C4808173FB255CB829197F71 /* Localizable.strings */,
-				178AE0FA6D49CBBD645AF1949E31A3DF /* Localizable.strings */,
-				42A4B060388B8140D5F47FF7E836072E /* Localizable.strings */,
-				D4E6116A30F852213F4A33627ED0E032 /* Localizable.strings */,
-				3F1566A3B1676CB4FC72578EA7DEEAB8 /* Localizable.strings */,
-				DE2E47326462198D93E914B57730B5D8 /* Localizable.strings */,
+				6D73FE7BD45C431A28D63424508C6A35 /* Localizable.strings */,
+				43F318790CF6FFD2DF1A022374CF7C89 /* Localizable.strings */,
+				CF347A348AB2909BBAEF63E300907488 /* Localizable.strings */,
+				5B43041EC44D7A0DDDCACCF80A1243A0 /* Localizable.strings */,
+				1ED20ECA24893333DD4B11C9EF4F7BB3 /* Localizable.strings */,
+				7CA724D4316AEF30942E7330056546AC /* Localizable.strings */,
+				89288094AD66B60612E06951BE9FB442 /* Localizable.strings */,
+				354E3ED0CB831B56046ED615966CC4D3 /* Localizable.strings */,
+				6D61F6703B36B3118DF8F3AC1C8D1764 /* Localizable.strings */,
 			);
 			name = Localizable.strings;
 			path = JWDatePickerKit/Resources;
@@ -776,9 +785,26 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0F5A2C223375D5EFB9A6E203430466E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C6870C55108A29B5C455031F856A9DE /* JWDatePickerKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JWDatePickerKit";
+				IBSC_MODULE = JWDatePickerKit;
+				INFOPLIST_FILE = "Target Support Files/JWDatePickerKit/ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_NAME = JWDatePickerKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		302467F10157D1292648DA827144CB49 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EA83F4A8BF483023BF52BA8E21ACE60 /* JWDatePickerKit.debug.xcconfig */;
+			baseConfigurationReference = 6C6870C55108A29B5C455031F856A9DE /* JWDatePickerKit.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -847,79 +873,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		5BB6C14CCF06CA8FC7584F207AC4BFD9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FEC2ACB2423E499964CC2CC977B3E5C9 /* JWDialogManager.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/JWDialogManager/JWDialogManager-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/JWDialogManager/JWDialogManager-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JWDialogManager/JWDialogManager.modulemap";
-				PRODUCT_MODULE_NAME = JWDialogManager;
-				PRODUCT_NAME = JWDialogManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7E07C3DABCF421472474B7000341FCF6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB30E58FB5E266A6C69741EF52ECE44A /* JWDialogManager.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/JWDialogManager/JWDialogManager-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/JWDialogManager/JWDialogManager-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JWDialogManager/JWDialogManager.modulemap";
-				PRODUCT_MODULE_NAME = JWDialogManager;
-				PRODUCT_NAME = JWDialogManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		8696A54FFF9DF857AFD1FF87DC3C8D08 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1122,9 +1075,9 @@
 			};
 			name = Release;
 		};
-		CA865AEDD27E06C6FD3804CC185B8628 /* Release */ = {
+		9A3E49C1EE6F7C9D77AC04262DE62AD6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C816707D8570F7C481E141021257B3DE /* JWDatePickerKit.release.xcconfig */;
+			baseConfigurationReference = 74A96E16361EAF42C4D60D9891CCF481 /* JWDatePickerKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGNING_ALLOWED = NO;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JWDatePickerKit";
@@ -1139,26 +1092,82 @@
 			};
 			name = Release;
 		};
-		D80A7B9EB10BC2C4FBFF2C75FA7836A5 /* Debug */ = {
+		9DE6A22CE656C7EC1AA32CDDCBCFB053 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EA83F4A8BF483023BF52BA8E21ACE60 /* JWDatePickerKit.debug.xcconfig */;
+			baseConfigurationReference = 21547B2D5177F9DBB1F624F691692244 /* JWDialogManager.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/JWDatePickerKit";
-				IBSC_MODULE = JWDatePickerKit;
-				INFOPLIST_FILE = "Target Support Files/JWDatePickerKit/ResourceBundle-JWDatePickerKit-JWDatePickerKit-Info.plist";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/JWDialogManager/JWDialogManager-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/JWDialogManager/JWDialogManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_NAME = JWDatePickerKit;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JWDialogManager/JWDialogManager.modulemap";
+				PRODUCT_MODULE_NAME = JWDialogManager;
+				PRODUCT_NAME = JWDialogManager;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
+		B8BBC9D7F9957F237A471FCB1B97E01C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDD9A15F05BA926ECF8CEC808DBFA527 /* JWDialogManager.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/JWDialogManager/JWDialogManager-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/JWDialogManager/JWDialogManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JWDialogManager/JWDialogManager.modulemap";
+				PRODUCT_MODULE_NAME = JWDialogManager;
+				PRODUCT_NAME = JWDialogManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		E5BFC46C0288EE5E82F7CB379D6372E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C816707D8570F7C481E141021257B3DE /* JWDatePickerKit.release.xcconfig */;
+			baseConfigurationReference = 74A96E16361EAF42C4D60D9891CCF481 /* JWDatePickerKit.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1260,20 +1269,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BD5A78FC2A152965D3D5C651277166C9 /* Build configuration list for PBXNativeTarget "JWDatePickerKit-JWDatePickerKit" */ = {
+		70EBBBC2EA88B8086CFDED7EE0B36C83 /* Build configuration list for PBXNativeTarget "JWDialogManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D80A7B9EB10BC2C4FBFF2C75FA7836A5 /* Debug */,
-				CA865AEDD27E06C6FD3804CC185B8628 /* Release */,
+				9DE6A22CE656C7EC1AA32CDDCBCFB053 /* Debug */,
+				B8BBC9D7F9957F237A471FCB1B97E01C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C7D8816C1DB44A6B204AF7477614790A /* Build configuration list for PBXNativeTarget "JWDialogManager" */ = {
+		CDB9DF45560BC7A93F7FAFDCF9D1826C /* Build configuration list for PBXNativeTarget "JWDatePickerKit-JWDatePickerKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5BB6C14CCF06CA8FC7584F207AC4BFD9 /* Debug */,
-				7E07C3DABCF421472474B7000341FCF6 /* Release */,
+				0F5A2C223375D5EFB9A6E203430466E7 /* Debug */,
+				9A3E49C1EE6F7C9D77AC04262DE62AD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

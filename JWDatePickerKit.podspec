@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     s.subspec 'Controller' do |controller|
         controller.source_files = 'JWDatePickerKit/Classes/JWDatePickerViewController.swift'
         controller.dependency 'JWDatePickerKit/Content'
-        controller.dependency 'JWDialogManager', '~> 0.1'
+        controller.dependency 'JWDialogManager', '~> 0.1.1'
     end
 
 end

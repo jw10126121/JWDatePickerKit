@@ -72,7 +72,7 @@ struct DateForm: View {
 }
 ```
 
-本项目的 CocoaPods Controller 子模块依赖 JWDialogManager。先将私有 Specs 仓库加入 CocoaPods，再安装 JWDatePickerKit。
+本项目的 CocoaPods Controller 子模块依赖 JWDialogManager。先将 JWPublicSpecs 仓库加入 CocoaPods，再安装 JWDatePickerKit。
 
 ```sh
 pod repo add JWPublicSpecs https://gitee.com/jw10126121/JWPublicSpecs.git
