@@ -421,4 +421,83 @@ final class Tests: XCTestCase {
         XCTAssertEqual(callbacks, 1)
     }
 
+    func testHeaderSeparatorDefaultsAndIndependentVisibility() throws {
+        let header = JWDatePickerMenuHeaderView(frame: CGRect(x: 0, y: 0, width: 390, height: 56))
+        header.layoutIfNeeded()
+        let lines = header.subviews.filter { type(of: $0) == UIView.self }
+        XCTAssertEqual(lines.count, 2)
+        let top = try XCTUnwrap(lines.first)
+        let bottom = try XCTUnwrap(lines.last)
+        XCTAssertFalse(header.showsTopLine)
+        XCTAssertFalse(header.showsBottomLine)
+        XCTAssertTrue(top.isHidden)
+        XCTAssertTrue(bottom.isHidden)
+
+        header.showsTopLine = true
+        XCTAssertFalse(top.isHidden)
+        XCTAssertTrue(bottom.isHidden)
+        header.showsBottomLine = true
+        XCTAssertFalse(top.isHidden)
+        XCTAssertFalse(bottom.isHidden)
+        XCTAssertEqual(top.frame.minY, 0)
+        XCTAssertEqual(bottom.frame.maxY, header.bounds.height)
+        XCTAssertEqual(top.frame.height, 1)
+        XCTAssertEqual(bottom.frame.height, 1)
+        header.lineColor = .systemRed
+        XCTAssertEqual(top.backgroundColor, .systemRed)
+        XCTAssertEqual(bottom.backgroundColor, .systemRed)
+        header.showsTopLine = false
+        XCTAssertTrue(top.isHidden)
+        XCTAssertFalse(bottom.isHidden)
+        header.showsBottomLine = false
+        XCTAssertTrue(bottom.isHidden)
+    }
+
+    func testHeaderSeparatorsRenderInsideRoundedPanel() throws {
+        let controller = JWDatePickerViewController()
+        controller.topCornerRadius = 24
+        controller.loadViewIfNeeded()
+        controller.view.frame = CGRect(x: 0, y: 0, width: 390, height: 300)
+        let header = controller.headerView
+        header.lineColor = .red
+
+        func render() throws -> CGImage {
+            controller.view.layoutIfNeeded()
+            let renderer = UIGraphicsImageRenderer(bounds: controller.view.bounds)
+            let image = renderer.image { context in
+                controller.view.layer.render(in: context.cgContext)
+            }
+            return try XCTUnwrap(image.cgImage)
+        }
+
+        func pixel(in image: CGImage, y: Int) throws -> [UInt8] {
+            let sample = try XCTUnwrap(image.cropping(to: CGRect(x: image.width / 2, y: y, width: 1, height: 1)))
+            var color = [UInt8](repeating: 0, count: 4)
+            try color.withUnsafeMutableBytes { buffer in
+                let context = try XCTUnwrap(CGContext(data: buffer.baseAddress, width: 1, height: 1,
+                    bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+                context.draw(sample, in: CGRect(x: 0, y: 0, width: 1, height: 1))
+            }
+            return color
+        }
+
+        for style in [UIUserInterfaceStyle.light, .dark] {
+            controller.overrideUserInterfaceStyle = style
+            header.showsTopLine = true
+            header.showsBottomLine = true
+            let visible = try render()
+            let scale = CGFloat(visible.width) / controller.view.bounds.width
+            let bottomY = Int(header.frame.maxY * scale) - 1
+            XCTAssertEqual(try pixel(in: visible, y: 0), [255, 0, 0, 255])
+            XCTAssertEqual(try pixel(in: visible, y: bottomY), [255, 0, 0, 255])
+
+            header.showsTopLine = false
+            header.showsBottomLine = false
+            let hidden = try render()
+            XCTAssertNotEqual(try pixel(in: hidden, y: 0), [255, 0, 0, 255])
+            XCTAssertNotEqual(try pixel(in: hidden, y: bottomY), [255, 0, 0, 255])
+        }
+    }
+
 }

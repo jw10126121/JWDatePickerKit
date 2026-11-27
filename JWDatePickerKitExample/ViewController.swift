@@ -84,7 +84,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
             string: controller.datePickerMode.localizedTitle(locale: locale),
             attributes: [.font: titleFont, .foregroundColor: UIColor.label]
         )
-        let buttonFont = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 14))
+        let buttonFont = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 16))
         controller.headerView.cancelFont = buttonFont
         controller.headerView.confirmFont = buttonFont
         controller.headerView.cancelNormalColor = .secondaryLabel

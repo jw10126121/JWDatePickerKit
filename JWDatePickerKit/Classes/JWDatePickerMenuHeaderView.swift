@@ -25,8 +25,10 @@ import UIKit
     @objc public dynamic var lineColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1) {
         didSet { updateAppearance() }
     }
-    @objc public var showsTopLine = true { didSet { topLine.isHidden = !showsTopLine } }
-    @objc public var showsBottomLine = true { didSet { bottomLine.isHidden = !showsBottomLine } }
+    /// 是否显示头部上分隔线，默认隐藏。
+    @objc public var showsTopLine = false { didSet { topLine.isHidden = !showsTopLine } }
+    /// 是否显示头部下分隔线，默认隐藏。
+    @objc public var showsBottomLine = false { didSet { bottomLine.isHidden = !showsBottomLine } }
 
     private var customCancelTitle: String?
     private var customConfirmTitle: String?
@@ -83,6 +85,9 @@ import UIKit
         confirmButton.titleLabel?.font = confirmFont
         topLine.backgroundColor = lineColor
         bottomLine.backgroundColor = lineColor
+        // 属性初始值不会触发 didSet，初始化时也需要同步实际可见性。
+        topLine.isHidden = !showsTopLine
+        bottomLine.isHidden = !showsBottomLine
         setNeedsLayout()
     }
 
@@ -99,9 +104,10 @@ import UIKit
             swap(&cancelButton.frame, &confirmButton.frame)
         }
         titleLabel.frame = CGRect(x: left + buttonWidth + 8, y: 0, width: max(0, available - 2 * buttonWidth - 16), height: bounds.height)
-        let pixel = 1 / (window?.screen.scale ?? UIScreen.main.scale)
-        topLine.frame = CGRect(x: 0, y: 0, width: bounds.width, height: pixel)
-        bottomLine.frame = CGRect(x: 0, y: bounds.height - pixel, width: bounds.width, height: pixel)
+        // 使用 1 点厚度，使紧贴圆角弹窗顶缘的分隔线在 Retina 屏上也清晰可见。
+        let lineHeight: CGFloat = 1
+        topLine.frame = CGRect(x: 0, y: 0, width: bounds.width, height: lineHeight)
+        bottomLine.frame = CGRect(x: 0, y: bounds.height - lineHeight, width: bounds.width, height: lineHeight)
     }
 
     @objc private func cancel() { cancelHandler?() }
