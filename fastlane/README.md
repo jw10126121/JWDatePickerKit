@@ -1,7 +1,32 @@
-在项目根目录执行以下命令，将当前 Podspec 版本发布到 JWPublicSpecs。
+fastlane documentation
+----
+
+# Installation
+
+Make sure you have the latest version of the Xcode command line tools installed:
 
 ```sh
-bundle exec fastlane ios release_private_pod
+xcode-select --install
 ```
 
-发布前需更新 `JWDatePickerKit.podspec` 的版本号，并提交、推送源码改动。默认 Specs 仓库路径为项目同级目录 `../JWPublicSpecs`，也可通过 `JW_PUBLIC_SPECS_PATH` 指定其他 checkout 路径。
+For _fastlane_ installation instructions, see [Installing _fastlane_](https://docs.fastlane.tools/#installing-fastlane)
+
+# Available Actions
+
+## iOS
+
+### ios release_private_pod
+
+```sh
+[bundle exec] fastlane ios release_private_pod
+```
+
+发布 JWDatePickerKit 到 JWPublicSpecs Specs 仓库
+
+----
+
+This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
+
+More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).
+
+The documentation of _fastlane_ can be found on [docs.fastlane.tools](https://docs.fastlane.tools).

@@ -35,3 +35,6 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 # Pods/
+
+# Fastlane writes this report after every lane run.
+/fastlane/report.xml
