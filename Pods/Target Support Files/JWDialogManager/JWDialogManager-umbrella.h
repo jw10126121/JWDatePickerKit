@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double XBDialogVersionNumber;
-FOUNDATION_EXPORT const unsigned char XBDialogVersionString[];
+FOUNDATION_EXPORT double JWDialogManagerVersionNumber;
+FOUNDATION_EXPORT const unsigned char JWDialogManagerVersionString[];
 

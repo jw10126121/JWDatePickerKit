@@ -1,0 +1,6 @@
+framework module JWDialogManager {
+  umbrella header "JWDialogManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

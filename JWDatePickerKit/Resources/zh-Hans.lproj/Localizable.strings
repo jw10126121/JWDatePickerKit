@@ -34,7 +34,7 @@
 "cancelled" = "已取消";
 "cancel" = "取消";
 "confirm" = "确定";
-"dialog.section" = "XBDialog 弹窗示例";
+"dialog.section" = "JWDialogManager 弹窗示例";
 "dialog.centeredFade" = "居中弹窗 · 淡入";
 "dialog.centeredFade.detail" = "自适应尺寸与背景遮罩";
 "dialog.centeredScale" = "居中弹窗 · 弹性缩放";

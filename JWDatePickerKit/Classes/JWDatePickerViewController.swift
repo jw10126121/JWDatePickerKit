@@ -1,5 +1,5 @@
 import UIKit
-import XBDialog
+import JWDialogManager
 
 /// 底部日期弹层，也可通过 contentView 访问完整面板配置。
 @objc public class JWDatePickerViewController: UIViewController {
@@ -121,18 +121,18 @@ import XBDialog
     }
 }
 
-/// 复用 XBDialog 的转场动画，布局从本次呈现的容器读取安全区。
+/// 复用 JWDialogManager 的转场动画，布局从本次呈现的容器读取安全区。
 @MainActor
 private final class DatePickerSheetTransition: NSObject, UIViewControllerTransitioningDelegate {
-    private let animator: XBPresentAnimator
-    private let config: MenuConfig
+    private let animator: JWPresentAnimator
+    private let config: JWMenuConfig
 
     init(_ controller: JWDatePickerViewController) {
-        animator = XBPresentAnimator(controller)
+        animator = JWPresentAnimator(controller)
         animator.menu { config in
             config.menuType = .bottomHeight(h: controller.contentView.headerHeight + controller.contentView.pickerHeight)
         }
-        config = animator.config as! MenuConfig
+        config = animator.config as! JWMenuConfig
         super.init()
     }
 
@@ -151,11 +151,11 @@ private final class DatePickerSheetTransition: NSObject, UIViewControllerTransit
 
 @MainActor
 private final class DatePickerSheetPresentation: UIPresentationController {
-    private let config: MenuConfig
+    private let config: JWMenuConfig
     private let maskView = UIView()
     private var pickerController: JWDatePickerViewController { presentedViewController as! JWDatePickerViewController }
 
-    init(presentedViewController: UIViewController, presenting: UIViewController?, config: MenuConfig) {
+    init(presentedViewController: UIViewController, presenting: UIViewController?, config: JWMenuConfig) {
         self.config = config
         super.init(presentedViewController: presentedViewController, presenting: presenting)
         maskView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedBackdrop)))

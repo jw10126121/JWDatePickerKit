@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JWDatePickerKit'
-    s.version          = '0.1.2'
+    s.version          = '0.1.3'
     s.summary          = 'JWDatePickerKit.时间选择控件'
     s.homepage         = 'https://github.com/jw10126121/JWDatePickerKit'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     s.subspec 'Controller' do |controller|
         controller.source_files = 'JWDatePickerKit/Classes/JWDatePickerViewController.swift'
         controller.dependency 'JWDatePickerKit/Content'
-        controller.dependency 'XBDialog', '~> 1.6'
+        controller.dependency 'JWDialogManager', '~> 0.1'
     end
 
 end

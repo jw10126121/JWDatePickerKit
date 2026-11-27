@@ -34,7 +34,7 @@
 "cancelled" = "Cancelled";
 "cancel" = "Cancel";
 "confirm" = "Done";
-"dialog.section" = "XBDialog examples";
+"dialog.section" = "JWDialogManager examples";
 "dialog.centeredFade" = "Centered dialog · fade";
 "dialog.centeredFade.detail" = "Preferred size with a dimmed backdrop";
 "dialog.centeredScale" = "Centered dialog · spring scale";

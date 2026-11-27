@@ -1,29 +1,28 @@
 PODS:
-  - JWDatePickerKit (0.1.2):
-    - JWDatePickerKit/Controller (= 0.1.2)
-  - JWDatePickerKit/Content (0.1.2):
+  - JWDatePickerKit (0.1.3):
+    - JWDatePickerKit/Controller (= 0.1.3)
+  - JWDatePickerKit/Content (0.1.3):
     - JWDatePickerKit/Picker
-  - JWDatePickerKit/Controller (0.1.2):
+  - JWDatePickerKit/Controller (0.1.3):
     - JWDatePickerKit/Content
-    - XBDialog (~> 1.6)
-  - JWDatePickerKit/Picker (0.1.2)
-  - XBDialog (1.6.0)
+    - JWDialogManager (~> 0.1)
+  - JWDatePickerKit/Picker (0.1.3)
+  - JWDialogManager (0.1.0)
 
 DEPENDENCIES:
   - JWDatePickerKit (from `./`)
-
-SPEC REPOS:
-  trunk:
-    - XBDialog
+  - JWDialogManager (from `../JWDialogManager`)
 
 EXTERNAL SOURCES:
   JWDatePickerKit:
     :path: "./"
+  JWDialogManager:
+    :path: "../JWDialogManager"
 
 SPEC CHECKSUMS:
-  JWDatePickerKit: f36c218b8409c77e732d604be564fe3b7c8fae8a
-  XBDialog: 97a647cb17d960000f45cd6640befa90bc29580a
+  JWDatePickerKit: 5971e83cd02a07143dbd98445e1f652d037cfd16
+  JWDialogManager: b52ea5752d95388eef577832b3c64685b1a2c59a
 
-PODFILE CHECKSUM: dadf89066f8eb3b46382c22b9b4b857c930241bb
+PODFILE CHECKSUM: a67d1c1d44f7d9f581e5fb6c852e0aa026166616
 
 COCOAPODS: 1.17.0

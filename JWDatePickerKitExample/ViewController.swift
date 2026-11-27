@@ -1,6 +1,6 @@
 import UIKit
 import JWDatePickerKit
-import XBDialog
+import JWDialogManager
 
 final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     fileprivate enum DialogDemo: Int, CaseIterable {
@@ -178,13 +178,13 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     private func showDialogDemo(_ demo: DialogDemo) {
-        let controller = XBDialogDemoViewController(demo: demo)
-        let animator = controller.xb.present
+        let controller = JWDialogManagerDemoViewController(demo: demo)
+        let animator = controller.jw.present
         let backdropTap = controller.makeBackdropTapGesture()
 
         switch demo {
         case .centeredFade:
-            animator.dialog { (config: DialogConfig) in
+            animator.dialog { (config: JWDialogConfig) in
                 config.dialogType = .preferSize
                 config.animateType = .alpha(from: 0, to: 1)
                 config.duration = 0.35
@@ -192,7 +192,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 config.gestureRecognizer = backdropTap
             }
         case .centeredScale:
-            animator.dialog { (config: DialogConfig) in
+            animator.dialog { (config: JWDialogConfig) in
                 config.dialogType = .size(s: CGSize(width: min(UIScreen.main.bounds.width - 48, 340), height: 250))
                 config.animateType = .scale(from: 0.8, to: 1)
                 config.duration = 0.42
@@ -203,7 +203,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 config.gestureRecognizer = backdropTap
             }
         case .centeredSlide:
-            animator.dialog { (config: DialogConfig) in
+            animator.dialog { (config: JWDialogConfig) in
                 config.dialogType = .preferSize
                 config.animateType = .direction(type: .top)
                 config.duration = 0.3
@@ -211,7 +211,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 config.gestureRecognizer = backdropTap
             }
         case .bottomSheet:
-            animator.menu { (config: MenuConfig) in
+            animator.menu { (config: JWMenuConfig) in
                 config.menuType = .bottomHeightFromViewRate(rate: 0.48)
                 config.isDraggable = true
                 config.damping = 0.82
@@ -221,7 +221,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 config.gestureRecognizer = backdropTap
             }
         case .leftMenu:
-            animator.menu { (config: MenuConfig) in
+            animator.menu { (config: JWMenuConfig) in
                 config.menuType = .leftWidthFromViewRate(rate: 0.78)
                 config.isDraggable = true
                 config.duration = 0.35
@@ -229,7 +229,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 config.gestureRecognizer = backdropTap
             }
         case .rightMenu:
-            animator.menu { (config: MenuConfig) in
+            animator.menu { (config: JWMenuConfig) in
                 config.menuType = .rightWidth(w: min(UIScreen.main.bounds.width - 56, 320))
                 config.isDraggable = true
                 config.duration = 0.35
@@ -271,7 +271,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
-private final class XBDialogDemoViewController: UIViewController {
+private final class JWDialogManagerDemoViewController: UIViewController {
     private let demo: ViewController.DialogDemo
     private lazy var backdropDismissTarget = BackdropDismissTarget(viewController: self)
 

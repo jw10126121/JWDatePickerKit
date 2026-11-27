@@ -85,7 +85,7 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for JWDatePickerKit */,
-				607FACE81AFB9204008FA782 /* Tests */,
+				607FACE81AFB9204008FA782 /* JWDatePickerKitTests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				C6C13280200B37A53E804DFF /* Pods */,
 				5EC6F4DD045C401880E41688 /* Frameworks */,
@@ -124,7 +124,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
+		607FACE81AFB9204008FA782 /* JWDatePickerKitTests */ = {
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
@@ -319,12 +319,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JWDatePickerKit/JWDatePickerKit.framework",
-				"${BUILT_PRODUCTS_DIR}/XBDialog/XBDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/JWDialogManager/JWDialogManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWDatePickerKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XBDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWDialogManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

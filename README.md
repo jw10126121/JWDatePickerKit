@@ -13,7 +13,7 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 
 ## 环境要求
 
-- iOS 15.0 及以上，使用支持 Swift Package Manager 的 Xcode 工具链。
+- iOS 15.0 及以上，Swift 6.0，使用支持 Swift Package Manager 的 Xcode 工具链。
 - 核心控件基于 UIKit，可在 SwiftUI 项目中通过 `JWDatePickerKitSwiftUI` 产品使用 `JWDatePicker`。
 - 示例工程通过 CocoaPods 管理依赖。
 
@@ -51,15 +51,13 @@ import JWDatePickerKit
 | `Picker` | `JWDatePickerView`、`JWDatePickerType`、`JWDatePickerConfiguration`（含 `JWDatePickerSelectionPolicy`、`JWDatePickerConfigurationError`）、`JWDatePickerLocalization` 及多语言资源 | UIKit |
 | `Content` | `JWDatePickerContentView`、`JWDatePickerMenuHeaderView`、`JWDatePickerResult` | `Picker`、UIKit |
 | `SwiftUI` | `JWDatePicker`，以 `Binding<Date>` 连接选择器 | `Picker`、SwiftUI |
-| `Controller` | `JWDatePickerViewController` | `Content`、XBDialog |
+| `Controller` | `JWDatePickerViewController` | `Content`、JWDialogManager |
 
 完整安装默认包含 `Controller`，并通过它引入 `Picker`。这些子模块属于同一个 CocoaPods Pod。原独立 `JWDatePickerView` Pod 的版本不会随本仓库的修改自动更新。
 
 ### Swift Package Manager
 
-在 Xcode 中选择 **File > Add Package Dependencies**，输入仓库地址，并选择包含 `Package.swift` 的分支或版本。添加 `JWDatePickerKit` 产品以使用 Picker 和 Content，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。
-
-SwiftPM 的核心产品不包含 `JWDatePickerViewController`。该控制器依赖的 XBDialog 1.6.0 尚未提供 Swift Package manifest。CocoaPods 中仍可照常使用完整控制器。
+在 Xcode 中选择 **File > Add Package Dependencies**，输入 JWDatePickerKit 仓库地址。添加 `JWDatePickerKit` 产品以使用 UIKit Picker、Content 和底部弹层控制器，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。JWDialogManager 由 Package.swift 作为传递依赖引入。
 
 ```swift
 import JWDatePickerKit
@@ -74,7 +72,15 @@ struct DateForm: View {
 }
 ```
 
-当前仓库的改动在发布新版本前，可以通过本地路径体验。
+本项目的 CocoaPods Controller 子模块依赖 JWDialogManager。先将私有 Specs 仓库加入 CocoaPods，再安装 JWDatePickerKit。
+
+```sh
+pod repo add JWPublicSpecs https://gitee.com/jw10126121/JWPublicSpecs.git
+```
+
+本地示例工程通过相邻目录中的 JWDialogManager checkout 构建。使用本仓库自带的 Podfile 执行 `pod install` 即可。
+
+发布新版本前，也可以通过本地路径体验本项目。
 
 ```ruby
 pod 'JWDatePickerKit', :path => '/本地路径/JWDatePickerKit'
