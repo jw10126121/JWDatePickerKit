@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "Datum und Uhrzeit wählen";
 "picker" = "Datumsauswahl";
 "birthday" = "Geburtstag";
+"loopingDemo" = "Beispiel für Endloslauf";
+"loopingDemoDetail" = "Stunden und Minuten laufen im Kreis";
 "notSet" = "Nicht festgelegt";
 "cancelled" = "Abgebrochen";
 "cancel" = "Abbrechen";

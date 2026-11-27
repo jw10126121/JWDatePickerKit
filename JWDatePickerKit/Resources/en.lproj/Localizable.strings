@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "Choose date and time";
 "picker" = "Date picker";
 "birthday" = "Birthday";
+"loopingDemo" = "Looping scroll demo";
+"loopingDemoDetail" = "Hour and minute columns loop";
 "notSet" = "Not set";
 "cancelled" = "Cancelled";
 "cancel" = "Cancel";

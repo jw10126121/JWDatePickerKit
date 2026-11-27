@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "اختر التاريخ والوقت";
 "picker" = "منتقي التاريخ";
 "birthday" = "تاريخ الميلاد";
+"loopingDemo" = "مثال على التمرير الدائري";
+"loopingDemoDetail" = "تتكرر أعمدة الساعات والدقائق";
 "notSet" = "غير محدد";
 "cancelled" = "تم الإلغاء";
 "cancel" = "إلغاء";

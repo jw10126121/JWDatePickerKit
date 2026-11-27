@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "选择日期和时间";
 "picker" = "日期选择器";
 "birthday" = "生日";
+"loopingDemo" = "循环滚动示例";
+"loopingDemoDetail" = "时、分列支持循环滚动";
 "notSet" = "未设置";
 "cancelled" = "已取消";
 "cancel" = "取消";

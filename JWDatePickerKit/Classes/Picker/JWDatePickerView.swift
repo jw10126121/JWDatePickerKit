@@ -9,6 +9,8 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     public var calendar: Calendar = .current { didSet { reloadDatas() } }
     public var locale: Locale = .current { didSet { reloadDatas() } }
     public var selectionPolicy: JWDatePickerSelectionPolicy = .preserveComponents { didSet { reloadDatas() } }
+    /// 需要循环滚动的日期分量。未加入集合的列仍使用有限行数。
+    public var loopingComponents: Set<Calendar.Component> = [] { didSet { rebuild() } }
     /// 最近一次被拒绝的配置错误。成功配置后清空。
     public private(set) var configurationError: JWDatePickerConfigurationError?
     /// 返回指定列的宽度。未设置时根据本地化文本宽度分配。
@@ -52,6 +54,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     private var localizedUnits: [String: String] = [:]
     internal var onConfigurationChanged: (() -> Void)?
     private let components: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
+    private let loopingRowCount = 10_000
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -189,21 +192,22 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         return currentDate
     }
 
-    private func resolveSelection() {
+    private func resolveSelection(rebuildPicker: Bool = true) {
         isUpdating = true
         defer { isUpdating = false }
         // 必须先读取全部列。刷新任意一列都会使尚在减速的其他列丢失当前位置。
         let selectedRows = visibleComponents.indices.map { picker.selectedRow(inComponent: $0) }
         let selectedValues = visibleComponents.enumerated().compactMap { index, component -> (Calendar.Component, Int)? in
             let row = selectedRows[index]
-            guard row >= 0, row < self.pickerView(picker, numberOfRowsInComponent: index) else { return nil }
-            let value = type == .dateWeekHourMinute && index == 0 ? row : values[index][row]
+            guard let value = rowValue(at: row, component: index) else { return nil }
             return (component, value)
         }
         // 在替换行数据之前停止旧的减速动画，避免旧月份的行索引继续参与回调。
-        for (index, row) in selectedRows.enumerated() {
-            if row >= 0 && row < self.pickerView(picker, numberOfRowsInComponent: index) {
-                picker.selectRow(row, inComponent: index, animated: false)
+        if rebuildPicker {
+            for (index, row) in selectedRows.enumerated() {
+                if row >= 0 && row < self.pickerView(picker, numberOfRowsInComponent: index) {
+                    picker.selectRow(row, inComponent: index, animated: false)
+                }
             }
         }
         var date = currentDate
@@ -228,7 +232,9 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         currentDate = clamped(configuration.normalized(date))
         selectDate = currentDate
         lastValidConfiguration = configuration
-        rebuild()
+        if rebuildPicker || valuesNeedRefresh() {
+            rebuild()
+        }
     }
 
     private func rebuild() {
@@ -248,8 +254,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         weekFormatter.setLocalizedDateFormatFromTemplate("MMM d EEE")
         values = visibleComponents.enumerated().map { index, component in
             if type == .dateWeekHourMinute && index == 0 {
-                let interval = weekBounds()
-                weekRowCount = max(0, calendar.dateComponents([.day], from: interval.0, to: interval.1).day ?? 0) + 1
+                weekRowCount = currentWeekRowCount()
                 return []
             }
             return availableValues(for: component)
@@ -263,9 +268,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
             } else {
                 value = calendar.component(component, from: currentDate)
             }
-            if type == .dateWeekHourMinute && index == 0 {
-                if value >= 0 && value < weekRowCount { picker.selectRow(value, inComponent: index, animated: false) }
-            } else if let row = values[index].firstIndex(of: value) {
+            if let row = row(for: value, component: index) {
                 picker.selectRow(row, inComponent: index, animated: false)
             }
         }
@@ -277,6 +280,25 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         let end = calendar.date(byAdding: DateComponents(year: 1, day: -1), to: start) ?? currentDate
         let (min, max) = dateBounds
         return (calendar.startOfDay(for: min ?? start), calendar.startOfDay(for: max ?? end))
+    }
+
+    private func currentWeekRowCount() -> Int {
+        let interval = weekBounds()
+        return max(0, calendar.dateComponents([.day], from: interval.0, to: interval.1).day ?? 0) + 1
+    }
+
+    private func valuesNeedRefresh() -> Bool {
+        let oldValues = values
+        let oldWeekRowCount = weekRowCount
+        var nextWeekRowCount = oldWeekRowCount
+        let nextValues = visibleComponents.enumerated().map { index, component in
+            if type == .dateWeekHourMinute && index == 0 {
+                nextWeekRowCount = currentWeekRowCount()
+                return [Int]()
+            }
+            return availableValues(for: component)
+        }
+        return oldValues != nextValues || oldWeekRowCount != nextWeekRowCount
     }
 
     private func availableValues(for component: Calendar.Component) -> [Int] {
@@ -317,8 +339,10 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
 
     public func numberOfComponents(in pickerView: UIPickerView) -> Int { visibleComponents.count }
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if type == .dateWeekHourMinute && component == 0 { return weekRowCount }
-        return component < values.count ? values[component].count : 0
+        guard component >= 0, component < visibleComponents.count else { return 0 }
+        let count = valueCount(for: component)
+        guard count > 0 else { return 0 }
+        return shouldLoop(component: component) && count > 1 ? loopingRowCount : count
     }
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { rowHeight }
     private func rowTitle(value: Int, component index: Int) -> String {
@@ -380,7 +404,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.65
-        let value = type == .dateWeekHourMinute && component == 0 ? row : values[component][row]
+        guard let value = rowValue(at: row, component: component) else { return label }
         let title = rowTitle(value: value, component: component)
         let selectedValue: Int
         if type == .dateWeekHourMinute && component == 0 {
@@ -388,8 +412,15 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         } else {
             selectedValue = calendar.component(visibleComponents[component], from: currentDate)
         }
-        let selected = selectedValue == value
-        label.attributedText = NSAttributedString(string: title, attributes: selected ? (selectedAttributes ?? textAttributes) : textAttributes)
+        // 循环列会出现多个相同值，必须根据实际行号判断选中状态。
+        if shouldLoop(component: component) {
+            let selectedRow = pickerView.selectedRow(inComponent: component)
+            let expectedRow = self.row(for: selectedValue, component: component)
+            let selected = selectedRow >= 0 ? selectedRow == row : expectedRow == row
+            label.attributedText = NSAttributedString(string: title, attributes: selected ? (selectedAttributes ?? textAttributes) : textAttributes)
+        } else {
+            label.attributedText = NSAttributedString(string: title, attributes: selectedValue == value ? (selectedAttributes ?? textAttributes) : textAttributes)
+        }
         return label
     }
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -397,7 +428,58 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
               row < self.pickerView(pickerView, numberOfRowsInComponent: component) else { return }
         // reload 后旧滚轮可能迟到的回调不能覆盖新的选择。
         guard !isUpdating, pickerView.selectedRow(inComponent: component) == row else { return }
-        resolveSelection()
+        let loopWithoutReload = shouldLoop(component: component)
+        resolveSelection(rebuildPicker: !loopWithoutReload)
         onDateChanged?(currentDate)
     }
+
+    /// 为指定列切换循环滚动。循环列仍会把重复行映射到同一个日期分量值。
+    public func setLooping(_ enabled: Bool, for component: Calendar.Component) {
+        if enabled {
+            loopingComponents.insert(component)
+        } else {
+            loopingComponents.remove(component)
+        }
+    }
+
+    public func isLooping(for component: Calendar.Component) -> Bool {
+        loopingComponents.contains(component)
+    }
+
+    private func shouldLoop(component index: Int) -> Bool {
+        guard index >= 0, index < visibleComponents.count else { return false }
+        return loopingComponents.contains(visibleComponents[index])
+    }
+
+    private func valueCount(for component: Int) -> Int {
+        if type == .dateWeekHourMinute && component == 0 { return weekRowCount }
+        return component < values.count ? values[component].count : 0
+    }
+
+    private func rowValue(at row: Int, component index: Int) -> Int? {
+        let count = valueCount(for: index)
+        guard row >= 0, count > 0,
+              row < self.pickerView(picker, numberOfRowsInComponent: index) else { return nil }
+        let logicalRow = shouldLoop(component: index) ? row % count : row
+        if type == .dateWeekHourMinute && index == 0 { return logicalRow }
+        guard index < values.count, logicalRow < values[index].count else { return nil }
+        return values[index][logicalRow]
+    }
+
+    private func row(for value: Int, component index: Int) -> Int? {
+        let count = valueCount(for: index)
+        guard count > 0 else { return nil }
+        let offset: Int
+        if type == .dateWeekHourMinute && index == 0 {
+            guard value >= 0, value < count else { return nil }
+            offset = value
+        } else {
+            guard index < values.count, let found = values[index].firstIndex(of: value) else { return nil }
+            offset = found
+        }
+        guard shouldLoop(component: index), count > 1 else { return offset }
+        let center = loopingRowCount / 2
+        return center - center % count + offset
+    }
+
 }

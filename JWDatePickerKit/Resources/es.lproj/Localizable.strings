@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "Elegir fecha y hora";
 "picker" = "Selector de fecha";
 "birthday" = "Cumpleaños";
+"loopingDemo" = "Ejemplo de desplazamiento circular";
+"loopingDemoDetail" = "Las horas y los minutos se repiten";
 "notSet" = "Sin definir";
 "cancelled" = "Cancelado";
 "cancel" = "Cancelar";

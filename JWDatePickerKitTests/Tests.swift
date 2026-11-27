@@ -175,6 +175,26 @@ final class Tests: XCTestCase {
         XCTAssertEqual(view.commitSelection(), date(2001, 6, 14))
     }
 
+    func testLoopingCanBeConfiguredPerComponentAndMapsRowsToValues() throws {
+        let view = JWDatePickerView(frame: CGRect(x: 0, y: 0, width: 414, height: 216))
+        try view.apply(JWDatePickerConfiguration(type: .dateHour,
+            selectedDate: date(2024, 2, 29, 12), calendar: calendar))
+        view.setLooping(true, for: .hour)
+        XCTAssertTrue(view.isLooping(for: .hour))
+
+        let picker = wheel(view)
+        let hourComponent = 3
+        XCTAssertEqual(picker.numberOfRows(inComponent: hourComponent), 10_000)
+        let selectedRow = picker.selectedRow(inComponent: hourComponent)
+        picker.selectRow(selectedRow + 1, inComponent: hourComponent, animated: false)
+        view.pickerView(picker, didSelectRow: selectedRow + 1, inComponent: hourComponent)
+        XCTAssertEqual(calendar.component(.hour, from: view.commitSelection()), 13)
+
+        view.setLooping(false, for: .hour)
+        XCTAssertFalse(view.isLooping(for: .hour))
+        XCTAssertEqual(picker.numberOfRows(inComponent: hourComponent), 24)
+    }
+
     func testUntouchedConfirmPreservesSubsecondsAndHiddenComponents() throws {
         for type in JWDatePickerType.allCases {
             let selected = date(2024, 2, 29, 12, 30).addingTimeInterval(0.125)
@@ -383,13 +403,22 @@ final class Tests: XCTestCase {
         root.loadViewIfNeeded()
         let table = try XCTUnwrap(root.view.subviews.compactMap { $0 as? UITableView }.first)
         defer { window.isHidden = true }
-        for row in 0...JWDatePickerType.allCases.count {
+        for row in 0...(JWDatePickerType.allCases.count + 1) {
             window.overrideUserInterfaceStyle = row.isMultiple(of: 2) ? .light : .dark
             table.delegate?.tableView?(table, didSelectRowAt: IndexPath(row: row, section: 0))
             try await Task.sleep(nanoseconds: 400_000_000)
             let controller = try XCTUnwrap(root.presentedViewController as? JWDatePickerViewController)
             controller.view.layoutIfNeeded()
-            let mode = row == 0 ? JWDatePickerType.date : JWDatePickerType.allCases[row - 1]
+            let mode: JWDatePickerType
+            if row == 0 {
+                mode = .date
+            } else if row == 1 {
+                mode = .dateHourMinute
+                XCTAssertTrue(controller.pickerView.isLooping(for: .hour))
+                XCTAssertTrue(controller.pickerView.isLooping(for: .minute))
+            } else {
+                mode = JWDatePickerType.allCases[row - 2]
+            }
             XCTAssertEqual(controller.datePickerMode, mode)
             XCTAssertEqual(controller.headerView.attributedTitle?.string, mode.localizedTitle())
             XCTAssertEqual(controller.pickerView.locale, Locale.current)

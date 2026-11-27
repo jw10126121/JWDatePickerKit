@@ -32,11 +32,17 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         ])
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { modes.count + 1 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { modes.count + 2 }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-        cell.textLabel?.text = indexPath.row == 0 ? JWDatePickerLocalization.string("birthday", locale: locale) : modes[indexPath.row - 1].localizedName(locale: locale)
+        if indexPath.row == 0 {
+            cell.textLabel?.text = JWDatePickerLocalization.string("birthday", locale: locale)
+        } else if indexPath.row == 1 {
+            cell.textLabel?.text = JWDatePickerLocalization.string("loopingDemo", locale: locale)
+        } else {
+            cell.textLabel?.text = modes[indexPath.row - 2].localizedName(locale: locale)
+        }
         cell.textLabel?.font = .preferredFont(forTextStyle: .body)
         cell.textLabel?.adjustsFontForContentSizeCategory = true
         cell.textLabel?.numberOfLines = 0
@@ -50,6 +56,8 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
             formatter.setLocalizedDateFormatFromTemplate("yMMMd")
             cell.detailTextLabel?.text = birthday.map(formatter.string(from:))
                 ?? JWDatePickerLocalization.string(birthdayWasCancelled ? "cancelled" : "notSet", locale: locale)
+        } else if indexPath.row == 1 {
+            cell.detailTextLabel?.text = JWDatePickerLocalization.string("loopingDemoDetail", locale: locale)
         }
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -61,10 +69,14 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
             showBirthdayPicker()
             return
         }
+        if indexPath.row == 1 {
+            showLoopingPicker()
+            return
+        }
         let controller = JWDatePickerViewController()
         do {
             try controller.apply(JWDatePickerConfiguration(
-                type: modes[indexPath.row - 1], selectedDate: Date(), calendar: calendar, locale: locale
+                type: modes[indexPath.row - 2], selectedDate: Date(), calendar: calendar, locale: locale
             ))
         } catch {
             assertionFailure("Invalid picker configuration \(error)")
@@ -72,6 +84,22 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         configureAppearance(of: controller)
         controller.confirmHandler = { date in print(date) }
+        present(controller, animated: true)
+    }
+
+    private func showLoopingPicker() {
+        let controller = JWDatePickerViewController()
+        do {
+            try controller.apply(JWDatePickerConfiguration(
+                type: .dateHourMinute, selectedDate: Date(), calendar: calendar, locale: locale
+            ))
+        } catch {
+            assertionFailure("Invalid looping picker configuration \(error)")
+            return
+        }
+        controller.pickerView.loopingComponents = [.hour, .minute]
+        configureAppearance(of: controller)
+        controller.confirmHandler = { date in print("Looping picker date:", date) }
         present(controller, animated: true)
     }
 

@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "Choisir une date et une heure";
 "picker" = "Sélecteur de date";
 "birthday" = "Anniversaire";
+"loopingDemo" = "Exemple de défilement circulaire";
+"loopingDemoDetail" = "Les heures et minutes défilent en boucle";
 "notSet" = "Non défini";
 "cancelled" = "Annulé";
 "cancel" = "Annuler";

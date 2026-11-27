@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "日付と時刻を選択";
 "picker" = "日付ピッカー";
 "birthday" = "誕生日";
+"loopingDemo" = "ループスクロールの例";
+"loopingDemoDetail" = "時と分を循環スクロール";
 "notSet" = "未設定";
 "cancelled" = "キャンセル済み";
 "cancel" = "キャンセル";

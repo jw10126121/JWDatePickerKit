@@ -7,6 +7,7 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 - 支持年、年月、日期、日期时间、月日、时间及日期星期等 14 种选择模式。
 - 可以设置初始日期、最小日期和最大日期，也可以设置日历、时区与语言环境。
 - 可以设置滚轮行高、文字属性和分隔线颜色，并通过回调获取用户的选择。
+- 每个日期分量都可以单独切换为循环滚动。
 - 使用 CocoaPods 子模块按需安装。Picker 适合嵌入自定义界面，Content 提供带头部的面板，Controller 提供现成的底部弹层。
 
 ## 环境要求
@@ -272,6 +273,7 @@ if let date = picker.currentSelectedDate() {
 ```swift
 picker.rowHeight = 44
 picker.lineColor = .lightGray
+picker.loopingComponents = [.hour, .minute]
 picker.textAttributes = [
     .font: UIFont.systemFont(ofSize: 18),
     .foregroundColor: UIColor.gray
@@ -290,6 +292,7 @@ picker.selectedAttributes = [
 | `calendar` | 日期计算使用的日历，默认 `.current` |
 | `locale` | 文本显示使用的语言环境，默认 `.current` |
 | `rowHeight` | 滚轮行高，默认 40 点 |
+| `loopingComponents` | 需要循环滚动的日期分量集合，默认为空集合 |
 | `textAttributes` | 普通行文字属性，默认 20 点系统标签色字体 |
 | `selectedAttributes` | 选中行文字属性，默认使用 `textAttributes` |
 | `lineColor` | 选中区域分隔线颜色 |
@@ -297,6 +300,8 @@ picker.selectedAttributes = [
 | `onDateChanged` | 用户选择日期后的回调 |
 | `reloadDatas()` | 重新读取配置并刷新滚轮 |
 | `currentSelectedDate()` | 返回当前选择的 `Date?` |
+
+循环滚动按日期分量配置，不影响其他列。也可以使用 `setLooping(_:for:)` 和 `isLooping(for:)` 逐列切换或查询状态。
 
 ## 选择模式
 
@@ -353,6 +358,8 @@ open JWDatePickerKit.xcworkspace
 ```
 
 在 Xcode 中选择 `JWDatePickerKit-Example` scheme 和目标设备，运行示例。示例首行提供生日场景，可检查确认、取消和再次打开恢复选择，其余行列出全部 14 种模式。生日值保存在示例页面的内存中。
+
+示例页面第二行是循环滚动演示，打开后小时和分钟列会循环滚动，其他日期分量保持普通滚轮行为。
 
 ## 作者与许可证
 

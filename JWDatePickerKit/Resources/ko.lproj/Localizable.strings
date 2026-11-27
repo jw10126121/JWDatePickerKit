@@ -28,6 +28,8 @@
 "title.dateWeekHourMinute" = "날짜와 시간 선택";
 "picker" = "날짜 선택기";
 "birthday" = "생일";
+"loopingDemo" = "순환 스크롤 예시";
+"loopingDemoDetail" = "시와 분 열이 순환합니다";
 "notSet" = "설정 안 됨";
 "cancelled" = "취소됨";
 "cancel" = "취소";
