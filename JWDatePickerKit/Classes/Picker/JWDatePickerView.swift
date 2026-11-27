@@ -8,17 +8,26 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     public var maximumDate: Date? { didSet { reloadDatas() } }
     public var calendar: Calendar = .current { didSet { reloadDatas() } }
     public var locale: Locale = .current { didSet { reloadDatas() } }
+    public var selectionPolicy: JWDatePickerSelectionPolicy = .preserveComponents { didSet { reloadDatas() } }
+    /// 最近一次被拒绝的配置错误。成功配置后清空。
+    public private(set) var configurationError: JWDatePickerConfigurationError?
+    /// 返回指定列的宽度。未设置时根据本地化文本宽度分配。
+    public var columnWidth: ((Int, CGFloat) -> CGFloat)? { didSet { rebuild() } }
     public var rowHeight: CGFloat = 40 {
         didSet {
+            guard rowHeight.isFinite, rowHeight > 0 else {
+                rowHeight = oldValue
+                return
+            }
             topLinePosition?.constant = -rowHeight / 2
             bottomLinePosition?.constant = rowHeight / 2
             picker.reloadAllComponents()
         }
     }
     public var textAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 20), .foregroundColor: UIColor.black
-    ] { didSet { picker.reloadAllComponents() } }
-    public var selectedAttributes: [NSAttributedString.Key: Any]? { didSet { picker.reloadAllComponents() } }
+        .font: UIFont.systemFont(ofSize: 20), .foregroundColor: UIColor.label
+    ] { didSet { rebuild() } }
+    public var selectedAttributes: [NSAttributedString.Key: Any]? { didSet { rebuild() } }
     public var lineColor: UIColor = UIColor(white: 0.72, alpha: 1) {
         didSet { topLine.backgroundColor = lineColor; bottomLine.backgroundColor = lineColor }
     }
@@ -31,10 +40,17 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     private var currentDate = Date()
     private var values: [[Int]] = []
     private var isUpdating = false
+    private var lastValidConfiguration = JWDatePickerConfiguration()
     private var topLinePosition: NSLayoutConstraint?
     private var bottomLinePosition: NSLayoutConstraint?
     private var previousWidth: CGFloat = 0
     private var weekRowCount = 0
+    private var preferredColumnWidths: [CGFloat] = []
+    private let numberFormatter = NumberFormatter()
+    private let monthFormatter = DateFormatter()
+    private let weekFormatter = DateFormatter()
+    private var localizedUnits: [String: String] = [:]
+    internal var onConfigurationChanged: (() -> Void)?
     private let components: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
 
     public override init(frame: CGRect) {
@@ -102,9 +118,17 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         }
     }
 
+    public var configuration: JWDatePickerConfiguration {
+        JWDatePickerConfiguration(
+            type: type, selectedDate: selectDate, minimumDate: minimumDate,
+            maximumDate: maximumDate, calendar: calendar, locale: locale,
+            selectionPolicy: selectionPolicy
+        )
+    }
+
     private var dateBounds: (Date?, Date?) {
-        if let min = minimumDate, let max = maximumDate, min > max { return (nil, nil) }
-        return (minimumDate, maximumDate)
+        let configuration = self.configuration
+        return (minimumDate.map(configuration.normalized), maximumDate.map(configuration.normalized))
     }
 
     private func clamped(_ date: Date) -> Date {
@@ -117,16 +141,111 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     /// 重新读取配置并更新滚轮。
     public func reloadDatas() {
         guard !isUpdating else { return }
+        do {
+            try apply(configuration)
+        } catch {
+            configurationError = error as? JWDatePickerConfigurationError
+            updateProperties(lastValidConfiguration)
+        }
+    }
+
+    /// 验证成功后原子应用配置。失败时保留之前的配置和选择。
+    public func apply(_ configuration: JWDatePickerConfiguration) throws {
+        do {
+            try configuration.validate()
+        } catch {
+            configurationError = error as? JWDatePickerConfigurationError
+            throw error
+        }
+        updateProperties(configuration)
         isUpdating = true
-        currentDate = clamped(selectDate ?? currentDate)
-        rebuild()
+        currentDate = clamped(configuration.normalized(selectDate ?? currentDate))
         selectDate = currentDate
+        lastValidConfiguration = self.configuration
+        configurationError = nil
+        rebuild()
+        isUpdating = false
+        onConfigurationChanged?()
+    }
+
+    private func updateProperties(_ configuration: JWDatePickerConfiguration) {
+        isUpdating = true
+        type = configuration.type
+        selectDate = configuration.selectedDate
+        minimumDate = configuration.minimumDate
+        maximumDate = configuration.maximumDate
+        calendar = configuration.calendar
+        locale = configuration.locale
+        selectionPolicy = configuration.selectionPolicy
         isUpdating = false
     }
 
     public func currentSelectedDate() -> Date? { currentDate }
 
+    /// 固定滚轮当前选中行，并统一读取所有列，供确认按钮使用。
+    @discardableResult
+    public func commitSelection() -> Date {
+        resolveSelection()
+        return currentDate
+    }
+
+    private func resolveSelection() {
+        isUpdating = true
+        defer { isUpdating = false }
+        // 必须先读取全部列。刷新任意一列都会使尚在减速的其他列丢失当前位置。
+        let selectedRows = visibleComponents.indices.map { picker.selectedRow(inComponent: $0) }
+        let selectedValues = visibleComponents.enumerated().compactMap { index, component -> (Calendar.Component, Int)? in
+            let row = selectedRows[index]
+            guard row >= 0, row < self.pickerView(picker, numberOfRowsInComponent: index) else { return nil }
+            let value = type == .dateWeekHourMinute && index == 0 ? row : values[index][row]
+            return (component, value)
+        }
+        // 在替换行数据之前停止旧的减速动画，避免旧月份的行索引继续参与回调。
+        for (index, row) in selectedRows.enumerated() {
+            if row >= 0 && row < self.pickerView(picker, numberOfRowsInComponent: index) {
+                picker.selectRow(row, inComponent: index, animated: false)
+            }
+        }
+        var date = currentDate
+        for (component, value) in selectedValues {
+            if type == .dateWeekHourMinute && component == .day {
+                let day = calendar.date(byAdding: .day, value: value, to: weekBounds().0)
+                if let day, calendar.isDate(day, inSameDayAs: date) { continue }
+                let time = calendar.dateComponents([.hour, .minute, .second], from: date)
+                date = day.flatMap { calendar.date(byAdding: time, to: $0) } ?? date
+            } else {
+                let resolvedValue: Int
+                if component == .day, let days = calendar.range(of: .day, in: .month, for: date) {
+                    resolvedValue = min(value, days.upperBound - 1)
+                } else {
+                    resolvedValue = value
+                }
+                if calendar.component(component, from: date) != resolvedValue {
+                    date = replacing(component, with: resolvedValue, in: date) ?? date
+                }
+            }
+        }
+        currentDate = clamped(configuration.normalized(date))
+        selectDate = currentDate
+        lastValidConfiguration = configuration
+        rebuild()
+    }
+
     private func rebuild() {
+        for unit in ["year", "month", "day", "hour", "minute", "second"] {
+            localizedUnits[unit] = JWDatePickerLocalization.string("unit." + unit, locale: locale)
+        }
+        numberFormatter.locale = locale
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.usesGroupingSeparator = false
+        numberFormatter.maximumFractionDigits = 0
+        for formatter in [monthFormatter, weekFormatter] {
+            formatter.calendar = calendar
+            formatter.locale = locale
+            formatter.timeZone = calendar.timeZone
+        }
+        monthFormatter.dateFormat = "LLL"
+        weekFormatter.setLocalizedDateFormatFromTemplate("MMM d EEE")
         values = visibleComponents.enumerated().map { index, component in
             if type == .dateWeekHourMinute && index == 0 {
                 let interval = weekBounds()
@@ -135,6 +254,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
             }
             return availableValues(for: component)
         }
+        updatePreferredColumnWidths()
         picker.reloadAllComponents()
         for (index, component) in visibleComponents.enumerated() {
             let value: Int
@@ -182,8 +302,8 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         }
     }
 
-    private func replacing(_ component: Calendar.Component, with value: Int) -> Date? {
-        var parts = calendar.dateComponents(Set(components + [.era]), from: currentDate)
+    private func replacing(_ component: Calendar.Component, with value: Int, in date: Date? = nil) -> Date? {
+        var parts = calendar.dateComponents(Set(components + [.era]), from: date ?? currentDate)
         parts.setValue(value, for: component)
         if component == .year || component == .month {
             let desiredDay = parts.day ?? 1
@@ -201,56 +321,83 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         return component < values.count ? values[component].count : 0
     }
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { rowHeight }
-    public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        bounds.width / CGFloat(max(visibleComponents.count, 1))
+    private func rowTitle(value: Int, component index: Int) -> String {
+        let component = visibleComponents[index]
+        if type == .dateWeekHourMinute && index == 0,
+           let date = calendar.date(byAdding: .day, value: value, to: weekBounds().0) {
+            return weekFormatter.string(from: date)
+        }
+        let number = numberFormatter.string(from: NSNumber(value: value)) ?? String(value)
+        let usesDateUnits = ["zh", "ja", "ko"].contains(locale.languageCode ?? "")
+        if component == .month && !usesDateUnits,
+           let date = replacing(.month, with: value) {
+            return monthFormatter.string(from: date)
+        }
+        if usesDateUnits || [.hour, .minute, .second].contains(component) {
+            let unit: String
+            switch component {
+            case .year: unit = "year"
+            case .month: unit = "month"
+            case .day: unit = "day"
+            case .hour: unit = "hour"
+            case .minute: unit = "minute"
+            default: unit = "second"
+            }
+            let suffix = localizedUnits[unit] ?? ""
+            return number + (usesDateUnits ? "" : " ") + suffix
+        }
+        return number
     }
+
+    private func updatePreferredColumnWidths() {
+        let font = textAttributes[.font] as? UIFont ?? .systemFont(ofSize: 20)
+        let selectedFont = selectedAttributes?[.font] as? UIFont ?? font
+        preferredColumnWidths = visibleComponents.indices.map { index in
+            let candidates = type == .dateWeekHourMinute && index == 0 ? Array(0..<min(weekRowCount, 366)) : values[index]
+            let width = candidates.map { value -> CGFloat in
+                let title = rowTitle(value: value, component: index) as NSString
+                return max(title.size(withAttributes: [.font: font]).width,
+                           title.size(withAttributes: [.font: selectedFont]).width)
+            }.max() ?? 0
+            return max(visibleComponents.count <= 3 ? 88 : 44, width + 16)
+        }
+    }
+
+    public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        let availableWidth = max(0, bounds.width)
+        if let width = columnWidth?(component, availableWidth), width.isFinite, width > 0 {
+            return min(width, availableWidth)
+        }
+        guard component < preferredColumnWidths.count else { return 0 }
+        let total = preferredColumnWidths.reduce(0, +)
+        let contentWidth = max(0, availableWidth - 32)
+        let scale = min(1, contentWidth / max(total, 1))
+        return preferredColumnWidths[component] * scale
+    }
+
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = (view as? UILabel) ?? UILabel()
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.65
         let value = type == .dateWeekHourMinute && component == 0 ? row : values[component][row]
-        var title = String(value)
-        if type == .dateWeekHourMinute && component == 0, let date = calendar.date(byAdding: .day, value: value, to: weekBounds().0) {
-            let formatter = DateFormatter()
-            formatter.calendar = calendar
-            formatter.locale = locale
-            formatter.setLocalizedDateFormatFromTemplate("MMM d EEE")
-            title = formatter.string(from: date)
-        } else if locale.languageCode == "zh" {
-            let unit: String
-            switch visibleComponents[component] {
-            case .year: unit = "年"
-            case .month: unit = "月"
-            case .day: unit = "日"
-            case .hour: unit = "时"
-            case .minute: unit = "分"
-            default: unit = "秒"
-            }
-            title += unit
+        let title = rowTitle(value: value, component: component)
+        let selectedValue: Int
+        if type == .dateWeekHourMinute && component == 0 {
+            selectedValue = calendar.dateComponents([.day], from: weekBounds().0, to: calendar.startOfDay(for: currentDate)).day ?? 0
+        } else {
+            selectedValue = calendar.component(visibleComponents[component], from: currentDate)
         }
-        let selected = pickerView.selectedRow(inComponent: component) == row
+        let selected = selectedValue == value
         label.attributedText = NSAttributedString(string: title, attributes: selected ? (selectedAttributes ?? textAttributes) : textAttributes)
         return label
     }
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard component >= 0, component < values.count, row >= 0,
               row < self.pickerView(pickerView, numberOfRowsInComponent: component) else { return }
-        let value = type == .dateWeekHourMinute && component == 0 ? row : values[component][row]
-        let date: Date?
-        if type == .dateWeekHourMinute && component == 0 {
-            let start = weekBounds().0
-            let selectedDay = calendar.date(byAdding: .day, value: value, to: start)
-            let time = calendar.dateComponents([.hour, .minute, .second], from: currentDate)
-            date = selectedDay.flatMap { calendar.date(byAdding: time, to: $0) }
-        } else {
-            date = replacing(visibleComponents[component], with: value)
-        }
-        guard let selected = date else { return }
-        currentDate = clamped(selected)
-        isUpdating = true
-        selectDate = currentDate
-        rebuild()
-        isUpdating = false
+        // reload 后旧滚轮可能迟到的回调不能覆盖新的选择。
+        guard !isUpdating, pickerView.selectedRow(inComponent: component) == row else { return }
+        resolveSelection()
         onDateChanged?(currentDate)
     }
 }

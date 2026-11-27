@@ -28,41 +28,36 @@ import Foundation
     /// 与旧控制器的 dateAndTime 模式对应。
     public static var dateAndTime: JWDatePickerType { .dateWeekHourMinute }
 
-    /// 名称
-    public var name: String {
+    /// 使用系统语言的模式名称。
+    public var name: String { localizedName() }
+
+    public func localizedName(locale: Locale = .current) -> String {
+        JWDatePickerLocalization.string("mode." + localizationKey, locale: locale)
+    }
+
+    public func localizedTitle(locale: Locale = .current) -> String {
+        JWDatePickerLocalization.string("title." + localizationKey, locale: locale)
+    }
+
+    private var localizationKey: String {
         switch self {
-        case .year:
-            return "年"
-        case .yearAndMonth:
-            return "年月"
-        case .date:
-            return "年月日"
-        case .dateHour:
-            return "年月日时"
-        case .dateHourMinute:
-            return "年月日时分"
-        case .dateHourMinuteSecond:
-            return "年月日时分秒"
-        case .monthDay:
-            return "月日"
-        case .monthDayHour:
-            return "月日时"
-        case .monthDayHourMinute:
-            return "月日时分"
-        case .monthDayHourMinuteSecond:
-            return "月日时分秒"
-        case .time:
-            return "时分"
-        case .timeAndSecond:
-            return "时分秒"
-        case .minuteAndSecond:
-            return "分秒"
-        case .dateWeekHourMinute:
-            return "年月周时分"
+        case .year: return "year"
+        case .yearAndMonth: return "yearAndMonth"
+        case .date: return "date"
+        case .dateHour: return "dateHour"
+        case .dateHourMinute: return "dateHourMinute"
+        case .dateHourMinuteSecond: return "dateHourMinuteSecond"
+        case .monthDay: return "monthDay"
+        case .monthDayHour: return "monthDayHour"
+        case .monthDayHourMinute: return "monthDayHourMinute"
+        case .monthDayHourMinuteSecond: return "monthDayHourMinuteSecond"
+        case .time: return "time"
+        case .timeAndSecond: return "timeAndSecond"
+        case .minuteAndSecond: return "minuteAndSecond"
+        case .dateWeekHourMinute: return "dateWeekHourMinute"
         }
     }
-    
-    
+
     /// MARK - 格式
     public var stringFormat: String {
         switch self {

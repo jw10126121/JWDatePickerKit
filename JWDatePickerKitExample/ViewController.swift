@@ -1,49 +1,29 @@
-//
-//  ViewController.swift
-//  JWDatePickerKit
-//
-//  Created by 10126121@qq.com on 04/09/2019.
-//  Copyright (c) 2019 10126121@qq.com. All rights reserved.
-//
-
 import UIKit
 import JWDatePickerKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    /// 列表
-    lazy var tableView: UITableView = {
-        let temTable = UITableView(frame: CGRect.zero, style: .plain)
-        temTable.delegate = self
-        temTable.dataSource = self
-        temTable.backgroundView = nil
-        temTable.backgroundColor = UIColor.white
-        temTable.separatorInset = .zero
-        temTable.tableFooterView = UIView()
-        temTable.register(UITableViewCell.self, forCellReuseIdentifier: "1")
-        return temTable
-    }()
-    
-    private lazy var data = [JWDatePickerType.year,
-                        JWDatePickerType.yearAndMonth,
-                        JWDatePickerType.date,
-                        JWDatePickerType.dateHour,
-                        JWDatePickerType.dateHourMinute,
-                        JWDatePickerType.dateHourMinuteSecond,
-                        JWDatePickerType.monthDay,
-                        JWDatePickerType.monthDayHour,
-                        JWDatePickerType.monthDayHourMinute,
-                        JWDatePickerType.monthDayHourMinuteSecond,
-                        JWDatePickerType.time,
-                        JWDatePickerType.timeAndSecond,
-                        JWDatePickerType.minuteAndSecond,
-                        JWDatePickerType.dateAndTime]
-    
+final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    private let modes = JWDatePickerType.allCases
+    private var birthday: Date?
+    private var birthdayWasCancelled = false
+    private var locale: Locale { .current }
+    private var calendar: Calendar {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .current
+        return calendar
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.view.addSubview(self.tableView)
+        title = JWDatePickerLocalization.string("picker", locale: locale)
+        view.backgroundColor = .systemBackground
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 52
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -51,43 +31,100 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "1")
-        cell?.textLabel?.text = self.data[indexPath.row].name
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        
-        let dateVC = JWDatePickerViewController()
-        dateVC.datePickerMode = self.data[indexPath.row]
-        //        dateVC.defaultDate = Date()
-        //        dateVC.maximumDate = Date()
-        //        dateVC.minimumDate = Date()
-        
-        dateVC.cancelHandler = {
-            dateVC.dismiss(animated: true, completion: nil)
-        }
-        dateVC.confirmHandler = { date in
-            debugPrint(date)
-            dateVC.dismiss(animated: true, completion: nil)
-        }
-        self.present(dateVC, animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-}
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { modes.count + 1 }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        cell.textLabel?.text = indexPath.row == 0 ? JWDatePickerLocalization.string("birthday", locale: locale) : modes[indexPath.row - 1].localizedName(locale: locale)
+        cell.textLabel?.font = .preferredFont(forTextStyle: .body)
+        cell.textLabel?.adjustsFontForContentSizeCategory = true
+        cell.textLabel?.numberOfLines = 0
+        cell.detailTextLabel?.font = .preferredFont(forTextStyle: .subheadline)
+        cell.detailTextLabel?.adjustsFontForContentSizeCategory = true
+        if indexPath.row == 0 {
+            let formatter = DateFormatter()
+            formatter.calendar = calendar
+            formatter.timeZone = calendar.timeZone
+            formatter.locale = locale
+            formatter.setLocalizedDateFormatFromTemplate("yMMMd")
+            cell.detailTextLabel?.text = birthday.map(formatter.string(from:))
+                ?? JWDatePickerLocalization.string(birthdayWasCancelled ? "cancelled" : "notSet", locale: locale)
+        }
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            showBirthdayPicker()
+            return
+        }
+        let controller = JWDatePickerViewController()
+        do {
+            try controller.apply(JWDatePickerConfiguration(
+                type: modes[indexPath.row - 1], selectedDate: Date(), calendar: calendar, locale: locale
+            ))
+        } catch {
+            assertionFailure("Invalid picker configuration \(error)")
+            return
+        }
+        configureAppearance(of: controller)
+        controller.confirmHandler = { date in print(date) }
+        present(controller, animated: true)
+    }
+
+    private func configureAppearance(of controller: JWDatePickerViewController) {
+        controller.automaticallyDismisses = true
+        controller.topCornerRadius = 24
+        let titleFont = UIFontMetrics(forTextStyle: .headline).scaledFont(for: .systemFont(ofSize: 16, weight: .medium))
+        controller.contentView.headerHeight = max(56, titleFont.lineHeight * 2 + 12)
+        controller.headerView.attributedTitle = NSAttributedString(
+            string: controller.datePickerMode.localizedTitle(locale: locale),
+            attributes: [.font: titleFont, .foregroundColor: UIColor.label]
+        )
+        let buttonFont = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 14))
+        controller.headerView.cancelFont = buttonFont
+        controller.headerView.confirmFont = buttonFont
+        controller.headerView.cancelNormalColor = .secondaryLabel
+        controller.headerView.confirmNormalColor = UIColor(red: 0, green: 0.65, blue: 0.6, alpha: 1)
+        controller.headerView.showsTopLine = false
+        controller.headerView.showsBottomLine = false
+        let count = controller.datePickerMode.section
+        let size: CGFloat = count <= 3 ? 22 : (count <= 5 ? 18 : 17)
+        let font = UIFontMetrics(forTextStyle: .title3).scaledFont(for: .systemFont(ofSize: size), maximumPointSize: 28)
+        controller.pickerView.rowHeight = max(40, font.lineHeight + 12)
+        controller.contentView.pickerHeight = max(216, controller.pickerView.rowHeight * 5)
+        controller.pickerView.textAttributes = [.font: font, .foregroundColor: UIColor.label]
+        controller.pickerView.lineColor = .clear
+    }
+
+    private func showBirthdayPicker() {
+        let controller = JWDatePickerViewController()
+        let configuration = JWDatePickerConfiguration(
+            type: .date, selectedDate: birthday ?? Date(),
+            minimumDate: calendar.date(from: DateComponents(year: 1940, month: 1, day: 1)),
+            maximumDate: Date(), calendar: calendar, locale: locale,
+            selectionPolicy: .startOfDay
+        )
+        do {
+            try controller.apply(configuration)
+        } catch {
+            assertionFailure("Invalid birthday configuration \(error)")
+            return
+        }
+        configureAppearance(of: controller)
+        controller.confirmHandler = { [weak self] date in
+            guard let self else { return }
+            self.birthday = date
+            self.tableView.reloadData()
+        }
+        controller.cancelHandler = { [weak self] in
+            guard let self else { return }
+            if self.birthday == nil { self.birthdayWasCancelled = true }
+            self.tableView.reloadData()
+        }
+        present(controller, animated: true)
+    }
+}

@@ -1,212 +1,203 @@
-//
-//  JWDatePickerViewController.swift
-//  JWDatePickerKit
-//
-//  Created by linjw on 2019/4/9.
-//
-
 import UIKit
 import XBDialog
 
-/// 时间选择控制器(只支持present弹出)
+/// 底部日期弹层，也可通过 contentView 访问完整面板配置。
 @objc public class JWDatePickerViewController: UIViewController {
-    
-    /// 点击背景是否隐藏
+    public let contentView = JWDatePickerContentView()
+    public var pickerView: JWDatePickerView { contentView.pickerView }
+    public var headerView: JWDatePickerMenuHeaderView { contentView.headerView }
+
     @objc public var backgoundTapDismissEnable = true
-    
-    /// 取消事件
+    /// 默认保持旧版按钮回调行为。开启后，确认和取消会自动关闭弹层。
+    @objc public var automaticallyDismisses = false
     @objc public var cancelHandler: (() -> Void)?
-    
-    /// 确定事件
-    @objc public var confirmHandler: ((_ date: Date) -> Void)?
-    
-    /// 确定事件
-    @objc public var confirmDateComponentsHandler: ((_ date: DateComponents) -> Void)?
-    
-    /// 时间选择器模式
-    @objc public var datePickerMode: JWDatePickerType = .date {
-        didSet {
-            self.datePicker.type = datePickerMode
-        }
+    @objc public var confirmHandler: ((Date) -> Void)?
+    @objc public var confirmDateComponentsHandler: ((DateComponents) -> Void)?
+    public var onResult: ((JWDatePickerResult) -> Void)?
+    @objc public var topCornerRadius: CGFloat = 0 { didSet { updateCorners() } }
+    @objc public var dimmingColor: UIColor = UIColor.black.withAlphaComponent(0.25)
+    @objc public var datePickerMode: JWDatePickerType {
+        get { pickerView.type }
+        set { pickerView.type = newValue }
     }
-    
-    /// 默认时间
-    @objc public var defaultDate: Date = Date() {
-        didSet {
-            self.datePicker.selectDate = defaultDate
-        }
+    @objc public var defaultDate: Date {
+        get { pickerView.currentSelectedDate() ?? Date() }
+        set { pickerView.selectDate = newValue }
     }
-    
-    /// 最小时间
     @objc public var minimumDate: Date? {
-        didSet {
-            self.datePicker.minimumDate = minimumDate
-        }
+        get { pickerView.minimumDate }
+        set { pickerView.minimumDate = newValue }
     }
-    
-    /// 最大时间
     @objc public var maximumDate: Date? {
-        didSet {
-            self.datePicker.maximumDate = maximumDate
+        get { pickerView.maximumDate }
+        set { pickerView.maximumDate = newValue }
+    }
+    @objc public dynamic var lineBackgroundColor: UIColor {
+        get { pickerView.lineColor }
+        set { pickerView.lineColor = newValue }
+    }
+    @objc public dynamic var textColorOfSelectedRow: UIColor {
+        get { pickerView.selectedAttributes?[.foregroundColor] as? UIColor ?? .label }
+        set {
+            var attributes = pickerView.selectedAttributes ?? pickerView.textAttributes
+            attributes[.foregroundColor] = newValue
+            pickerView.selectedAttributes = attributes
         }
     }
-    
-    /// 线背景颜色
-    @objc public dynamic var lineBackgroundColor: UIColor = UIColor.black {
-        didSet {
-            self.datePicker.lineColor = lineBackgroundColor
-        }
+    @objc public dynamic var textColorOfOtherRow: UIColor {
+        get { pickerView.textAttributes[.foregroundColor] as? UIColor ?? .label }
+        set { pickerView.textAttributes[.foregroundColor] = newValue }
     }
-    
-    /// 设置选中行的字体颜色
-    @objc public dynamic var textColorOfSelectedRow: UIColor = UIColor.black {
-        didSet {
-            self.datePicker.selectedAttributes = [.foregroundColor: textColorOfSelectedRow, .font: UIFont.systemFont(ofSize: 20)]
-        }
-    }
-    
-    /// 设置未选中行的字体颜色
-    @objc public dynamic var textColorOfOtherRow: UIColor = UIColor.black {
-        didSet {
-            self.datePicker.textAttributes = [.foregroundColor: textColorOfOtherRow, .font: UIFont.systemFont(ofSize: 20)]
-        }
-    }
-    
-    /// 日期选择器
-    private lazy var datePicker: JWDatePickerView = {
-        let temDatePicker = JWDatePickerView()
-        temDatePicker.backgroundColor = UIColor.white
-        return temDatePicker
-    }()
-    
-    /// 头部View
-    private lazy var headerView: JWDatePickerMenuHeaderView = {
-        let temHeaderView = JWDatePickerMenuHeaderView()
-        temHeaderView.backgroundColor = UIColor.white
-//        temHeaderView.delegate = self
-        return temHeaderView
-    }()
-    
-    /// 底部安全区域
-    private lazy var safeAreaView: UIView = {
-        let it = UIView()
-        it.backgroundColor = UIColor.white
-        return it
-    }()
-    
-    /// 选择的日期
-    private var selectDate: Date = Date()
-    
-    /// 选择的日期DateComponents
-    private var selectDateComponents: DateComponents? = nil
-    
-    /// 默认高度
-    private lazy var rowHeight: CGFloat = 50
-    
-    /// 选择日期高度
-    private lazy var datePickerHeight: CGFloat = self.rowHeight * 5
-    /// 菜单高度
-    private lazy var headerViewHeight: CGFloat = self.rowHeight
-    
-    /// 转场动画
-    private var presentAnimator: XBPresentAnimator!
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+
+    private var sheetTransition: DatePickerSheetTransition!
+    private var closesForBackdrop = false
+
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setupData()
+        setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupData()
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
     }
-    
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
 
+    private func setup() {
+        sheetTransition = DatePickerSheetTransition(self)
+        transitioningDelegate = sheetTransition
+        contentView.onResult = { [weak self] result in self?.handle(result) }
+        pickerView.lineColor = .black
+    }
+
+    public func apply(_ configuration: JWDatePickerConfiguration) throws {
+        try contentView.apply(configuration)
+    }
+
+    public override func loadView() {
+        view = contentView
+        updateCorners()
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isBeingPresented { contentView.beginSelection() }
+    }
+
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if presentingViewController == nil { contentView.cancelSelection() }
+    }
+
+    private func updateCorners() {
+        contentView.layer.cornerRadius = max(0, topCornerRadius)
+        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        contentView.clipsToBounds = true
+    }
+
+    fileprivate func dismissFromBackdrop() {
+        guard backgoundTapDismissEnable else { return }
+        closesForBackdrop = true
+        contentView.cancelSelection()
+        closesForBackdrop = false
+        if presentingViewController != nil && !isBeingDismissed { dismiss(animated: true) }
+    }
+
+    private func handle(_ result: JWDatePickerResult) {
+        let resultHandler = onResult
+        let cancel = cancelHandler
+        let confirm = confirmHandler
+        let componentsHandler = confirmDateComponentsHandler
+        let shouldDismiss = automaticallyDismisses || closesForBackdrop
+        switch result {
+        case .confirmed(let date):
+            let components = pickerView.calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            confirm?(date)
+            componentsHandler?(components)
+        case .cancelled:
+            cancel?()
+        }
+        resultHandler?(result)
+        if shouldDismiss && presentingViewController != nil && !isBeingDismissed { dismiss(animated: true) }
+    }
 }
 
-fileprivate extension JWDatePickerViewController {
-    
-    func setupData() {
-        
-        let temHeight = self.datePickerHeight + self.headerViewHeight
-        self.presentAnimator = XBPresentAnimator(self)
-        self.presentAnimator.menu { (config) in
-            config.presentingScale = 1.0
-            let areaInsetsBottom = UIApplication.shared.connectedScenes
-                .compactMap { $0 as? UIWindowScene }
-                .first(where: { $0.activationState == .foregroundActive })?
-                .windows.first(where: \.isKeyWindow)?
-                .safeAreaInsets.bottom ?? 0.0
-            config.menuType = .bottomHeight(h: CGFloat(temHeight + areaInsetsBottom))
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecognizer))
-            tap.numberOfTapsRequired = 1
-            config.gestureRecognizer = tap
-        }
-        
-    }
-    
-    func setupUI() {
-        
-        datePicker.selectDate = defaultDate
-        datePicker.onDateChanged = { [weak self] date in
-            self?.selectDate = date
-        }
-        
-        view.addSubview(safeAreaView)
-        view.addSubview(headerView)
-        view.addSubview(datePicker)
-        
-        /// 布局datePicker
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        datePicker.heightAnchor.constraint(equalToConstant: datePickerHeight).isActive = true
-        datePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        safeAreaView.translatesAutoresizingMaskIntoConstraints = false
-        safeAreaView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        safeAreaView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        safeAreaView.topAnchor.constraint(equalTo: datePicker.bottomAnchor).isActive = true
-        safeAreaView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        /// 布局headerView
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.leftAnchor.constraint(equalTo: datePicker.leftAnchor).isActive = true
-        headerView.rightAnchor.constraint(equalTo: datePicker.rightAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: rowHeight).isActive = true
-        headerView.bottomAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
+/// 复用 XBDialog 的转场动画，布局从本次呈现的容器读取安全区。
+@MainActor
+private final class DatePickerSheetTransition: NSObject, UIViewControllerTransitioningDelegate {
+    private let animator: XBPresentAnimator
+    private let config: MenuConfig
 
-        
-        headerView.cancelHandler = { [weak self] () -> Void in
-            guard let self = self else { return }
-            self.cancelHandler?()
+    init(_ controller: JWDatePickerViewController) {
+        animator = XBPresentAnimator(controller)
+        animator.menu { config in
+            config.menuType = .bottomHeight(h: controller.contentView.headerHeight + controller.contentView.pickerHeight)
         }
-        headerView.confirmHandler = { [weak self] () -> Void in
-            guard let self = self else { return }
-            if let date = self.datePicker.currentSelectedDate() {
-                self.selectDate = date
-                self.selectDateComponents = self.datePicker.calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-            }
-            self.confirmHandler?(self.selectDate)
-            if let dc = self.selectDateComponents {
-                self.confirmDateComponentsHandler?(dc)
-            }
-        }
-        
+        config = animator.config as! MenuConfig
+        super.init()
     }
-    
-    /// 手势点击
-    @objc func tapGestureRecognizer() {
-        
-        if backgoundTapDismissEnable {
-            self.cancelHandler?()
-            self.dismiss(animated: true, completion: nil)
+
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        DatePickerSheetPresentation(presentedViewController: presented, presenting: presenting, config: config)
+    }
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animator.animationController(forPresented: presented, presenting: presenting, source: source)
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animator.animationController(forDismissed: dismissed)
+    }
+}
+
+@MainActor
+private final class DatePickerSheetPresentation: UIPresentationController {
+    private let config: MenuConfig
+    private let maskView = UIView()
+    private var pickerController: JWDatePickerViewController { presentedViewController as! JWDatePickerViewController }
+
+    init(presentedViewController: UIViewController, presenting: UIViewController?, config: MenuConfig) {
+        self.config = config
+        super.init(presentedViewController: presentedViewController, presenting: presenting)
+        maskView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedBackdrop)))
+    }
+
+    override var frameOfPresentedViewInContainerView: CGRect {
+        guard let containerView else { return .zero }
+        let content = pickerController.contentView
+        let bottom = content.includesBottomSafeArea ? containerView.safeAreaInsets.bottom : 0
+        let height = min(containerView.bounds.height, content.headerHeight + content.pickerHeight + bottom)
+        config.menuType = .bottomHeight(h: height)
+        return CGRect(x: 0, y: containerView.bounds.height - height, width: containerView.bounds.width, height: height)
+    }
+
+    override func containerViewWillLayoutSubviews() {
+        super.containerViewWillLayoutSubviews()
+        maskView.frame = containerView?.bounds ?? .zero
+        let frame = frameOfPresentedViewInContainerView
+        presentedView?.bounds.size = frame.size
+        presentedView?.center = CGPoint(x: frame.midX, y: frame.midY)
+    }
+
+    override func presentationTransitionWillBegin() {
+        super.presentationTransitionWillBegin()
+        maskView.backgroundColor = pickerController.dimmingColor
+        maskView.alpha = 1
+        containerView?.insertSubview(maskView, at: 0)
+        if let coordinator = presentedViewController.transitionCoordinator {
+            maskView.alpha = 0
+            coordinator.animate(alongsideTransition: { _ in self.maskView.alpha = 1 })
         }
     }
-    
+
+    override func dismissalTransitionWillBegin() {
+        super.dismissalTransitionWillBegin()
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in self.maskView.alpha = 0 })
+    }
+
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
+        super.dismissalTransitionDidEnd(completed)
+        if completed { maskView.removeFromSuperview() }
+    }
+
+    @objc private func tappedBackdrop() { pickerController.dismissFromBackdrop() }
 }

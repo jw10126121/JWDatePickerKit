@@ -24,13 +24,28 @@
   "subspecs": [
     {
       "name": "Picker",
-      "source_files": "JWDatePickerKit/Classes/Picker/**/*.swift"
+      "source_files": "JWDatePickerKit/Classes/Picker/**/*.swift",
+      "resource_bundles": {
+        "JWDatePickerKit": [
+          "JWDatePickerKit/Resources/**/*.strings"
+        ]
+      }
+    },
+    {
+      "name": "Content",
+      "source_files": [
+        "JWDatePickerKit/Classes/Content/**/*.swift",
+        "JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift"
+      ],
+      "dependencies": {
+        "JWDatePickerKit/Picker": []
+      }
     },
     {
       "name": "Controller",
-      "source_files": "JWDatePickerKit/Classes/*.swift",
+      "source_files": "JWDatePickerKit/Classes/JWDatePickerViewController.swift",
       "dependencies": {
-        "JWDatePickerKit/Picker": [],
+        "JWDatePickerKit/Content": [],
         "XBDialog": [
           "~> 1.6"
         ]

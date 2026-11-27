@@ -60,6 +60,7 @@ final class Tests: XCTestCase {
             for component in 0..<picker.numberOfComponents {
                 let row = picker.numberOfRows(inComponent: component) - 1
                 XCTAssertGreaterThanOrEqual(row, 0)
+                picker.selectRow(row, inComponent: component, animated: false)
                 view.pickerView(picker, didSelectRow: row, inComponent: component)
                 let selected = view.currentSelectedDate()!
                 XCTAssertGreaterThanOrEqual(selected, minimum)
@@ -85,6 +86,7 @@ final class Tests: XCTestCase {
         view.selectDate = date(2024, 2, 29)
         let picker = wheel(view)
         let yearRow = picker.selectedRow(inComponent: 0) + 1
+        picker.selectRow(yearRow, inComponent: 0, animated: false)
         view.pickerView(picker, didSelectRow: yearRow, inComponent: 0)
         XCTAssertEqual(view.currentSelectedDate(), date(2025, 2, 28))
     }
@@ -98,6 +100,7 @@ final class Tests: XCTestCase {
         view.selectDate = date(2024, 2, 29, 12)
         let picker = wheel(view)
         XCTAssertEqual(picker.numberOfRows(inComponent: 0), 3)
+        picker.selectRow(2, inComponent: 0, animated: false)
         view.pickerView(picker, didSelectRow: 2, inComponent: 0)
         XCTAssertEqual(view.currentSelectedDate(), date(2024, 3, 1, 12))
     }
@@ -111,8 +114,8 @@ final class Tests: XCTestCase {
         var components: DateComponents?
         controller.confirmHandler = { actual = $0 }
         controller.confirmDateComponentsHandler = { components = $0 }
-        let header = controller.view.subviews.compactMap { $0 as? JWDatePickerMenuHeaderView }.first!
-        let button = header.subviews.compactMap { $0 as? UIButton }.first { $0.title(for: .normal) == "确定" }!
+        let header = controller.headerView
+        let button = header.subviews.compactMap { $0 as? UIButton }.first { $0.title(for: .normal) == header.confirmTitle }!
         button.sendActions(for: .touchUpInside)
         XCTAssertEqual(actual, expected)
         XCTAssertNotNil(components)
@@ -123,4 +126,299 @@ final class Tests: XCTestCase {
         controller.loadViewIfNeeded()
         XCTAssertNotNil(controller.view)
     }
+
+    func testAtomicInvalidRangePreservesSelectionAndConfiguration() throws {
+        let view = JWDatePickerView()
+        let valid = JWDatePickerConfiguration(selectedDate: date(2000, 2, 29),
+            minimumDate: date(1940, 1, 1), maximumDate: date(2024, 1, 1), calendar: calendar)
+        try view.apply(valid)
+        let invalid = JWDatePickerConfiguration(type: .time, selectedDate: date(2030, 1, 1),
+            minimumDate: date(2030, 1, 1), maximumDate: date(2020, 1, 1))
+        XCTAssertThrowsError(try view.apply(invalid))
+        XCTAssertEqual(view.configurationError, .invalidDateRange)
+        XCTAssertEqual(view.type, .date)
+        XCTAssertEqual(view.currentSelectedDate(), valid.selectedDate)
+        XCTAssertEqual(view.minimumDate, valid.minimumDate)
+        view.maximumDate = date(1930, 1, 1)
+        XCTAssertEqual(view.maximumDate, valid.maximumDate)
+        XCTAssertEqual(view.configurationError, .invalidDateRange)
+        try view.apply(valid)
+        XCTAssertNil(view.configurationError)
+    }
+
+    func testDateOnlyUsesCalendarDayForBoundsAndResult() throws {
+        let view = JWDatePickerView()
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 2, 29, 16),
+            minimumDate: date(2024, 2, 29, 20), maximumDate: date(2024, 2, 29, 10),
+            calendar: calendar, selectionPolicy: .startOfDay))
+        XCTAssertEqual(view.commitSelection(), date(2024, 2, 29))
+        XCTAssertEqual(wheel(view).numberOfRows(inComponent: 2), 1)
+    }
+
+    func testDayPolicyHandlesTimeZoneAndDaylightSaving() throws {
+        var local = calendar
+        local.timeZone = TimeZone(identifier: "America/Los_Angeles")!
+        let selected = local.date(from: DateComponents(year: 2024, month: 3, day: 10, hour: 14))!
+        let view = JWDatePickerView()
+        try view.apply(JWDatePickerConfiguration(selectedDate: selected, calendar: local, selectionPolicy: .startOfDay))
+        XCTAssertEqual(view.commitSelection(), local.startOfDay(for: selected))
+        XCTAssertEqual(local.component(.day, from: view.commitSelection()), 10)
+    }
+
+    func testConfirmReadsWheelRowsBeforeDelegateCallback() throws {
+        let view = JWDatePickerView(frame: CGRect(x: 0, y: 0, width: 414, height: 216))
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2000, 5, 14),
+            minimumDate: date(1940, 1, 1), maximumDate: date(2024, 12, 31), calendar: calendar))
+        let picker = wheel(view)
+        picker.selectRow(picker.selectedRow(inComponent: 0) + 1, inComponent: 0, animated: false)
+        picker.selectRow(5, inComponent: 1, animated: false)
+        XCTAssertEqual(view.commitSelection(), date(2001, 6, 14))
+    }
+
+    func testUntouchedConfirmPreservesSubsecondsAndHiddenComponents() throws {
+        for type in JWDatePickerType.allCases {
+            let selected = date(2024, 2, 29, 12, 30).addingTimeInterval(0.125)
+            let view = JWDatePickerView()
+            try view.apply(JWDatePickerConfiguration(type: type, selectedDate: selected, calendar: calendar))
+            XCTAssertEqual(view.commitSelection(), selected, "Mode \(type)")
+        }
+    }
+
+    func testContentSendsOneResultAndCanBeginAgain() {
+        let content = JWDatePickerContentView()
+        var results = [JWDatePickerResult]()
+        content.onResult = { results.append($0) }
+        content.confirmSelection()
+        content.confirmSelection()
+        content.cancelSelection()
+        XCTAssertEqual(results.count, 1)
+        content.beginSelection()
+        content.cancelSelection()
+        content.confirmSelection()
+        XCTAssertEqual(results.count, 2)
+        guard case .cancelled = results.last! else { return XCTFail("Expected cancellation") }
+    }
+
+    func testControllerCallbacksAreOnceOnlyAndUseConfiguredCalendar() throws {
+        let controller = JWDatePickerViewController()
+        try controller.apply(JWDatePickerConfiguration(selectedDate: date(2000, 5, 14, 12), calendar: calendar))
+        var confirms = 0
+        var cancels = 0
+        var components: DateComponents?
+        controller.confirmHandler = { _ in confirms += 1 }
+        controller.cancelHandler = { cancels += 1 }
+        controller.confirmDateComponentsHandler = { components = $0 }
+        controller.contentView.confirmSelection()
+        controller.contentView.cancelSelection()
+        XCTAssertEqual(confirms, 1)
+        XCTAssertEqual(cancels, 0)
+        XCTAssertEqual(components?.hour, 12)
+    }
+
+    func testPanelLayoutAndDimensionValidation() {
+        let content = JWDatePickerContentView(frame: CGRect(x: 0, y: 0, width: 414, height: 266))
+        content.pickerHeight = 216
+        content.headerHeight = 50
+        content.layoutIfNeeded()
+        XCTAssertEqual(content.headerView.frame.height, 50)
+        XCTAssertEqual(content.pickerView.frame.minY, 50)
+        XCTAssertEqual(content.pickerView.frame.height, 216)
+        content.headerHeight = 10
+        content.pickerHeight = .nan
+        content.pickerView.rowHeight = -1
+        XCTAssertEqual(content.headerHeight, 50)
+        XCTAssertEqual(content.pickerHeight, 216)
+        XCTAssertEqual(content.pickerView.rowHeight, 40)
+        content.pickerView.columnWidth = { _, _ in 100 }
+        XCTAssertEqual(content.pickerView.pickerView(wheel(content), widthForComponent: 0), 100)
+    }
+
+
+    func testExternalDismissalCancelsAndControllerCanBePresentedAgain() async throws {
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 414, height: 896))
+        let root = UIViewController()
+        window.rootViewController = root
+        window.makeKeyAndVisible()
+        defer { window.isHidden = true }
+        let controller = JWDatePickerViewController()
+        var cancellations = 0
+        var confirmations = 0
+        controller.cancelHandler = { cancellations += 1 }
+        controller.confirmHandler = { _ in confirmations += 1 }
+        root.present(controller, animated: false)
+        try await Task.sleep(nanoseconds: 100_000_000)
+        controller.dismiss(animated: false)
+        try await Task.sleep(nanoseconds: 100_000_000)
+        XCTAssertEqual(cancellations, 1)
+        root.present(controller, animated: false)
+        try await Task.sleep(nanoseconds: 100_000_000)
+        controller.automaticallyDismisses = true
+        controller.contentView.confirmSelection()
+        try await Task.sleep(nanoseconds: 500_000_000)
+        XCTAssertEqual(confirmations, 1)
+        XCTAssertEqual(cancellations, 1)
+        XCTAssertNil(root.presentedViewController)
+    }
+
+    func testLegacyButtonsKeepPresentationUntilCallerDismisses() async throws {
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 414, height: 896))
+        let root = UIViewController()
+        window.rootViewController = root
+        window.makeKeyAndVisible()
+        defer { window.isHidden = true }
+        let controller = JWDatePickerViewController()
+        root.present(controller, animated: false)
+        try await Task.sleep(nanoseconds: 100_000_000)
+        controller.contentView.confirmSelection()
+        XCTAssertTrue(root.presentedViewController === controller)
+        controller.dismiss(animated: false)
+    }
+
+
+    func testCommitClampsStaleDayAfterMonthOrYearScroll() throws {
+        let view = JWDatePickerView()
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 1, 31), calendar: calendar))
+        wheel(view).selectRow(1, inComponent: 1, animated: false)
+        XCTAssertEqual(view.commitSelection(), date(2024, 2, 29))
+        let picker = wheel(view)
+        picker.selectRow(picker.selectedRow(inComponent: 0) + 1, inComponent: 0, animated: false)
+        XCTAssertEqual(view.commitSelection(), date(2025, 2, 28))
+    }
+
+    func testMonthCallbackPreservesUncommittedDayWheelPosition() throws {
+        let view = JWDatePickerView()
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 5, 31), calendar: calendar,
+                                               selectionPolicy: .startOfDay))
+        let picker = wheel(view)
+        // 日列已滑至 12 日，但其 didSelectRow 尚未触发，此时月列先结束。
+        picker.selectRow(11, inComponent: 2, animated: false)
+        picker.selectRow(5, inComponent: 1, animated: false)
+        var changes = [Date]()
+        view.onDateChanged = { changes.append($0) }
+        view.pickerView(picker, didSelectRow: 5, inComponent: 1)
+        XCTAssertEqual(view.currentSelectedDate(), date(2024, 6, 12))
+        XCTAssertEqual(picker.selectedRow(inComponent: 2), 11)
+        XCTAssertEqual(changes, [date(2024, 6, 12)])
+        XCTAssertEqual(view.commitSelection(), date(2024, 6, 12))
+    }
+
+    func testDayCallbackIncludesMonthWheelBeforeItsCallback() throws {
+        let view = JWDatePickerView()
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 1, 31), calendar: calendar))
+        let picker = wheel(view)
+        picker.selectRow(1, inComponent: 1, animated: false)
+        picker.selectRow(13, inComponent: 2, animated: false)
+        view.pickerView(picker, didSelectRow: 13, inComponent: 2)
+        XCTAssertEqual(view.currentSelectedDate(), date(2024, 2, 14))
+        XCTAssertEqual(view.commitSelection(), date(2024, 2, 14))
+    }
+
+    func testOverlappingWheelsClampOnlyInvalidDaysAndRespectBirthdayBounds() throws {
+        let view = JWDatePickerView()
+        for day in [12, 29, 30, 31] {
+            try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 1, 31), calendar: calendar))
+            let picker = wheel(view)
+            picker.selectRow(day - 1, inComponent: 2, animated: false)
+            picker.selectRow(1, inComponent: 1, animated: false)
+            view.pickerView(picker, didSelectRow: 1, inComponent: 1)
+            XCTAssertEqual(view.commitSelection(), date(2024, 2, min(day, 29)))
+        }
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 4, 30),
+            minimumDate: date(1940, 1, 1), maximumDate: date(2024, 5, 10), calendar: calendar,
+            selectionPolicy: .startOfDay))
+        let picker = wheel(view)
+        picker.selectRow(11, inComponent: 2, animated: false)
+        picker.selectRow(4, inComponent: 1, animated: false)
+        view.pickerView(picker, didSelectRow: 4, inComponent: 1)
+        XCTAssertEqual(view.commitSelection(), date(2024, 5, 10))
+    }
+
+    func testLocalizedModesUnitsAndHeaderFollowConfiguration() throws {
+        let content = JWDatePickerContentView()
+        for identifier in ["zh_CN", "zh_TW", "en_US", "ja_JP", "ko_KR", "fr_FR", "de_DE", "es_ES", "ar_SA"] {
+            let locale = Locale(identifier: identifier)
+            for type in JWDatePickerType.allCases {
+                try content.apply(JWDatePickerConfiguration(type: type, selectedDate: date(2024, 5, 12, 13, 24),
+                                                           calendar: calendar, locale: locale))
+                XCTAssertFalse(type.localizedName(locale: locale).hasPrefix("mode."))
+                let title = type.localizedTitle(locale: locale)
+                XCTAssertFalse(title.hasPrefix("title."))
+                XCTAssertEqual(content.headerView.locale, locale)
+                let labels = content.headerView.subviews.compactMap { $0 as? UILabel }
+                XCTAssertEqual(labels.first?.text, title)
+                for width: CGFloat in [320, 390, 768] {
+                    content.frame = CGRect(x: 0, y: 0, width: width, height: 300)
+                    content.layoutIfNeeded()
+                    content.headerView.layoutIfNeeded()
+                    let picker = wheel(content)
+                    let widths = (0..<type.section).map { content.pickerView.pickerView(picker, widthForComponent: $0) }
+                    XCTAssertLessThanOrEqual(widths.reduce(0, +), width)
+                    XCTAssertTrue(widths.allSatisfy { $0 > 0 })
+                    let buttons = content.headerView.subviews.compactMap { $0 as? UIButton }
+                    for button in buttons {
+                        XCTAssertFalse(button.frame.intersects(labels.first!.frame))
+                        XCTAssertGreaterThanOrEqual(button.bounds.width, 44)
+                    }
+                }
+            }
+        }
+        try content.apply(JWDatePickerConfiguration(type: .timeAndSecond, selectedDate: date(2024, 5, 12, 13, 24),
+            calendar: calendar, locale: Locale(identifier: "en_US")))
+        let picker = wheel(content)
+        let hour = content.pickerView.pickerView(picker, viewForRow: 13, forComponent: 0, reusing: nil) as! UILabel
+        let minute = content.pickerView.pickerView(picker, viewForRow: 24, forComponent: 1, reusing: nil) as! UILabel
+        XCTAssertEqual(hour.text, "13 hr")
+        XCTAssertEqual(minute.text, "24 min")
+        content.headerView.cancelTitle = "Custom cancel"
+        content.pickerView.locale = Locale(identifier: "ja_JP")
+        XCTAssertEqual(content.headerView.cancelTitle, "Custom cancel")
+        XCTAssertEqual(content.headerView.confirmTitle, "完了")
+    }
+
+    func testExamplePresentsEveryModeWithLocalizedTitleAndFitsPanel() async throws {
+        let root = try XCTUnwrap(UIStoryboard(name: "Main", bundle: .main).instantiateInitialViewController())
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
+        window.rootViewController = root
+        window.makeKeyAndVisible()
+        root.loadViewIfNeeded()
+        let table = try XCTUnwrap(root.view.subviews.compactMap { $0 as? UITableView }.first)
+        defer { window.isHidden = true }
+        for row in 0...JWDatePickerType.allCases.count {
+            window.overrideUserInterfaceStyle = row.isMultiple(of: 2) ? .light : .dark
+            table.delegate?.tableView?(table, didSelectRowAt: IndexPath(row: row, section: 0))
+            try await Task.sleep(nanoseconds: 400_000_000)
+            let controller = try XCTUnwrap(root.presentedViewController as? JWDatePickerViewController)
+            controller.view.layoutIfNeeded()
+            let mode = row == 0 ? JWDatePickerType.date : JWDatePickerType.allCases[row - 1]
+            XCTAssertEqual(controller.datePickerMode, mode)
+            XCTAssertEqual(controller.headerView.attributedTitle?.string, mode.localizedTitle())
+            XCTAssertEqual(controller.pickerView.locale, Locale.current)
+            XCTAssertGreaterThanOrEqual(controller.contentView.headerHeight, 56)
+            XCTAssertLessThanOrEqual(controller.contentView.pickerView.frame.maxY, controller.view.bounds.height)
+            XCTAssertEqual(controller.pickerView.lineColor, .clear)
+            let attachment = XCTAttachment(image: UIGraphicsImageRenderer(bounds: controller.view.bounds).image { _ in
+                controller.view.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+            })
+            attachment.name = "\(Locale.current.identifier)-\(row)-\(mode)"
+            attachment.lifetime = .keepAlways
+            add(attachment)
+            controller.dismiss(animated: false)
+        }
+    }
+
+    func testLateDayCallbackCannotOverwriteSynchronizedSelection() throws {
+        let view = JWDatePickerView()
+        try view.apply(JWDatePickerConfiguration(selectedDate: date(2024, 5, 31), calendar: calendar))
+        let picker = wheel(view)
+        picker.selectRow(11, inComponent: 2, animated: false)
+        picker.selectRow(5, inComponent: 1, animated: false)
+        var callbacks = 0
+        view.onDateChanged = { _ in callbacks += 1 }
+        view.pickerView(picker, didSelectRow: 5, inComponent: 1)
+        // 日列刷新后，旧减速动画的 30 日回调迟到。
+        view.pickerView(picker, didSelectRow: 29, inComponent: 2)
+        XCTAssertEqual(view.currentSelectedDate(), date(2024, 6, 12))
+        XCTAssertEqual(callbacks, 1)
+    }
+
 }

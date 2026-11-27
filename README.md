@@ -7,12 +7,12 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 - 支持年、年月、日期、日期时间、月日、时间及日期星期等 14 种选择模式。
 - 可以设置初始日期、最小日期和最大日期，也可以设置日历、时区与语言环境。
 - 可以设置滚轮行高、文字属性和分隔线颜色，并通过回调获取用户的选择。
-- 使用 CocoaPods 子模块按需安装。Picker 适合嵌入自定义界面，Controller 提供现成的底部弹层。
+- 使用 CocoaPods 子模块按需安装。Picker 适合嵌入自定义界面，Content 提供带头部的面板，Controller 提供现成的底部弹层。
 
 ## 环境要求
 
 - iOS 15.0 及以上，Swift 6 语言模式，使用支持 Swift 6 的 Xcode 工具链。
-- 使用 UIKit。
+- 使用 UIKit。组件以 Swift 6 编译，示例调用代码已用 Swift 5 语言模式完成类型检查。
 - 示例工程通过 CocoaPods 管理依赖。
 
 ## 安装
@@ -28,7 +28,10 @@ pod 'JWDatePickerKit'
 # 或者只安装可嵌入的滚轮选择器
 # pod 'JWDatePickerKit/Picker'
 
-# 也可以显式安装弹层子模块，它会自动引入 Picker
+# 可嵌入现有弹层容器的完整面板
+# pod 'JWDatePickerKit/Content'
+
+# 也可以显式安装弹层子模块，它会自动引入 Content 和 Picker
 # pod 'JWDatePickerKit/Controller'
 ```
 
@@ -41,7 +44,8 @@ import JWDatePickerKit
 | 子模块 | 包含内容 | 依赖 |
 | --- | --- | --- |
 | `Picker` | `JWDatePickerView`、`JWDatePickerType` | UIKit |
-| `Controller` | `JWDatePickerViewController`、`JWDatePickerMenuHeaderView` | `Picker`、XBDialog |
+| `Content` | `JWDatePickerContentView`、`JWDatePickerMenuHeaderView`、`JWDatePickerResult` | `Picker`、UIKit |
+| `Controller` | `JWDatePickerViewController` | `Content`、XBDialog |
 
 完整安装默认包含 `Controller`，并通过它引入 `Picker`。这些子模块属于同一个 CocoaPods Pod。原独立 `JWDatePickerView` Pod 的版本不会随本仓库的修改自动更新。
 
@@ -114,7 +118,65 @@ picker.confirmDateComponentsHandler = { components in
 | `confirmHandler` | `((Date) -> Void)?` | 确定时返回日期 |
 | `confirmDateComponentsHandler` | `((DateComponents) -> Void)?` | 确定时返回日期分量 |
 
-控制器内部的选择器和头部视图为私有属性。需要更细的滚轮文字、日历或头部样式配置时，可以使用下面的 `JWDatePickerView` 自行组合界面。
+控制器公开只读的 `contentView`、`pickerView` 和 `headerView`，可以直接配置面板高度、滚轮和头部样式。`automaticallyDismisses` 默认 `false`，设为 `true` 后，按钮回调会自动关闭弹层。`topCornerRadius` 控制顶部圆角，`dimmingColor` 控制遮罩颜色。底部安全区从本次呈现的容器计算。
+
+一次展示只发送一次确认或取消结果。控制器直接被外部关闭时也会发送取消结果。可以用 `onResult` 接收 `.confirmed(Date)` 或 `.cancelled`，它在对应旧回调之后执行。旧的日期回调和日期分量回调均保留。
+
+### 生日场景
+
+```swift
+let controller = JWDatePickerViewController()
+var calendar = Calendar(identifier: .gregorian)
+calendar.timeZone = .current
+try controller.apply(JWDatePickerConfiguration(
+    type: .date,
+    selectedDate: savedBirthday ?? Date(),
+    minimumDate: calendar.date(from: DateComponents(year: 1940, month: 1, day: 1)),
+    maximumDate: Date(),
+    calendar: calendar,
+    locale: Locale(identifier: "zh_CN"),
+    selectionPolicy: .startOfDay
+))
+controller.automaticallyDismisses = true
+controller.topCornerRadius = 24
+controller.contentView.headerHeight = 50
+controller.contentView.pickerHeight = 216
+controller.headerView.attributedTitle = NSAttributedString(
+    string: "选择日期",
+    attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .medium)]
+)
+controller.headerView.cancelFont = .systemFont(ofSize: 14)
+controller.headerView.confirmFont = .systemFont(ofSize: 14)
+controller.pickerView.rowHeight = 40
+controller.pickerView.columnWidth = { _, _ in 100 }
+controller.pickerView.textAttributes = [.font: UIFont.systemFont(ofSize: 22)]
+controller.confirmHandler = { date in
+    // 在此保存生日。取消时沿用已有值。
+}
+present(controller, animated: true)
+```
+
+滚轮使用系统 `UIPickerView` 的选中区域背景，`lineColor` 控制额外绘制的上下分隔线。
+
+`.startOfDay` 仅作用于 `.date`，使用配置日历所在时区的当天零点作为返回值，日期上下限也按同一日历日判断。默认 `.preserveComponents` 保留未展示的时、分、秒和小数秒。
+
+### 嵌入已有弹层
+
+安装 `JWDatePickerKit/Content`，把 `JWDatePickerContentView` 加入业务容器，使用其固有高度或设置与 `headerHeight + pickerHeight + 底部安全区` 一致的高度。它默认包含底部安全区，容器自行处理时可设 `includesBottomSafeArea = false`。
+
+```swift
+let panel = JWDatePickerContentView()
+try panel.apply(configuration)
+panel.pickerHeight = 216
+panel.onResult = { result in
+    switch result {
+    case .confirmed(let date): print(date)
+    case .cancelled: break
+    }
+}
+```
+
+每轮选择只发送一次 `onResult`。重新使用同一面板前调用 `beginSelection()`。独立面板的展示和关闭由业务容器处理。
 
 ## 嵌入页面用法
 
@@ -153,7 +215,7 @@ final class DateFormViewController: UIViewController {
 }
 ```
 
-`onDateChanged` 在用户滚动并选中有效日期时调用。通过代码设置 `selectDate`、日期范围或模式会刷新滚轮，但不会调用该回调。可以随时通过 `currentSelectedDate()` 读取当前日期。
+`onDateChanged` 在用户滚动并选中有效日期时调用。通过代码设置 `selectDate`、日期范围或模式会刷新滚轮，但不会调用该回调。可以随时通过 `currentSelectedDate()` 读取当前日期。确认时使用 `commitSelection()` 固定当前滚轮行并读取各列，控制器和完整面板已自动调用。
 
 ### 设置初始日期和范围
 
@@ -173,14 +235,14 @@ picker.maximumDate = nil
 
 - 设置日期、模式、范围、日历或语言环境时，选择器会自动刷新。也可以主动调用 `reloadDatas()`。设置范围和初始日期时，建议先设置范围，再设置初始日期。
 - 初始日期超出有效范围时，当前选择会调整到最近的边界。
-- 同时设置的最小日期大于最大日期时，当前实现暂时忽略这两个边界。
+- 最小日期大于最大日期时，拒绝此次配置并保留上次有效的配置和选择。`configurationError` 返回 `.invalidDateRange`，下次配置成功后清空。更新成组边界时使用 `try picker.apply(JWDatePickerConfiguration(...))`，验证通过后整体应用，避免逐项赋值产生中间无效范围。控制器和完整面板也提供同名方法。
 - 将 `selectDate` 设为 `nil` 后，选择器沿用当前选择，并在刷新时将该选择写回 `selectDate`。
 - 年份模式未设置对应边界时，默认年份范围从 1900 至 2100。当前选中年份超出该范围时会扩展范围以包含它。
 - 日期星期模式的日期列在未设置对应边界时，使用当前选择所在年的年初或年末。
 
 ### 日历、时区和语言
 
-`calendar` 决定日期分量的计算方式，时区通过 `Calendar.timeZone` 设置。`locale` 用于滚轮中的日期星期文本，以及中文单位的显示。
+`calendar` 决定日期分量的计算方式，时区通过 `Calendar.timeZone` 设置。`locale` 用于月份、日期星期、数字、单位、模式名称以及弹窗标题和按钮文案。内置简繁中文、英语、日语、韩语、法语、德语、西班牙语与阿拉伯语，缺少翻译时回退到英文。可以使用 `localizedName(locale:)` 和 `localizedTitle(locale:)` 获取指定语言的模式名称与标题。滚轮默认按本地化文本测量列宽，并为日期星期列预留所需空间。
 
 ```swift
 var calendar = Calendar(identifier: .gregorian)
@@ -203,7 +265,7 @@ if let date = picker.currentSelectedDate() {
 }
 ```
 
-`Date` 包含完整的日期和时间。模式没有显示的日期分量保留在当前选择中。例如，`.time` 只显示时、分，返回值仍包含日期和秒。需要将未显示的分量归零或替换时，请在业务代码中使用 `Calendar` 处理。
+`Date` 包含完整的日期和时间。模式没有显示的日期分量保留在当前选择中。例如，`.time` 只显示时、分，返回值仍包含日期和秒。生日场景可以将 `selectionPolicy` 设为 `.startOfDay`，其余归零或替换需求可使用 `Calendar` 处理。
 
 ### 设置滚轮样式
 
@@ -228,7 +290,7 @@ picker.selectedAttributes = [
 | `calendar` | 日期计算使用的日历，默认 `.current` |
 | `locale` | 文本显示使用的语言环境，默认 `.current` |
 | `rowHeight` | 滚轮行高，默认 40 点 |
-| `textAttributes` | 普通行文字属性，默认 20 点黑色字体 |
+| `textAttributes` | 普通行文字属性，默认 20 点系统标签色字体 |
 | `selectedAttributes` | 选中行文字属性，默认使用 `textAttributes` |
 | `lineColor` | 选中区域分隔线颜色 |
 | `pickerViewHeight` | 滚轮的固有高度，可用于布局 |
@@ -290,7 +352,7 @@ pod install
 open JWDatePickerKit.xcworkspace
 ```
 
-在 Xcode 中选择 `JWDatePickerKit-Example` scheme 和目标设备，运行示例。示例列出了各日期模式，可以点击查看底部弹层。
+在 Xcode 中选择 `JWDatePickerKit-Example` scheme 和目标设备，运行示例。示例首行提供生日场景，可检查确认、取消和再次打开恢复选择，其余行列出全部 14 种模式。生日值保存在示例页面的内存中。
 
 ## 作者与许可证
 

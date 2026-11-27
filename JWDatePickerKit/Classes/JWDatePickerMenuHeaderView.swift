@@ -1,184 +1,109 @@
-//
-//  JWDatePickerHeaderView.swift
-//  JWDatePickerKit
-//
-//  Created by linjw on 2019/4/9.
-//
-
 import UIKit
 
-
-/// 时间选择头部菜单视图
+/// 可独立使用的日期选择菜单。
 @objc public class JWDatePickerMenuHeaderView: UIView {
-    
-    /// 取消事件
     @objc public var cancelHandler: (() -> Void)?
-    
-    /// 确定事件
     @objc public var confirmHandler: (() -> Void)?
+    public var locale: Locale = .current { didSet { updateAppearance() } }
+    public var datePickerMode: JWDatePickerType = .date { didSet { updateAppearance() } }
+    @objc public dynamic var cancelTitle: String {
+        get { customCancelTitle ?? JWDatePickerLocalization.string("cancel", locale: locale) }
+        set { customCancelTitle = newValue; updateAppearance() }
+    }
+    @objc public dynamic var confirmTitle: String {
+        get { customConfirmTitle ?? JWDatePickerLocalization.string("confirm", locale: locale) }
+        set { customConfirmTitle = newValue; updateAppearance() }
+    }
+    @objc public dynamic var cancelNormalColor: UIColor = .red { didSet { updateAppearance() } }
+    @objc public dynamic var cancelHighlightedColor: UIColor = .red { didSet { updateAppearance() } }
+    @objc public dynamic var confirmNormalColor: UIColor = .label { didSet { updateAppearance() } }
+    @objc public dynamic var confirmHighlightedColor: UIColor = .label { didSet { updateAppearance() } }
+    @objc public var cancelFont: UIFont = .systemFont(ofSize: 17) { didSet { updateAppearance() } }
+    @objc public var confirmFont: UIFont = .systemFont(ofSize: 17) { didSet { updateAppearance() } }
+    @objc public var attributedTitle: NSAttributedString? { didSet { updateAppearance() } }
+    @objc public var horizontalInset: CGFloat = 16 { didSet { setNeedsLayout() } }
+    @objc public dynamic var lineColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1) {
+        didSet { updateAppearance() }
+    }
+    @objc public var showsTopLine = true { didSet { topLine.isHidden = !showsTopLine } }
+    @objc public var showsBottomLine = true { didSet { bottomLine.isHidden = !showsBottomLine } }
 
-    /// 取消标题
-    @objc public dynamic var cancelTitle: String = "取消" {
-        didSet {
-            self.cancelButton.setTitle(cancelTitle, for: .normal)
-        }
-    }
-    
-    /// 取消按钮默认颜色
-    @objc public dynamic var cancelNormalColor: UIColor = UIColor.red {
-        didSet {
-            self.cancelButton.setTitleColor(cancelNormalColor, for: .normal)
-        }
-    }
-    
-    /// 取消按钮选中状态颜色
-    @objc public dynamic var cancelHighlightedColor: UIColor = UIColor.red {
-        didSet {
-            self.cancelButton.setTitleColor(cancelHighlightedColor, for: .highlighted)
-        }
-    }
-    
-    /// 确定标题
-    @objc public dynamic var confirmTitle: String = "确定" {
-        didSet {
-            self.confirmButton.setTitle(confirmTitle, for: .normal)
-        }
-    }
-    
-    /// 确定按钮默认状态颜色
-    @objc public dynamic var confirmNormalColor: UIColor = UIColor.black {
-        didSet {
-            self.confirmButton.setTitleColor(confirmNormalColor, for: .normal)
-        }
-    }
-    
-    /// 确定按钮选中状态颜色
-    @objc public dynamic var confirmHighlightedColor: UIColor = UIColor.black {
-        didSet {
-            self.confirmButton.setTitleColor(confirmHighlightedColor, for: .highlighted)
-        }
-    }
-    
-    /// 线的颜色
-    @objc public dynamic var lineColor: UIColor = UIColor(red: 214/255.0, green: 214/255.0, blue: 214/255.0, alpha: 1.0) {
-        didSet {
-            self.topLine.backgroundColor = lineColor
-            self.bottomLine.backgroundColor = lineColor
-        }
-    }
-    
-    
-    /// 取消按钮
-    private lazy var cancelButton: UIButton = {
-        
-        let temButton = UIButton(type: .custom)
-        temButton.setTitle(self.cancelTitle, for: .normal)
-        temButton.setTitleColor(self.cancelNormalColor, for: .normal)
-        temButton.setTitleColor(self.cancelHighlightedColor, for: .highlighted)
-        temButton.addTarget(self, action: #selector(self.eventForCancel), for: .touchUpInside)
-        return temButton
-    }()
-    
-    /// 确定按钮
-    private lazy var confirmButton: UIButton = {
-        
-        let temButton = UIButton(type: .custom)
-        temButton.setTitle(self.confirmTitle, for: .normal)
-        temButton.setTitleColor(self.confirmNormalColor, for: .normal)
-        temButton.setTitleColor(self.confirmHighlightedColor, for: .highlighted)
-        temButton.addTarget(self, action: #selector(self.eventForConfirm), for: .touchUpInside)
-        return temButton
-    }()
-    
-    
-    /// 头部线
-    private lazy var topLine: UILabel = {
-        
-        let temLabel = UILabel()
-        temLabel.backgroundColor = self.lineColor
-        return temLabel
-    }()
-    
-    /// 底部线
-    private lazy var bottomLine: UILabel = {
-        
-        let temLabel = UILabel()
-        temLabel.backgroundColor = self.lineColor
-        return temLabel
-    }()
-    
-    
-    /// 取消事件
-    @objc private func eventForCancel() {
-        cancelHandler?()
-    }
-    
-    /// 确定事件
-    @objc private func eventForConfirm() {
-        confirmHandler?()
-    }
-    
+    private var customCancelTitle: String?
+    private var customConfirmTitle: String?
+    private let cancelButton = UIButton(type: .custom)
+    private let confirmButton = UIButton(type: .custom)
+    private let titleLabel = UILabel()
+    private let topLine = UIView()
+    private let bottomLine = UIView()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        setup()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupUI()
-    }
-    
-    
-    
 
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func setup() {
+        backgroundColor = .systemBackground
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 2
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.75
+        titleLabel.font = .preferredFont(forTextStyle: .headline)
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.accessibilityTraits = .header
+        for child in [topLine, cancelButton, titleLabel, confirmButton, bottomLine] { addSubview(child) }
+        cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+        updateAppearance()
+    }
+
+    private func updateAppearance() {
+        semanticContentAttribute = Locale.characterDirection(forLanguage: locale.languageCode ?? "en") == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        if let attributedTitle {
+            titleLabel.attributedText = attributedTitle
+        } else {
+            titleLabel.attributedText = nil
+            titleLabel.text = datePickerMode.localizedTitle(locale: locale)
+        }
+        cancelButton.setTitle(cancelTitle, for: .normal)
+        confirmButton.setTitle(confirmTitle, for: .normal)
+        cancelButton.setTitleColor(cancelNormalColor, for: .normal)
+        cancelButton.setTitleColor(cancelHighlightedColor, for: .highlighted)
+        confirmButton.setTitleColor(confirmNormalColor, for: .normal)
+        confirmButton.setTitleColor(confirmHighlightedColor, for: .highlighted)
+        cancelButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        confirmButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        cancelButton.titleLabel?.minimumScaleFactor = 0.75
+        confirmButton.titleLabel?.minimumScaleFactor = 0.75
+        cancelButton.titleLabel?.font = cancelFont
+        confirmButton.titleLabel?.font = confirmFont
+        topLine.backgroundColor = lineColor
+        bottomLine.backgroundColor = lineColor
+        setNeedsLayout()
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        let inset = max(0, horizontalInset)
+        let left = safeAreaInsets.left + inset
+        let right = safeAreaInsets.right + inset
+        let available = max(0, bounds.width - left - right)
+        let buttonWidth = min(available * 0.28, max(44, max(cancelButton.sizeThatFits(bounds.size).width, confirmButton.sizeThatFits(bounds.size).width) + 8))
+        cancelButton.frame = CGRect(x: left, y: 0, width: buttonWidth, height: bounds.height)
+        confirmButton.frame = CGRect(x: bounds.width - right - buttonWidth, y: 0, width: buttonWidth, height: bounds.height)
+        if effectiveUserInterfaceLayoutDirection == .rightToLeft {
+            swap(&cancelButton.frame, &confirmButton.frame)
+        }
+        titleLabel.frame = CGRect(x: left + buttonWidth + 8, y: 0, width: max(0, available - 2 * buttonWidth - 16), height: bounds.height)
+        let pixel = 1 / (window?.screen.scale ?? UIScreen.main.scale)
+        topLine.frame = CGRect(x: 0, y: 0, width: bounds.width, height: pixel)
+        bottomLine.frame = CGRect(x: 0, y: bounds.height - pixel, width: bounds.width, height: pixel)
+    }
+
+    @objc private func cancel() { cancelHandler?() }
+    @objc private func confirm() { confirmHandler?() }
 }
-
-fileprivate extension JWDatePickerMenuHeaderView {
-    
-    func setupUI() {
-        
-        backgroundColor = UIColor.white
-        
-        addSubview(topLine)
-        addSubview(cancelButton)
-        addSubview(confirmButton)
-        addSubview(bottomLine)
-        
-        /// 布局cancelButton
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16.0).isActive = true
-        cancelButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16.0).isActive = true
-        confirmButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        confirmButton.heightAnchor.constraint(equalTo: cancelButton.heightAnchor).isActive = true
-        
-        topLine.translatesAutoresizingMaskIntoConstraints = false
-        topLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        topLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        topLine.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        topLine.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale).isActive = true
-        
-        bottomLine.translatesAutoresizingMaskIntoConstraints = false
-        bottomLine.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        bottomLine.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        bottomLine.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        bottomLine.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale).isActive = true
-
-//        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-//        confirmButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//        confirmButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-    }
-}
-
-
-
-
-
-
-
-

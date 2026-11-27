@@ -23,11 +23,17 @@ Pod::Spec.new do |s|
 
     s.subspec 'Picker' do |picker|
         picker.source_files = 'JWDatePickerKit/Classes/Picker/**/*.swift'
+        picker.resource_bundles = { 'JWDatePickerKit' => ['JWDatePickerKit/Resources/**/*.strings'] }
+    end
+
+    s.subspec 'Content' do |content|
+        content.source_files = 'JWDatePickerKit/Classes/Content/**/*.swift', 'JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift'
+        content.dependency 'JWDatePickerKit/Picker'
     end
 
     s.subspec 'Controller' do |controller|
-        controller.source_files = 'JWDatePickerKit/Classes/*.swift'
-        controller.dependency 'JWDatePickerKit/Picker'
+        controller.source_files = 'JWDatePickerKit/Classes/JWDatePickerViewController.swift'
+        controller.dependency 'JWDatePickerKit/Content'
         controller.dependency 'XBDialog', '~> 1.6'
     end
 

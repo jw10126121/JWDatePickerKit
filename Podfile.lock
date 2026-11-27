@@ -1,8 +1,10 @@
 PODS:
   - JWDatePickerKit (0.1.2):
     - JWDatePickerKit/Controller (= 0.1.2)
-  - JWDatePickerKit/Controller (0.1.2):
+  - JWDatePickerKit/Content (0.1.2):
     - JWDatePickerKit/Picker
+  - JWDatePickerKit/Controller (0.1.2):
+    - JWDatePickerKit/Content
     - XBDialog (~> 1.6)
   - JWDatePickerKit/Picker (0.1.2)
   - XBDialog (1.6.0)
@@ -19,7 +21,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  JWDatePickerKit: f87a7222a9da40daeae422b5e7302186c7baefca
+  JWDatePickerKit: f36c218b8409c77e732d604be564fe3b7c8fae8a
   XBDialog: 97a647cb17d960000f45cd6640befa90bc29580a
 
 PODFILE CHECKSUM: dadf89066f8eb3b46382c22b9b4b857c930241bb
