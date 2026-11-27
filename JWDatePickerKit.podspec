@@ -8,12 +8,12 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JWDatePickerKit'
-    s.version          = '0.1.3'
+    s.version          = '1.0.0'
     s.summary          = 'JWDatePickerKit.时间选择控件'
-    s.homepage         = 'https://github.com/jw10126121/JWDatePickerKit'
+    s.homepage         = 'https://gitee.com/jw10126121/JWDatePickerKit'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'jw10126121' => '10126121@qq.com' }
-    s.source           = { :git => 'https://github.com/jw10126121/JWDatePickerKit.git', :tag => s.version.to_s }
+    s.source           = { :git => 'https://gitee.com/jw10126121/JWDatePickerKit.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
     
     s.ios.deployment_target = '15.0'

@@ -22,14 +22,25 @@ private_pod_release = lambda do
   spec = JSON.parse(sh("pod", "ipc", "spec", podspec_path, log: false))
   version = spec.fetch("version")
   source_tag = spec.fetch("source", {}).fetch("tag", nil)
+  source_git = spec.fetch("source", {}).fetch("git", nil)
   UI.user_error!("Podspec 版本必须使用 x.y.z 格式。") unless version.match?(/\A\d+\.\d+\.\d+\z/)
   UI.user_error!("Podspec source.tag 必须与版本号 #{version} 一致。") unless source_tag == version
+  UI.user_error!("Podspec source.git 必须指向 Gitee 项目仓库。") unless source_git == "https://gitee.com/jw10126121/JWDatePickerKit.git"
 
   project_branch = git.call(project_root, "branch", "--show-current")
   UI.user_error!("请在有名称的分支上发布。") if project_branch.empty?
   project_head = git.call(project_root, "rev-parse", "HEAD")
-  project_remote = git.call(project_root, "ls-remote", "origin", "refs/heads/#{project_branch}").split.first
-  UI.user_error!("当前源码提交尚未推送到 origin/#{project_branch}。") unless project_remote == project_head
+
+  source_remotes = {
+    "origin" => git.call(project_root, "remote", "get-url", "origin"),
+    "gitee" => git.call(project_root, "remote", "get-url", "gitee")
+  }
+  UI.user_error!("gitee 远端未指向 JWDatePickerKit Gitee 仓库。") unless source_remotes["gitee"].end_with?("/jw10126121/JWDatePickerKit.git")
+
+  source_remotes.each_key do |remote|
+    remote_head = git.call(project_root, "ls-remote", remote, "refs/heads/#{project_branch}").split.first
+    UI.user_error!("当前源码提交尚未推送到 #{remote}/#{project_branch}。") unless remote_head == project_head
+  end
 
   specs_branch = git.call(specs_root, "branch", "--show-current")
   UI.user_error!("JWPublicSpecs 当前处于 detached HEAD。") if specs_branch.empty?
@@ -50,29 +61,32 @@ private_pod_release = lambda do
   published_spec_path = File.join(specs_root, relative_spec_path)
   UI.user_error!("Specs 中已存在版本 #{version}，请提升 Podspec 版本号。") if File.exist?(published_spec_path)
 
-  remote_tags = git.call(
-    project_root,
-    "ls-remote",
-    "--tags",
-    "origin",
-    "refs/tags/#{version}",
-    "refs/tags/#{version}^{}"
-  ).lines
   exact_tag = "refs/tags/#{version}"
   peeled_tag = "#{exact_tag}^{}"
-  remote_tag_line = remote_tags.find { |line| line.split("\t").last&.strip == peeled_tag } ||
-                    remote_tags.find { |line| line.split("\t").last&.strip == exact_tag }
-  remote_tag = remote_tag_line&.split&.first
   local_tag = git.call(project_root, "tag", "--list", version).empty? ? nil :
               git.call(project_root, "rev-parse", "#{version}^{commit}")
 
-  if remote_tag
-    UI.user_error!("远端 tag #{version} 已指向其他提交，停止发布。") unless remote_tag == project_head
-    UI.user_error!("本地 tag #{version} 与远端不一致，停止发布。") if local_tag && local_tag != project_head
-  else
-    UI.user_error!("本地 tag #{version} 已指向其他提交，停止发布。") if local_tag && local_tag != project_head
-    sh("git", "-C", project_root, "tag", version) unless local_tag
-    sh("git", "-C", project_root, "push", "origin", "refs/tags/#{version}")
+  UI.user_error!("本地 tag #{version} 已指向其他提交，停止发布。") if local_tag && local_tag != project_head
+  sh("git", "-C", project_root, "tag", version) unless local_tag
+
+  source_remotes.each_key do |remote|
+    remote_tags = git.call(
+      project_root,
+      "ls-remote",
+      "--tags",
+      remote,
+      exact_tag,
+      peeled_tag
+    ).lines
+    remote_tag_line = remote_tags.find { |line| line.split("\t").last&.strip == peeled_tag } ||
+                      remote_tags.find { |line| line.split("\t").last&.strip == exact_tag }
+    remote_tag = remote_tag_line&.split&.first
+
+    if remote_tag
+      UI.user_error!("#{remote} 上的 tag #{version} 已指向其他提交，停止发布。") unless remote_tag == project_head
+    else
+      sh("git", "-C", project_root, "push", remote, "refs/tags/#{version}")
+    end
   end
 
   sh(

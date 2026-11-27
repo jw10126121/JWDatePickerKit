@@ -21,26 +21,38 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 
 ### CocoaPods
 
-在 Podfile 中选择一种安装方式。
+在 Podfile 顶部添加 JWPublicSpecs 和 CocoaPods 官方源。使用自定义 Specs 源时，也要显式保留官方源，才能解析其他公开 Pod 依赖。
 
 ```ruby
-# 完整组件，包括滚轮选择器和底部弹层控制器
-pod 'JWDatePickerKit'
+source 'https://gitee.com/jw10126121/JWPublicSpecs.git'
+source 'https://cdn.cocoapods.org/'
 
-# 或者只安装可嵌入的滚轮选择器
-# pod 'JWDatePickerKit/Picker'
+platform :ios, '15.0'
+use_frameworks!
 
-# 可嵌入现有弹层容器的完整面板
-# pod 'JWDatePickerKit/Content'
-
-# SwiftUI 的内嵌选择器
-# pod 'JWDatePickerKit/SwiftUI'
-
-# 也可以显式安装弹层子模块，它会自动引入 Content 和 Picker
-# pod 'JWDatePickerKit/Controller'
+target 'YourApp' do
+  # 默认包含滚轮选择器和底部弹层控制器
+  pod 'JWDatePickerKit', '1.0.0'
+end
 ```
 
-在 Podfile 所在目录执行 `pod install`，然后打开生成的 `.xcworkspace`。无论选择哪个子模块，Swift 中都使用同一个模块名。
+如需使用指定子模块，可将 Pod 声明替换为以下任一项。
+
+```ruby
+# 只安装可嵌入的滚轮选择器
+pod 'JWDatePickerKit/Picker', '1.0.0'
+
+# 可嵌入现有弹层容器的完整面板
+pod 'JWDatePickerKit/Content', '1.0.0'
+
+# SwiftUI 的内嵌选择器
+pod 'JWDatePickerKit/SwiftUI', '1.0.0'
+
+# 仅使用底部弹层控制器时可显式声明
+pod 'JWDatePickerKit/Controller', '1.0.0'
+```
+
+在 Podfile 所在目录执行 `pod install`，然后打开生成的 `.xcworkspace`。若本机尚未克隆 Specs 仓库，也可先执行 `pod repo add JWPublicSpecs https://gitee.com/jw10126121/JWPublicSpecs.git`。无论选择哪个子模块，Swift 中都使用同一个模块名。
 
 ```swift
 import JWDatePickerKit
@@ -57,7 +69,7 @@ import JWDatePickerKit
 
 ### Swift Package Manager
 
-在 Xcode 中选择 **File > Add Package Dependencies**，输入 JWDatePickerKit 仓库地址。添加 `JWDatePickerKit` 产品以使用 UIKit Picker、Content 和底部弹层控制器，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。JWDialogManager 由 Package.swift 作为传递依赖引入。
+在 Xcode 中选择 **File > Add Package Dependencies**，输入 `https://gitee.com/jw10126121/JWDatePickerKit.git`。添加 `JWDatePickerKit` 产品以使用 UIKit Picker、Content 和底部弹层控制器，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。JWDialogManager 由 Package.swift 作为传递依赖引入。
 
 ```swift
 import JWDatePickerKit
@@ -72,11 +84,7 @@ struct DateForm: View {
 }
 ```
 
-本项目的 CocoaPods Controller 子模块依赖 JWDialogManager。先将 JWPublicSpecs 仓库加入 CocoaPods，再安装 JWDatePickerKit。
-
-```sh
-pod repo add JWPublicSpecs https://gitee.com/jw10126121/JWPublicSpecs.git
-```
+本项目的 CocoaPods Controller 子模块依赖 JWDialogManager。上面的 Podfile 已配置 JWPublicSpecs，安装时会从该源获取 JWDatePickerKit 和 JWDialogManager 的 Podspec。
 
 本地示例工程通过相邻目录中的 JWDialogManager checkout 构建。使用本仓库自带的 Podfile 执行 `pod install` 即可。
 
