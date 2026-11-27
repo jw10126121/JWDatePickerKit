@@ -8,12 +8,13 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 - 可以设置初始日期、最小日期和最大日期，也可以设置日历、时区与语言环境。
 - 可以设置滚轮行高、文字属性和分隔线颜色，并通过回调获取用户的选择。
 - 每个日期分量都可以单独切换为循环滚动。
-- 使用 CocoaPods 子模块按需安装。Picker 适合嵌入自定义界面，Content 提供带头部的面板，Controller 提供现成的底部弹层。
+- 支持 CocoaPods 和 Swift Package Manager。Picker 适合嵌入自定义界面，Content 提供带头部的面板，Controller 提供现成的底部弹层。
+- 提供 SwiftUI `JWDatePicker`，通过 `Binding<Date>` 同步日期选择。
 
 ## 环境要求
 
-- iOS 15.0 及以上，Swift 6 语言模式，使用支持 Swift 6 的 Xcode 工具链。
-- 使用 UIKit。组件以 Swift 6 编译，示例调用代码已用 Swift 5 语言模式完成类型检查。
+- iOS 15.0 及以上，使用支持 Swift Package Manager 的 Xcode 工具链。
+- 核心控件基于 UIKit，可在 SwiftUI 项目中通过 `JWDatePickerKitSwiftUI` 产品使用 `JWDatePicker`。
 - 示例工程通过 CocoaPods 管理依赖。
 
 ## 安装
@@ -32,6 +33,9 @@ pod 'JWDatePickerKit'
 # 可嵌入现有弹层容器的完整面板
 # pod 'JWDatePickerKit/Content'
 
+# SwiftUI 的内嵌选择器
+# pod 'JWDatePickerKit/SwiftUI'
+
 # 也可以显式安装弹层子模块，它会自动引入 Content 和 Picker
 # pod 'JWDatePickerKit/Controller'
 ```
@@ -46,9 +50,29 @@ import JWDatePickerKit
 | --- | --- | --- |
 | `Picker` | `JWDatePickerView`、`JWDatePickerType`、`JWDatePickerConfiguration`（含 `JWDatePickerSelectionPolicy`、`JWDatePickerConfigurationError`）、`JWDatePickerLocalization` 及多语言资源 | UIKit |
 | `Content` | `JWDatePickerContentView`、`JWDatePickerMenuHeaderView`、`JWDatePickerResult` | `Picker`、UIKit |
+| `SwiftUI` | `JWDatePicker`，以 `Binding<Date>` 连接选择器 | `Picker`、SwiftUI |
 | `Controller` | `JWDatePickerViewController` | `Content`、XBDialog |
 
 完整安装默认包含 `Controller`，并通过它引入 `Picker`。这些子模块属于同一个 CocoaPods Pod。原独立 `JWDatePickerView` Pod 的版本不会随本仓库的修改自动更新。
+
+### Swift Package Manager
+
+在 Xcode 中选择 **File > Add Package Dependencies**，输入仓库地址，并选择包含 `Package.swift` 的分支或版本。添加 `JWDatePickerKit` 产品以使用 Picker 和 Content，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。
+
+SwiftPM 的核心产品不包含 `JWDatePickerViewController`。该控制器依赖的 XBDialog 1.6.0 尚未提供 Swift Package manifest。CocoaPods 中仍可照常使用完整控制器。
+
+```swift
+import JWDatePickerKit
+import JWDatePickerKitSwiftUI
+
+struct DateForm: View {
+    @State private var selectedDate = Date()
+
+    var body: some View {
+        JWDatePicker(selection: $selectedDate, type: .date)
+    }
+}
+```
 
 当前仓库的改动在发布新版本前，可以通过本地路径体验。
 

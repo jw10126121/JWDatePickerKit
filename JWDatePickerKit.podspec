@@ -31,6 +31,11 @@ Pod::Spec.new do |s|
         content.dependency 'JWDatePickerKit/Picker'
     end
 
+    s.subspec 'SwiftUI' do |swiftui|
+        swiftui.source_files = 'JWDatePickerKit/SwiftUI/**/*.swift'
+        swiftui.dependency 'JWDatePickerKit/Picker'
+    end
+
     s.subspec 'Controller' do |controller|
         controller.source_files = 'JWDatePickerKit/Classes/JWDatePickerViewController.swift'
         controller.dependency 'JWDatePickerKit/Content'
