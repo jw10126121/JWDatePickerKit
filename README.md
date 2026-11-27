@@ -44,7 +44,7 @@ import JWDatePickerKit
 
 | 子模块 | 包含内容 | 依赖 |
 | --- | --- | --- |
-| `Picker` | `JWDatePickerView`、`JWDatePickerType` | UIKit |
+| `Picker` | `JWDatePickerView`、`JWDatePickerType`、`JWDatePickerConfiguration`（含 `JWDatePickerSelectionPolicy`、`JWDatePickerConfigurationError`）、`JWDatePickerLocalization` 及多语言资源 | UIKit |
 | `Content` | `JWDatePickerContentView`、`JWDatePickerMenuHeaderView`、`JWDatePickerResult` | `Picker`、UIKit |
 | `Controller` | `JWDatePickerViewController` | `Content`、XBDialog |
 
@@ -89,7 +89,7 @@ func showDatePicker() {
 }
 ```
 
-取消和确定按钮会调用对应的回调，业务方可以在回调中关闭弹层。`backgoundTapDismissEnable` 默认是 `true`，点击背景时会调用 `cancelHandler` 并关闭弹层。设置为 `false` 可以禁用背景点击关闭。
+取消和确定按钮会调用对应的回调，业务方可以在回调中关闭弹层。`backgoundTapDismissEnable` 默认是 `true`，点击背景时会调用 `cancelHandler` 并关闭弹层。设置为 `false` 可以禁用背景点击关闭。注意该属性名沿用历史拼写（少一个 `r`），调用时请使用 `backgoundTapDismissEnable`。
 
 如需取得日期分量，可以设置 `confirmDateComponentsHandler`。两个确定回调都设置时，点击确定会先调用 `confirmHandler`，再调用 `confirmDateComponentsHandler`。
 
@@ -111,7 +111,7 @@ picker.confirmDateComponentsHandler = { components in
 | `datePickerMode` | `JWDatePickerType` | 选择模式，默认 `.date` |
 | `defaultDate` | `Date` | 初始日期，默认当前时间 |
 | `minimumDate`、`maximumDate` | `Date?` | 日期上下限，传入 `nil` 可清除对应限制 |
-| `backgoundTapDismissEnable` | `Bool` | 是否允许点击背景关闭，默认 `true` |
+| `backgoundTapDismissEnable` | `Bool` | 是否允许点击背景关闭，默认 `true`；属性名沿用历史拼写 |
 | `lineBackgroundColor` | `UIColor` | 滚轮选中区域分隔线颜色 |
 | `textColorOfSelectedRow` | `UIColor` | 选中行文字颜色 |
 | `textColorOfOtherRow` | `UIColor` | 其他行文字颜色 |
