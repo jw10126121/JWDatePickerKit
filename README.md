@@ -13,7 +13,8 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 
 ## 环境要求
 
-- iOS 15.0 及以上，Swift 6.0，使用支持 Swift Package Manager 的 Xcode 工具链。
+- iOS 15.0 及以上。
+- 支持 Swift 5.10 工具链（Xcode 15.3 或更高版本）和 Swift 6 工具链（Xcode 16 或更高版本）。Xcode 和 CocoaPods 中的 `5.0` 表示 Swift 5 语言模式，最低工具链版本为 Swift 5.10。
 - 核心控件基于 UIKit，可在 SwiftUI 项目中通过 `JWDatePickerKitSwiftUI` 产品使用 `JWDatePicker`。
 - 示例工程通过 CocoaPods 管理依赖。
 
@@ -21,17 +22,17 @@ JWDatePickerKit 是一个基于 Swift 和 UIKit 的日期时间选择组件，�
 
 ### CocoaPods
 
-在 Podfile 顶部添加 JWPublicSpecs 源。本组件及其 JWDialogManager 依赖都由该 Specs 仓库提供，因此下面的安装示例只需这个源。如果应用还使用其他托管在 CocoaPods 官方源的 Pod，再额外添加 `source 'https://cdn.cocoapods.org/'`。
+JWDatePickerKit `1.0.1` 和它的 JWDialogManager 依赖均可通过 CocoaPods Trunk 或 JWPublicSpecs 安装。使用 JWPublicSpecs 时，可在 Podfile 中将源替换为 `https://gitee.com/jw10126121/JWPublicSpecs.git`。
 
 ```ruby
-source 'https://gitee.com/jw10126121/JWPublicSpecs.git'
+source 'https://cdn.cocoapods.org/'
 
 platform :ios, '15.0'
 use_frameworks!
 
 target 'YourApp' do
   # 默认包含滚轮选择器和底部弹层控制器
-  pod 'JWDatePickerKit', '1.0.0'
+  pod 'JWDatePickerKit', '1.0.1'
 end
 ```
 
@@ -39,19 +40,21 @@ end
 
 ```ruby
 # 只安装可嵌入的滚轮选择器
-pod 'JWDatePickerKit/Picker', '1.0.0'
+pod 'JWDatePickerKit/Picker', '1.0.1'
 
 # 可嵌入现有弹层容器的完整面板
-pod 'JWDatePickerKit/Content', '1.0.0'
+pod 'JWDatePickerKit/Content', '1.0.1'
 
 # SwiftUI 的内嵌选择器
-pod 'JWDatePickerKit/SwiftUI', '1.0.0'
+pod 'JWDatePickerKit/SwiftUI', '1.0.1'
 
 # 仅使用底部弹层控制器时可显式声明
-pod 'JWDatePickerKit/Controller', '1.0.0'
+pod 'JWDatePickerKit/Controller', '1.0.1'
 ```
 
 在 Podfile 所在目录执行 `pod install`，然后打开生成的 `.xcworkspace`。若本机尚未克隆 Specs 仓库，也可先执行 `pod repo add JWPublicSpecs https://gitee.com/jw10126121/JWPublicSpecs.git`。无论选择哪个子模块，Swift 中都使用同一个模块名。
+
+使用 Swift 5 工具链时，在 `Podfile` 的目标内添加 `supports_swift_versions '~> 5.0'`。使用 Swift 6 工具链时，可通过 `supports_swift_versions '~> 6.0'` 明确选择 Swift 6 模式。
 
 ```swift
 import JWDatePickerKit
@@ -68,9 +71,12 @@ import JWDatePickerKit
 
 ### Swift Package Manager
 
-在 Xcode 中选择 **File > Add Package Dependencies**，输入 `https://gitee.com/jw10126121/JWDatePickerKit.git`。添加 `JWDatePickerKit` 产品以使用 UIKit Picker、Content 和底部弹层控制器，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。JWDialogManager 由 Package.swift 作为传递依赖引入。
+在 Xcode 中选择 **File > Add Package Dependencies**，输入 `https://gitee.com/jw10126121/JWDatePickerKit.git`，选择 `1.0.1` 或以上版本。添加 `JWDatePickerKit` 产品以使用 UIKit Picker、Content 和底部弹层控制器，添加 `JWDatePickerKitSwiftUI` 产品以使用 SwiftUI 包装器。JWDialogManager 由 Package.swift 作为传递依赖引入。
+
+Swift 5.10 工具链使用 `Package.swift`，以 Swift 5 模式编译库。Swift 6 工具链使用 `Package@swift-6.0.swift`，以 Swift 6 模式编译库。宿主 App 可独立选择自己的语言模式。
 
 ```swift
+import SwiftUI
 import JWDatePickerKit
 import JWDatePickerKitSwiftUI
 
@@ -83,11 +89,11 @@ struct DateForm: View {
 }
 ```
 
-本项目的 CocoaPods Controller 子模块依赖 JWDialogManager。上面的 Podfile 已配置 JWPublicSpecs，安装时会从该源获取 JWDatePickerKit 和 JWDialogManager 的 Podspec。
+当前源码的底部弹层依赖 JWDialogManager，最低版本为 0.1.2。0.1.2 的 Podspec 已发布到 JWPublicSpecs 和 CocoaPods Trunk。
 
-本地示例工程通过相邻目录中的 JWDialogManager checkout 构建。使用本仓库自带的 Podfile 执行 `pod install` 即可。
+本地示例工程使用相邻目录中的 JWDialogManager checkout，请使用 `0.1.2` 或兼容版本。
 
-发布新版本前，也可以通过本地路径体验本项目。
+本地开发时，可以通过路径安装当前源码。
 
 ```ruby
 pod 'JWDatePickerKit', :path => '/本地路径/JWDatePickerKit'
@@ -395,6 +401,8 @@ open JWDatePickerKit.xcworkspace
 ```
 
 在 Xcode 中选择 `JWDatePickerKit-Example` scheme 和目标设备，运行示例。示例首行提供生日场景，可检查确认、取消和再次打开恢复选择，其余行列出全部 14 种模式。生日值保存在示例页面的内存中。
+
+示例工程默认使用 Swift 5 模式。用 `xcodebuild` 构建或测试时，可传入 `SWIFT_VERSION=6.0` 验证 Swift 6 模式。
 
 示例页面第二行是循环滚动演示，打开后小时和分钟列会循环滚动，其他日期分量保持普通滚轮行为。
 

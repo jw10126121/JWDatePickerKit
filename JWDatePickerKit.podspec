@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JWDatePickerKit'
-    s.version          = '1.0.0'
+    s.version          = '1.0.1'
     s.summary          = 'JWDatePickerKit.时间选择控件'
     s.homepage         = 'https://gitee.com/jw10126121/JWDatePickerKit'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     
     s.ios.deployment_target = '15.0'
     
-    s.swift_versions = ['6.0']
+    s.swift_versions = ['5.0', '6.0']
     s.default_subspecs = 'Controller'
 
     s.subspec 'Picker' do |picker|
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     s.subspec 'Controller' do |controller|
         controller.source_files = 'JWDatePickerKit/Classes/JWDatePickerViewController.swift'
         controller.dependency 'JWDatePickerKit/Content'
-        controller.dependency 'JWDialogManager', '~> 0.1.1'
+        controller.dependency 'JWDialogManager', '~> 0.1.2'
     end
 
 end

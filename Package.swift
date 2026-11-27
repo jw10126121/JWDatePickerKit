@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.10
 import PackageDescription
 
 let package = Package(
@@ -12,7 +12,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://gitee.com/jw10126121/JWDialogManager.git",
-            from: "0.1.1"
+            from: "0.1.2"
         )
     ],
     targets: [
@@ -37,5 +37,5 @@ let package = Package(
             path: "JWDatePickerKit/SwiftUI"
         )
     ],
-    swiftLanguageModes: [.v6]
+    swiftLanguageVersions: [.v5]
 )
