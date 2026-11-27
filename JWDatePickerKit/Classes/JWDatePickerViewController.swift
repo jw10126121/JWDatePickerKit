@@ -137,7 +137,11 @@ fileprivate extension JWDatePickerViewController {
         self.presentAnimator = XBPresentAnimator(self)
         self.presentAnimator.menu { (config) in
             config.presentingScale = 1.0
-            let areaInsetsBottom = UIApplication.shared.keyWindow?.rootViewController?.view.safeAreaInsets.bottom ?? 0.0
+            let areaInsetsBottom = UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first(where: { $0.activationState == .foregroundActive })?
+                .windows.first(where: \.isKeyWindow)?
+                .safeAreaInsets.bottom ?? 0.0
             config.menuType = .bottomHeight(h: CGFloat(temHeight + areaInsetsBottom))
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecognizer))
             tap.numberOfTapsRequired = 1

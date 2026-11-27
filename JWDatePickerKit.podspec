@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     s.subspec 'Controller' do |controller|
         controller.source_files = 'JWDatePickerKit/Classes/*.swift'
         controller.dependency 'JWDatePickerKit/Picker'
-        controller.dependency 'XBDialog', '~> 1.6.0'
+        controller.dependency 'XBDialog', '~> 1.6'
     end
 
 end

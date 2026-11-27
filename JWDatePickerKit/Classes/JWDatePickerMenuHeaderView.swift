@@ -172,28 +172,6 @@ fileprivate extension JWDatePickerMenuHeaderView {
 //        confirmButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 //        confirmButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-//        self.cancelButton.snp.makeConstraints { (make) in
-//            make.left.equalTo(16)
-//            make.centerY.equalTo(self)
-//            make.height.equalTo(30)
-//        }
-        
-//        self.confirmButton.snp.makeConstraints { (make) in
-//            make.right.equalTo(-16)
-//            make.centerY.equalTo(self)
-//            make.height.equalTo(self.cancelButton.snp.height)
-//        }
-//
-//        self.topLine.snp.makeConstraints { (make) in
-//            make.left.right.top.equalTo(self)
-//            make.height.equalTo(1.0 / UIScreen.main.scale)
-//        }
-//
-//        self.bottomLine.snp.makeConstraints { (make) in
-//            make.left.right.bottom.equalTo(self)
-//            make.height.equalTo(self.topLine.snp.height)
-//        }
-        
     }
 }
 

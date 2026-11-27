@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import JWDatePickerKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -44,9 +43,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view)
-        }
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -319,13 +319,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JWDatePickerKit_Example/Pods-JWDatePickerKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JWDatePickerKit/JWDatePickerKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/XBDialog/XBDialog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWDatePickerKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XBDialog.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
