@@ -177,6 +177,8 @@ picker.topCornerRadius = 24
 
 克隆本仓库与 [JWDialogManager](https://gitee.com/jw10126121/JWDialogManager) 到同一父目录，在仓库根目录运行 `pod install`，打开 `JWDatePickerKit.xcworkspace`，选择 `JWDatePickerKit-Example` scheme。业务项目中可把版本号替换为 `pod 'JWDatePickerKit', :path => '../JWDatePickerKit'`。
 
+私有 Pod 发布流程会比较两库的 API 公约。它默认读取同一父目录下的 `JWTextPickerKit`，也可以通过 `JW_TEXT_PICKER_KIT_PATH` 指定用于校验的文本库路径。
+
 也可在命令行运行模拟器测试。将设备名称替换为本机已安装的模拟器。
 
 ```sh

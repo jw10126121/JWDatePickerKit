@@ -276,16 +276,21 @@ final class Tests: XCTestCase {
     func testControllerCallbacksAreOnceOnlyAndUseConfiguredCalendar() throws {
         let controller = JWDatePickerViewController()
         try controller.apply(JWDatePickerConfiguration(selectedDate: date(2000, 5, 14, 12), calendar: calendar))
-        var confirms = 0
-        var cancels = 0
+        var calls: [String] = []
         var components: DateComponents?
-        controller.confirmHandler = { _ in confirms += 1 }
-        controller.cancelHandler = { cancels += 1 }
-        controller.confirmDateComponentsHandler = { components = $0 }
+        controller.confirmHandler = { _ in calls.append("confirm") }
+        controller.cancelHandler = { calls.append("cancel") }
+        controller.confirmDateComponentsHandler = {
+            components = $0
+            calls.append("components")
+        }
+        controller.onResult = { result in
+            guard case .confirmed = result else { return XCTFail("Expected confirmation") }
+            calls.append("result")
+        }
         controller.contentView.confirmSelection()
         controller.contentView.cancelSelection()
-        XCTAssertEqual(confirms, 1)
-        XCTAssertEqual(cancels, 0)
+        XCTAssertEqual(calls, ["confirm", "components", "result"])
         XCTAssertEqual(components?.hour, 12)
     }
 

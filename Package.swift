@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://gitee.com/jw10126121/JWDialogManager.git",
-            from: "0.1.3"
+            .upToNextMinor(from: "0.1.3")
         )
     ],
     targets: [

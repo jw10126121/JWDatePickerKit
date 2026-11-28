@@ -19,6 +19,9 @@ private_pod_release = lambda do
   project_status = git.call(project_root, "status", "--porcelain", "--untracked-files=all")
   UI.user_error!("请先提交 JWDatePickerKit 源码改动，再执行发布。") unless project_status.empty?
 
+  text_picker_root = ENV.fetch("JW_TEXT_PICKER_KIT_PATH", File.expand_path("../../JWTextPickerKit", __dir__))
+  sh("sh", File.join(project_root, "scripts/check-api-conventions.sh"), text_picker_root)
+
   spec = JSON.parse(sh("pod", "ipc", "spec", podspec_path, log: false))
   version = spec.fetch("version")
   source_tag = spec.fetch("source", {}).fetch("tag", nil)
