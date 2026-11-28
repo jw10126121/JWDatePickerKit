@@ -1,6 +1,6 @@
 # JWDatePickerKit
 
-iOS 日期时间选择器，支持 UIKit 页面内嵌、底部弹层和 SwiftUI。与 `JWTextPickerManager` 共用同一套 [API 公约](API_CONVENTIONS.md)。
+iOS 日期时间选择器，支持 UIKit 页面内嵌、底部弹层和 SwiftUI。与 `JWTextPickerKit` 共用同一套 [API 公约](API_CONVENTIONS.md)。
 
 **环境要求**　iOS 15+。Swift 5.10（Xcode 15.3+）或 Swift 6（Xcode 16+）。
 
@@ -18,10 +18,10 @@ https://gitee.com/jw10126121/JWDatePickerKit.git
 
 | 用法 | 产品 | 导入模块 |
 | --- | --- | --- |
-| UIKit 内嵌与底部弹层 | `JWDatePicker` | `JWDatePickerKit` |
-| SwiftUI | `JWDatePickerSwiftUI` | `JWDatePickerKitSwiftUI` |
+| UIKit 内嵌与底部弹层 | `JWDatePickerKit` | `JWDatePickerKit` |
+| SwiftUI | `JWDatePickerKitSwiftUI` | `JWDatePickerKitSwiftUI` |
 
-旧产品名 `JWDatePickerKit` / `JWDatePickerKitSwiftUI` 继续可用。
+短名产品 `JWDatePicker` / `JWDatePickerSwiftUI` 也可用。
 
 ### CocoaPods
 
