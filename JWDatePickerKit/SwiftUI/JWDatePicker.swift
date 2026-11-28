@@ -39,7 +39,7 @@ public struct JWDatePicker: UIViewRepresentable {
 
     public func makeUIView(context: Context) -> JWDatePickerView {
         let picker = JWDatePickerView()
-        picker.onDateChanged = { [weak coordinator = context.coordinator] date in
+        picker.onSelectionChanged = { [weak coordinator = context.coordinator] date in
             coordinator?.selection.wrappedValue = date
         }
         applyConfiguration(to: picker)

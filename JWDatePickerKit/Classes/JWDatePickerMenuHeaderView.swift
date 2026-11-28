@@ -14,15 +14,15 @@ import UIKit
         get { customConfirmTitle ?? JWDatePickerLocalization.string("confirm", locale: locale) }
         set { customConfirmTitle = newValue; updateAppearance() }
     }
-    @objc public dynamic var cancelNormalColor: UIColor = .red { didSet { updateAppearance() } }
-    @objc public dynamic var cancelHighlightedColor: UIColor = .red { didSet { updateAppearance() } }
-    @objc public dynamic var confirmNormalColor: UIColor = .label { didSet { updateAppearance() } }
-    @objc public dynamic var confirmHighlightedColor: UIColor = .label { didSet { updateAppearance() } }
+    @objc public dynamic var cancelNormalColor: UIColor = .secondaryLabel { didSet { updateAppearance() } }
+    @objc public dynamic var cancelHighlightedColor: UIColor = .secondaryLabel { didSet { updateAppearance() } }
+    @objc public dynamic var confirmNormalColor: UIColor = .systemTeal { didSet { updateAppearance() } }
+    @objc public dynamic var confirmHighlightedColor: UIColor = .systemTeal { didSet { updateAppearance() } }
     @objc public var cancelFont: UIFont = .systemFont(ofSize: 17) { didSet { updateAppearance() } }
     @objc public var confirmFont: UIFont = .systemFont(ofSize: 17) { didSet { updateAppearance() } }
     @objc public var attributedTitle: NSAttributedString? { didSet { updateAppearance() } }
     @objc public var horizontalInset: CGFloat = 16 { didSet { setNeedsLayout() } }
-    @objc public dynamic var lineColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1) {
+    @objc public dynamic var lineColor: UIColor = .separator {
         didSet { updateAppearance() }
     }
     /// 是否显示头部上分隔线，默认隐藏。

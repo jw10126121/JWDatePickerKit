@@ -23,6 +23,16 @@ https://gitee.com/jw10126121/JWDatePickerKit.git
 
 短名产品 `JWDatePicker` / `JWDatePickerSwiftUI` 也可用。
 
+也可在 `Package.swift` 中声明依赖，再为应用 target 添加对应产品。
+
+```swift
+.package(url: "https://gitee.com/jw10126121/JWDatePickerKit.git", from: "1.2.0")
+// UIKit
+.product(name: "JWDatePickerKit", package: "jwdatepickerkit")
+// SwiftUI
+.product(name: "JWDatePickerKitSwiftUI", package: "jwdatepickerkit")
+```
+
 ### CocoaPods
 
 ```ruby
@@ -32,8 +42,9 @@ platform :ios, '15.0'
 use_frameworks!
 
 target 'YourApp' do
+  # UIKit
   pod 'JWDatePickerKit', '~> 1.2'
-  # 使用 SwiftUI 时添加
+  # SwiftUI 按需添加，会引入 UIKit 弹层。
   # pod 'JWDatePickerKit/SwiftUI', '~> 1.2'
 
   # 使用 Xcode 15 时取消下一行的注释
@@ -61,11 +72,10 @@ import UIKit
 import JWDatePickerKit
 
 let picker = JWDatePickerView()
-picker.type = .date
-picker.selection = Date()
-picker.onDateChanged = { date in print(date) }
+try picker.apply(JWDatePickerConfiguration(type: .date, selection: Date()))
+picker.onSelectionChanged = { date in print(date) }
 
-// 高度使用 picker.pickerViewHeight，读取当前值用 currentSelectedDate()
+// 高度使用 picker.pickerViewHeight，读取当前值用 currentSelection()
 ```
 
 用 `type` 切换模式，例如 `.yearAndMonth`、`.dateHourMinute`、`.time`。点击页面自己的确定按钮时调用 `commitSelection()`，从滚轮当前位置取得最终日期。
@@ -74,11 +84,8 @@ picker.onDateChanged = { date in print(date) }
 
 ```swift
 let picker = JWDatePickerViewController()
-picker.type = .dateHourMinute
-picker.selection = Date()
+try picker.apply(JWDatePickerConfiguration(type: .dateHourMinute, selection: Date()))
 picker.automaticallyDismisses = true
-picker.confirmHandler = { date in print(date) }
-picker.cancelHandler = { print("已取消") }
 picker.onResult = { result in
     switch result {
     case .confirmed(let date): print(date)
@@ -93,6 +100,8 @@ present(picker, animated: true)
 如果页面已有弹层容器，可嵌入 `JWDatePickerContentView`，复用同一面板时在开始新一轮选择前调用 `beginSelection()`。
 
 ## SwiftUI
+
+通过 CocoaPods 安装时导入 `JWDatePickerKit`。使用 SwiftPM 时，添加对应产品并导入主模块及扩展模块。
 
 ```swift
 import SwiftUI
@@ -125,9 +134,9 @@ struct DateForm: View {
 }
 ```
 
-通过 CocoaPods 安装时改为 `import JWDatePickerKit`。可用 `minimumDate`、`maximumDate` 限制范围，用 `locale` 指定显示语言。
+确认时会写回 `selection` 绑定。可用 `minimumDate`、`maximumDate` 限制范围，用 `locale` 指定显示语言。
 
-## 配置与自定义
+## 日期范围配置
 
 需要同时更新日期、上下限和日历时，推荐一次调用 `apply(_:)`：
 
@@ -139,7 +148,7 @@ let now = Date()
 do {
     try picker.apply(JWDatePickerConfiguration(
         type: .date,
-        selectedDate: calendar.date(byAdding: .year, value: -18, to: now),
+        selection: calendar.date(byAdding: .year, value: -18, to: now),
         minimumDate: calendar.date(from: DateComponents(year: 1900, month: 1, day: 1)),
         maximumDate: now,
         calendar: calendar,
@@ -151,7 +160,18 @@ do {
 }
 ```
 
-滚轮样式通过 `rowHeight`、`lineColor`、`textAttributes`、`selectedAttributes`、`loopingComponents` 设置；弹层外观通过 `topCornerRadius`、`dimmingColor`、`contentView.headerHeight` 和 `contentView.pickerHeight` 设置。
+## 自定义样式
+
+默认选中色为系统青色，普通文字使用语义灰色，两者共用 17 pt 字体。选中色随滚轮当前位置按选中框边界裁切。
+
+```swift
+picker.textColorOfSelectedRow = .systemBlue
+picker.textColorOfOtherRow = .secondaryLabel
+picker.headerView.confirmNormalColor = .systemBlue
+picker.topCornerRadius = 24
+```
+
+可通过 `pickerView.textAttributes`、`selectedAttributes` 和 `rowHeight` 自定义滚轮。弹层高度通过 `contentView.headerHeight` 与 `pickerHeight` 调整。日期的循环列通过 `pickerView.loopingComponents` 设置。
 
 ## 本地调试
 

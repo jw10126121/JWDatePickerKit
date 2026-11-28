@@ -88,7 +88,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let controller = JWDatePickerViewController()
         do {
             try controller.apply(JWDatePickerConfiguration(
-                type: modes[indexPath.row - 2], selectedDate: Date(), calendar: calendar, locale: locale
+                type: modes[indexPath.row - 2], selection: Date(), calendar: calendar, locale: locale
             ))
         } catch {
             assertionFailure("Invalid picker configuration \(error)")
@@ -103,7 +103,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let controller = JWDatePickerViewController()
         do {
             try controller.apply(JWDatePickerConfiguration(
-                type: .dateHourMinute, selectedDate: Date(), calendar: calendar, locale: locale
+                type: .dateHourMinute, selection: Date(), calendar: calendar, locale: locale
             ))
         } catch {
             assertionFailure("Invalid looping picker configuration \(error)")
@@ -117,35 +117,16 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     private func configureAppearance(of controller: JWDatePickerViewController) {
         controller.automaticallyDismisses = true
-        controller.topCornerRadius = 24
-        let accent = UIColor(red: 0, green: 0.65, blue: 0.6, alpha: 1)
-        let titleFont = UIFontMetrics(forTextStyle: .headline).scaledFont(for: .systemFont(ofSize: 16, weight: .medium))
-        controller.contentView.headerHeight = max(56, titleFont.lineHeight * 2 + 12)
         controller.headerView.attributedTitle = NSAttributedString(
             string: controller.type.localizedTitle(locale: locale),
-            attributes: [.font: titleFont, .foregroundColor: UIColor.label]
+            attributes: [.font: UIFont.preferredFont(forTextStyle: .headline), .foregroundColor: UIColor.label]
         )
-        let buttonFont = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 16))
-        controller.headerView.cancelFont = buttonFont
-        controller.headerView.confirmFont = buttonFont
-        controller.headerView.cancelNormalColor = .secondaryLabel
-        controller.headerView.confirmNormalColor = accent
-        controller.headerView.showsTopLine = false
-        controller.headerView.showsBottomLine = false
-        let count = controller.type.columnCount
-        let size: CGFloat = count <= 3 ? 22 : (count <= 5 ? 18 : 17)
-        let font = UIFontMetrics(forTextStyle: .title3).scaledFont(for: .systemFont(ofSize: size), maximumPointSize: 28)
-        controller.pickerView.rowHeight = max(40, font.lineHeight + 12)
-        controller.contentView.pickerHeight = max(216, controller.pickerView.rowHeight * 5)
-        controller.pickerView.textAttributes = [.font: font, .foregroundColor: UIColor.secondaryLabel]
-        controller.pickerView.selectedAttributes = [.foregroundColor: accent]
-        controller.pickerView.lineColor = .clear
     }
 
     private func showBirthdayPicker() {
         let controller = JWDatePickerViewController()
         let configuration = JWDatePickerConfiguration(
-            type: .date, selectedDate: birthday ?? Date(),
+            type: .date, selection: birthday ?? Date(),
             minimumDate: calendar.date(from: DateComponents(year: 1940, month: 1, day: 1)),
             maximumDate: Date(), calendar: calendar, locale: locale,
             selectionPolicy: .startOfDay

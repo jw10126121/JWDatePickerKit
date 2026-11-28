@@ -9,21 +9,23 @@ JWDatePickerKit 与 JWTextPickerKit 对齐视图职责、选择状态、弹层�
 | 底部弹层 | `JWDatePickerViewController` | `JWTextPickerViewController` |
 | 头部视图 | `JWDatePickerMenuHeaderView` | `JWTextPickerMenuHeaderView` |
 | 最终结果 | `JWDatePickerResult` | `JWTextPickerResult` |
-| SwiftUI 内联视图 | `JWDatePicker(selection:)` | `JWTextPicker(selection:items:)` |
-| SwiftUI 弹层 | `.jwDatePicker(isPresented:selection:)` | `.jwTextPicker(isPresented:items:selection:)` |
+| SwiftUI 内联视图 | `JWDatePicker(selection:)` | `JWTextPicker(selection:type:items:)` |
+| SwiftUI 弹层 | `.jwDatePicker(isPresented:selection:)` | `.jwTextPicker(isPresented:selection:type:items:)` |
 
 ## 选择与结果
 
 - 用 `type` 指定显示模式或列数，用 `selection` 设置选中值。日期使用 `Date`，文本的各级索引从 0 开始。
-- 日期用 `apply(_:) throws` 验证并提交配置，失败时保留上次有效值。文本用 `apply(type:items:selection:)` 一次更新数据和索引，索引自动收敛。
-- 读取当前值用 `currentSelectedDate()` 或 `currentSelection()`，确认时统一用 `commitSelection()`。
+- 两库均用 `apply(_:)` 批量配置。日期传 `JWDatePickerConfiguration`，范围无效时抛出错误并保留上次配置。文本传 `JWTextPickerConfiguration`，索引自动收敛。
+- 读取当前值用 `currentSelection()`，确认时用 `commitSelection()`。通过滚轮的 `onSelectionChanged` 监听已选项变化。
 - 每轮通过 `onResult` 发送一次 `.confirmed` 或 `.cancelled`。UIKit 也提供 `confirmHandler` / `cancelHandler`。复用嵌入面板时用 `beginSelection()` 开始新一轮。
 - `backgroundTapDismissEnable` 控制点背景关闭，`automaticallyDismisses` 控制确认和取消按钮是否自动关闭。两库均使用弹层所在容器的安全区。
 - SwiftUI 弹层在确认时写回绑定的 `selection`。文本的 RxSwift 入口是 `rxShowTextPicker(items:selection:...)`，确认时返回 `JWTextPickerSelection`。
 
 ## 样式
 
-滚轮根据当前列的选中行应用 `selectedAttributes`，其余行使用 `textAttributes`。两套属性都可使用动态语义颜色。文本也可通过 `JWTextPickerStyle` 同时设置滚轮与头部。弹层圆角统一通过控制器的 `topCornerRadius` 设置。
+两库默认使用 17 pt 滚轮文字、50 pt 行高、50 pt 头部、250 pt 滚轮和 24 pt 顶部圆角。选中框内用系统青色，框外用语义灰色。选中和未选中文字默认使用同一字体，头部和滚轮分隔线默认隐藏。
+
+弹层都通过 `textColorOfSelectedRow`、`textColorOfOtherRow` 和 `topCornerRadius` 自定义外观。独立滚轮使用 `textAttributes` 和 `selectedAttributes`。文本库另外提供 `JWTextPickerStyle`。
 
 ## 安装
 

@@ -15,7 +15,7 @@ import JWDialogManager
     @objc public var confirmHandler: ((Date) -> Void)?
     @objc public var confirmDateComponentsHandler: ((DateComponents) -> Void)?
     public var onResult: ((JWDatePickerResult) -> Void)?
-    @objc public var topCornerRadius: CGFloat = 12 { didSet { updateCorners() } }
+    @objc public var topCornerRadius: CGFloat = 24 { didSet { updateCorners() } }
     @objc public var dimmingColor: UIColor = UIColor.black.withAlphaComponent(0.25)
     /// 日期显示模式，与 JWDatePickerView.type 保持一致。
     @objc public var type: JWDatePickerType {
@@ -23,7 +23,7 @@ import JWDialogManager
         set { pickerView.type = newValue }
     }
     @objc public var selection: Date {
-        get { pickerView.currentSelectedDate() ?? Date() }
+        get { currentSelection() }
         set { pickerView.selection = newValue }
     }
     @objc public var minimumDate: Date? {
@@ -39,9 +39,9 @@ import JWDialogManager
         set { pickerView.lineColor = newValue }
     }
     @objc public dynamic var textColorOfSelectedRow: UIColor {
-        get { pickerView.selectedAttributes?[.foregroundColor] as? UIColor ?? .label }
+        get { pickerView.selectedAttributes?[.foregroundColor] as? UIColor ?? textColorOfOtherRow }
         set {
-            var attributes = pickerView.selectedAttributes ?? pickerView.textAttributes
+            var attributes = pickerView.selectedAttributes ?? [:]
             attributes[.foregroundColor] = newValue
             pickerView.selectedAttributes = attributes
         }
@@ -68,12 +68,16 @@ import JWDialogManager
         sheetTransition = DatePickerSheetTransition(self)
         transitioningDelegate = sheetTransition
         contentView.onFinish = { [weak self] result in self?.handle(result) }
-        pickerView.lineColor = .black
     }
 
     public func apply(_ configuration: JWDatePickerConfiguration) throws {
         try contentView.apply(configuration)
     }
+
+    public func currentSelection() -> Date { pickerView.currentSelection() }
+
+    @discardableResult
+    public func commitSelection() -> Date { pickerView.commitSelection() }
 
     public override func loadView() {
         view = contentView

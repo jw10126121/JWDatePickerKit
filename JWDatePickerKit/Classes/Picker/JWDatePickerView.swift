@@ -16,7 +16,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     public private(set) var configurationError: JWDatePickerConfigurationError?
     /// 返回指定列的宽度。未设置时根据本地化文本宽度分配。
     public var columnWidth: ((Int, CGFloat) -> CGFloat)? { didSet { rebuild() } }
-    public var rowHeight: CGFloat = 40 {
+    public var rowHeight: CGFloat = 50 {
         didSet {
             guard rowHeight.isFinite, rowHeight > 0 else {
                 rowHeight = oldValue
@@ -28,16 +28,20 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         }
     }
     public var textAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 20), .foregroundColor: UIColor.secondaryLabel
+        .font: UIFont.systemFont(ofSize: 17), .foregroundColor: UIColor.secondaryLabel
     ] { didSet { rebuild() } }
     public var selectedAttributes: [NSAttributedString.Key: Any]? = [
-        .foregroundColor: UIColor.label
+        .foregroundColor: UIColor.systemTeal
     ] { didSet { rebuild() } }
-    public var lineColor: UIColor = UIColor(white: 0.72, alpha: 1) {
+    public var lineColor: UIColor = .clear {
         didSet { topLine.backgroundColor = lineColor; bottomLine.backgroundColor = lineColor }
     }
     public var pickerViewHeight: CGFloat { return picker.intrinsicContentSize.height }
-    public var onDateChanged: ((Date) -> Void)?
+    public var onSelectionChanged: ((Date) -> Void)?
+    public var onDateChanged: ((Date) -> Void)? {
+        get { onSelectionChanged }
+        set { onSelectionChanged = newValue }
+    }
 
     private let picker = UIPickerView()
     private let topLine = UIView()
@@ -201,7 +205,9 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         isUpdating = false
     }
 
-    public func currentSelectedDate() -> Date? { currentDate }
+    public func currentSelection() -> Date { currentDate }
+
+    public func currentSelectedDate() -> Date? { currentSelection() }
 
     /// 固定滚轮当前选中行，并统一读取所有列，供确认按钮使用。
     @discardableResult
@@ -464,7 +470,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         guard !isUpdating, pickerView.selectedRow(inComponent: component) == row else { return }
         let loopWithoutReload = shouldLoop(component: component)
         resolveSelection(rebuildPicker: !loopWithoutReload)
-        onDateChanged?(currentDate)
+        onSelectionChanged?(currentDate)
     }
 
     /// 为指定列切换循环滚动。循环列仍会把重复行映射到同一个日期分量值。

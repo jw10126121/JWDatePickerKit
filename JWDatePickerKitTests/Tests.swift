@@ -302,7 +302,7 @@ final class Tests: XCTestCase {
         content.pickerView.rowHeight = -1
         XCTAssertEqual(content.headerHeight, 50)
         XCTAssertEqual(content.pickerHeight, 216)
-        XCTAssertEqual(content.pickerView.rowHeight, 40)
+        XCTAssertEqual(content.pickerView.rowHeight, 50)
         content.pickerView.columnWidth = { _, _ in 100 }
         XCTAssertEqual(content.pickerView.pickerView(wheel(content), widthForComponent: 0), 100)
     }
@@ -476,7 +476,11 @@ final class Tests: XCTestCase {
             XCTAssertEqual(controller.type, mode)
             XCTAssertEqual(controller.headerView.attributedTitle?.string, mode.localizedTitle())
             XCTAssertEqual(controller.pickerView.locale, Locale.current)
-            XCTAssertGreaterThanOrEqual(controller.contentView.headerHeight, 56)
+            XCTAssertEqual(controller.contentView.headerHeight, 50)
+            XCTAssertEqual(controller.contentView.pickerHeight, 250)
+            XCTAssertEqual(controller.topCornerRadius, 24)
+            XCTAssertEqual(controller.textColorOfSelectedRow, .systemTeal)
+            XCTAssertEqual(controller.textColorOfOtherRow, .secondaryLabel)
             XCTAssertLessThanOrEqual(controller.contentView.pickerView.frame.maxY, controller.view.bounds.height)
             XCTAssertEqual(controller.pickerView.lineColor, .clear)
             let attachment = XCTAttachment(image: UIGraphicsImageRenderer(bounds: controller.view.bounds).image { _ in

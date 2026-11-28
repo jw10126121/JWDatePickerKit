@@ -16,6 +16,10 @@ public enum JWDatePickerConfigurationError: Error, Equatable {
 public struct JWDatePickerConfiguration {
     public var type: JWDatePickerType
     public var selectedDate: Date?
+    public var selection: Date? {
+        get { selectedDate }
+        set { selectedDate = newValue }
+    }
     public var minimumDate: Date?
     public var maximumDate: Date?
     public var calendar: Calendar
@@ -38,6 +42,19 @@ public struct JWDatePickerConfiguration {
         self.calendar = calendar
         self.locale = locale
         self.selectionPolicy = selectionPolicy
+    }
+
+    public init(
+        type: JWDatePickerType = .date,
+        selection: Date?,
+        minimumDate: Date? = nil,
+        maximumDate: Date? = nil,
+        calendar: Calendar = .current,
+        locale: Locale = .current,
+        selectionPolicy: JWDatePickerSelectionPolicy = .preserveComponents
+    ) {
+        self.init(type: type, selectedDate: selection, minimumDate: minimumDate, maximumDate: maximumDate,
+                  calendar: calendar, locale: locale, selectionPolicy: selectionPolicy)
     }
 
     internal func normalized(_ date: Date) -> Date {

@@ -62,7 +62,7 @@ private struct JWDatePickerPresenter: UIViewControllerRepresentable {
         coordinator.makeController = {
             let controller = JWDatePickerViewController()
             let configuration = JWDatePickerConfiguration(
-                type: type, selectedDate: selection, minimumDate: minimumDate, maximumDate: maximumDate,
+                type: type, selection: selection, minimumDate: minimumDate, maximumDate: maximumDate,
                 calendar: calendar, locale: locale, selectionPolicy: selectionPolicy
             )
             do {
