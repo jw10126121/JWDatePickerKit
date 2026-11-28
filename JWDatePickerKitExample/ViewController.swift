@@ -13,6 +13,14 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return calendar
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 供自动化截图使用：launch 时传 -autoOpenPicker 自动打开生日选择器
+        if ProcessInfo.processInfo.arguments.contains("-autoOpenPicker") {
+            showBirthdayPicker()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = JWDatePickerLocalization.string("picker", locale: locale)
@@ -110,6 +118,9 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private func configureAppearance(of controller: JWDatePickerViewController) {
         controller.automaticallyDismisses = true
         controller.topCornerRadius = 24
+        // 自定义选中行与未选中行文字颜色
+        controller.textColorOfSelectedRow = UIColor(red: 0, green: 0.65, blue: 0.6, alpha: 1)
+        controller.textColorOfOtherRow = .tertiaryLabel
         let titleFont = UIFontMetrics(forTextStyle: .headline).scaledFont(for: .systemFont(ofSize: 16, weight: .medium))
         controller.contentView.headerHeight = max(56, titleFont.lineHeight * 2 + 12)
         controller.headerView.attributedTitle = NSAttributedString(
