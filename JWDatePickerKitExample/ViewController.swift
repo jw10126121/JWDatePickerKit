@@ -124,7 +124,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let titleFont = UIFontMetrics(forTextStyle: .headline).scaledFont(for: .systemFont(ofSize: 16, weight: .medium))
         controller.contentView.headerHeight = max(56, titleFont.lineHeight * 2 + 12)
         controller.headerView.attributedTitle = NSAttributedString(
-            string: controller.datePickerMode.localizedTitle(locale: locale),
+            string: controller.type.localizedTitle(locale: locale),
             attributes: [.font: titleFont, .foregroundColor: UIColor.label]
         )
         let buttonFont = UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: .systemFont(ofSize: 16))
@@ -134,7 +134,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         controller.headerView.confirmNormalColor = UIColor(red: 0, green: 0.65, blue: 0.6, alpha: 1)
         controller.headerView.showsTopLine = false
         controller.headerView.showsBottomLine = false
-        let count = controller.datePickerMode.section
+        let count = controller.type.section
         let size: CGFloat = count <= 3 ? 22 : (count <= 5 ? 18 : 17)
         let font = UIFontMetrics(forTextStyle: .title3).scaledFont(for: .systemFont(ofSize: size), maximumPointSize: 28)
         controller.pickerView.rowHeight = max(40, font.lineHeight + 12)

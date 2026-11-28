@@ -1,6 +1,6 @@
 {
   "name": "JWDatePickerKit",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "summary": "JWDatePickerKit.时间选择控件",
   "homepage": "https://gitee.com/jw10126121/JWDatePickerKit",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://gitee.com/jw10126121/JWDatePickerKit.git",
-    "tag": "1.0.2"
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "15.0"
@@ -24,12 +24,18 @@
   "default_subspecs": "Controller",
   "subspecs": [
     {
-      "name": "Picker",
+      "name": "Core",
       "source_files": "JWDatePickerKit/Classes/Picker/**/*.swift",
       "resource_bundles": {
         "JWDatePickerKit": [
           "JWDatePickerKit/Resources/**/*.strings"
         ]
+      }
+    },
+    {
+      "name": "Picker",
+      "dependencies": {
+        "JWDatePickerKit/Core": []
       }
     },
     {
@@ -39,14 +45,14 @@
         "JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift"
       ],
       "dependencies": {
-        "JWDatePickerKit/Picker": []
+        "JWDatePickerKit/Core": []
       }
     },
     {
       "name": "SwiftUI",
       "source_files": "JWDatePickerKit/SwiftUI/**/*.swift",
       "dependencies": {
-        "JWDatePickerKit/Picker": []
+        "JWDatePickerKit/Core": []
       }
     },
     {

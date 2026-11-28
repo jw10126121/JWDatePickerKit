@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JWDatePickerKit'
-    s.version          = '1.1.0'
+    s.version          = '1.0.0'
     s.summary          = 'JWDatePickerKit.时间选择控件'
     s.homepage         = 'https://gitee.com/jw10126121/JWDatePickerKit'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -21,19 +21,25 @@ Pod::Spec.new do |s|
     s.swift_versions = ['5.0', '6.0']
     s.default_subspecs = 'Controller'
 
+    # 与 JWTextPickerManager 对齐的公共子模块命名。
+    s.subspec 'Core' do |core|
+        core.source_files = 'JWDatePickerKit/Classes/Picker/**/*.swift'
+        core.resource_bundles = { 'JWDatePickerKit' => ['JWDatePickerKit/Resources/**/*.strings'] }
+    end
+
+    # 旧名称保留为别名，现有 Podfile 无需修改。
     s.subspec 'Picker' do |picker|
-        picker.source_files = 'JWDatePickerKit/Classes/Picker/**/*.swift'
-        picker.resource_bundles = { 'JWDatePickerKit' => ['JWDatePickerKit/Resources/**/*.strings'] }
+        picker.dependency 'JWDatePickerKit/Core'
     end
 
     s.subspec 'Content' do |content|
         content.source_files = 'JWDatePickerKit/Classes/Content/**/*.swift', 'JWDatePickerKit/Classes/JWDatePickerMenuHeaderView.swift'
-        content.dependency 'JWDatePickerKit/Picker'
+        content.dependency 'JWDatePickerKit/Core'
     end
 
     s.subspec 'SwiftUI' do |swiftui|
         swiftui.source_files = 'JWDatePickerKit/SwiftUI/**/*.swift'
-        swiftui.dependency 'JWDatePickerKit/Picker'
+        swiftui.dependency 'JWDatePickerKit/Core'
     end
 
     s.subspec 'Controller' do |controller|

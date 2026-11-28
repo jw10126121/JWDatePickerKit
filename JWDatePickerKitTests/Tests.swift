@@ -36,7 +36,7 @@ final class Tests: XCTestCase {
             let view = JWDatePickerView(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
             view.calendar = calendar
             view.type = type
-            view.selectDate = date
+            view.selection = date
             XCTAssertEqual(view.currentSelectedDate(), date)
             let picker = wheel(view)
             XCTAssertEqual(picker.numberOfComponents, type.section)
@@ -55,7 +55,7 @@ final class Tests: XCTestCase {
             view.type = type
             view.minimumDate = minimum
             view.maximumDate = maximum
-            view.selectDate = date(2024, 2, 29, 12, 30)
+            view.selection = date(2024, 2, 29, 12, 30)
             let picker = wheel(view)
             for component in 0..<picker.numberOfComponents {
                 let row = picker.numberOfRows(inComponent: component) - 1
@@ -72,18 +72,18 @@ final class Tests: XCTestCase {
     func testBoundsCanBeClearedAndDateIsClamped() {
         let view = JWDatePickerView()
         view.calendar = calendar
-        view.selectDate = date(2024, 1, 1)
+        view.selection = date(2024, 1, 1)
         view.minimumDate = date(2024, 3, 1)
         XCTAssertEqual(view.currentSelectedDate(), date(2024, 3, 1))
         view.minimumDate = nil
-        view.selectDate = date(2024, 1, 1)
+        view.selection = date(2024, 1, 1)
         XCTAssertEqual(view.currentSelectedDate(), date(2024, 1, 1))
     }
 
     func testYearChangeClampsLeapDay() {
         let view = JWDatePickerView(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
         view.calendar = calendar
-        view.selectDate = date(2024, 2, 29)
+        view.selection = date(2024, 2, 29)
         let picker = wheel(view)
         let yearRow = picker.selectedRow(inComponent: 0) + 1
         picker.selectRow(yearRow, inComponent: 0, animated: false)
@@ -97,7 +97,7 @@ final class Tests: XCTestCase {
         view.type = .dateWeekHourMinute
         view.minimumDate = date(2024, 2, 28, 10)
         view.maximumDate = date(2024, 3, 1, 15)
-        view.selectDate = date(2024, 2, 29, 12)
+        view.selection = date(2024, 2, 29, 12)
         let picker = wheel(view)
         XCTAssertEqual(picker.numberOfRows(inComponent: 0), 3)
         picker.selectRow(2, inComponent: 0, animated: false)
@@ -108,7 +108,7 @@ final class Tests: XCTestCase {
     func testConfirmReturnsDefaultWithoutScrolling() {
         let controller = JWDatePickerViewController()
         let expected = date(2024, 2, 29, 12, 30)
-        controller.defaultDate = expected
+        controller.selection = expected
         controller.loadViewIfNeeded()
         var actual: Date?
         var components: DateComponents?
@@ -419,7 +419,7 @@ final class Tests: XCTestCase {
             } else {
                 mode = JWDatePickerType.allCases[row - 2]
             }
-            XCTAssertEqual(controller.datePickerMode, mode)
+            XCTAssertEqual(controller.type, mode)
             XCTAssertEqual(controller.headerView.attributedTitle?.string, mode.localizedTitle())
             XCTAssertEqual(controller.pickerView.locale, Locale.current)
             XCTAssertGreaterThanOrEqual(controller.contentView.headerHeight, 56)

@@ -6,6 +6,8 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v15)],
     products: [
+        .library(name: "JWDatePicker", targets: ["JWDatePickerKit"]),
+        .library(name: "JWDatePickerSwiftUI", targets: ["JWDatePickerKitSwiftUI"]),
         .library(name: "JWDatePickerKit", targets: ["JWDatePickerKit"]),
         .library(name: "JWDatePickerKitSwiftUI", targets: ["JWDatePickerKitSwiftUI"])
     ],

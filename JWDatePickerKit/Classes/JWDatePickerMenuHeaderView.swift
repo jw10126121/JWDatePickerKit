@@ -5,7 +5,7 @@ import UIKit
     @objc public var cancelHandler: (() -> Void)?
     @objc public var confirmHandler: (() -> Void)?
     public var locale: Locale = .current { didSet { updateAppearance() } }
-    public var datePickerMode: JWDatePickerType = .date { didSet { updateAppearance() } }
+    public var type: JWDatePickerType = .date { didSet { updateAppearance() } }
     @objc public dynamic var cancelTitle: String {
         get { customCancelTitle ?? JWDatePickerLocalization.string("cancel", locale: locale) }
         set { customCancelTitle = newValue; updateAppearance() }
@@ -69,7 +69,7 @@ import UIKit
             titleLabel.attributedText = attributedTitle
         } else {
             titleLabel.attributedText = nil
-            titleLabel.text = datePickerMode.localizedTitle(locale: locale)
+            titleLabel.text = type.localizedTitle(locale: locale)
         }
         cancelButton.setTitle(cancelTitle, for: .normal)
         confirmButton.setTitle(confirmTitle, for: .normal)

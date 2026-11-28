@@ -47,10 +47,10 @@ public final class JWDatePickerContentView: UIView {
         pickerView.onConfigurationChanged = { [weak self] in
             guard let self else { return }
             self.headerView.locale = self.pickerView.locale
-            self.headerView.datePickerMode = self.pickerView.type
+            self.headerView.type = self.pickerView.type
         }
         headerView.locale = pickerView.locale
-        headerView.datePickerMode = pickerView.type
+        headerView.type = pickerView.type
         headerView.cancelHandler = { [weak self] in self?.cancelSelection() }
         headerView.confirmHandler = { [weak self] in self?.confirmSelection() }
     }

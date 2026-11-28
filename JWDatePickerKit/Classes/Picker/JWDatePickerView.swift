@@ -3,7 +3,8 @@ import UIKit
 /// 可单独嵌入的日期选择器。未显示的日期分量保留在当前选择中。
 public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     public var type: JWDatePickerType = .date { didSet { reloadDatas() } }
-    public var selectDate: Date? { didSet { reloadDatas() } }
+    /// 当前选中日期。
+    public var selection: Date? { didSet { reloadDatas() } }
     public var minimumDate: Date? { didSet { reloadDatas() } }
     public var maximumDate: Date? { didSet { reloadDatas() } }
     public var calendar: Calendar = .current { didSet { reloadDatas() } }
@@ -123,7 +124,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
 
     public var configuration: JWDatePickerConfiguration {
         JWDatePickerConfiguration(
-            type: type, selectedDate: selectDate, minimumDate: minimumDate,
+            type: type, selectedDate: selection, minimumDate: minimumDate,
             maximumDate: maximumDate, calendar: calendar, locale: locale,
             selectionPolicy: selectionPolicy
         )
@@ -162,8 +163,8 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         }
         updateProperties(configuration)
         isUpdating = true
-        currentDate = clamped(configuration.normalized(selectDate ?? currentDate))
-        selectDate = currentDate
+        currentDate = clamped(configuration.normalized(selection ?? currentDate))
+        selection = currentDate
         lastValidConfiguration = self.configuration
         configurationError = nil
         rebuild()
@@ -174,7 +175,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     private func updateProperties(_ configuration: JWDatePickerConfiguration) {
         isUpdating = true
         type = configuration.type
-        selectDate = configuration.selectedDate
+        selection = configuration.selectedDate
         minimumDate = configuration.minimumDate
         maximumDate = configuration.maximumDate
         calendar = configuration.calendar
@@ -230,7 +231,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
             }
         }
         currentDate = clamped(configuration.normalized(date))
-        selectDate = currentDate
+        selection = currentDate
         lastValidConfiguration = configuration
         if rebuildPicker || valuesNeedRefresh() {
             rebuild()

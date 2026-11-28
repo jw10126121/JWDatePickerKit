@@ -7,22 +7,24 @@ import JWDialogManager
     public var pickerView: JWDatePickerView { contentView.pickerView }
     public var headerView: JWDatePickerMenuHeaderView { contentView.headerView }
 
-    @objc public var backgoundTapDismissEnable = true
+    /// 点击背景是否关闭弹层。
+    @objc public var backgroundTapDismissEnable = true
     /// 默认保持旧版按钮回调行为。开启后，确认和取消会自动关闭弹层。
     @objc public var automaticallyDismisses = false
     @objc public var cancelHandler: (() -> Void)?
     @objc public var confirmHandler: ((Date) -> Void)?
     @objc public var confirmDateComponentsHandler: ((DateComponents) -> Void)?
     public var onResult: ((JWDatePickerResult) -> Void)?
-    @objc public var topCornerRadius: CGFloat = 0 { didSet { updateCorners() } }
+    @objc public var topCornerRadius: CGFloat = 12 { didSet { updateCorners() } }
     @objc public var dimmingColor: UIColor = UIColor.black.withAlphaComponent(0.25)
-    @objc public var datePickerMode: JWDatePickerType {
+    /// 日期显示模式，与 JWDatePickerView.type 保持一致。
+    @objc public var type: JWDatePickerType {
         get { pickerView.type }
         set { pickerView.type = newValue }
     }
-    @objc public var defaultDate: Date {
+    @objc public var selection: Date {
         get { pickerView.currentSelectedDate() ?? Date() }
-        set { pickerView.selectDate = newValue }
+        set { pickerView.selection = newValue }
     }
     @objc public var minimumDate: Date? {
         get { pickerView.minimumDate }
@@ -95,7 +97,7 @@ import JWDialogManager
     }
 
     fileprivate func dismissFromBackdrop() {
-        guard backgoundTapDismissEnable else { return }
+        guard backgroundTapDismissEnable else { return }
         closesForBackdrop = true
         contentView.cancelSelection()
         closesForBackdrop = false
