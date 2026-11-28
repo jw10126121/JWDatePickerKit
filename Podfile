@@ -9,12 +9,10 @@ project 'JWDatePickerKit.xcodeproj'
 
 target 'JWDatePickerKit_Example' do
   supports_swift_versions '~> 5.0'
-  pod 'JWDatePickerKit', :path => './'
+  pod 'JWDatePickerKit/SwiftUI', :path => './'
   pod 'JWDialogManager', :path => '../JWDialogManager'
   target 'JWDatePickerKit_Tests' do
     inherit! :search_paths
-
-    
   end
 end
 

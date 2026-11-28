@@ -195,6 +195,25 @@ final class Tests: XCTestCase {
         XCTAssertEqual(picker.numberOfRows(inComponent: hourComponent), 24)
     }
 
+    func testLoopingWheelRestylesOldAndNewRows() throws {
+        let view = JWDatePickerView(frame: CGRect(x: 0, y: 0, width: 390, height: 250))
+        try view.apply(JWDatePickerConfiguration(type: .time, selectedDate: date(2024, 2, 29, 12), calendar: calendar))
+        view.setLooping(true, for: .hour)
+        view.selectedAttributes = [.foregroundColor: UIColor.magenta]
+        let picker = wheel(view)
+        let row = picker.selectedRow(inComponent: 0)
+        let first = view.pickerView(picker, viewForRow: row, forComponent: 0, reusing: nil)
+        let second = view.pickerView(picker, viewForRow: row + 1, forComponent: 0, reusing: nil)
+        let labels = try [first, second].map { view in
+            try XCTUnwrap(view.subviews.compactMap { $0 as? UILabel }.first)
+        }
+
+        picker.selectRow(row + 1, inComponent: 0, animated: false)
+        view.pickerView(picker, didSelectRow: row + 1, inComponent: 0)
+        let colors = labels.map { $0.attributedText?.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor }
+        XCTAssertEqual(colors, [.secondaryLabel, .magenta])
+    }
+
     func testUntouchedConfirmPreservesSubsecondsAndHiddenComponents() throws {
         for type in JWDatePickerType.allCases {
             let selected = date(2024, 2, 29, 12, 30).addingTimeInterval(0.125)
@@ -385,8 +404,8 @@ final class Tests: XCTestCase {
         try content.apply(JWDatePickerConfiguration(type: .timeAndSecond, selectedDate: date(2024, 5, 12, 13, 24),
             calendar: calendar, locale: Locale(identifier: "en_US")))
         let picker = wheel(content)
-        let hour = content.pickerView.pickerView(picker, viewForRow: 13, forComponent: 0, reusing: nil) as! UILabel
-        let minute = content.pickerView.pickerView(picker, viewForRow: 24, forComponent: 1, reusing: nil) as! UILabel
+        let hour = content.pickerView.pickerView(picker, viewForRow: 13, forComponent: 0, reusing: nil).subviews.compactMap { $0 as? UILabel }.first!
+        let minute = content.pickerView.pickerView(picker, viewForRow: 24, forComponent: 1, reusing: nil).subviews.compactMap { $0 as? UILabel }.first!
         XCTAssertEqual(hour.text, "13 hr")
         XCTAssertEqual(minute.text, "24 min")
         content.headerView.cancelTitle = "Custom cancel"

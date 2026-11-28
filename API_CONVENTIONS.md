@@ -1,63 +1,33 @@
 # JW picker 系列 API 公约
 
-本公约同时适用于 `JWDatePickerKit` 与 `JWTextPickerKit`，目标是让两个库在命名、安装、回调和版本节奏上保持一致。旧 `JWTextPickerManager` 1.x 遵循零破坏迁移；新 `JWTextPickerKit` 1.2.0 采用统一后的干净 API，不再保留旧别名。
+JWDatePickerKit 与 JWTextPickerKit 对齐视图职责、选择状态、弹层交互和分发方式。
 
-## 1. 命名公式
+| 职责 | JWDatePickerKit | JWTextPickerKit |
+| --- | --- | --- |
+| UIKit 内联滚轮 | `JWDatePickerView` | `JWTextPickerView` |
+| 可嵌入面板 | `JWDatePickerContentView` | `JWTextPickerContentView` |
+| 底部弹层 | `JWDatePickerViewController` | `JWTextPickerViewController` |
+| 头部视图 | `JWDatePickerMenuHeaderView` | `JWTextPickerMenuHeaderView` |
+| 最终结果 | `JWDatePickerResult` | `JWTextPickerResult` |
+| SwiftUI 内联视图 | `JWDatePicker(selection:)` | `JWTextPicker(selection:items:)` |
+| SwiftUI 弹层 | `.jwDatePicker(isPresented:selection:)` | `.jwTextPicker(isPresented:items:selection:)` |
 
-所有公开符号使用：`JW` + 域（`Date` / `Text`）+ 角色（`View` / `ContentView` / `ViewController` / `Configuration` / `Result`）+ 类型后缀。
+## 选择与结果
 
-| 角色 | JWDatePickerKit | JWTextPickerKit | 说明 |
-| --- | --- | --- | --- |
-| 内嵌滚轮 | `JWDatePickerView` | `JWTextPickerView` | 可嵌入业务页面 |
-| 可嵌入面板 | `JWDatePickerContentView` | `JWTextPickerContentView`（规划中） | 头部 + 滚轮 + 安全区 |
-| 底部弹层 | `JWDatePickerViewController` | `JWTextPickerViewController` | 依赖 JWDialogManager |
-| 头部视图 | `JWDatePickerMenuHeaderView` | `JWTextPickerMenuHeaderView` | 取消 / 标题 / 确定 |
-| 配置对象 | `JWDatePickerConfiguration`（数据） | `JWTextPickerStyle`（样式） | 各自表达数据约束与外观样式 |
-| 结果枚举 | `JWDatePickerResult` | `JWTextPickerResult` | `.confirmed` / `.cancelled` |
-| 模式 / 列数 | `JWDatePickerType` | `JWTextPickerType` | 统一属性名 `type` |
-| 数据模型 | `Date` / `DateComponents` | `JWTextPickerItem`、`JWTextPickerItemProtocol` | 公开符号统一 JW 前缀 |
+- 用 `type` 指定显示模式或列数，用 `selection` 设置选中值。日期使用 `Date`，文本的各级索引从 0 开始。
+- 日期用 `apply(_:) throws` 验证并提交配置，失败时保留上次有效值。文本用 `apply(type:items:selection:)` 一次更新数据和索引，索引自动收敛。
+- 读取当前值用 `currentSelectedDate()` 或 `currentSelection()`，确认时统一用 `commitSelection()`。
+- 每轮通过 `onResult` 发送一次 `.confirmed` 或 `.cancelled`。UIKit 也提供 `confirmHandler` / `cancelHandler`。复用嵌入面板时用 `beginSelection()` 开始新一轮。
+- `backgroundTapDismissEnable` 控制点背景关闭，`automaticallyDismisses` 控制确认和取消按钮是否自动关闭。两库均使用弹层所在容器的安全区。
+- SwiftUI 弹层在确认时写回绑定的 `selection`。文本的 RxSwift 入口是 `rxShowTextPicker(items:selection:...)`，确认时返回 `JWTextPickerSelection`。
 
-## 2. 属性与方法
+## 样式
 
-- 模式属性统一叫 `type`；旧 `datePickerMode` 保留为别名。
-- 选中值属性统一叫 `selection`；旧 `selectedIndexs` 保留为别名。
-- 配置统一通过 `apply(_:) throws` 一次性应用；失败时保留上一次有效配置。
-- 提交滚轮位置统一用 `commitSelection()`，读取当前值用 `currentSelectedDate()` / `currentSelection()`。
-- 一次性结果统一通过 `onResult`；便捷回调用 `confirmHandler` / `cancelHandler`。
-- 点击背景关闭的属性统一为 `backgroundTapDismissEnable`。
-- SwiftUI：内联视图用 `JWDatePicker(selection:)` / `JWTextPicker(selection:items:)`，弹层入口用 `.jwDatePicker(...)` / `.jwTextPicker(...)`；对应模块产品名 `JW*SwiftUI`。
-- RxSwift 扩展产品名统一为 `JW*RxSwift`，入口方法 `rxShow*Picker(items:...)`。
+滚轮根据当前列的选中行应用 `selectedAttributes`，其余行使用 `textAttributes`。两套属性都可使用动态语义颜色。文本也可通过 `JWTextPickerStyle` 同时设置滚轮与头部。弹层圆角统一通过控制器的 `topCornerRadius` 设置。
 
-## 3. 回调签名
+## 安装
 
-```swift
-public enum JWDatePickerResult {
-    case confirmed(Date)
-    case cancelled
-}
-
-public enum JWTextPickerResult {
-    case confirmed(first: JWTextPickerItemProtocol, second: JWTextPickerItemProtocol?, third: JWTextPickerItemProtocol?)
-    case cancelled
-}
-
-public var onResult: ((JWTextPickerResult) -> Void)?
-public var confirmHandler: ((Selection) -> Void)?
-public var cancelHandler: (() -> Void)?
-```
-
-确认与取消统一通过 `onResult` 上报，`confirmHandler` / `cancelHandler` 为便捷回调。
-
-## 4. 安装与分发
-
-- CocoaPods 源同时列 JWPublicSpecs 和官方 CDN；两个库首个发布版本均为 1.2.0，统一写 `~> 1.2`。
-- SPM 产品名以 `JWDatePickerKit` / `JWTextPickerKit` 系列为主，`JWDatePicker` / `JWTextPicker` 等短名作为别名保留。
-- Pod 子模块统一为 `Core` / `Content` / `Controller` / `SwiftUI` / `RxSwift`；旧子模块名保留为只含依赖的别名。
-- 最低系统版本 iOS 15；Swift 5.10 与 Swift 6 双工具链；公共弹层依赖 `JWDialogManager ~> 0.1.3`。
-- 两个库版本号同步发布，README 版本号随 podspec 同步更新。
-
-## 5. 迁移策略
-
-1. 阶段一（旧库 1.2.x）：新名称与旧名称并存，旧名称标记 deprecated；文档全面切换到新名称。
-2. 阶段二（新库 1.2.0）：`JWTextPickerKit` 以干净 API 发布，以 `JWTextPickerViewController` 为唯一主入口；旧 `JWTextPickerManager` pod 与仓库保留给存量用户。
-3. 任何阶段都不静默改变旧 API 的行为与回调次数。
+- 最低系统版本为 iOS 15。SwiftPM 提供 Swift 5.10 与 Swift 6 清单。
+- CocoaPods 使用 `Core`、`Content`、`Controller` 和 `SwiftUI`。文本额外提供 `RxSwift`。带弹层的模块依赖 `JWDialogManager ~> 0.1.3`。
+- SwiftPM 主产品使用 `JWDatePickerKit` / `JWTextPickerKit`，扩展附加 `SwiftUI` 或 `RxSwift` 后缀。现有短名和 CocoaPods 子模块别名可继续使用。
+- 从旧文本库切换时，按照 JWTextPickerKit README 中的迁移表更新依赖、模型和调用。版本示例与各项目 podspec 同步。

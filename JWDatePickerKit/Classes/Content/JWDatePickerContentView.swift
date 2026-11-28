@@ -29,6 +29,7 @@ public final class JWDatePickerContentView: UIView {
     /// 每次 beginSelection 后只发送一次最终结果。
     public var onResult: ((JWDatePickerResult) -> Void)?
     public private(set) var result: JWDatePickerResult?
+    var onFinish: ((JWDatePickerResult) -> Void)?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,7 +75,9 @@ public final class JWDatePickerContentView: UIView {
 
     private func finish(_ result: JWDatePickerResult) {
         self.result = result
-        onResult?(result)
+        let resultHandler = onResult
+        onFinish?(result)
+        resultHandler?(result)
     }
 
     public override var intrinsicContentSize: CGSize {
@@ -89,8 +92,10 @@ public final class JWDatePickerContentView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
+        let bottom = includesBottomSafeArea ? safeAreaInsets.bottom : 0
+        let availablePickerHeight = max(0, bounds.height - headerHeight - bottom)
         headerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: headerHeight)
         pickerView.frame = CGRect(x: safeAreaInsets.left, y: headerHeight,
-                                  width: max(0, bounds.width - safeAreaInsets.left - safeAreaInsets.right), height: pickerHeight)
+                                  width: max(0, bounds.width - safeAreaInsets.left - safeAreaInsets.right), height: min(pickerHeight, availablePickerHeight))
     }
 }

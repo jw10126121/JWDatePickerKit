@@ -24,13 +24,15 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
             }
             topLinePosition?.constant = -rowHeight / 2
             bottomLinePosition?.constant = rowHeight / 2
-            picker.reloadAllComponents()
+            rebuild()
         }
     }
     public var textAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 20), .foregroundColor: UIColor.label
+        .font: UIFont.systemFont(ofSize: 20), .foregroundColor: UIColor.secondaryLabel
     ] { didSet { rebuild() } }
-    public var selectedAttributes: [NSAttributedString.Key: Any]? { didSet { rebuild() } }
+    public var selectedAttributes: [NSAttributedString.Key: Any]? = [
+        .foregroundColor: UIColor.label
+    ] { didSet { rebuild() } }
     public var lineColor: UIColor = UIColor(white: 0.72, alpha: 1) {
         didSet { topLine.backgroundColor = lineColor; bottomLine.backgroundColor = lineColor }
     }
@@ -42,6 +44,8 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     private let bottomLine = UIView()
     private var currentDate = Date()
     private var values: [[Int]] = []
+    private var styledRows: [Int] = []
+    private let rowViews = NSHashTable<JWDatePickerRowView>.weakObjects()
     private var isUpdating = false
     private var lastValidConfiguration = JWDatePickerConfiguration()
     private var topLinePosition: NSLayoutConstraint?
@@ -235,6 +239,9 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         lastValidConfiguration = configuration
         if rebuildPicker || valuesNeedRefresh() {
             rebuild()
+        } else {
+            styledRows = selectedRows
+            restyleRows()
         }
     }
 
@@ -261,18 +268,20 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
             return availableValues(for: component)
         }
         updatePreferredColumnWidths()
-        picker.reloadAllComponents()
-        for (index, component) in visibleComponents.enumerated() {
+        styledRows = visibleComponents.enumerated().map { index, component in
             let value: Int
             if type == .dateWeekHourMinute && index == 0 {
                 value = calendar.dateComponents([.day], from: weekBounds().0, to: calendar.startOfDay(for: currentDate)).day ?? 0
             } else {
                 value = calendar.component(component, from: currentDate)
             }
-            if let row = row(for: value, component: index) {
-                picker.selectRow(row, inComponent: index, animated: false)
-            }
+            return row(for: value, component: index) ?? -1
         }
+        picker.reloadAllComponents()
+        for (index, row) in styledRows.enumerated() where row >= 0 {
+            picker.selectRow(row, inComponent: index, animated: false)
+        }
+        restyleRows()
     }
 
     private func weekBounds() -> (Date, Date) {
@@ -401,29 +410,28 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     }
 
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label = (view as? UILabel) ?? UILabel()
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.65
-        guard let value = rowValue(at: row, component: component) else { return label }
-        let title = rowTitle(value: value, component: component)
-        let selectedValue: Int
-        if type == .dateWeekHourMinute && component == 0 {
-            selectedValue = calendar.dateComponents([.day], from: weekBounds().0, to: calendar.startOfDay(for: currentDate)).day ?? 0
-        } else {
-            selectedValue = calendar.component(visibleComponents[component], from: currentDate)
-        }
-        // 循环列会出现多个相同值，必须根据实际行号判断选中状态。
-        if shouldLoop(component: component) {
-            let selectedRow = pickerView.selectedRow(inComponent: component)
-            let expectedRow = self.row(for: selectedValue, component: component)
-            let selected = selectedRow >= 0 ? selectedRow == row : expectedRow == row
-            label.attributedText = NSAttributedString(string: title, attributes: selected ? (selectedAttributes ?? textAttributes) : textAttributes)
-        } else {
-            label.attributedText = NSAttributedString(string: title, attributes: selectedValue == value ? (selectedAttributes ?? textAttributes) : textAttributes)
-        }
-        return label
+        let rowView = (view as? JWDatePickerRowView) ?? JWDatePickerRowView()
+        rowView.row = row
+        rowView.component = component
+        rowViews.add(rowView)
+        style(rowView)
+        return rowView
     }
+
+    private func restyleRows() {
+        // 刷新所有存活的行视图，包括 UIKit 暂时仍在显示的上一个选中行。
+        for rowView in rowViews.allObjects { style(rowView) }
+    }
+
+    private func style(_ view: JWDatePickerRowView) {
+        let title = rowValue(at: view.row, component: view.component).map { rowTitle(value: $0, component: view.component) } ?? ""
+        let isSelected = styledRows.indices.contains(view.component) && styledRows[view.component] == view.row
+        let attributes = isSelected ? textAttributes.merging(selectedAttributes ?? [:]) { _, selected in selected } : textAttributes
+        view.accessibilityLabel = title
+        view.accessibilityTraits = isSelected ? [.staticText, .selected] : .staticText
+        view.label.attributedText = NSAttributedString(string: title, attributes: attributes)
+    }
+
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard component >= 0, component < values.count, row >= 0,
               row < self.pickerView(pickerView, numberOfRowsInComponent: component) else { return }
@@ -483,4 +491,27 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         return center - center % count + offset
     }
 
+}
+
+/// 保持应用设置的字体和颜色，避免滚动时 UIPickerView 覆写标签样式。
+final class JWDatePickerRowView: UIView {
+    let label = UILabel()
+    var row = 0
+    var component = 0
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.65
+        addSubview(label)
+        isAccessibilityElement = true
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        label.frame = bounds
+    }
 }

@@ -97,7 +97,8 @@ import UIKit
         let left = safeAreaInsets.left + inset
         let right = safeAreaInsets.right + inset
         let available = max(0, bounds.width - left - right)
-        let buttonWidth = min(available * 0.28, max(44, max(cancelButton.sizeThatFits(bounds.size).width, confirmButton.sizeThatFits(bounds.size).width) + 8))
+        let idealWidth = max(cancelButton.sizeThatFits(bounds.size).width, confirmButton.sizeThatFits(bounds.size).width)
+        let buttonWidth = min(available / 2, max(44, min(available * 0.28, idealWidth + 8)))
         cancelButton.frame = CGRect(x: left, y: 0, width: buttonWidth, height: bounds.height)
         confirmButton.frame = CGRect(x: bounds.width - right - buttonWidth, y: 0, width: buttonWidth, height: bounds.height)
         if effectiveUserInterfaceLayoutDirection == .rightToLeft {

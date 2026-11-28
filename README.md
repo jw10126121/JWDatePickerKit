@@ -19,7 +19,7 @@ https://gitee.com/jw10126121/JWDatePickerKit.git
 | 用法 | 产品 | 导入模块 |
 | --- | --- | --- |
 | UIKit 内嵌与底部弹层 | `JWDatePickerKit` | `JWDatePickerKit` |
-| SwiftUI | `JWDatePickerKitSwiftUI` | `JWDatePickerKitSwiftUI` |
+| SwiftUI | `JWDatePickerKitSwiftUI` | `JWDatePickerKit`、`JWDatePickerKitSwiftUI` |
 
 短名产品 `JWDatePicker` / `JWDatePickerSwiftUI` 也可用。
 
@@ -32,9 +32,9 @@ platform :ios, '15.0'
 use_frameworks!
 
 target 'YourApp' do
-  pod 'JWDatePickerKit', '~> 1.0'
+  pod 'JWDatePickerKit', '~> 1.2'
   # 使用 SwiftUI 时添加
-  # pod 'JWDatePickerKit/SwiftUI', '~> 1.0'
+  # pod 'JWDatePickerKit/SwiftUI', '~> 1.2'
 
   # 使用 Xcode 15 时取消下一行的注释
   # supports_swift_versions '~> 5.0'
@@ -96,6 +96,7 @@ present(picker, animated: true)
 
 ```swift
 import SwiftUI
+import JWDatePickerKit
 import JWDatePickerKitSwiftUI
 
 struct DateForm: View {
@@ -156,7 +157,12 @@ do {
 
 克隆本仓库与 [JWDialogManager](https://gitee.com/jw10126121/JWDialogManager) 到同一父目录，在仓库根目录运行 `pod install`，打开 `JWDatePickerKit.xcworkspace`，选择 `JWDatePickerKit-Example` scheme。业务项目中可把版本号替换为 `pod 'JWDatePickerKit', :path => '../JWDatePickerKit'`。
 
-切换 Swift 6 语言模式时，在构建命令末尾加 `SWIFT_VERSION=6.0`。
+也可在命令行运行模拟器测试。将设备名称替换为本机已安装的模拟器。
+
+```sh
+xcodebuild test -workspace JWDatePickerKit.xcworkspace -scheme JWDatePickerKit-Example \
+  -destination 'platform=iOS Simulator,name=iPhone 16'
+```
 
 ## 常见问题
 

@@ -67,7 +67,7 @@ import JWDialogManager
     private func setup() {
         sheetTransition = DatePickerSheetTransition(self)
         transitioningDelegate = sheetTransition
-        contentView.onResult = { [weak self] result in self?.handle(result) }
+        contentView.onFinish = { [weak self] result in self?.handle(result) }
         pickerView.lineColor = .black
     }
 
@@ -85,19 +85,18 @@ import JWDialogManager
         if isBeingPresented { contentView.beginSelection() }
     }
 
-    public override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if presentingViewController == nil { contentView.cancelSelection() }
+    fileprivate func presentationDidDismiss() {
+        contentView.cancelSelection()
     }
 
     private func updateCorners() {
-        contentView.layer.cornerRadius = max(0, topCornerRadius)
+        contentView.layer.cornerRadius = topCornerRadius.isFinite ? max(0, topCornerRadius) : 0
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         contentView.clipsToBounds = true
     }
 
     fileprivate func dismissFromBackdrop() {
-        guard backgroundTapDismissEnable else { return }
+        guard backgroundTapDismissEnable, !isBeingDismissed else { return }
         closesForBackdrop = true
         contentView.cancelSelection()
         closesForBackdrop = false
@@ -109,7 +108,7 @@ import JWDialogManager
         let cancel = cancelHandler
         let confirm = confirmHandler
         let componentsHandler = confirmDateComponentsHandler
-        let shouldDismiss = automaticallyDismisses || closesForBackdrop
+        let shouldDismiss = automaticallyDismisses && !closesForBackdrop
         switch result {
         case .confirmed(let date):
             let components = pickerView.calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
@@ -182,6 +181,7 @@ private final class DatePickerSheetPresentation: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
+        maskView.frame = containerView?.bounds ?? .zero
         maskView.backgroundColor = pickerController.dimmingColor
         maskView.alpha = 1
         containerView?.insertSubview(maskView, at: 0)
@@ -191,6 +191,11 @@ private final class DatePickerSheetPresentation: UIPresentationController {
         }
     }
 
+    override func presentationTransitionDidEnd(_ completed: Bool) {
+        super.presentationTransitionDidEnd(completed)
+        if !completed { maskView.removeFromSuperview() }
+    }
+
     override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in self.maskView.alpha = 0 })
@@ -198,7 +203,12 @@ private final class DatePickerSheetPresentation: UIPresentationController {
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         super.dismissalTransitionDidEnd(completed)
-        if completed { maskView.removeFromSuperview() }
+        if completed {
+            maskView.removeFromSuperview()
+            pickerController.presentationDidDismiss()
+        } else {
+            maskView.alpha = 1
+        }
     }
 
     @objc private func tappedBackdrop() { pickerController.dismissFromBackdrop() }

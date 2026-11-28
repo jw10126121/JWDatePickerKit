@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
     s.swift_versions = ['5.0', '6.0']
     s.default_subspecs = 'Controller'
 
-    # 与 JWTextPickerManager 对齐的公共子模块命名。
+    # 与 JWTextPickerKit 对齐的公共子模块命名。
     s.subspec 'Core' do |core|
         core.source_files = 'JWDatePickerKit/Classes/Picker/**/*.swift'
         core.resource_bundles = { 'JWDatePickerKit' => ['JWDatePickerKit/Resources/**/*.strings'] }
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'SwiftUI' do |swiftui|
         swiftui.source_files = 'JWDatePickerKit/SwiftUI/**/*.swift'
-        swiftui.dependency 'JWDatePickerKit/Core'
+        swiftui.dependency 'JWDatePickerKit/Controller'
     end
 
     s.subspec 'Controller' do |controller|

@@ -22,6 +22,7 @@ public extension View {
         background(
             JWDatePickerPresenter(
                 isPresented: isPresented,
+                wantsPresentation: isPresented.wrappedValue,
                 selection: selection,
                 type: type,
                 minimumDate: minimumDate,
@@ -39,6 +40,7 @@ public extension View {
 
 private struct JWDatePickerPresenter: UIViewControllerRepresentable {
     @Binding var isPresented: Bool
+    let wantsPresentation: Bool
     @Binding var selection: Date
     let type: JWDatePickerType
     let minimumDate: Date?
@@ -49,103 +51,156 @@ private struct JWDatePickerPresenter: UIViewControllerRepresentable {
     let onConfirm: ((Date) -> Void)?
     let onCancel: (() -> Void)?
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
 
-    func makeUIViewController(context: Context) -> JWDatePickerAnchorController {
-        JWDatePickerAnchorController()
-    }
+    func makeCoordinator() -> Coordinator { Coordinator() }
 
-    func updateUIViewController(_ anchor: JWDatePickerAnchorController, context: Context) {
+    func makeUIViewController(context: Context) -> PickerPresentationAnchor { PickerPresentationAnchor() }
+
+    func updateUIViewController(_ anchor: PickerPresentationAnchor, context: Context) {
         let coordinator = context.coordinator
         coordinator.isPresented = $isPresented
-        coordinator.selection = $selection
-        coordinator.type = type
-        coordinator.minimumDate = minimumDate
-        coordinator.maximumDate = maximumDate
-        coordinator.calendar = calendar
-        coordinator.locale = locale
-        coordinator.selectionPolicy = selectionPolicy
-        coordinator.onConfirm = onConfirm
-        coordinator.onCancel = onCancel
-        coordinator.updatePresentation(from: anchor)
+        coordinator.makeController = {
+            let controller = JWDatePickerViewController()
+            let configuration = JWDatePickerConfiguration(
+                type: type, selectedDate: selection, minimumDate: minimumDate, maximumDate: maximumDate,
+                calendar: calendar, locale: locale, selectionPolicy: selectionPolicy
+            )
+            do {
+                try controller.apply(configuration)
+                return controller
+            } catch {
+                return nil
+            }
+        }
+        coordinator.deliver = { result, _ in
+            switch result {
+            case let .confirmed(date):
+                selection = date
+                onConfirm?(date)
+            case .cancelled:
+                onCancel?()
+            }
+        }
+        anchor.onReady = { [weak coordinator, weak anchor] in
+            guard let coordinator, let anchor else { return }
+            coordinator.update(from: anchor)
+        }
+        Task { @MainActor [weak coordinator, weak anchor] in
+            guard let coordinator, let anchor else { return }
+            if wantsPresentation == coordinator.isPresented.wrappedValue { coordinator.update(from: anchor) }
+        }
+    }
+
+    static func dismantleUIViewController(_ anchor: PickerPresentationAnchor, coordinator: Coordinator) {
+        anchor.onReady = nil
+        coordinator.remove()
     }
 
     @MainActor
     final class Coordinator {
         var isPresented = Binding.constant(false)
-        var selection = Binding.constant(Date())
-        var type: JWDatePickerType = .date
-        var minimumDate: Date?
-        var maximumDate: Date?
-        var calendar: Calendar = .current
-        var locale: Locale = .current
-        var selectionPolicy: JWDatePickerSelectionPolicy = .preserveComponents
-        var onConfirm: ((Date) -> Void)?
-        var onCancel: (() -> Void)?
+        var makeController: (() -> JWDatePickerViewController?)?
+        var deliver: ((JWDatePickerResult, JWDatePickerViewController) -> Void)?
         private var presentedController: JWDatePickerViewController?
+        private var isDismissing = false
 
-        func updatePresentation(from anchor: UIViewController) {
+        func update(from anchor: PickerPresentationAnchor) {
             guard anchor.viewIfLoaded?.window != nil else { return }
-
-            guard isPresented.wrappedValue else {
-                guard let controller = presentedController, !controller.isBeingDismissed else { return }
-                controller.dismiss(animated: true) { [weak self] in
-                    self?.presentedController = nil
+            if let controller = presentedController {
+                if isDismissing { return }
+                if controller.presentingViewController != nil {
+                    if !isPresented.wrappedValue { dismiss(controller, from: anchor) }
+                    return
                 }
-                return
+                presentedController = nil
             }
+            guard isPresented.wrappedValue, let source = presentationSource(from: anchor),
+                  let controller = makeController?() else { return }
 
-            guard presentedController == nil else { return }
-
-            let controller = JWDatePickerViewController()
-            let configuration = JWDatePickerConfiguration(
-                type: type,
-                selectedDate: selection.wrappedValue,
-                minimumDate: minimumDate,
-                maximumDate: maximumDate,
-                calendar: calendar,
-                locale: locale,
-                selectionPolicy: selectionPolicy
-            )
-            try? controller.apply(configuration)
-            controller.confirmHandler = { [weak self, weak controller] date in
-                guard let self else { return }
-                self.selection.wrappedValue = date
-                self.onConfirm?(date)
-                if let controller { self.finish(controller: controller) }
+            controller.onResult = { [weak self, weak controller, weak anchor] result in
+                guard let self, let controller, let anchor else { return }
+                if self.isPresented.wrappedValue { self.dismiss(controller, from: anchor, result: result) }
             }
-            controller.cancelHandler = { [weak self, weak controller] in
-                guard let self else { return }
-                self.onCancel?()
-                if let controller { self.finish(controller: controller) }
-            }
-
             presentedController = controller
-            anchor.present(controller, animated: true)
+            source.present(controller, animated: true)
+            if controller.presentingViewController == nil { presentedController = nil }
         }
 
-        private func finish(controller: JWDatePickerViewController) {
-            isPresented.wrappedValue = false
-            Task { @MainActor [weak self, weak controller] in
-                guard let self else { return }
-                let done = { self.presentedController = nil }
-                if let controller, controller.presentingViewController != nil, !controller.isBeingDismissed {
-                    controller.dismiss(animated: true, completion: done)
-                } else {
-                    done()
+        private func presentationSource(from anchor: PickerPresentationAnchor) -> UIViewController? {
+            var parent = anchor.parent
+            while let controller = parent {
+                if controller.viewIfLoaded?.window != nil, controller.presentedViewController == nil,
+                   !controller.isBeingDismissed { return controller }
+                parent = controller.parent
+            }
+            return nil
+        }
+
+        private func dismiss(_ controller: JWDatePickerViewController, from anchor: PickerPresentationAnchor,
+                             result: JWDatePickerResult? = nil) {
+            guard presentedController === controller, !isDismissing else { return }
+            isDismissing = true
+            if controller.isBeingPresented,
+               controller.transitionCoordinator?.animate(alongsideTransition: nil, completion: { [weak self, weak anchor] _ in
+                   guard let self, let anchor else { return }
+                   self.isDismissing = false
+                   self.dismiss(controller, from: anchor, result: result)
+               }) == true { return }
+
+            let done = { [weak self, weak anchor] in
+                guard let self, self.presentedController === controller else { return }
+                self.isDismissing = false
+                self.presentedController = nil
+                if let result, self.isPresented.wrappedValue {
+                    self.isPresented.wrappedValue = false
+                    self.deliver?(result, controller)
                 }
+                if let anchor { self.update(from: anchor) }
+            }
+            if controller.isBeingDismissed {
+                if controller.transitionCoordinator?.animate(alongsideTransition: nil, completion: { _ in done() }) == true { return }
+                done()
+            } else if controller.presentingViewController != nil {
+                controller.dismiss(animated: true, completion: done)
+            } else {
+                done()
+            }
+        }
+
+        func remove() {
+            guard let controller = presentedController else { return }
+            presentedController = nil
+            controller.onResult = nil
+            if controller.presentingViewController != nil && !controller.isBeingDismissed {
+                controller.dismiss(animated: false)
             }
         }
     }
 }
 
-private final class JWDatePickerAnchorController: UIViewController {
+private final class PickerPresentationAnchor: UIViewController {
+    var onReady: (() -> Void)?
+
     override func loadView() {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .clear
-        view.isUserInteractionEnabled = false
-        self.view = view
+        let anchorView = PickerPresentationAnchorView()
+        anchorView.isUserInteractionEnabled = false
+        anchorView.onAttach = { [weak self] in self?.onReady?() }
+        view = anchorView
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        onReady?()
+    }
+}
+
+private final class PickerPresentationAnchorView: UIView {
+    var onAttach: (() -> Void)?
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil {
+            Task { @MainActor [weak self] in self?.onAttach?() }
+        }
     }
 }

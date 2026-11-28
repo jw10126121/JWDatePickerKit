@@ -61,6 +61,14 @@ public struct JWDatePicker: UIViewRepresentable {
             locale: locale,
             selectionPolicy: selectionPolicy
         )
+        let current = picker.configuration
+        guard current.type != configuration.type
+                || current.selectedDate != configuration.selectedDate
+                || current.minimumDate != configuration.minimumDate
+                || current.maximumDate != configuration.maximumDate
+                || current.calendar != configuration.calendar
+                || current.locale != configuration.locale
+                || current.selectionPolicy != configuration.selectionPolicy else { return }
         try? picker.apply(configuration)
     }
 
