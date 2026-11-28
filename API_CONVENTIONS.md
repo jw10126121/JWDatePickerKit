@@ -1,6 +1,6 @@
 # JW picker 系列 API 公约
 
-本公约同时适用于 `JWDatePickerKit` 与 `JWTextPickerKit`，目标是让两个库在命名、安装、回调和版本节奏上保持一致。旧 `JWTextPickerManager` 1.x 遵循零破坏迁移；新 `JWTextPickerKit` 1.0.0 采用统一后的干净 API，不再保留旧别名。
+本公约同时适用于 `JWDatePickerKit` 与 `JWTextPickerKit`，目标是让两个库在命名、安装、回调和版本节奏上保持一致。旧 `JWTextPickerManager` 1.x 遵循零破坏迁移；新 `JWTextPickerKit` 1.2.0 采用统一后的干净 API，不再保留旧别名。
 
 ## 1. 命名公式
 
@@ -50,7 +50,7 @@ public var cancelHandler: (() -> Void)?
 
 ## 4. 安装与分发
 
-- CocoaPods 源同时列 JWPublicSpecs 和官方 CDN；两个库初始版本均为 1.0.0，统一写 `~> 1.0`。
+- CocoaPods 源同时列 JWPublicSpecs 和官方 CDN；两个库首个发布版本均为 1.2.0，统一写 `~> 1.2`。
 - SPM 产品名以 `JWDatePickerKit` / `JWTextPickerKit` 系列为主，`JWDatePicker` / `JWTextPicker` 等短名作为别名保留。
 - Pod 子模块统一为 `Core` / `Content` / `Controller` / `SwiftUI` / `RxSwift`；旧子模块名保留为只含依赖的别名。
 - 最低系统版本 iOS 15；Swift 5.10 与 Swift 6 双工具链；公共弹层依赖 `JWDialogManager ~> 0.1.3`。
@@ -59,5 +59,5 @@ public var cancelHandler: (() -> Void)?
 ## 5. 迁移策略
 
 1. 阶段一（旧库 1.2.x）：新名称与旧名称并存，旧名称标记 deprecated；文档全面切换到新名称。
-2. 阶段二（新库 1.0.0）：`JWTextPickerKit` 以干净 API 发布，以 `JWTextPickerViewController` 为唯一主入口；旧 `JWTextPickerManager` pod 与仓库保留给存量用户。
+2. 阶段二（新库 1.2.0）：`JWTextPickerKit` 以干净 API 发布，以 `JWTextPickerViewController` 为唯一主入口；旧 `JWTextPickerManager` pod 与仓库保留给存量用户。
 3. 任何阶段都不静默改变旧 API 的行为与回调次数。
