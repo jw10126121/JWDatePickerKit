@@ -46,6 +46,7 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
     private var values: [[Int]] = []
     private var styledRows: [Int] = []
     private let rowViews = NSHashTable<JWDatePickerRowView>.weakObjects()
+    private let bandTracker = JWDatePickerBandTracker(target: nil, action: nil)
     private var isUpdating = false
     private var lastValidConfiguration = JWDatePickerConfiguration()
     private var topLinePosition: NSLayoutConstraint?
@@ -76,6 +77,8 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         picker.delegate = self
         picker.translatesAutoresizingMaskIntoConstraints = false
         addSubview(picker)
+        picker.addGestureRecognizer(bandTracker)
+        bandTracker.updateRows = { [weak self] in self?.updateBandClipping() ?? false }
         for line in [topLine, bottomLine] {
             line.translatesAutoresizingMaskIntoConstraints = false
             line.backgroundColor = lineColor
@@ -99,8 +102,18 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
 
     public override var intrinsicContentSize: CGSize { picker.intrinsicContentSize }
 
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil {
+            bandTracker.stop()
+        } else {
+            bandTracker.start()
+        }
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
+        bandTracker.start()
         if previousWidth != bounds.width {
             previousWidth = bounds.width
             rebuild()
@@ -415,21 +428,33 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
         rowView.component = component
         rowViews.add(rowView)
         style(rowView)
+        bandTracker.start()
         return rowView
     }
 
     private func restyleRows() {
         // 刷新所有存活的行视图，包括 UIKit 暂时仍在显示的上一个选中行。
         for rowView in rowViews.allObjects { style(rowView) }
+        bandTracker.start()
+    }
+
+    private func updateBandClipping() -> Bool {
+        var changed = false
+        for rowView in rowViews.allObjects {
+            if rowView.updateClip(in: picker, height: rowHeight) { changed = true }
+        }
+        return changed
     }
 
     private func style(_ view: JWDatePickerRowView) {
         let title = rowValue(at: view.row, component: view.component).map { rowTitle(value: $0, component: view.component) } ?? ""
         let isSelected = styledRows.indices.contains(view.component) && styledRows[view.component] == view.row
-        let attributes = isSelected ? textAttributes.merging(selectedAttributes ?? [:]) { _, selected in selected } : textAttributes
-        view.accessibilityLabel = title
-        view.accessibilityTraits = isSelected ? [.staticText, .selected] : .staticText
-        view.label.attributedText = NSAttributedString(string: title, attributes: attributes)
+        let normal = NSAttributedString(string: title, attributes: textAttributes)
+        let highlight = textAttributes.merging(selectedAttributes ?? [:]) { _, selected in selected }
+        let highlighted = NSAttributedString(string: title, attributes: highlight)
+        let usesBand = view.isDescendant(of: picker)
+        view.setTitle(title, normal: normal, highlighted: highlighted, selected: isSelected, usesBand: usesBand)
+        if usesBand { view.updateClip(in: picker, height: rowHeight) }
     }
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -493,18 +518,26 @@ public final class JWDatePickerView: UIView, UIPickerViewDataSource, UIPickerVie
 
 }
 
-/// 保持应用设置的字体和颜色，避免滚动时 UIPickerView 覆写标签样式。
+/// 在行本身绘制两套样式，按固定选中框裁切。
 final class JWDatePickerRowView: UIView {
     let label = UILabel()
+    private let highlightedLabel = UILabel()
+    private let normalMask = CAShapeLayer()
+    private let highlightMask = CAShapeLayer()
+    private var lastClip: CGRect?
+    private var normalText: NSAttributedString?
     var row = 0
     var component = 0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.65
-        addSubview(label)
+        for textLabel in [label, highlightedLabel] {
+            textLabel.textAlignment = .center
+            textLabel.adjustsFontSizeToFitWidth = true
+            textLabel.minimumScaleFactor = 0.65
+            addSubview(textLabel)
+        }
+        normalMask.fillRule = .evenOdd
         isAccessibilityElement = true
     }
 
@@ -513,5 +546,129 @@ final class JWDatePickerRowView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = bounds
+        highlightedLabel.frame = bounds
+        if let lastClip {
+            self.lastClip = nil
+            updateClip(lastClip)
+        }
+    }
+
+    func setTitle(_ title: String, normal: NSAttributedString, highlighted: NSAttributedString, selected: Bool, usesBand: Bool) {
+        accessibilityLabel = title
+        accessibilityTraits = selected ? [.staticText, .selected] : .staticText
+        normalText = normal
+        let base = !usesBand && selected ? highlighted : normal
+        if label.attributedText != base { label.attributedText = base }
+        if highlightedLabel.attributedText != highlighted { highlightedLabel.attributedText = highlighted }
+        if !usesBand { updateClip(.zero) }
+    }
+
+    /// 行有 UIKit 的滚轮变换。将屏幕上的固定边界换算成这一行的局部坐标。
+    @discardableResult
+    func updateClip(in wheel: UIPickerView, height: CGFloat) -> Bool {
+        guard isDescendant(of: wheel), !bounds.isEmpty else { return false }
+        if label.attributedText != normalText { label.attributedText = normalText }
+        let source: CALayer
+        let target: CALayer
+        if let visibleWheel = wheel.layer.presentation(), let visibleRow = layer.presentation() {
+            source = visibleWheel
+            target = visibleRow
+        } else {
+            source = wheel.layer
+            target = layer
+        }
+        let center = source.bounds.midY
+        let columnX = source.convert(CGPoint(x: bounds.midX, y: bounds.midY), from: target).x
+        let top = target.convert(CGPoint(x: columnX, y: center - height / 2), from: source).y
+        let bottom = target.convert(CGPoint(x: columnX, y: center + height / 2), from: source).y
+        guard top.isFinite, bottom.isFinite else { return false }
+        let clip = bounds.intersection(CGRect(x: bounds.minX, y: min(top, bottom),
+                                              width: bounds.width, height: abs(bottom - top)))
+        return updateClip(clip.isEmpty ? .zero : clip)
+    }
+
+    @discardableResult
+    private func updateClip(_ clip: CGRect) -> Bool {
+        guard lastClip != clip else { return false }
+        lastClip = clip
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        defer { CATransaction.commit() }
+        highlightedLabel.isHidden = clip.isEmpty
+        label.isHidden = !clip.isEmpty && clip.contains(bounds)
+        if clip.isEmpty || label.isHidden {
+            label.layer.mask = nil
+            highlightedLabel.layer.mask = nil
+        } else {
+            let band = UIBezierPath(rect: clip)
+            let outside = UIBezierPath(rect: bounds)
+            outside.append(band)
+            normalMask.frame = bounds
+            normalMask.path = outside.cgPath
+            highlightMask.frame = bounds
+            highlightMask.path = band.cgPath
+            label.layer.mask = normalMask
+            highlightedLabel.layer.mask = highlightMask
+        }
+        return true
+    }
+}
+
+/// 只在触摸、减速和滚轮动画期间刷新裁切位置。
+private final class JWDatePickerBandTracker: UIGestureRecognizer {
+    private var displayLink: CADisplayLink?
+    private var keepAliveUntil: CFTimeInterval = 0
+    private var isTouching = false
+    var updateRows: (() -> Bool)?
+
+    override init(target: Any?, action: Selector?) {
+        super.init(target: target, action: action)
+        cancelsTouchesInView = false
+        delaysTouchesBegan = false
+        delaysTouchesEnded = false
+    }
+
+    override func canPrevent(_ preventedGestureRecognizer: UIGestureRecognizer) -> Bool { false }
+    override func canBePrevented(by preventingGestureRecognizer: UIGestureRecognizer) -> Bool { false }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        isTouching = true
+        start()
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+        isTouching = false
+        start()
+        state = .failed
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+        touchesEnded(touches, with: event)
+    }
+
+    override func reset() {
+        super.reset()
+        isTouching = false
+    }
+
+    func start() {
+        guard view?.window != nil else { return }
+        keepAliveUntil = CACurrentMediaTime() + 0.18
+        guard displayLink == nil else { return }
+        let link = CADisplayLink(target: self, selector: #selector(tick(_:)))
+        link.add(to: .main, forMode: .common)
+        displayLink = link
+    }
+
+    func stop() {
+        displayLink?.invalidate()
+        displayLink = nil
+        isTouching = false
+    }
+
+    @objc private func tick(_ link: CADisplayLink) {
+        guard view?.window != nil else { stop(); return }
+        if updateRows?() == true { keepAliveUntil = link.timestamp + 0.18 }
+        if !isTouching && link.timestamp >= keepAliveUntil { stop() }
     }
 }

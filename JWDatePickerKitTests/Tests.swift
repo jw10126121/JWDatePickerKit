@@ -1,6 +1,6 @@
 import XCTest
 import UIKit
-import JWDatePickerKit
+@testable import JWDatePickerKit
 
 @MainActor
 final class Tests: XCTestCase {
@@ -212,6 +212,41 @@ final class Tests: XCTestCase {
         view.pickerView(picker, didSelectRow: row + 1, inComponent: 0)
         let colors = labels.map { $0.attributedText?.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor }
         XCTAssertEqual(colors, [.secondaryLabel, .magenta])
+    }
+
+    func testSelectionBandClipsAtTheFrameBoundary() throws {
+        let view = JWDatePickerView()
+        view.selectedAttributes = [.foregroundColor: UIColor.magenta]
+        let wheel = wheel(view)
+        let index = wheel.selectedRow(inComponent: 0)
+        let row = try XCTUnwrap(view.pickerView(wheel, viewForRow: index, forComponent: 0, reusing: nil) as? JWDatePickerRowView)
+        wheel.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        wheel.addSubview(row)
+        defer { row.removeFromSuperview() }
+        row.frame = CGRect(x: 100, y: 50, width: 100, height: 40)
+        row.layoutIfNeeded()
+        row.updateClip(in: wheel, height: 40)
+
+        let labels = row.subviews.compactMap { $0 as? UILabel }
+        XCTAssertEqual(labels.count, 2)
+        let normal = try XCTUnwrap(labels.first)
+        let highlighted = try XCTUnwrap(labels.last)
+        let mask = try XCTUnwrap(highlighted.layer.mask as? CAShapeLayer)
+        XCTAssertEqual(mask.path?.boundingBox, CGRect(x: 0, y: 30, width: 100, height: 10))
+        XCTAssertEqual((normal.layer.mask as? CAShapeLayer)?.fillRule, .evenOdd)
+        XCTAssertEqual(normal.attributedText?.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor,
+                       .secondaryLabel)
+        XCTAssertEqual(highlighted.attributedText?.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor,
+                       .magenta)
+
+        row.frame.origin.y = 80
+        row.updateClip(in: wheel, height: 40)
+        XCTAssertFalse(highlighted.isHidden)
+        XCTAssertTrue(normal.isHidden)
+        row.frame.origin.y = 120
+        row.updateClip(in: wheel, height: 40)
+        XCTAssertTrue(highlighted.isHidden)
+        XCTAssertFalse(normal.isHidden)
     }
 
     func testUntouchedConfirmPreservesSubsecondsAndHiddenComponents() throws {
