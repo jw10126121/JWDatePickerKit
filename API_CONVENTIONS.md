@@ -25,8 +25,8 @@
 - 提交滚轮位置统一用 `commitSelection()`，读取当前值用 `currentSelectedDate()` / `currentSelection()`。
 - 一次性结果统一通过 `onResult`；便捷回调用 `confirmHandler` / `cancelHandler`。
 - 点击背景关闭的属性统一为 `backgroundTapDismissEnable`。
-- SwiftUI：内联视图用 `JW*Picker(selection:)`，弹层入口用 `.jw*Picker(...)`；对应模块产品名 `JW*SwiftUI`。
-- RxSwift 扩展产品名统一为 `JW*RxSwift`，入口方法 `rxShow*Picker`。
+- SwiftUI：内联视图用 `JW*Picker(selection:)`，弹层入口用 `.jw*Picker(items:selection:)`；对应模块产品名 `JW*SwiftUI`。
+- RxSwift 扩展产品名统一为 `JW*RxSwift`，入口方法 `rxShow*Picker(items:...)`。
 
 ## 3. 回调签名
 

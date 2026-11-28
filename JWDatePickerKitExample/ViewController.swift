@@ -134,7 +134,7 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
         controller.headerView.confirmNormalColor = UIColor(red: 0, green: 0.65, blue: 0.6, alpha: 1)
         controller.headerView.showsTopLine = false
         controller.headerView.showsBottomLine = false
-        let count = controller.type.section
+        let count = controller.type.columnCount
         let size: CGFloat = count <= 3 ? 22 : (count <= 5 ? 18 : 17)
         let font = UIFontMetrics(forTextStyle: .title3).scaledFont(for: .systemFont(ofSize: size), maximumPointSize: 28)
         controller.pickerView.rowHeight = max(40, font.lineHeight + 12)

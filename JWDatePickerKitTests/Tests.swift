@@ -39,7 +39,7 @@ final class Tests: XCTestCase {
             view.selection = date
             XCTAssertEqual(view.currentSelectedDate(), date)
             let picker = wheel(view)
-            XCTAssertEqual(picker.numberOfComponents, type.section)
+            XCTAssertEqual(picker.numberOfComponents, type.columnCount)
             for component in 0..<picker.numberOfComponents {
                 XCTAssertGreaterThan(picker.numberOfRows(inComponent: component), 0)
             }
@@ -371,7 +371,7 @@ final class Tests: XCTestCase {
                     content.layoutIfNeeded()
                     content.headerView.layoutIfNeeded()
                     let picker = wheel(content)
-                    let widths = (0..<type.section).map { content.pickerView.pickerView(picker, widthForComponent: $0) }
+                    let widths = (0..<type.columnCount).map { content.pickerView.pickerView(picker, widthForComponent: $0) }
                     XCTAssertLessThanOrEqual(widths.reduce(0, +), width)
                     XCTAssertTrue(widths.allSatisfy { $0 > 0 })
                     let buttons = content.headerView.subviews.compactMap { $0 as? UIButton }

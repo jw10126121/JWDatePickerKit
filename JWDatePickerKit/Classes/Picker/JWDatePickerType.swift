@@ -94,7 +94,7 @@ import Foundation
     
     
     /// MARK - 分组
-    public var section: Int {
+    public var columnCount: Int {
         switch self {
         case .year:
             return 1
