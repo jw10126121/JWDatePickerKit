@@ -12,7 +12,7 @@
 | 可嵌入面板 | `JWDatePickerContentView` | `JWTextPickerContentView`（规划中） | 头部 + 滚轮 + 安全区 |
 | 底部弹层 | `JWDatePickerViewController` | `JWTextPickerViewController` | 依赖 JWDialogManager |
 | 头部视图 | `JWDatePickerMenuHeaderView` | `JWTextPickerMenuHeaderView` | 取消 / 标题 / 确定 |
-| 配置对象 | `JWDatePickerConfiguration` | `JWTextPickerConfiguration` | 一次性应用配置 |
+| 配置对象 | `JWDatePickerConfiguration`（数据） | `JWTextPickerStyle`（样式） | 各自表达数据约束与外观样式 |
 | 结果枚举 | `JWDatePickerResult` | `JWTextPickerResult` | `.confirmed` / `.cancelled` |
 | 模式 / 列数 | `JWDatePickerType` | `JWTextPickerType` | 统一属性名 `type` |
 | 数据模型 | `Date` / `DateComponents` | `JWTextPickerItem`、`JWTextPickerItemProtocol` | 公开符号统一 JW 前缀 |
@@ -25,7 +25,7 @@
 - 提交滚轮位置统一用 `commitSelection()`，读取当前值用 `currentSelectedDate()` / `currentSelection()`。
 - 一次性结果统一通过 `onResult`；便捷回调用 `confirmHandler` / `cancelHandler`。
 - 点击背景关闭的属性统一为 `backgroundTapDismissEnable`。
-- SwiftUI：内联视图用 `JW*Picker(selection:)`，弹层入口用 `.jw*Picker(items:selection:)`；对应模块产品名 `JW*SwiftUI`。
+- SwiftUI：内联视图用 `JWDatePicker(selection:)` / `JWTextPicker(selection:items:)`，弹层入口用 `.jwDatePicker(...)` / `.jwTextPicker(...)`；对应模块产品名 `JW*SwiftUI`。
 - RxSwift 扩展产品名统一为 `JW*RxSwift`，入口方法 `rxShow*Picker(items:...)`。
 
 ## 3. 回调签名

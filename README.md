@@ -108,6 +108,22 @@ struct DateForm: View {
 }
 ```
 
+也可以通过 `.jwDatePicker` 以底部弹层呈现：
+
+```swift
+struct DateForm: View {
+    @State private var date = Date()
+    @State private var showPicker = false
+
+    var body: some View {
+        Button("选择日期") { showPicker = true }
+            .jwDatePicker(isPresented: $showPicker, selection: $date, type: .date) { selected in
+                print(selected)
+            }
+    }
+}
+```
+
 通过 CocoaPods 安装时改为 `import JWDatePickerKit`。可用 `minimumDate`、`maximumDate` 限制范围，用 `locale` 指定显示语言。
 
 ## 配置与自定义
