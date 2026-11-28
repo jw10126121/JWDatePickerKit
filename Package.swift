@@ -12,7 +12,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://gitee.com/jw10126121/JWDialogManager.git",
-            from: "0.1.2"
+            from: "0.1.3"
         )
     ],
     targets: [

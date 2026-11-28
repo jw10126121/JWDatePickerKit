@@ -1,0 +1,15 @@
+{
+  "originHash" : "b7f37bd44209e08554adf61f6131d9abcb451017ed5e5fe2012eb95f6d1ceb82",
+  "pins" : [
+    {
+      "identity" : "jwdialogmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://gitee.com/jw10126121/JWDialogManager.git",
+      "state" : {
+        "revision" : "8fcf45d6d7f8fa4b5db967ed718d377f208e494b",
+        "version" : "0.1.3"
+      }
+    }
+  ],
+  "version" : 3
+}

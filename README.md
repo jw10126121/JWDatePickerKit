@@ -169,7 +169,7 @@ controller.headerView.attributedTitle = NSAttributedString(string: "选择出发
 
 ## 本地调试
 
-克隆本仓库和 [JWDialogManager](https://gitee.com/jw10126121/JWDialogManager) 到同一个父目录，JWDialogManager 使用 `0.1.2` 或兼容版本。在本仓库根目录运行 `pod install`，打开 `JWDatePickerKit.xcworkspace`，选择 `JWDatePickerKit-Example` scheme 和 iOS 模拟器。示例包含生日选择、循环滚动和各日期模式，可直接验证自定义效果。
+克隆本仓库和 [JWDialogManager](https://gitee.com/jw10126121/JWDialogManager) 到同一个父目录，JWDialogManager 使用 `0.1.3` 或兼容版本。在本仓库根目录运行 `pod install`，打开 `JWDatePickerKit.xcworkspace`，选择 `JWDatePickerKit-Example` scheme 和 iOS 模拟器。示例包含生日选择、循环滚动和各日期模式，可直接验证自定义效果。
 
 要在业务项目中调试本地源码，CocoaPods 可将 Podfile 中的版本号替换为路径。SwiftPM 可在 Xcode 中添加本地包。
 
